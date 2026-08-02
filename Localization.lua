@@ -17,23 +17,7 @@ local translations = {
         CLOSE = "Schließen",
         NEW = "Neu",
     },
-    ["enGB"] = {
-        OPEN_ADDON = "Open Better Patch Notes",
-        HIDE_MINIMAP_BUTTON = "Hide minimap button",
-        TITLE = "Better Patch Notes",
-        LIVE = "Live",
-        PTR = "PTR",
-        CLASS_CHANGES = "Class changes",
-        CLASS_WIDE = "Class-wide",
-        OTHER_SPECIALIZATIONS = "Other specialisations",
-        DUNGEON_CHANGES = "Dungeon changes",
-        RAID_CHANGES = "Raid changes",
-        NO_CHANGES = "No relevant changes.",
-        ENGLISH_FALLBACK = "English source text",
-        CLOSE = "Close",
-        NEW = "New",
-    },
-    ["enUS"] = {
+    ["en"] = {
         OPEN_ADDON = "Open Better Patch Notes",
         HIDE_MINIMAP_BUTTON = "Hide minimap button",
         TITLE = "Better Patch Notes",
@@ -196,8 +180,12 @@ local translations = {
 }
 
 local locale = GetLocale()
-local selected = translations[locale] or translations.enUS
+if locale == "enUS" or locale == "enGB" then
+    locale = "en"
+end
+
+local selected = translations[locale] or translations.en
 
 function addon.GetText(key)
-    return selected[key] or translations.enUS[key] or key
+    return selected[key] or translations.en[key] or key
 end

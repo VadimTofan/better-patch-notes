@@ -67,16 +67,20 @@ The packaged history is intentionally limited to recent, relevant changes.
 
 The interface supports these official WoW client locales:
 
-`deDE`, `enGB`, `enUS`, `esES`, `esMX`, `frFR`, `itIT`, `koKR`, `ptBR`,
-`ruRU`, `zhCN`, and `zhTW`.
+`deDE`, `en`, `esES`, `esMX`, `frFR`, `itIT`, `koKR`, `ptBR`, `ruRU`,
+`zhCN`, and `zhTW`.
 
-Localized patch-note text is included only when an official localized version
-is available. Otherwise, the addon displays an English fallback instead of an
-unofficial translation.
+WoW clients using `enUS` or `enGB` share the canonical `en` localization.
+
+Official localized patch-note text is preferred whenever Blizzard publishes
+it. When current official text is unavailable, future data updates may include
+clearly identified unofficial translations grounded in Blizzard's localized
+game terminology and translated from English. The English fallback remains in
+use whenever a translation cannot be validated safely.
 
 ## Current status
 
-- **Addon version:** 0.2.5
+- **Addon version:** 0.2.7
 - **Game:** World of Warcraft Retail
 - **Interface version:** 120007
 - **Bundled data:** Live 12.0.7 and PTR 12.1

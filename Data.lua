@@ -15,13 +15,13 @@ end
 
 function addon.GetLocalizedChange(change)
     local locale = GetLocale()
-    local localized = change.localizations[locale]
-    local english = change.localizations.enUS
-    local usedFallback = localized == nil
-
-    if locale == "enGB" then
-        usedFallback = false
+    if locale == "enUS" or locale == "enGB" then
+        locale = "en"
     end
+
+    local localized = change.localizations[locale]
+    local english = change.localizations.en
+    local usedFallback = localized == nil
 
     return localized or english, usedFallback
 end
