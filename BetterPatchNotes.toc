@@ -1,7 +1,8 @@
 ## Interface: 120007
 ## Title: Better Patch Notes
 ## Notes: Shows relevant live and PTR patch notes on login.
-## Version: 0.2.2
+## Version: 0.2.3
+## X-Curse-Project-ID: 1635519
 ## SavedVariables: BetterPatchNotesDB
 
 Addon.lua

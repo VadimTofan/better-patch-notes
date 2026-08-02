@@ -1,3 +1,10 @@
+Version 0.2.3 - 2026-08-02
+- Distribution: Added automatic CurseForge releases from GitHub pushes to main
+- Validation: Releases stop when runtime files, versions, project metadata, or the API token are missing
+- Packaging: CurseForge archives contain only the BetterPatchNotes runtime addon
+- Release: Stable version tags are created only after a successful CurseForge upload
+- Data: Unchanged; Live 12.0.7 and PTR 12.1
+
 Version 0.2.2 - 2026-08-02
 - Interface: Added a draggable minimap button with saved visibility and position
 - Controls: Left-click opens the addon; right-click opens or hides the minimap button

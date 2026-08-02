@@ -1,0 +1,108 @@
+name: Release to CurseForge
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: curseforge-release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Require CurseForge token
+        env:
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+        run: |
+          if [ -z "$CF_API_TOKEN" ]; then
+            echo "Missing required repository secret: CF_API_TOKEN"
+            exit 1
+          fi
+
+      - name: Validate release inputs
+        id: validate
+        shell: bash
+        run: |
+          required_files=(
+            "BetterPatchNotes.toc"
+            "Addon.lua"
+            "Localization.lua"
+            "PatchNotesData.lua"
+            "Data.lua"
+            "State.lua"
+            "Window.lua"
+            "MinimapButton.lua"
+            "Core.lua"
+            "changelog.txt"
+            ".pkgmeta"
+          )
+
+          for required_file in "${required_files[@]}"; do
+            if [ ! -f "$required_file" ]; then
+              echo "Missing required release file: $required_file"
+              exit 1
+            fi
+          done
+
+          version="$(sed -n 's/^## Version: //p' BetterPatchNotes.toc)"
+          addon_version="$(sed -n 's/^addon\.version = "\([^"]*\)"$/\1/p' Addon.lua)"
+          readme_version="$(sed -n 's/^- \*\*Addon version:\*\* //p' README.md)"
+          changelog_version="$(sed -n 's/^Version \([0-9]*\.[0-9]*\.[0-9]*\) -.*/\1/p' changelog.txt | head -n 1)"
+
+          if [[ ! "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "Invalid semantic version in BetterPatchNotes.toc: $version"
+            exit 1
+          fi
+
+          if [ "$version" != "$addon_version" ] || \
+             [ "$version" != "$readme_version" ] || \
+             [ "$version" != "$changelog_version" ]; then
+            echo "Release versions are not synchronized"
+            exit 1
+          fi
+
+          if ! grep -Fxq "## X-Curse-Project-ID: 1635519" \
+            BetterPatchNotes.toc; then
+            echo "CurseForge project ID is missing or incorrect"
+            exit 1
+          fi
+
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
+      - name: Prepare release tag
+        id: version
+        shell: bash
+        run: |
+          version="${{ steps.validate.outputs.version }}"
+          tag="v$version"
+          if git rev-parse "$tag" >/dev/null 2>&1; then
+            echo "Release tag already exists: $tag"
+            exit 1
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git tag --annotate "$tag" --message "Better Patch Notes $version"
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+
+      - name: Package and upload release
+        uses: BigWigsMods/packager@v2
+        with:
+          args: -p 1635519
+        env:
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+
+      - name: Publish release tag
+        run: git push origin "${{ steps.version.outputs.tag }}"
