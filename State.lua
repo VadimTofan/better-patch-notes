@@ -9,7 +9,25 @@ local function newDatabase()
             x = 0,
             y = 0,
         },
+        minimap = {
+            hidden = false,
+            angle = 220,
+        },
     }
+end
+
+local function sanitizeMinimap(database)
+    if type(database.minimap) ~= "table" then
+        database.minimap = newDatabase().minimap
+        return
+    end
+
+    if type(database.minimap.hidden) ~= "boolean" then
+        database.minimap.hidden = false
+    end
+    if type(database.minimap.angle) ~= "number" then
+        database.minimap.angle = 220
+    end
 end
 
 local function sanitizeWindow(database)
@@ -40,6 +58,7 @@ function addon.InitializeState()
         BetterPatchNotesDB.seen = {}
     end
     sanitizeWindow(BetterPatchNotesDB)
+    sanitizeMinimap(BetterPatchNotesDB)
     addon.db = BetterPatchNotesDB
 end
 

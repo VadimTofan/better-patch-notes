@@ -1,3 +1,11 @@
+Version 0.2.2 - 2026-08-02
+- Interface: Added a draggable minimap button with saved visibility and position
+- Controls: Left-click opens the addon; right-click opens or hides the minimap button
+- Recovery: Added `/bpn minimap` to restore or toggle the minimap button
+- Window: Pressing Escape now closes Better Patch Notes
+- Locales: Added localized minimap menu labels for all supported WoW clients
+- Data: Unchanged; Live 12.0.7 and PTR 12.1
+
 Version 0.2.1 - 2026-08-02
 - Data: Consolidated 74 split records into grouped change arrays, reducing 158 cards to 84
 - Interface: Same-context class and specialization bullets now appear as one change card

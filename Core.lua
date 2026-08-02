@@ -31,6 +31,7 @@ eventFrame:RegisterEvent("PLAYER_REGEN_ENABLED")
 eventFrame:SetScript("OnEvent", function(_, event, argument)
     if event == "ADDON_LOADED" and argument == addon.name then
         addon.InitializeState()
+        addon.InitializeMinimapButton()
     elseif event == "PLAYER_LOGIN" then
         showForPlayer()
     elseif event == "PLAYER_SPECIALIZATION_CHANGED"
@@ -45,7 +46,13 @@ end)
 
 SLASH_BETTERPATCHNOTES1 = "/bpn"
 SLASH_BETTERPATCHNOTES2 = "/betterpatchnotes"
-SlashCmdList.BETTERPATCHNOTES = function()
+SlashCmdList.BETTERPATCHNOTES = function(message)
+    message = (message or ""):match("^%s*(.-)%s*$"):lower()
+    if message == "minimap" then
+        addon.ToggleMinimapButton()
+        return
+    end
+
     local classToken = addon.GetPlayerContext()
     addon.ShowWindow(addon.SelectInitialChannel(classToken))
 end

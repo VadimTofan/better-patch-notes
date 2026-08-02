@@ -2,6 +2,8 @@ local _, addon = ...
 
 local translations = {
     ["deDE"] = {
+        OPEN_ADDON = "Better Patch Notes öffnen",
+        HIDE_MINIMAP_BUTTON = "Minikarten-Schaltfläche ausblenden",
         TITLE = "Bessere Patchnotes",
         LIVE = "Live",
         PTR = "PTR",
@@ -16,6 +18,8 @@ local translations = {
         NEW = "Neu",
     },
     ["enGB"] = {
+        OPEN_ADDON = "Open Better Patch Notes",
+        HIDE_MINIMAP_BUTTON = "Hide minimap button",
         TITLE = "Better Patch Notes",
         LIVE = "Live",
         PTR = "PTR",
@@ -30,6 +34,8 @@ local translations = {
         NEW = "New",
     },
     ["enUS"] = {
+        OPEN_ADDON = "Open Better Patch Notes",
+        HIDE_MINIMAP_BUTTON = "Hide minimap button",
         TITLE = "Better Patch Notes",
         LIVE = "Live",
         PTR = "PTR",
@@ -44,6 +50,8 @@ local translations = {
         NEW = "New",
     },
     ["esES"] = {
+        OPEN_ADDON = "Abrir Better Patch Notes",
+        HIDE_MINIMAP_BUTTON = "Ocultar botón del minimapa",
         TITLE = "Mejores notas del parche",
         LIVE = "En vivo",
         PTR = "RPP",
@@ -58,6 +66,8 @@ local translations = {
         NEW = "Nuevo",
     },
     ["esMX"] = {
+        OPEN_ADDON = "Abrir Better Patch Notes",
+        HIDE_MINIMAP_BUTTON = "Ocultar botón del minimapa",
         TITLE = "Mejores notas del parche",
         LIVE = "En vivo",
         PTR = "RPP",
@@ -72,6 +82,8 @@ local translations = {
         NEW = "Nuevo",
     },
     ["frFR"] = {
+        OPEN_ADDON = "Ouvrir Better Patch Notes",
+        HIDE_MINIMAP_BUTTON = "Masquer le bouton de la minicarte",
         TITLE = "Meilleures notes de mise à jour",
         LIVE = "En jeu",
         PTR = "RPT",
@@ -86,6 +98,8 @@ local translations = {
         NEW = "Nouveau",
     },
     ["itIT"] = {
+        OPEN_ADDON = "Apri Better Patch Notes",
+        HIDE_MINIMAP_BUTTON = "Nascondi il pulsante della minimappa",
         TITLE = "Note della patch migliorate",
         LIVE = "Live",
         PTR = "RPP",
@@ -100,6 +114,8 @@ local translations = {
         NEW = "Novità",
     },
     ["koKR"] = {
+        OPEN_ADDON = "Better Patch Notes 열기",
+        HIDE_MINIMAP_BUTTON = "미니맵 버튼 숨기기",
         TITLE = "향상된 패치 노트",
         LIVE = "라이브",
         PTR = "공개 테스트 서버",
@@ -114,6 +130,8 @@ local translations = {
         NEW = "신규",
     },
     ["ptBR"] = {
+        OPEN_ADDON = "Abrir Better Patch Notes",
+        HIDE_MINIMAP_BUTTON = "Ocultar botão do minimapa",
         TITLE = "Notas de patch aprimoradas",
         LIVE = "Ao vivo",
         PTR = "RTP",
@@ -128,6 +146,8 @@ local translations = {
         NEW = "Novo",
     },
     ["ruRU"] = {
+        OPEN_ADDON = "Открыть Better Patch Notes",
+        HIDE_MINIMAP_BUTTON = "Скрыть кнопку у мини-карты",
         TITLE = "Улучшенные описания обновлений",
         LIVE = "Основные миры",
         PTR = "PTR",
@@ -142,6 +162,8 @@ local translations = {
         NEW = "Новое",
     },
     ["zhCN"] = {
+        OPEN_ADDON = "打开 Better Patch Notes",
+        HIDE_MINIMAP_BUTTON = "隐藏小地图按钮",
         TITLE = "更好的补丁说明",
         LIVE = "正式服",
         PTR = "测试服",
@@ -156,6 +178,8 @@ local translations = {
         NEW = "新",
     },
     ["zhTW"] = {
+        OPEN_ADDON = "開啟 Better Patch Notes",
+        HIDE_MINIMAP_BUTTON = "隱藏小地圖按鈕",
         TITLE = "更好的更新說明",
         LIVE = "正式服",
         PTR = "測試服",

@@ -1,7 +1,7 @@
 ## Interface: 120007
 ## Title: Better Patch Notes
 ## Notes: Shows relevant live and PTR patch notes on login.
-## Version: 0.2.1
+## Version: 0.2.2
 ## SavedVariables: BetterPatchNotesDB
 
 Addon.lua
@@ -10,4 +10,5 @@ PatchNotesData.lua
 Data.lua
 State.lua
 Window.lua
+MinimapButton.lua
 Core.lua

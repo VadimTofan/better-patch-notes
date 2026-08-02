@@ -11,6 +11,7 @@ local frame = CreateFrame(
     UIParent,
     "BackdropTemplate"
 )
+table.insert(UISpecialFrames, frame:GetName())
 frame:SetSize(760, 650)
 frame:SetFrameStrata("DIALOG")
 frame:SetClampedToScreen(true)

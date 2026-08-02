@@ -23,5 +23,6 @@
 !/Data.lua
 !/State.lua
 !/Window.lua
+!/MinimapButton.lua
 !/Core.lua
 !/changelog.txt

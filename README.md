@@ -17,6 +17,7 @@ articles or leaving the game.
 - Groups related bullets into one change instead of separate cards.
 - Organizes class, dungeon, and raid changes into collapsible sections.
 - Uses a movable, scrollable in-game window.
+- Provides a draggable minimap button with remembered visibility and position.
 - Remembers viewed versions per class and channel across the account.
 - Keeps source and research details out of the player-facing interface.
 
@@ -37,6 +38,11 @@ CurseForge can deliver new addon releases and their bundled patch-note data.
 Better Patch Notes opens automatically when there are unseen notes for the
 class you log in with. To open it manually, use `/bpn` or
 `/betterpatchnotes`.
+
+Left-click the minimap button to open Better Patch Notes. Right-click it to
+open the addon or hide the button, and drag it to move it around the minimap.
+Use `/bpn minimap` to toggle the button after hiding it. Press **Escape** to
+close the patch-note window.
 
 Use the **Live** and **PTR** tabs to change channels. Select a class icon to
 browse that class; other classes show their class-wide and specialization
@@ -70,7 +76,7 @@ unofficial translation.
 
 ## Current status
 
-- **Addon version:** 0.2.1
+- **Addon version:** 0.2.2
 - **Game:** World of Warcraft Retail
 - **Interface version:** 120007
 - **Bundled data:** Live 12.0.7 and PTR 12.1
