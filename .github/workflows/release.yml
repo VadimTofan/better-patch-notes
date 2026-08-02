@@ -46,7 +46,6 @@ jobs:
             "MinimapButton.lua"
             "Core.lua"
             "changelog.txt"
-            ".pkgmeta"
           )
 
           for required_file in "${required_files[@]}"; do
@@ -79,30 +78,76 @@ jobs:
             exit 1
           fi
 
-          echo "version=$version" >> "$GITHUB_OUTPUT"
-
-      - name: Prepare release tag
-        id: version
-        shell: bash
-        run: |
-          version="${{ steps.validate.outputs.version }}"
           tag="v$version"
           if git rev-parse "$tag" >/dev/null 2>&1; then
             echo "Release tag already exists: $tag"
             exit 1
           fi
 
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+
+      - name: Package runtime addon
+        id: package
+        shell: bash
+        run: |
+          version="${{ steps.validate.outputs.version }}"
+          release_dir="$RUNNER_TEMP/better-patch-notes-release"
+          package_dir="$release_dir/BetterPatchNotes"
+          archive="$release_dir/BetterPatchNotes-v$version.zip"
+          runtime_files=(
+            "BetterPatchNotes.toc"
+            "Addon.lua"
+            "Localization.lua"
+            "PatchNotesData.lua"
+            "Data.lua"
+            "State.lua"
+            "Window.lua"
+            "MinimapButton.lua"
+            "Core.lua"
+            "changelog.txt"
+          )
+
+          rm -rf "$release_dir"
+          mkdir -p "$package_dir"
+          cp "${runtime_files[@]}" "$package_dir/"
+          (cd "$release_dir" && zip -q -r "$archive" BetterPatchNotes)
+          echo "archive=$archive" >> "$GITHUB_OUTPUT"
+
+      - name: Upload release to CurseForge
+        shell: bash
+        env:
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+        run: |
+          version="${{ steps.validate.outputs.version }}"
+          archive="${{ steps.package.outputs.archive }}"
+          metadata="$(jq -n \
+            --rawfile changelog changelog.txt \
+            --arg display_name "Better Patch Notes v$version" \
+            '{
+              changelog: $changelog,
+              changelogType: "text",
+              displayName: $display_name,
+              releaseType: "release"
+            }')"
+
+          response="$(curl --fail-with-body --silent --show-error \
+            --request POST \
+            --header "X-Api-Token: $CF_API_TOKEN" \
+            --form "metadata=$metadata" \
+            --form "file=@$archive" \
+            "https://wow.curseforge.com/api/projects/1635519/upload-file")"
+          file_id="$(jq -er '.id | select(type == "number")' \
+            <<< "$response")"
+          echo "Uploaded CurseForge file ID: $file_id"
+
+      - name: Publish release tag
+        shell: bash
+        run: |
+          version="${{ steps.validate.outputs.version }}"
+          tag="${{ steps.validate.outputs.tag }}"
+
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git tag --annotate "$tag" --message "Better Patch Notes $version"
-          echo "tag=$tag" >> "$GITHUB_OUTPUT"
-
-      - name: Package and upload release
-        uses: BigWigsMods/packager@v2
-        with:
-          args: -p 1635519
-        env:
-          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
-
-      - name: Publish release tag
-        run: git push origin "${{ steps.version.outputs.tag }}"
+          git push origin "$tag"

@@ -1,9 +1,0 @@
-package-as: BetterPatchNotes
-manual-changelog: changelog.txt
-
-ignore:
-  - .github
-  - .gitignore
-  - .pkgmeta
-  - LICENSE
-  - README.md

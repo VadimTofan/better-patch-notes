@@ -3,7 +3,6 @@
 
 # Repository and release configuration.
 !/.gitignore
-!/.pkgmeta
 !/.github/
 /.github/*
 !/.github/workflows/

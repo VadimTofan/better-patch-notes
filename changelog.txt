@@ -1,3 +1,8 @@
+Version 0.2.4 - 2026-08-02
+- Release: Uploads the runtime-only addon archive directly to CurseForge
+- Validation: HTTP or API response errors now fail the deployment
+- Tagging: Creates the stable Git tag only after CurseForge confirms the upload
+
 Version 0.2.3 - 2026-08-02
 - Distribution: Added automatic CurseForge releases from GitHub pushes to main
 - Validation: Releases stop when runtime files, versions, project metadata, or the API token are missing
