@@ -3,6 +3,9 @@
 
 # Repository and release configuration.
 !/.gitignore
+/.bpn-work/
+__pycache__/
+*.pyc
 !/.github/
 /.github/*
 !/.github/workflows/
@@ -13,6 +16,20 @@
 !/README.md
 !/LICENSE
 !/LICENSE.*
+
+# Canonical patch-note source used by both products.
+!/data/
+/data/*
+!/data/retail-patch-notes.json
+
+# Public Vue website and Netlify configuration.
+!/web-app/
+!/web-app/**
+/web-app/node_modules/
+/web-app/dist/
+/web-app/.netlify/
+/web-app/src/generated/
+!/netlify.toml
 
 # Runtime addon package.
 !/BetterPatchNotes.toc

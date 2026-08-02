@@ -78,6 +78,14 @@ clearly identified unofficial translations grounded in Blizzard's localized
 game terminology and translated from English. The English fallback remains in
 use whenever a translation cannot be validated safely.
 
+## Public website
+
+The repository also contains a responsive Vue 3 patch-note browser in
+[`web-app/`](web-app/README.md). It uses the same canonical data as the addon,
+supports shareable class routes, and remembers the visitor's language choice.
+Netlify builds the website independently; web-only changes do not publish a
+new CurseForge addon release.
+
 ## Current status
 
 - **Addon version:** 0.2.7

@@ -3,6 +3,17 @@ name: Release to CurseForge
 on:
   push:
     branches: [main]
+    paths:
+      - BetterPatchNotes.toc
+      - Addon.lua
+      - Localization.lua
+      - PatchNotesData.lua
+      - Data.lua
+      - State.lua
+      - Window.lua
+      - MinimapButton.lua
+      - Core.lua
+      - changelog.txt
   workflow_dispatch:
 
 permissions:
