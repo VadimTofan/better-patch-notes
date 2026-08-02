@@ -56,6 +56,8 @@ jobs:
           done
 
           version="$(sed -n 's/^## Version: //p' BetterPatchNotes.toc)"
+          interface="$(sed -n 's/^## Interface: //p' \
+            BetterPatchNotes.toc)"
           addon_version="$(sed -n 's/^addon\.version = "\([^"]*\)"$/\1/p' Addon.lua)"
           readme_version="$(sed -n 's/^- \*\*Addon version:\*\* //p' README.md)"
           changelog_version="$(sed -n 's/^Version \([0-9]*\.[0-9]*\.[0-9]*\) -.*/\1/p' changelog.txt | head -n 1)"
@@ -64,6 +66,13 @@ jobs:
             echo "Invalid semantic version in BetterPatchNotes.toc: $version"
             exit 1
           fi
+
+          if [[ ! "$interface" =~ ^([0-9]+)([0-9]{2})([0-9]{2})$ ]]; then
+            echo "Invalid interface version in BetterPatchNotes.toc: $interface"
+            exit 1
+          fi
+
+          game_version="$((10#${BASH_REMATCH[1]})).$((10#${BASH_REMATCH[2]})).$((10#${BASH_REMATCH[3]}))"
 
           if [ "$version" != "$addon_version" ] || \
              [ "$version" != "$readme_version" ] || \
@@ -86,6 +95,7 @@ jobs:
 
           echo "version=$version" >> "$GITHUB_OUTPUT"
           echo "tag=$tag" >> "$GITHUB_OUTPUT"
+          echo "game_version=$game_version" >> "$GITHUB_OUTPUT"
 
       - name: Package runtime addon
         id: package
@@ -119,26 +129,73 @@ jobs:
         env:
           CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
         run: |
+          print_api_error() {
+            response_file="$1"
+            if [ ! -s "$response_file" ]; then
+              echo "CurseForge returned an empty response body"
+            elif jq -e . "$response_file" >/dev/null 2>&1; then
+              jq -c . "$response_file"
+            else
+              head -c 2000 "$response_file"
+              echo
+            fi
+          }
+
           version="${{ steps.validate.outputs.version }}"
+          game_version="${{ steps.validate.outputs.game_version }}"
           archive="${{ steps.package.outputs.archive }}"
+          versions_response_file="$RUNNER_TEMP/curseforge-versions.json"
+          upload_response_file="$RUNNER_TEMP/curseforge-upload.json"
+
+          if ! versions_status="$(curl --fail-with-body \
+            --silent --show-error \
+            --output "$versions_response_file" \
+            --write-out "%{http_code}" \
+            --header "X-Api-Token: $CF_API_TOKEN" \
+            "https://wow.curseforge.com/api/game/wow/versions")"; then
+            echo "CurseForge version lookup failed with HTTP $versions_status"
+            print_api_error "$versions_response_file"
+            exit 1
+          fi
+
+          if ! game_version_id="$(jq -er \
+            --arg game_version "$game_version" \
+            'map(select(
+              .gameVersionTypeID == 517 and .name == $game_version
+            )) | first | .id | select(type == "number")' \
+            "$versions_response_file")"; then
+            echo "No CurseForge retail game version matches $game_version"
+            exit 1
+          fi
+
           metadata="$(jq -n \
             --rawfile changelog changelog.txt \
             --arg display_name "Better Patch Notes v$version" \
+            --argjson game_version_id "$game_version_id" \
             '{
               changelog: $changelog,
               changelogType: "text",
               displayName: $display_name,
+              gameVersions: [$game_version_id],
               releaseType: "release"
             }')"
 
-          response="$(curl --fail-with-body --silent --show-error \
+          if ! upload_status="$(printf '%s' "$metadata" | \
+            curl --fail-with-body --silent --show-error \
             --request POST \
+            --output "$upload_response_file" \
+            --write-out "%{http_code}" \
             --header "X-Api-Token: $CF_API_TOKEN" \
-            --form "metadata=$metadata" \
+            --form "metadata=<-" \
             --form "file=@$archive" \
-            "https://wow.curseforge.com/api/projects/1635519/upload-file")"
+            "https://wow.curseforge.com/api/projects/1635519/upload-file")"; then
+            echo "CurseForge upload failed with HTTP $upload_status"
+            print_api_error "$upload_response_file"
+            exit 1
+          fi
+
           file_id="$(jq -er '.id | select(type == "number")' \
-            <<< "$response")"
+            "$upload_response_file")"
           echo "Uploaded CurseForge file ID: $file_id"
 
       - name: Publish release tag

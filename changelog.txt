@@ -1,3 +1,7 @@
+Version 0.2.5 - 2026-08-02
+- Release: Sends the matching retail game-version ID with CurseForge uploads
+- Diagnostics: Preserves and reports CurseForge API errors when deployment fails
+
 Version 0.2.4 - 2026-08-02
 - Release: Uploads the runtime-only addon archive directly to CurseForge
 - Validation: HTTP or API response errors now fail the deployment
