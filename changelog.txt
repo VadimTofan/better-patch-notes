@@ -1,3 +1,9 @@
+Version 0.2.8 - 2026-08-03
+- Data: Live 12.0.7; PTR 12.1
+- Added or updated: Applied audited English fallback classifications across 84 recent patch-note records
+- Removed: 840 unsafe unofficial localizations containing malformed grammar, English leakage, or encoding corruption
+- Locales: deDE, esES, esMX, frFR, itIT, koKR, ptBR, ruRU, zhCN, and zhTW now use documented English fallbacks until verified replacements are available
+
 Version 0.2.7 - 2026-08-02
 - Data: Live 12.0.7; PTR 12.1
 - Added or updated: Added 840 validated unofficial localizations across 84 recent patch-note records
