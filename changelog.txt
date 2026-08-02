@@ -1,0 +1,19 @@
+Version 0.2.1 - 2026-08-02
+- Data: Consolidated 74 split records into grouped change arrays, reducing 158 cards to 84
+- Interface: Same-context class and specialization bullets now appear as one change card
+- Pipeline: Future refreshes automatically group matching bullets and repair split records
+- Added or removed patch notes: None
+
+Version 0.2.0 - 2026-08-02
+- Interface: Added all 13 class icons beside the Live and PTR tabs
+- Browsing: Other classes show all specialization and class-wide notes together
+- State: Class browsing is temporary and only the player's actual class is marked seen
+- Locales: Class tooltips use the WoW client's localized class names
+- Data: Unchanged; Live 12.0.7 and PTR 12.1
+
+Version 0.1.1 - 2026-08-02
+- Data: Live 12.0.7; PTR 12.1
+- Added or updated: 49 official PTR class and dungeon records; change text now supports grouped bullet lists
+- Removed: 26 records older than the rolling 14-day window
+- Locales: enUS official notes; all other locales use the English fallback
+- Interface: Patch-note source names are no longer shown to players

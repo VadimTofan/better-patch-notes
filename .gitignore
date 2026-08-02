@@ -1,0 +1,27 @@
+# Keep this repository limited to runtime and release files.
+/*
+
+# Repository and release configuration.
+!/.gitignore
+!/.pkgmeta
+!/.github/
+/.github/*
+!/.github/workflows/
+/.github/workflows/*
+!/.github/workflows/release.yml
+
+# Public project documentation.
+!/README.md
+!/LICENSE
+!/LICENSE.*
+
+# Runtime addon package.
+!/BetterPatchNotes.toc
+!/Addon.lua
+!/Localization.lua
+!/PatchNotesData.lua
+!/Data.lua
+!/State.lua
+!/Window.lua
+!/Core.lua
+!/changelog.txt
