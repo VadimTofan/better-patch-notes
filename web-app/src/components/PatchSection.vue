@@ -2,7 +2,7 @@
 import { computed } from "vue";
 
 import type { SupportedLocale } from "@/domain/locale.type";
-import { localizeRecord } from "@/domain/patchNotes";
+import { getSafeSourceUrl, localizeRecord } from "@/domain/patchNotes";
 import type { PatchNoteRecord } from "@/domain/patchNotes.type";
 import { messages } from "@/i18n/messages";
 
@@ -14,7 +14,14 @@ const props = defineProps<{
 }>();
 
 const localizedNotes = computed(() =>
-  props.notes.map((note) => localizeRecord(note, props.locale)),
+  props.notes.map((note) => {
+    const localizedNote = localizeRecord(note, props.locale);
+
+    return {
+      ...localizedNote,
+      sourceUrl: getSafeSourceUrl(localizedNote.content.sourceUrl),
+    };
+  }),
 );
 const text = computed(() => messages[props.locale]);
 
@@ -79,9 +86,23 @@ function formatDate(date: string): string {
           </li>
         </ul>
 
-        <span v-if="note.usedFallback" class="card__fallback">
-          {{ text.englishFallback }}
-        </span>
+        <footer v-if="note.usedFallback || note.sourceUrl" class="card__footer">
+          <span v-if="note.usedFallback" class="card__fallback">
+            {{ text.englishFallback }}
+          </span>
+
+          <a
+            v-if="note.sourceUrl"
+            class="card__source"
+            data-testid="source-link"
+            :href="note.sourceUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span class="card__source-label">{{ text.source }}</span>
+            <span class="card__source-icon" aria-hidden="true">↗</span>
+          </a>
+        </footer>
       </article>
     </div>
   </details>
@@ -207,14 +228,52 @@ function formatDate(date: string): string {
   color: var(--class-color, $accent);
 }
 
+.card__footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1rem;
+  gap: 0.75rem;
+}
+
 .card__fallback {
   display: inline-flex;
-  margin-top: 1rem;
   padding: 0.25rem 0.5rem;
   border-radius: 0.375rem;
   background: $warning-soft;
   color: $warning;
   font-size: 0.6875rem;
+}
+
+.card__source {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.5rem 0.875rem;
+  border: 0.0625rem solid $line;
+  border-radius: 0.625rem;
+  color: $text-soft;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    border-color 160ms ease,
+    color 160ms ease,
+    background 160ms ease;
+  gap: 0.375rem;
+}
+
+.card__source:hover,
+.card__source:focus-visible {
+  border-color: var(--class-color, $accent);
+  background: $surface;
+  color: var(--class-color, $accent);
+}
+
+.card__source-icon {
+  font-size: 0.875rem;
 }
 
 .empty {
@@ -254,10 +313,18 @@ function formatDate(date: string): string {
   .card__changes {
     margin-top: 0.875rem;
   }
+
+  .card__source {
+    margin-left: auto;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .section__chevron {
+    transition: none;
+  }
+
+  .card__source {
     transition: none;
   }
 }

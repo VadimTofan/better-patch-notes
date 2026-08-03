@@ -14,6 +14,7 @@ export const visibleMessageKeys = [
   "englishFallback",
   "patch",
   "updated",
+  "source",
 ] as const;
 
 export type MessageKey = (typeof visibleMessageKeys)[number];
@@ -36,6 +37,7 @@ export const localeNames: Record<SupportedLocale, string> = {
 export const messages: Record<SupportedLocale, Messages> = {
   en: {
     brand: "Better Patch Notes",
+    source: "Source",
     tagline: "Know what changed before your next pull.",
     chooseLanguage: "Language",
     browseClasses: "Browse classes",
@@ -51,6 +53,7 @@ export const messages: Record<SupportedLocale, Messages> = {
   },
   deDE: {
     brand: "Better Patch Notes",
+    source: "Quelle",
     tagline: "Wisse vor dem nächsten Pull, was sich geändert hat.",
     chooseLanguage: "Sprache",
     browseClasses: "Klassen durchsuchen",
@@ -66,6 +69,7 @@ export const messages: Record<SupportedLocale, Messages> = {
   },
   esES: {
     brand: "Better Patch Notes",
+    source: "Fuente",
     tagline: "Conoce los cambios antes del próximo intento.",
     chooseLanguage: "Idioma",
     browseClasses: "Explorar clases",
@@ -81,6 +85,7 @@ export const messages: Record<SupportedLocale, Messages> = {
   },
   esMX: {
     brand: "Better Patch Notes",
+    source: "Fuente",
     tagline: "Conoce los cambios antes del próximo intento.",
     chooseLanguage: "Idioma",
     browseClasses: "Explorar clases",
@@ -96,6 +101,7 @@ export const messages: Record<SupportedLocale, Messages> = {
   },
   frFR: {
     brand: "Better Patch Notes",
+    source: "Source",
     tagline: "Découvrez les changements avant votre prochain combat.",
     chooseLanguage: "Langue",
     browseClasses: "Parcourir les classes",
@@ -111,6 +117,7 @@ export const messages: Record<SupportedLocale, Messages> = {
   },
   itIT: {
     brand: "Better Patch Notes",
+    source: "Fonte",
     tagline: "Scopri cosa è cambiato prima del prossimo scontro.",
     chooseLanguage: "Lingua",
     browseClasses: "Sfoglia le classi",
@@ -126,6 +133,7 @@ export const messages: Record<SupportedLocale, Messages> = {
   },
   koKR: {
     brand: "Better Patch Notes",
+    source: "출처",
     tagline: "다음 전투 전에 변경 사항을 확인하세요.",
     chooseLanguage: "언어",
     browseClasses: "직업 둘러보기",
@@ -141,6 +149,7 @@ export const messages: Record<SupportedLocale, Messages> = {
   },
   ptBR: {
     brand: "Better Patch Notes",
+    source: "Fonte",
     tagline: "Saiba o que mudou antes da próxima tentativa.",
     chooseLanguage: "Idioma",
     browseClasses: "Explorar classes",
@@ -156,6 +165,7 @@ export const messages: Record<SupportedLocale, Messages> = {
   },
   ruRU: {
     brand: "Better Patch Notes",
+    source: "Источник",
     tagline: "Узнайте об изменениях до следующего боя.",
     chooseLanguage: "Язык",
     browseClasses: "Выбор класса",
@@ -171,6 +181,7 @@ export const messages: Record<SupportedLocale, Messages> = {
   },
   zhCN: {
     brand: "Better Patch Notes",
+    source: "来源",
     tagline: "在下一场战斗前了解改动。",
     chooseLanguage: "语言",
     browseClasses: "浏览职业",
@@ -186,6 +197,7 @@ export const messages: Record<SupportedLocale, Messages> = {
   },
   zhTW: {
     brand: "Better Patch Notes",
+    source: "來源",
     tagline: "在下一場戰鬥前瞭解改動。",
     chooseLanguage: "語言",
     browseClasses: "瀏覽職業",

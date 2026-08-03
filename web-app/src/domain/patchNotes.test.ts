@@ -1,7 +1,11 @@
 import { describe, expect, it } from "vitest";
 
 import type { PatchNoteRecord } from "./patchNotes.type";
-import { getVisiblePatchNotes, localizeRecord } from "./patchNotes";
+import {
+  getSafeSourceUrl,
+  getVisiblePatchNotes,
+  localizeRecord,
+} from "./patchNotes";
 
 const druidNote: PatchNoteRecord = {
   id: "druid-note",
@@ -48,6 +52,28 @@ const dungeonNote: PatchNoteRecord = {
 };
 
 describe("patch-note selection and localization", () => {
+  it("accepts secure source links", () => {
+    // Given a secure patch-note source URL
+    const sourceUrl = "https://worldofwarcraft.blizzard.com/news/patch-notes";
+
+    // When the URL is checked for display
+    const safeSourceUrl = getSafeSourceUrl(sourceUrl);
+
+    // Then the secure URL is returned unchanged
+    expect(safeSourceUrl).toBe(sourceUrl);
+  });
+
+  it("rejects source links that are not secure", () => {
+    // Given an insecure patch-note source URL
+    const sourceUrl = "http://worldofwarcraft.blizzard.com/news/patch-notes";
+
+    // When the URL is checked for display
+    const safeSourceUrl = getSafeSourceUrl(sourceUrl);
+
+    // Then no source URL is exposed
+    expect(safeSourceUrl).toBeNull();
+  });
+
   it("filters the active class and keeps dungeon notes independent", () => {
     // Given notes for a class and a dungeon
     const records = [druidNote, dungeonNote];

@@ -21,6 +21,10 @@ export function localizeRecord(
   };
 }
 
+export function getSafeSourceUrl(sourceUrl: string): string | null {
+  return sourceUrl.startsWith("https://") ? sourceUrl : null;
+}
+
 export function getVisiblePatchNotes(
   records: readonly PatchNoteRecord[],
   classSlug: ClassSlug,
