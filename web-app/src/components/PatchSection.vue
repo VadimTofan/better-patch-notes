@@ -227,13 +227,32 @@ function formatDate(date: string): string {
 }
 
 @media (max-width: 42rem) {
+  .section__summary {
+    min-height: 4rem;
+    padding: 0.875rem 1rem;
+  }
+
+  .section__content {
+    padding: 0 0.75rem 0.75rem;
+  }
+
+  .card {
+    padding: 1rem;
+  }
+
   .card__header {
     flex-direction: column;
+    gap: 0.75rem;
   }
 
   .card__meta {
+    flex-wrap: wrap;
     align-items: flex-start;
     flex-direction: row;
+  }
+
+  .card__changes {
+    margin-top: 0.875rem;
   }
 }
 

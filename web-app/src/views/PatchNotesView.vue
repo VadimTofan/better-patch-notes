@@ -385,18 +385,68 @@ watch(
 }
 
 @media (max-width: 42rem) {
+  .notes {
+    gap: 1rem;
+  }
+
   .hero {
-    min-height: 12rem;
-    padding: 1.5rem;
+    align-items: flex-start;
+    min-height: 10.5rem;
+    padding: 1.25rem;
+  }
+
+  .hero__copy {
+    padding-right: 3.75rem;
+  }
+
+  .hero__title {
+    margin-top: 0.625rem;
+    font-size: clamp(1.85rem, 10vw, 2.75rem);
+    line-height: 1.05;
+  }
+
+  .hero__tagline {
+    margin-top: 1rem;
+    font-size: 0.875rem;
   }
 
   .hero__icon {
     position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-    width: 3.5rem;
-    height: 3.5rem;
-    opacity: 0.7;
+    top: 1.25rem;
+    right: 1.25rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.75rem;
+    opacity: 0.8;
+  }
+
+  .classrail {
+    padding: 0.75rem;
+  }
+
+  .classrail__label {
+    margin-bottom: 0.625rem;
+  }
+
+  .classrail__list {
+    overflow-x: visible;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    padding-bottom: 0;
+    gap: 0.625rem;
+  }
+
+  .classrail__link {
+    min-height: 3.25rem;
+  }
+
+  .channels {
+    width: 100%;
+  }
+
+  .channels__button {
+    justify-content: center;
+    min-height: 2.75rem;
+    flex: 1;
   }
 }
 
