@@ -1,3 +1,9 @@
+Version 0.2.9 - 2026-08-04
+- Data: Live 12.0.7; PTR 12.1
+- Added or updated: Restored 840 unofficial localizations across 84 recent patch-note records, corrected protected-term spacing, and added copyable source links to patch-note entries
+- Removed: None
+- Locales: Added agent translations for deDE, esES, esMX, frFR, itIT, koKR, ptBR, ruRU, zhCN, and zhTW; no English fallbacks remain; uncertain WoW terminology stays in English
+
 Version 0.2.8 - 2026-08-03
 - Data: Live 12.0.7; PTR 12.1
 - Added or updated: Applied audited English fallback classifications across 84 recent patch-note records
