@@ -26,6 +26,19 @@ function addon.GetLocalizedChange(change)
     return localized or english, usedFallback
 end
 
+function addon.GetSourceUrl(change)
+    local localized = addon.GetLocalizedChange(change)
+    local sourceUrl = localized and localized.sourceUrl
+    if type(sourceUrl) ~= "string"
+        or sourceUrl == ""
+        or sourceUrl:match("^https://") == nil
+    then
+        return nil
+    end
+
+    return sourceUrl
+end
+
 local function specializationTitle(changes)
     local firstChange = changes[1]
     if firstChange == nil then

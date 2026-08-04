@@ -16,6 +16,9 @@ local translations = {
         ENGLISH_FALLBACK = "Englischer Originaltext",
         CLOSE = "Schließen",
         NEW = "Neu",
+        SOURCE = "Quelle",
+        COPY_SOURCE_INSTRUCTION =
+            "Drücke Strg+C, um diesen Quellenlink zu kopieren.",
     },
     ["en"] = {
         OPEN_ADDON = "Open Better Patch Notes",
@@ -32,6 +35,9 @@ local translations = {
         ENGLISH_FALLBACK = "English source text",
         CLOSE = "Close",
         NEW = "New",
+        SOURCE = "Source",
+        COPY_SOURCE_INSTRUCTION =
+            "Press Ctrl+C to copy this source link.",
     },
     ["esES"] = {
         OPEN_ADDON = "Abrir Better Patch Notes",
@@ -48,6 +54,9 @@ local translations = {
         ENGLISH_FALLBACK = "Texto original en inglés",
         CLOSE = "Cerrar",
         NEW = "Nuevo",
+        SOURCE = "Fuente",
+        COPY_SOURCE_INSTRUCTION =
+            "Pulsa Ctrl+C para copiar este enlace de origen.",
     },
     ["esMX"] = {
         OPEN_ADDON = "Abrir Better Patch Notes",
@@ -64,6 +73,9 @@ local translations = {
         ENGLISH_FALLBACK = "Texto original en inglés",
         CLOSE = "Cerrar",
         NEW = "Nuevo",
+        SOURCE = "Fuente",
+        COPY_SOURCE_INSTRUCTION =
+            "Presiona Ctrl+C para copiar este enlace de origen.",
     },
     ["frFR"] = {
         OPEN_ADDON = "Ouvrir Better Patch Notes",
@@ -80,6 +92,9 @@ local translations = {
         ENGLISH_FALLBACK = "Texte source anglais",
         CLOSE = "Fermer",
         NEW = "Nouveau",
+        SOURCE = "Source",
+        COPY_SOURCE_INSTRUCTION =
+            "Appuyez sur Ctrl+C pour copier ce lien source.",
     },
     ["itIT"] = {
         OPEN_ADDON = "Apri Better Patch Notes",
@@ -96,6 +111,9 @@ local translations = {
         ENGLISH_FALLBACK = "Testo originale inglese",
         CLOSE = "Chiudi",
         NEW = "Novità",
+        SOURCE = "Fonte",
+        COPY_SOURCE_INSTRUCTION =
+            "Premi Ctrl+C per copiare questo link alla fonte.",
     },
     ["koKR"] = {
         OPEN_ADDON = "Better Patch Notes 열기",
@@ -112,6 +130,9 @@ local translations = {
         ENGLISH_FALLBACK = "영문 원문",
         CLOSE = "닫기",
         NEW = "신규",
+        SOURCE = "출처",
+        COPY_SOURCE_INSTRUCTION =
+            "Ctrl+C를 눌러 출처 링크를 복사하세요.",
     },
     ["ptBR"] = {
         OPEN_ADDON = "Abrir Better Patch Notes",
@@ -128,6 +149,9 @@ local translations = {
         ENGLISH_FALLBACK = "Texto original em inglês",
         CLOSE = "Fechar",
         NEW = "Novo",
+        SOURCE = "Fonte",
+        COPY_SOURCE_INSTRUCTION =
+            "Pressione Ctrl+C para copiar este link da fonte.",
     },
     ["ruRU"] = {
         OPEN_ADDON = "Открыть Better Patch Notes",
@@ -144,6 +168,9 @@ local translations = {
         ENGLISH_FALLBACK = "Исходный текст на английском",
         CLOSE = "Закрыть",
         NEW = "Новое",
+        SOURCE = "Источник",
+        COPY_SOURCE_INSTRUCTION =
+            "Нажмите Ctrl+C, чтобы скопировать ссылку на источник.",
     },
     ["zhCN"] = {
         OPEN_ADDON = "打开 Better Patch Notes",
@@ -160,6 +187,8 @@ local translations = {
         ENGLISH_FALLBACK = "英文原文",
         CLOSE = "关闭",
         NEW = "新",
+        SOURCE = "来源",
+        COPY_SOURCE_INSTRUCTION = "按 Ctrl+C 复制来源链接。",
     },
     ["zhTW"] = {
         OPEN_ADDON = "開啟 Better Patch Notes",
@@ -176,6 +205,8 @@ local translations = {
         ENGLISH_FALLBACK = "英文原文",
         CLOSE = "關閉",
         NEW = "新",
+        SOURCE = "來源",
+        COPY_SOURCE_INSTRUCTION = "按 Ctrl+C 複製來源連結。",
     },
 }
 

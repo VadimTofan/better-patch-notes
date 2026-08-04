@@ -39,6 +39,100 @@ local closeButton = CreateFrame(
 )
 closeButton:SetPoint("TOPRIGHT", frame, "TOPRIGHT", -4, -4)
 
+local sourceDialog = CreateFrame(
+    "Frame",
+    "BetterPatchNotesSourceDialog",
+    UIParent,
+    "BackdropTemplate"
+)
+table.insert(UISpecialFrames, sourceDialog:GetName())
+sourceDialog:SetSize(620, 168)
+sourceDialog:SetPoint("CENTER", UIParent, "CENTER", 0, 40)
+sourceDialog:SetFrameStrata("FULLSCREEN_DIALOG")
+sourceDialog:SetClampedToScreen(true)
+sourceDialog:EnableMouse(true)
+sourceDialog:SetBackdrop({
+    bgFile = "Interface/Tooltips/UI-Tooltip-Background",
+    edgeFile = "Interface/Tooltips/UI-Tooltip-Border",
+    edgeSize = 14,
+    insets = { left = 4, right = 4, top = 4, bottom = 4 },
+})
+sourceDialog:SetBackdropColor(0.035, 0.04, 0.055, 1)
+sourceDialog:SetBackdropBorderColor(0.35, 0.42, 0.55, 1)
+
+sourceDialog.title = sourceDialog:CreateFontString(
+    nil,
+    "OVERLAY",
+    "GameFontNormalLarge"
+)
+sourceDialog.title:SetPoint("TOPLEFT", sourceDialog, "TOPLEFT", 22, -20)
+sourceDialog.title:SetText(addon.GetText("SOURCE"))
+
+sourceDialog.instruction = sourceDialog:CreateFontString(
+    nil,
+    "OVERLAY",
+    "GameFontHighlight"
+)
+sourceDialog.instruction:SetPoint(
+    "TOPLEFT",
+    sourceDialog.title,
+    "BOTTOMLEFT",
+    0,
+    -12
+)
+sourceDialog.instruction:SetText(
+    addon.GetText("COPY_SOURCE_INSTRUCTION")
+)
+
+sourceDialog.editBox = CreateFrame(
+    "EditBox",
+    nil,
+    sourceDialog,
+    "InputBoxTemplate"
+)
+sourceDialog.editBox:SetPoint(
+    "TOPLEFT",
+    sourceDialog.instruction,
+    "BOTTOMLEFT",
+    0,
+    -12
+)
+sourceDialog.editBox:SetSize(576, 30)
+sourceDialog.editBox:SetAutoFocus(false)
+sourceDialog.editBox:SetScript("OnEscapePressed", function()
+    sourceDialog:Hide()
+end)
+
+sourceDialog.closeButton = CreateFrame(
+    "Button",
+    nil,
+    sourceDialog,
+    "UIPanelButtonTemplate"
+)
+sourceDialog.closeButton:SetSize(96, 24)
+sourceDialog.closeButton:SetPoint(
+    "BOTTOMRIGHT",
+    sourceDialog,
+    "BOTTOMRIGHT",
+    -20,
+    16
+)
+sourceDialog.closeButton:SetText(addon.GetText("CLOSE"))
+sourceDialog.closeButton:SetScript("OnClick", function()
+    sourceDialog:Hide()
+end)
+sourceDialog:SetScript("OnHide", function()
+    sourceDialog.editBox:ClearFocus()
+end)
+sourceDialog:Hide()
+
+local function showSourceDialog(sourceUrl)
+    sourceDialog.editBox:SetText(sourceUrl)
+    sourceDialog:Show()
+    sourceDialog.editBox:SetFocus()
+    sourceDialog.editBox:HighlightText()
+end
+
 local scrollFrame = CreateFrame(
     "ScrollFrame",
     nil,
@@ -256,6 +350,19 @@ local function acquireNote()
     )
     note.fallback:SetPoint("TOPLEFT", note.body, "BOTTOMLEFT", 0, -4)
     note.fallback:SetTextColor(0.88, 0.68, 0.28, 1)
+    note.sourceButton = CreateFrame(
+        "Button",
+        nil,
+        note,
+        "UIPanelButtonTemplate"
+    )
+    note.sourceButton:SetSize(96, 24)
+    note.sourceButton:SetText(addon.GetText("SOURCE"))
+    note.sourceButton:SetScript("OnClick", function(button)
+        if button.sourceUrl ~= nil then
+            showSourceDialog(button.sourceUrl)
+        end
+    end)
     table.insert(notePool, note)
 
     return note
@@ -289,6 +396,33 @@ local function setNoteContent(note, change)
     local height = 54 + note.body:GetStringHeight()
     if usedFallback then
         height = height + 18
+    end
+
+    local sourceUrl = addon.GetSourceUrl(change)
+    note.sourceButton:ClearAllPoints()
+    note.sourceButton.sourceUrl = sourceUrl
+    if sourceUrl ~= nil then
+        if usedFallback then
+            note.sourceButton:SetPoint(
+                "TOPLEFT",
+                note.fallback,
+                "BOTTOMLEFT",
+                0,
+                -6
+            )
+        else
+            note.sourceButton:SetPoint(
+                "TOPLEFT",
+                note.body,
+                "BOTTOMLEFT",
+                0,
+                -6
+            )
+        end
+        note.sourceButton:Show()
+        height = height + 30
+    else
+        note.sourceButton:Hide()
     end
     note:SetHeight(height)
 
@@ -344,6 +478,8 @@ function addon.RefreshWindow()
         note.meta:SetText("")
         note.body:SetText("")
         note.fallback:Hide()
+        note.sourceButton.sourceUrl = nil
+        note.sourceButton:Hide()
         note:SetHeight(42)
         y = y - 50
     end
@@ -409,6 +545,8 @@ frame:SetScript("OnMouseUp", function(self)
     addon.db.window.y = y
 end)
 frame:SetScript("OnHide", function()
+    sourceDialog:Hide()
+
     if addon.db == nil then
         return
     end
