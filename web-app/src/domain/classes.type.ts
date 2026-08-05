@@ -19,6 +19,6 @@ export type ClassSlug = (typeof classSlugs)[number];
 export interface WowClass {
   slug: ClassSlug;
   englishName: string;
-  color: string;
+  colorClass: string;
   iconUrl: string;
 }

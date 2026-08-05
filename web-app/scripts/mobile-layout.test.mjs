@@ -6,71 +6,69 @@ function readSource(relativePath) {
   return readFileSync(new URL(relativePath, import.meta.url), "utf8");
 }
 
-function getMobileRules(source) {
-  const marker = "@media (max-width: 42rem)";
-  const start = source.indexOf(marker);
+// Describe: simple centered application shell
+test("shell stays centered and keeps the locale control compact", () => {
+  // Given the application shell
+  const appSource = readSource("../src/App.vue");
 
-  assert.notEqual(start, -1, `Expected ${marker} responsive rules`);
+  // When its Tailwind layout is inspected
+  const usesCenteredContent = appSource.includes("mx-auto max-w-4xl");
+  const hidesTheMobileLabel = appSource.includes("hidden text-muted sm:inline");
 
-  const nextMediaQuery = source.indexOf("@media ", start + marker.length);
-
-  return source.slice(
-    start,
-    nextMediaQuery === -1 ? source.length : nextMediaQuery,
-  );
-}
-
-// Describe: compact global shell on mobile viewports
-test("mobile shell keeps the sticky header and locale control compact", () => {
-  // Given the global website styles
-  const globalStyles = readSource("../src/styles/global.scss");
-
-  // When the mobile breakpoint rules are inspected
-  const mobileRules = getMobileRules(globalStyles);
-
-  // Then the header and locale selector fit narrow screens
-  assert.match(mobileRules, /\.topbar\s*{[^}]*min-height:\s*4rem;/s);
-  assert.match(mobileRules, /\.locale__select\s*{[^}]*max-width:\s*9rem;/s);
+  // Then the page is centered and the locale label yields on narrow screens
+  assert.equal(usesCenteredContent, true);
+  assert.equal(hidesTheMobileLabel, true);
 });
 
-// Describe: class and channel navigation on mobile viewports
-test("mobile navigation shows four class columns and equal channel tabs", () => {
-  // Given the patch-note view styles
+// Describe: responsive class and channel navigation
+test("navigation uses a compact responsive class grid", () => {
+  // Given the patch-note view
   const viewSource = readSource("../src/views/PatchNotesView.vue");
 
-  // When the mobile breakpoint rules are inspected
-  const mobileRules = getMobileRules(viewSource);
+  // When its navigation utilities are inspected
+  const classGrid = "grid grid-cols-4 gap-2 sm:grid-cols-7 lg:grid-cols-13";
+  const channelButton = "rounded-lg px-4 py-2 font-semibold text-muted";
 
-  // Then every class remains visible without horizontal scrolling
-  assert.match(
-    mobileRules,
-    /\.classrail__list\s*{[^}]*grid-template-columns:\s*repeat\(4, minmax\(0, 1fr\)\);/s,
-  );
-  assert.match(
-    mobileRules,
-    /\.classrail__list\s*{[^}]*overflow-x:\s*visible;/s,
-  );
-
-  // And Live and PTR share the available width
-  assert.match(mobileRules, /\.channels\s*{[^}]*width:\s*100%;/s);
-  assert.match(
-    mobileRules,
-    /\.channels__button\s*{[^}]*justify-content:\s*center;[^}]*flex:\s*1;/s,
-  );
+  // Then classes reflow at standard breakpoints and channel controls stay simple
+  assert.equal(viewSource.includes(classGrid), true);
+  assert.equal(viewSource.includes(channelButton), true);
 });
 
-// Describe: readable patch-note cards on mobile viewports
-test("mobile patch-note cards use compact stacked metadata", () => {
-  // Given the patch-section styles
+// Describe: readable patch-note cards on narrow viewports
+test("patch-note cards stack metadata before the small breakpoint", () => {
+  // Given the patch-section component
   const sectionSource = readSource("../src/components/PatchSection.vue");
 
-  // When the mobile breakpoint rules are inspected
-  const mobileRules = getMobileRules(sectionSource);
+  // When its card layout is inspected
+  const responsiveHeader = "flex flex-col gap-2 sm:flex-row sm:justify-between";
+  const compactCard =
+    "rounded-lg border border-line-soft bg-surface-raised p-4";
 
-  // Then section chrome and cards use the compact spacing contract
-  assert.match(mobileRules, /\.section__summary\s*{[^}]*min-height:\s*4rem;/s);
-  assert.match(mobileRules, /\.card\s*{[^}]*padding:\s*1rem;/s);
+  // Then card metadata stacks and the card uses concise standard spacing
+  assert.equal(sectionSource.includes(responsiveHeader), true);
+  assert.equal(sectionSource.includes(compactCard), true);
+});
 
-  // And metadata can wrap beneath the note title
-  assert.match(mobileRules, /\.card__meta\s*{[^}]*flex-wrap:\s*wrap;/s);
+// Describe: patch-note list markers after Tailwind Preflight
+test("patch-note changes retain bullet markers", () => {
+  // Given the Tailwind-styled patch section
+  const sectionSource = readSource("../src/components/PatchSection.vue");
+
+  // When the changes list utilities are inspected
+  const preservesBullets = sectionSource.includes("list-disc");
+
+  // Then each patch-note change keeps its visible bullet
+  assert.equal(preservesBullets, true);
+});
+
+// Describe: details disclosure marker after Tailwind Preflight
+test("patch-note summaries use only the custom disclosure marker", () => {
+  // Given the Tailwind-styled patch section
+  const sectionSource = readSource("../src/components/PatchSection.vue");
+
+  // When the summary utilities are inspected
+  const hidesNativeMarker = sectionSource.includes("list-none");
+
+  // Then the native marker does not duplicate the custom chevron
+  assert.equal(hidesNativeMarker, true);
 });

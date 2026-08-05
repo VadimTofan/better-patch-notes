@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@theme {
+  --color-canvas: #08090c;
+  --color-surface: #0e1015;
+  --color-surface-raised: #14171e;
+  --color-line: #272b35;
+  --color-line-soft: #20242d;
+  --color-text: #f5f7fb;
+  --color-text-soft: #c5c9d3;
+  --color-muted: #858b98;
+  --color-warning: #f5b953;
+  --color-warning-soft: rgb(245 185 83 / 10%);
+  --font-display: "Sora", sans-serif;
+  --font-body: "Manrope", sans-serif;
+}

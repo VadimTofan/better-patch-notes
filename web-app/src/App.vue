@@ -30,45 +30,55 @@ provide(localeKey, { locale, setLocale });
 </script>
 
 <template>
-  <div class="shell">
-    <header class="topbar">
-      <RouterLink class="topbar__brand" to="/">
-        <span class="topbar__mark" aria-hidden="true">B</span>
-        <span class="topbar__wordmark">{{ text.brand }}</span>
-      </RouterLink>
-
-      <label class="locale">
-        <span class="locale__label">{{ text.chooseLanguage }}</span>
-        <select
-          class="locale__select"
-          data-testid="locale-select"
-          :value="locale"
-          @change="
-            setLocale(
-              ($event.target as HTMLSelectElement).value as SupportedLocale,
-            )
-          "
-        >
-          <option
-            v-for="option in supportedLocales"
-            :key="option"
-            class="locale__option"
-            :value="option"
+  <div class="flex min-h-screen flex-col">
+    <header class="border-b border-line bg-surface">
+      <div
+        class="mx-auto flex max-w-4xl items-center justify-between px-4 py-4"
+      >
+        <RouterLink class="flex items-center gap-3 text-text" to="/">
+          <span
+            class="grid size-8 place-items-center rounded-lg bg-blue-600 font-display font-bold"
+            aria-hidden="true"
+            >B</span
           >
-            {{ localeNames[option] }}
-          </option>
-        </select>
-      </label>
+          <span class="font-display font-semibold">{{ text.brand }}</span>
+        </RouterLink>
+
+        <label class="flex items-center gap-2">
+          <span class="hidden text-muted sm:inline">{{
+            text.chooseLanguage
+          }}</span>
+          <select
+            class="rounded-lg border border-line bg-canvas px-3 py-2 text-text"
+            data-testid="locale-select"
+            :value="locale"
+            @change="
+              setLocale(
+                ($event.target as HTMLSelectElement).value as SupportedLocale,
+              )
+            "
+          >
+            <option
+              v-for="option in supportedLocales"
+              :key="option"
+              class="bg-canvas text-text"
+              :value="option"
+            >
+              {{ localeNames[option] }}
+            </option>
+          </select>
+        </label>
+      </div>
     </header>
 
-    <main class="shell__content">
+    <main class="mx-auto max-w-4xl flex-1 px-4 py-8">
       <RouterView />
     </main>
 
-    <footer class="footer">
-      <span class="footer__brand">Better Patch Notes</span>
-      <span class="footer__note"
-        >World of Warcraft® is a trademark of Blizzard Entertainment.</span
+    <footer class="mx-auto max-w-4xl px-4 py-6 text-xs text-muted">
+      <span class="font-semibold text-text-soft">Better Patch Notes</span>
+      <span>
+        — World of Warcraft® is a trademark of Blizzard Entertainment.</span
       >
     </footer>
   </div>
