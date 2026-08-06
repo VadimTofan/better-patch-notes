@@ -1,3 +1,9 @@
+Version 0.2.10 - 2026-08-06
+- Data: Live 12.0.7; PTR 12.1.0
+- Added or updated: 72 added; 0 updated
+- Removed: 39 stale records
+- Locales: Validated None; English fallbacks: deDE (automatic translation generation failed), esES (automatic translation generation failed), esMX (automatic translation generation failed), frFR (automatic translation generation failed), itIT (automatic translation generation failed), koKR (automatic translation generation failed), ptBR (automatic translation generation failed), ruRU (automatic translation generation failed), zhCN (automatic translation generation failed), zhTW (automatic translation generation failed); No preserved English terminology warnings
+
 Version 0.2.9 - 2026-08-04
 - Data: Live 12.0.7; PTR 12.1
 - Added or updated: Restored 840 unofficial localizations across 84 recent patch-note records, corrected protected-term spacing, and added copyable source links to patch-note entries
