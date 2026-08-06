@@ -6,6 +6,9 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 WORKFLOW_PATH = PROJECT_ROOT / ".github" / "workflows" / "release.yml"
 TOC_PATH = PROJECT_ROOT / "BetterPatchNotes.toc"
 NETLIFY_PATH = PROJECT_ROOT / "netlify.toml"
+NETLIFY_IGNORE_PATH = (
+    PROJECT_ROOT / "web-app" / "scripts" / "netlify-ignore.mjs"
+)
 
 
 # Describe: automatic CurseForge releases
@@ -56,6 +59,17 @@ class ReleaseWorkflowTests(unittest.TestCase):
         for phrase in expected_phrases:
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, configuration)
+
+    def test_netlify_rebuilds_when_canonical_patch_notes_change(self) -> None:
+        # Given website data generated from the canonical root-level JSON
+        expected_ignore_command = 'ignore = "node scripts/netlify-ignore.mjs"'
+
+        # When the Netlify deployment contract is inspected
+        configuration = NETLIFY_PATH.read_text(encoding="utf-8")
+
+        # Then Netlify uses the repository-aware change detector
+        self.assertIn(expected_ignore_command, configuration)
+        self.assertTrue(NETLIFY_IGNORE_PATH.is_file())
 
     def test_web_only_pushes_do_not_trigger_curseforge_releases(self) -> None:
         # Given one repository containing the addon and public website

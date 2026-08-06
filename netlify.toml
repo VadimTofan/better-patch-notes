@@ -1,6 +1,7 @@
 [build]
   base = "web-app"
   command = "npm run build"
+  ignore = "node scripts/netlify-ignore.mjs"
   publish = "dist"
 
 [build.environment]
