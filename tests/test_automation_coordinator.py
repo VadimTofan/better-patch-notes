@@ -224,6 +224,57 @@ class AutomationCoordinatorTests(unittest.TestCase):
             self.assertEqual(outcome.version, "0.2.10")
             self.assertEqual(read_versions(files), {"0.2.10"})
 
+    def test_terminology_warnings_do_not_block_a_release(self) -> None:
+        with TemporaryDirectory() as temporary_directory:
+            # Given every locale validates with preserved English terms
+            files = _release_files(Path(temporary_directory))
+            warnings = (
+                "deDE: Arcane Blast",
+                "ruRU: Arcane Blast",
+                "ruRU: Dark Harvest",
+            )
+
+            def warning_validator(
+                batch: dict[str, object],
+            ) -> _TranslationReport:
+                return _TranslationReport(
+                    validated_locales=tuple(
+                        sorted(SUPPORTED_TRANSLATION_LOCALES)
+                    ),
+                    uncertain_terms=warnings,
+                )
+
+            def refresh(batch_path: Path, data: Path, lua: Path, patch: str):
+                changed = {
+                    "schemaVersion": 5,
+                    "updatedAt": "2026-08-05T04:07:00+02:00",
+                    "changes": [{"id": "warning-only-change"}],
+                }
+                data.write_text(json.dumps(changed), encoding="utf-8")
+                lua.write_text("warning-only lua", encoding="utf-8")
+                return _RefreshResult()
+
+            # When the reviewed translation is coordinated
+            outcome = coordinate_release(
+                files=files,
+                english_document=_english_document(),
+                current_patch="12.0.7",
+                release_date=date(2026, 8, 5),
+                translate=_translated_batch,
+                validate=warning_validator,
+                refresh=refresh,
+            )
+
+            # Then warnings are retained and the release remains eligible
+            self.assertEqual(outcome.status, RefreshStatus.RELEASE_READY)
+            self.assertEqual(outcome.terminology_warnings, warnings)
+            changelog = files.changelog.read_text(encoding="utf-8")
+            self.assertIn(
+                "3 preserved English terminology warnings "
+                "(deDE: 1; ruRU: 2)",
+                changelog,
+            )
+
     def test_empty_collection_can_prune_stale_data_without_translation(self) -> None:
         with TemporaryDirectory() as temporary_directory:
             # Given

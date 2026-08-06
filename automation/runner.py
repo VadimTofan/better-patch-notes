@@ -31,7 +31,10 @@ from automation.models import (
 )
 from automation.qualification import QualificationResult, qualify, resolve_retail_patch
 from automation.release_files import ReleaseFiles
-from automation.reporting import redact_secrets
+from automation.reporting import (
+    redact_secrets,
+    summarize_terminology_warnings,
+)
 from automation.source_registry import load_registry
 
 
@@ -486,6 +489,9 @@ def run_refresh(*, dry_run: bool, now: datetime | None = None) -> tuple[RefreshO
             refresh=_refresher,
         )
 
+    warning_summary = summarize_terminology_warnings(
+        outcome.terminology_warnings
+    )
     audit = {
         **asdict(outcome),
         "status": outcome.status.value,
@@ -493,6 +499,8 @@ def run_refresh(*, dry_run: bool, now: datetime | None = None) -> tuple[RefreshO
         "currentPatch": current_patch,
         "asOfDate": refreshed_at.date().isoformat(),
         "accepted": len(qualification.accepted),
+        "terminologyWarningCount": warning_summary.total,
+        "terminologyWarningsByLocale": warning_summary.by_locale,
         "rejected": [
             {"sourceUrl": item.change.source_url, "reason": item.reason}
             for item in qualification.rejected
@@ -534,6 +542,8 @@ def main() -> int:
             "dryRun": arguments.dry_run,
             "sourceUrls": collection.get("sourceUrls", []),
             "currentPatch": collection.get("currentPatch", ""),
+            "terminologyWarningCount": 0,
+            "terminologyWarningsByLocale": {},
         }
 
     _write_result(audit)

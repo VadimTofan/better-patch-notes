@@ -83,6 +83,12 @@ class ScheduledRefreshWorkflowTests(unittest.TestCase):
             "gh issue create",
             "gh issue edit",
             "gh issue close",
+            "GITHUB_STEP_SUMMARY",
+            "terminologyWarningCount",
+            "terminologyWarningsByLocale",
+            "needs.refresh.outputs.dry_run != 'true'",
+            "needs.refresh.outputs.outcome == 'RELEASE_READY'",
+            "needs.release.result == 'success'",
         )
         for phrase in expected:
             with self.subTest(phrase=phrase):

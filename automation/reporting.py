@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import argparse
+from collections import Counter
+from dataclasses import dataclass
 import json
 from pathlib import Path
 import re
@@ -16,6 +18,39 @@ _SECRET_PATTERNS = (
         r"\s*[:=]\s*[^\s]+",
     ),
 )
+
+
+@dataclass(frozen=True, slots=True)
+class TerminologyWarningSummary:
+    total: int
+    by_locale: dict[str, int]
+    changelog_text: str
+
+
+def summarize_terminology_warnings(
+    warnings: tuple[str, ...],
+) -> TerminologyWarningSummary:
+    counts = Counter(
+        warning.partition(":")[0].strip()
+        for warning in warnings
+        if warning.partition(":")[0].strip()
+    )
+    by_locale = dict(sorted(counts.items()))
+    breakdown = "; ".join(
+        f"{locale}: {count}" for locale, count in by_locale.items()
+    )
+    total = sum(by_locale.values())
+    changelog_text = (
+        f"{total} preserved English terminology warnings ({breakdown})"
+        if total
+        else "No preserved English terminology warnings"
+    )
+
+    return TerminologyWarningSummary(
+        total=total,
+        by_locale=by_locale,
+        changelog_text=changelog_text,
+    )
 
 
 def redact_secrets(value: str) -> str:

@@ -77,6 +77,9 @@ class TranslationSkillContractTests(unittest.TestCase):
             "validate_translations.py",
             "numbers, percentages, durations",
             "uncertain terminology",
+            "Class and specialization terminology remains a hard blocker",
+            "preserved English terminology warning",
+            "numbers, direction, conditions",
             "agent-assisted refresh",
             "prepare_locale",
             "record_terminology",
@@ -101,7 +104,7 @@ class TranslationSkillContractTests(unittest.TestCase):
             "authorization key",
             "September 2026",
             "Updated: 2026-08-06",
-            "Last reviewed: 2026-08-05",
+            "Last reviewed: 2026-08-06",
         )
 
         # When the repository-local translation skill is inspected

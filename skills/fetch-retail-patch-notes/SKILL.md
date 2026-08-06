@@ -190,7 +190,10 @@ when operating on data for a different WoW installation.
 Delete the temporary batch after a successful update. Report the updater's
 `added`, `skipped`, `promoted`, `localized`, `ambiguous`, and `removed` counts.
 Also report the translation validator's agent translations, validated locales,
-uncertain terminology, unavailable preferred sources, and locale fallbacks.
+uncertain terminology, unavailable preferred sources, locale fallbacks, and
+warning counts per locale. An unknown ability, boss, NPC, encounter, dungeon,
+or raid name may remain exactly English as a preserved English terminology
+warning. Unverified class or specialization terminology remains a blocker.
 
 ## Empty Results
 
@@ -220,7 +223,7 @@ to the categories and channels this skill covers.
 
 ## Maintenance
 
-Updated: 2026-08-02
+Updated: 2026-08-06
 Last reviewed: 2026-08-02
 Canonical sources:
 

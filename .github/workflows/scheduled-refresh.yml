@@ -87,6 +87,8 @@ jobs:
                       "status": "BLOCKED",
                       "reason": sys.argv[1],
                       "sourceUrls": [],
+                      "terminologyWarningCount": 0,
+                      "terminologyWarningsByLocale": {},
                   },
                   indent=2,
               ) + "\n",
@@ -125,6 +127,34 @@ jobs:
             *) echo "Unknown coordinator outcome: $outcome"; exit 1 ;;
           esac
           echo "outcome=$outcome" >> "$GITHUB_OUTPUT"
+
+      - name: Write refresh summary
+        if: always()
+        run: |
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json
+          from pathlib import Path
+
+          result = json.loads(
+              Path(".bpn-work/automation-result.json").read_text(
+                  encoding="utf-8",
+              )
+          )
+          print("## Better Patch Notes refresh")
+          print(f"- Outcome: {result.get('status', 'UNKNOWN')}")
+          print(f"- Retail patch: {result.get('currentPatch', 'Unknown')}")
+          print(
+              "- Preserved English terminology warnings: "
+              f"{result.get('terminologyWarningCount', 0)}"
+          )
+          warning_counts = result.get("terminologyWarningsByLocale", {})
+          if warning_counts:
+              breakdown = ", ".join(
+                  f"{locale}: {count}"
+                  for locale, count in sorted(warning_counts.items())
+              )
+              print(f"- Warning counts by locale: {breakdown}")
+          PY
 
       - name: Run complete Python suite
         if: >-
@@ -251,8 +281,9 @@ jobs:
       - name: Close the previous blocked-refresh issue
         if: >-
           needs.refresh.result == 'success' &&
-          needs.refresh.outputs.outcome != 'BLOCKED' &&
-          needs.release.result != 'failure'
+          needs.refresh.outputs.outcome == 'RELEASE_READY' &&
+          needs.refresh.outputs.dry_run != 'true' &&
+          needs.release.result == 'success'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |

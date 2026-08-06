@@ -113,6 +113,21 @@ class TranslationValidationTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "bullet count"):
             self.validator.validate_translation_batch(batch, self.terminology)
 
+    def test_rejects_an_unverified_class_heading_left_in_english(self) -> None:
+        # Given a class record whose unknown heading remains English
+        batch = _translation_batch()
+        english = batch["changes"][0]["localizations"]["en"]
+        russian = batch["changes"][0]["localizations"]["ruRU"]
+        english["name"] = "Chronomancer"
+        russian["name"] = "Chronomancer"
+
+        # When / Then class navigation terminology remains a hard blocker
+        with self.assertRaisesRegex(
+            ValueError,
+            "unverified class terminology",
+        ):
+            self.validator.validate_translation_batch(batch, self.terminology)
+
     def test_rejects_changed_numeric_meaning(self) -> None:
         # Given a translation that changes 12.5% to 15%
         batch = _translation_batch()
@@ -124,6 +139,46 @@ class TranslationValidationTests(unittest.TestCase):
         # When numeric tokens are compared
         # Then the semantic mismatch is rejected
         with self.assertRaisesRegex(ValueError, "numeric values"):
+            self.validator.validate_translation_batch(batch, self.terminology)
+
+    def test_rejects_reversed_change_direction(self) -> None:
+        # Given an increase is translated as a decrease
+        batch = _translation_batch()
+        russian = batch["changes"][0]["localizations"]["ruRU"]
+        russian["change"] = [
+            "Урон от Moonfire уменьшен на 12,5% на 8 секунд."
+        ]
+
+        # When / Then the reversed semantic direction is rejected
+        with self.assertRaisesRegex(ValueError, "change direction"):
+            self.validator.validate_translation_batch(batch, self.terminology)
+
+    def test_rejects_a_lost_condition(self) -> None:
+        # Given the English bullet has a condition missing from the translation
+        batch = _translation_batch()
+        english = batch["changes"][0]["localizations"]["en"]
+        russian = batch["changes"][0]["localizations"]["ruRU"]
+        english["change"] = [
+            "Moonfire damage increased by 12.5% when active for 8 seconds."
+        ]
+        russian["change"] = [
+            "Урон от Moonfire увеличен на 12,5% на 8 секунд."
+        ]
+
+        # When / Then the missing condition remains a release blocker
+        with self.assertRaisesRegex(ValueError, "condition"):
+            self.validator.validate_translation_batch(batch, self.terminology)
+
+    def test_rejects_an_altered_protected_uncertain_term(self) -> None:
+        # Given an uncertain ability name is altered in the translated bullet
+        batch = _translation_batch()
+        russian = batch["changes"][0]["localizations"]["ruRU"]
+        russian["change"] = [
+            "Урон от Lunar Fire увеличен на 12,5% на 8 секунд."
+        ]
+
+        # When / Then preserved English fallback terminology is enforced
+        with self.assertRaisesRegex(ValueError, "must remain"):
             self.validator.validate_translation_batch(batch, self.terminology)
 
     def test_accepts_locale_spacing_before_a_percent_sign(self) -> None:
@@ -158,7 +213,7 @@ class TranslationValidationTests(unittest.TestCase):
         batch = _translation_batch()
         russian = batch["changes"][0]["localizations"]["ruRU"]
         russian["change"] = [
-            "8 ÑÐµÐºÑƒÐ½Ð´: Moonfire 12,5%."
+            "В течение 8 секунд урон от Moonfire увеличен на 12,5%."
         ]
 
         # When the complete translation is validated

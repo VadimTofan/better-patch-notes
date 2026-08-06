@@ -75,3 +75,4 @@ class RefreshOutcome:
     removed: int = 0
     version: str = ""
     reason: str = ""
+    terminology_warnings: tuple[str, ...] = ()

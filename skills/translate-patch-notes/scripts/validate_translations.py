@@ -27,6 +27,57 @@ NUMBER_PATTERN = re.compile(
 BLIZZARD_URL_PATTERN = re.compile(
     r"^https://(?:news|worldofwarcraft)\.blizzard\.com/"
 )
+ENGLISH_INCREASE_PATTERN = re.compile(
+    r"\b(?:increase|increased|increases|raised)\b",
+    re.IGNORECASE,
+)
+ENGLISH_DECREASE_PATTERN = re.compile(
+    r"\b(?:decrease|decreased|decreases|reduced|lowered)\b",
+    re.IGNORECASE,
+)
+ENGLISH_CONDITION_PATTERN = re.compile(
+    r"\b(?:if|when|whenever|while|unless|after|before)\b",
+    re.IGNORECASE,
+)
+
+INCREASE_MARKERS = {
+    "deDE": ("erhöh", "steiger", "mehr"),
+    "esES": ("aument", "increment", "más"),
+    "esMX": ("aument", "increment", "más"),
+    "frFR": ("augment", "accru", "plus"),
+    "itIT": ("aument", "increment", "più"),
+    "koKR": ("증가", "상향", "늘어"),
+    "ptBR": ("aument", "maior", "mais"),
+    "ruRU": ("увелич", "повыш", "возраст"),
+    "zhCN": ("提高", "增加", "上调", "提升"),
+    "zhTW": ("提高", "增加", "上調", "提升"),
+}
+
+DECREASE_MARKERS = {
+    "deDE": ("verringer", "reduzier", "weniger", "gesenkt"),
+    "esES": ("reduc", "disminu", "menos"),
+    "esMX": ("reduc", "disminu", "menos"),
+    "frFR": ("rédu", "diminu", "moins"),
+    "itIT": ("ridott", "dimin", "meno"),
+    "koKR": ("감소", "하향", "줄어"),
+    "ptBR": ("reduz", "diminu", "menor", "menos"),
+    "ruRU": ("уменьш", "сниж", "сократ"),
+    "zhCN": ("降低", "减少", "下调", "削弱"),
+    "zhTW": ("降低", "減少", "下調", "削弱"),
+}
+
+CONDITION_MARKERS = {
+    "deDE": ("wenn", "während", "solange", "falls", "sofern", "nachdem", "bevor"),
+    "esES": (" si ", "cuando", "mientras", "siempre que", "después", "antes"),
+    "esMX": (" si ", "cuando", "mientras", "siempre que", "después", "antes"),
+    "frFR": (" si ", "lorsque", "quand", "pendant que", "tant que", "après", "avant"),
+    "itIT": (" se ", "quando", "mentre", "finché", "dopo", "prima"),
+    "koKR": ("경우", "때", "동안", "중", "후", "전"),
+    "ptBR": (" se ", "quando", "enquanto", "sempre que", "após", "antes"),
+    "ruRU": ("если", "когда", "пока", "во время", " при ", "после", "до того"),
+    "zhCN": ("如果", "当", "时", "期间", "只要", "后", "前"),
+    "zhTW": ("如果", "當", "時", "期間", "只要", "後", "前"),
+}
 
 
 @dataclass(frozen=True, slots=True)
@@ -80,12 +131,52 @@ def _validate_terminology_urls(localization: dict[str, object]) -> None:
             )
 
 
+def _contains_marker(text: str, markers: tuple[str, ...]) -> bool:
+    padded_text = f" {text.casefold()} "
+
+    return any(marker.casefold() in padded_text for marker in markers)
+
+
+def _validate_semantic_structure(
+    locale: str,
+    bullet_number: int,
+    english_text: str,
+    localized_text: str,
+) -> None:
+    requires_increase = bool(ENGLISH_INCREASE_PATTERN.search(english_text))
+    requires_decrease = bool(ENGLISH_DECREASE_PATTERN.search(english_text))
+    has_increase = _contains_marker(
+        localized_text,
+        INCREASE_MARKERS[locale],
+    )
+    has_decrease = _contains_marker(
+        localized_text,
+        DECREASE_MARKERS[locale],
+    )
+
+    if (requires_increase and not has_increase) or (
+        requires_decrease and not has_decrease
+    ):
+        raise ValueError(
+            f"{locale} bullet {bullet_number} changes change direction"
+        )
+
+    if ENGLISH_CONDITION_PATTERN.search(english_text) and not _contains_marker(
+        localized_text,
+        CONDITION_MARKERS[locale],
+    ):
+        raise ValueError(
+            f"{locale} bullet {bullet_number} loses a condition"
+        )
+
+
 def _validate_term(
     locale: str,
     english_term: str,
     localized_term: str,
     terminology: dict[str, object],
     uncertain_terms: set[str],
+    require_verified: bool = False,
 ) -> None:
     if not english_term or english_term == "All":
         return
@@ -95,6 +186,11 @@ def _validate_term(
     terms = _require_dict(locale_data.get("terms"), f"terminology {locale} terms")
     raw_entry = terms.get(english_term)
     if raw_entry is None:
+        if require_verified:
+            raise ValueError(
+                f"{locale} uses unverified class terminology for "
+                f"{english_term}"
+            )
         if localized_term != english_term:
             raise ValueError(
                 f"{locale} uses unverified terminology for {english_term}"
@@ -112,6 +208,7 @@ def _validate_term(
 
 def _validate_agent_translation(
     locale: str,
+    category: str,
     english: dict[str, object],
     localization: dict[str, object],
     terminology: dict[str, object],
@@ -129,6 +226,7 @@ def _validate_agent_translation(
         _require_string(localization.get("name"), f"{locale} name"),
         terminology,
         uncertain_terms,
+        require_verified=category == "Class",
     )
     _validate_term(
         locale,
@@ -139,6 +237,7 @@ def _validate_agent_translation(
         ),
         terminology,
         uncertain_terms,
+        require_verified=category == "Class",
     )
 
     english_changes = _require_list(english.get("change"), "en change")
@@ -163,6 +262,12 @@ def _validate_agent_translation(
             raise ValueError(
                 f"{locale} bullet {index + 1} changes numeric values"
             )
+        _validate_semantic_structure(
+            locale,
+            index + 1,
+            english_text,
+            localized_text,
+        )
 
     raw_uncertain = localization.get("uncertainTerms", [])
     for raw_term in _require_list(raw_uncertain, f"{locale} uncertainTerms"):
@@ -192,6 +297,7 @@ def validate_translation_batch(
 
     for raw_change in changes:
         change = _require_dict(raw_change, "change")
+        category = _require_string(change.get("category"), "category")
         localizations = _require_dict(
             change.get("localizations"),
             "localizations",
@@ -218,6 +324,7 @@ def validate_translation_batch(
 
             _validate_agent_translation(
                 locale,
+                category,
                 english,
                 localization,
                 terminology_document,

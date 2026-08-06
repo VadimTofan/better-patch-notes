@@ -45,8 +45,12 @@ the authoritative comparison baseline, not the preferred player-facing result.
    `400 FAILED_PRECONDITION` because Batch is unavailable to a working free-tier
    key, the generator uses bounded, ordered requests through the interactive
    API. Missing, failed, or incomplete results stop the run.
-5. Do not guess a localized game term. Keep it in English and report it as
-   uncertain terminology.
+5. Do not guess a localized game term. Class and specialization terminology
+   remains a hard blocker because it controls addon navigation. An unknown
+   ability, boss, NPC, encounter, dungeon, or raid name may remain exactly in
+   English as a preserved English terminology warning. The warning does not
+   waive validation: numbers, direction, conditions, bullet order, and every
+   protected English term must remain unchanged.
 6. Add `translationType: "agent"`, `translatedFrom: "en"`, and the verified
    `terminologySourceUrls`. Retain the English Blizzard `sourceUrl` as the
    underlying patch-note source.
@@ -149,14 +153,16 @@ documented fallback reason.
 Translate `deDE`, `esES`, `esMX`, `frFR`, `itIT`, `koKR`, `ptBR`, `ruRU`,
 `zhCN`, and `zhTW` separately. Do not copy regional Spanish or Chinese text
 between locales. The English fallback remains authoritative when validation
-fails or terminology is uncertain.
+fails. Preserved English non-class terminology is a warning, not a whole-locale
+fallback.
 
 An official Blizzard localization always replaces an agent translation. An
 agent translation must never replace official localized text.
 
 ## Validation Report
 
-Report validated locales, English fallback locales, and uncertain terminology.
+Report validated locales, English fallback locales, uncertain terminology,
+and warning counts per locale.
 Confirm matching bullet counts and unchanged numbers, percentages, durations,
 and semantic increase/reduction direction.
 
@@ -172,7 +178,7 @@ and semantic increase/reduction direction.
 ## Maintenance
 
 Updated: 2026-08-06
-Last reviewed: 2026-08-05
+Last reviewed: 2026-08-06
 Canonical sources:
 
 - https://worldofwarcraft.blizzard.com/en-us/game/classes

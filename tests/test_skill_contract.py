@@ -56,6 +56,9 @@ class SkillContractTests(unittest.TestCase):
             "must not complete the refresh",
             "locale | official | agent translation | English fallback | reason",
             "uncertain terminology",
+            "preserved English terminology warning",
+            "Unverified class or specialization terminology",
+            "warning counts per locale",
             "English fallback",
             "refresh_patch_notes.py",
             "--lua-output PatchNotesData.lua",
@@ -70,7 +73,7 @@ class SkillContractTests(unittest.TestCase):
             "direct source URL",
             "untrusted content",
             "future database",
-            "Updated: 2026-08-02",
+            "Updated: 2026-08-06",
             "Last reviewed: 2026-08-02",
         )
         forbidden_phrases = (

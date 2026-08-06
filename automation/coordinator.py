@@ -21,6 +21,7 @@ from automation.release_files import (
     snapshot_files,
     update_release_files,
 )
+from automation.reporting import summarize_terminology_warnings
 
 
 SUPPORTED_TRANSLATION_LOCALES = {
@@ -99,12 +100,6 @@ def _require_complete_locales(
         raise ValueError(
             "translation validation did not pass for: " + ", ".join(blocked)
         )
-    if report.uncertain_terms:
-        raise ValueError(
-            "translation contains uncertain terminology: "
-            + ", ".join(report.uncertain_terms)
-        )
-
     changes = batch.get("changes")
     if not isinstance(changes, list) or not changes:
         raise ValueError("translation batch must contain changes")
@@ -127,11 +122,6 @@ def _require_complete_locales(
             localization = localizations[locale]
             if not isinstance(localization, dict):
                 raise ValueError(f"{locale} localization must be an object")
-            uncertain = localization.get("uncertainTerms", [])
-            if uncertain:
-                raise ValueError(
-                    f"{locale} contains uncertain terminology",
-                )
 
 
 def _ptr_patch(document: dict[str, object]) -> str:
@@ -160,10 +150,12 @@ def coordinate_release(
     try:
         before = json.loads(files.data.read_text(encoding="utf-8"))
         has_incoming_changes = bool(english_document.get("changes"))
+        terminology_warnings: tuple[str, ...] = ()
         if has_incoming_changes:
             batch = translate(deepcopy(english_document))
             report = validate(batch)
             _require_complete_locales(batch, report)
+            terminology_warnings = report.uncertain_terms
         else:
             batch = {
                 "retrievedAt": english_document["updatedAt"],
@@ -191,8 +183,14 @@ def coordinate_release(
         after = json.loads(files.data.read_text(encoding="utf-8"))
         if not has_meaningful_change(before, after):
             restore_snapshot(snapshot)
-            return RefreshOutcome(status=RefreshStatus.NO_CHANGE)
+            return RefreshOutcome(
+                status=RefreshStatus.NO_CHANGE,
+                terminology_warnings=terminology_warnings,
+            )
 
+        warning_summary = summarize_terminology_warnings(
+            terminology_warnings
+        )
         summary = ReleaseSummary(
             live_patch=current_patch,
             ptr_patch=_ptr_patch(english_document),
@@ -201,7 +199,8 @@ def coordinate_release(
             removed=refresh_result.removed,
             locale_text=(
                 "Validated deDE, esES, esMX, frFR, itIT, koKR, ptBR, "
-                "ruRU, zhCN, and zhTW; no English fallbacks"
+                "ruRU, zhCN, and zhTW; no English fallbacks; "
+                + warning_summary.changelog_text
                 if has_incoming_changes
                 else "No new localized records; retained records unchanged"
             ),
@@ -214,6 +213,7 @@ def coordinate_release(
             updated=refresh_result.promoted + refresh_result.localized,
             removed=refresh_result.removed,
             version=version,
+            terminology_warnings=terminology_warnings,
         )
     except Exception as error:
         restore_snapshot(snapshot)

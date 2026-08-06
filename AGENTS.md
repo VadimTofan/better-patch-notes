@@ -277,10 +277,15 @@ Wowhead, MMO-Champion, search results, videos, and other secondary sources are
 never eligible for an automatic release.
 
 The automated release is all-or-nothing. English is collected as the factual
-baseline, Gemini may translate it, and all locales must pass the existing
-terminology and translation validation. An English fallback, missing locale,
-uncertain term, unknown Blizzard author, unknown document structure, unsafe
-redirect, mismatched build, or ambiguous category blocks publication.
+baseline, Gemini may translate it, and all locales must pass terminology and
+translation validation. An English fallback, missing locale, unverified class
+or specialization terminology, unknown Blizzard author, unknown document
+structure, unsafe redirect, mismatched build, or ambiguous category blocks
+publication. Unknown ability, boss, NPC, encounter, dungeon, or raid names may
+remain exactly English as a preserved English terminology warning. Such
+warnings do not block publication, but numbers, direction, conditions, and
+protected terms must remain unchanged. Record warning counts per locale in the
+audit artifact, GitHub summary, and release changelog.
 
 If there is no meaningful packaged-data change after ignoring only the
 top-level `updatedAt`, the workflow must restore the original release bytes and
