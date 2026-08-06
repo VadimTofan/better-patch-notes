@@ -672,6 +672,60 @@ def _all_source_urls(change: dict[str, object]) -> set[str]:
     }
 
 
+def _source_document_key(url: str) -> str:
+    parsed_url = urlparse(url)
+    host = parsed_url.hostname or ""
+    if host.endswith("forums.blizzard.com"):
+        topic_match = re.match(
+            r"^(?P<topic>/.*/t/[^/]+/\d+)(?:/\d+)?/?$",
+            parsed_url.path,
+        )
+        if topic_match is not None:
+            return f"{host.casefold()}{topic_match.group('topic')}"
+
+    return url.casefold().rstrip("/")
+
+
+def _same_source_document(
+    existing: dict[str, object],
+    incoming: dict[str, object],
+) -> bool:
+    incoming_key = _source_document_key(
+        str(_english(incoming)["sourceUrl"]),
+    )
+    return any(
+        _source_document_key(url) == incoming_key
+        for url in _all_source_urls(existing)
+    )
+
+
+def _has_equivalent_change_items(
+    existing: dict[str, object],
+    incoming: dict[str, object],
+) -> bool:
+    existing_items = list(_english(existing)["change"])
+    incoming_items = list(_english(incoming)["change"])
+    if len(existing_items) != len(incoming_items):
+        return False
+
+    unmatched = [
+        _normalize_text(str(item))
+        for item in existing_items
+    ]
+    for incoming_item in incoming_items:
+        normalized_incoming = _normalize_text(str(incoming_item))
+        ratios = [
+            SequenceMatcher(None, item, normalized_incoming).ratio()
+            for item in unmatched
+        ]
+        best_ratio = max(ratios, default=0.0)
+        if best_ratio < 0.9:
+            return False
+        del unmatched[ratios.index(best_ratio)]
+
+    return True
+
+
 def _has_ambiguous_match(
     existing_changes: list[dict[str, object]],
     incoming: dict[str, object],
@@ -816,6 +870,30 @@ def update_data(
         )
         if exact_index is not None:
             existing = stored_changes[exact_index]
+            added_locales, promoted_locales = _merge_localizations(
+                existing,
+                incoming,
+            )
+            localized += added_locales
+            promoted += promoted_locales
+            if added_locales or promoted_locales:
+                existing["retrievedAt"] = retrieved_at
+            else:
+                skipped += 1
+            continue
+
+        equivalent_index = next(
+            (
+                index
+                for index, existing in enumerate(stored_changes)
+                if _context(existing) == _context(incoming)
+                and _same_source_document(existing, incoming)
+                and _has_equivalent_change_items(existing, incoming)
+            ),
+            None,
+        )
+        if equivalent_index is not None:
+            existing = stored_changes[equivalent_index]
             added_locales, promoted_locales = _merge_localizations(
                 existing,
                 incoming,

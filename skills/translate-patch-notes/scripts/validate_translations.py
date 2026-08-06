@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 from collections import Counter
+from copy import deepcopy
 from dataclasses import asdict, dataclass
 import json
 from pathlib import Path
@@ -55,8 +56,8 @@ INCREASE_MARKERS = {
 
 DECREASE_MARKERS = {
     "deDE": ("verringer", "reduzier", "weniger", "gesenkt"),
-    "esES": ("reduc", "disminu", "menos"),
-    "esMX": ("reduc", "disminu", "menos"),
+    "esES": ("reduc", "reduj", "disminu", "menos"),
+    "esMX": ("reduc", "reduj", "disminu", "menos"),
     "frFR": ("rédu", "diminu", "moins"),
     "itIT": ("ridott", "dimin", "meno"),
     "koKR": ("감소", "하향", "줄어"),
@@ -72,11 +73,28 @@ CONDITION_MARKERS = {
     "esMX": (" si ", "cuando", "mientras", "siempre que", "después", "antes"),
     "frFR": (" si ", "lorsque", "quand", "pendant que", "tant que", "après", "avant"),
     "itIT": (" se ", "quando", "mentre", "finché", "dopo", "prima"),
-    "koKR": ("경우", "때", "동안", "중", "후", "전"),
+    "koKR": ("경우", "때", "동안", "중", "후", "전", " 시 "),
     "ptBR": (" se ", "quando", "enquanto", "sempre que", "após", "antes"),
     "ruRU": ("если", "когда", "пока", "во время", " при ", "после", "до того"),
     "zhCN": ("如果", "当", "时", "期间", "只要", "后", "前"),
     "zhTW": ("如果", "當", "時", "期間", "只要", "後", "前"),
+}
+
+SPANISH_CONDITION_MARKERS = {
+    "if": (" si ", "en caso"),
+    "when": ("cuando", " al "),
+    "whenever": ("siempre que", "cada vez que"),
+    "while": (
+        "mientras",
+        "durante",
+        "con el talento",
+        "con la facultad",
+        "con los talentos",
+        "con las facultades",
+    ),
+    "unless": ("a menos que", "salvo que"),
+    "after": ("después", "tras"),
+    "before": ("antes"),
 }
 
 
@@ -84,6 +102,7 @@ CONDITION_MARKERS = {
 class TranslationReport:
     validated_locales: tuple[str, ...]
     fallback_locales: tuple[str, ...]
+    fallback_reasons: dict[str, str]
     uncertain_terms: tuple[str, ...]
 
 
@@ -137,6 +156,33 @@ def _contains_marker(text: str, markers: tuple[str, ...]) -> bool:
     return any(marker.casefold() in padded_text for marker in markers)
 
 
+def _preserves_conditions(
+    locale: str,
+    english_text: str,
+    localized_text: str,
+) -> bool:
+    condition_types = tuple(
+        match.group(0).casefold()
+        for match in ENGLISH_CONDITION_PATTERN.finditer(english_text)
+    )
+    if not condition_types:
+        return True
+
+    if locale in {"esES", "esMX"}:
+        return all(
+            _contains_marker(
+                localized_text,
+                SPANISH_CONDITION_MARKERS[condition_type],
+            )
+            for condition_type in condition_types
+        )
+
+    return _contains_marker(
+        localized_text,
+        CONDITION_MARKERS[locale],
+    )
+
+
 def _validate_semantic_structure(
     locale: str,
     bullet_number: int,
@@ -161,10 +207,7 @@ def _validate_semantic_structure(
             f"{locale} bullet {bullet_number} changes change direction"
         )
 
-    if ENGLISH_CONDITION_PATTERN.search(english_text) and not _contains_marker(
-        localized_text,
-        CONDITION_MARKERS[locale],
-    ):
+    if not _preserves_conditions(locale, english_text, localized_text):
         raise ValueError(
             f"{locale} bullet {bullet_number} loses a condition"
         )
@@ -339,6 +382,71 @@ def validate_translation_batch(
     return TranslationReport(
         validated_locales=tuple(sorted(validated_locales)),
         fallback_locales=tuple(sorted(fallback_locales)),
+        fallback_reasons={
+            locale: "localization unavailable"
+            for locale in sorted(fallback_locales)
+        },
+        uncertain_terms=tuple(sorted(uncertain_terms)),
+    )
+
+
+def classify_translation_batch(
+    batch: object,
+    terminology: object,
+) -> TranslationReport:
+    document = _require_dict(batch, "translation batch")
+    changes = _require_list(document.get("changes"), "changes")
+    provided_fallback_reasons = _require_dict(
+        document.get("fallbackReasons", {}),
+        "fallbackReasons",
+    )
+    validated_locales: set[str] = set()
+    fallback_reasons: dict[str, str] = {}
+    uncertain_terms: set[str] = set()
+
+    for locale in sorted(SUPPORTED_TRANSLATION_LOCALES):
+        locale_is_complete = all(
+            locale
+            in _require_dict(
+                _require_dict(raw_change, "change").get("localizations"),
+                "localizations",
+            )
+            for raw_change in changes
+        )
+        if not locale_is_complete:
+            raw_reason = provided_fallback_reasons.get(
+                locale,
+                "localization unavailable",
+            )
+            reason = _require_string(raw_reason, f"{locale} fallback reason")
+            fallback_reasons[locale] = (
+                reason.strip() or "localization unavailable"
+            )
+            continue
+
+        locale_batch = deepcopy(document)
+        for raw_change in locale_batch["changes"]:
+            localizations = raw_change["localizations"]
+            raw_change["localizations"] = {
+                "en": localizations["en"],
+                locale: localizations[locale],
+            }
+
+        try:
+            report = validate_translation_batch(locale_batch, terminology)
+        except ValueError as error:
+            fallback_reasons[locale] = (
+                "automatic validation failed: " + str(error)
+            )
+            continue
+
+        validated_locales.add(locale)
+        uncertain_terms.update(report.uncertain_terms)
+
+    return TranslationReport(
+        validated_locales=tuple(sorted(validated_locales)),
+        fallback_locales=tuple(sorted(fallback_reasons)),
+        fallback_reasons=fallback_reasons,
         uncertain_terms=tuple(sorted(uncertain_terms)),
     )
 
@@ -355,7 +463,7 @@ def main() -> int:
     terminology = json.loads(
         arguments.terminology.read_text(encoding="utf-8")
     )
-    report = validate_translation_batch(batch, terminology)
+    report = classify_translation_batch(batch, terminology)
     print(json.dumps(asdict(report), ensure_ascii=False, sort_keys=True))
 
     return 0

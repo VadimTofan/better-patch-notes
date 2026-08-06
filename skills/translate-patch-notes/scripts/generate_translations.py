@@ -85,14 +85,17 @@ GENERIC_SENTENCE_STARTS = {
     "Melee",
     "New Talent",
     "Now",
+    "Physical",
     "Reduced",
     "Removed",
     "Significantly",
     "Spell",
     "There",
+    "They",
     "This",
     "Time",
     "Timer",
+    "We",
     "We're",
     "We’re",
 }
@@ -168,6 +171,10 @@ class GeminiApiError(RuntimeError):
         super().__init__(f"Gemini API request failed with {code} ({status_code}).")
         self.status_code = status_code
         self.code = code
+
+
+class GeminiBatchTimeoutError(RuntimeError):
+    """Raised when an accepted Gemini batch does not finish in time."""
 
 
 class GeminiRequestRateLimiter:
@@ -699,7 +706,15 @@ def wait_for_inline_batch(
     job_name: str,
     api_key: str,
     poll_interval: int = 30,
+    timeout_seconds: int = 600,
+    monotonic: Callable[[], float] = time.monotonic,
+    sleep: Callable[[float], None] = time.sleep,
 ) -> dict[str, object]:
+    if poll_interval < 1:
+        raise ValueError("batch poll interval must be positive")
+    if timeout_seconds < 1:
+        raise ValueError("batch timeout must be positive")
+
     completed_states = {
         "JOB_STATE_SUCCEEDED",
         "JOB_STATE_FAILED",
@@ -707,6 +722,17 @@ def wait_for_inline_batch(
         "JOB_STATE_EXPIRED",
     }
     endpoint = f"{GEMINI_API_BASE_URL}/{job_name}"
+    deadline = monotonic() + timeout_seconds
+
+    def wait_for_next_poll() -> None:
+        remaining_seconds = deadline - monotonic()
+        if remaining_seconds <= 0:
+            raise GeminiBatchTimeoutError(
+                "Gemini batch did not finish within "
+                f"{timeout_seconds} seconds."
+            )
+
+        sleep(min(poll_interval, remaining_seconds))
 
     while True:
         request = Request(
@@ -717,7 +743,7 @@ def wait_for_inline_batch(
             batch_job = _open_json_request(request)
         except GeminiApiError as error:
             if error.status_code in {429, 500, 502, 503, 504}:
-                time.sleep(poll_interval)
+                wait_for_next_poll()
                 continue
             raise
 
@@ -729,7 +755,38 @@ def wait_for_inline_batch(
                 )
             return batch_job
 
-        time.sleep(poll_interval)
+        wait_for_next_poll()
+
+
+def _generate_interactive_translations(
+    api_keys: tuple[str, ...],
+    protected_texts: tuple[str, ...],
+    languages: Mapping[str, str],
+) -> tuple[dict[tuple[str, str], str], str]:
+    translator = GeminiTranslator(
+        api_keys,
+        request_translation=request_gemini_translation_batch,
+    )
+    repair_translator = GeminiTranslator(
+        api_keys,
+        request_translation=request_gemini_translation,
+    )
+    translations: dict[tuple[str, str], str] = {}
+    for language in languages:
+        localized_texts = translate_text_batch(
+            protected_texts,
+            language,
+            translator,
+            repair_translator=repair_translator,
+        )
+        for source_text, localized_text in zip(
+            protected_texts,
+            localized_texts,
+            strict=True,
+        ):
+            translations[(language, source_text)] = localized_text
+
+    return translations, "interactive"
 
 
 def generate_protected_translations(
@@ -755,33 +812,23 @@ def generate_protected_translations(
         if error.status_code != 400 or error.code != "failed_precondition":
             raise
 
-        translator = GeminiTranslator(
+        return _generate_interactive_translations(
             api_keys,
-            request_translation=request_gemini_translation_batch,
+            protected_texts,
+            languages,
         )
-        repair_translator = GeminiTranslator(
-            api_keys,
-            request_translation=request_gemini_translation,
-        )
-        translations: dict[tuple[str, str], str] = {}
-        for language in languages:
-            localized_texts = translate_text_batch(
-                protected_texts,
-                language,
-                translator,
-                repair_translator=repair_translator,
-            )
-            for source_text, localized_text in zip(
-                protected_texts,
-                localized_texts,
-                strict=True,
-            ):
-                translations[(language, source_text)] = localized_text
-
-        return translations, "interactive"
 
     print(f"Gemini batch submitted: {job_name}")
-    batch_job = wait_for_inline_batch(job_name, job_api_key)
+    try:
+        batch_job = wait_for_inline_batch(job_name, job_api_key)
+    except GeminiBatchTimeoutError:
+        print("Gemini batch timed out; using interactive translation.")
+        return _generate_interactive_translations(
+            api_keys,
+            protected_texts,
+            languages,
+        )
+
     keyed_translations = parse_inline_batch_results(
         batch_job,
         expected_keys,
@@ -805,6 +852,11 @@ def _candidate_terms(text: str) -> tuple[str, ...]:
     terms: list[str] = []
     for candidate in candidates:
         candidate = candidate.strip(" .,:;()")
+        words = candidate.split()
+        while len(words) > 1 and words[0] in GENERIC_SENTENCE_STARTS:
+            words.pop(0)
+        candidate = " ".join(words)
+
         if not candidate or candidate in GENERIC_SENTENCE_STARTS:
             continue
         if candidate not in terms:

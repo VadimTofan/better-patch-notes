@@ -41,6 +41,7 @@ SUPPORTED_TRANSLATION_LOCALES = {
 class TranslationReport(Protocol):
     validated_locales: tuple[str, ...]
     fallback_locales: tuple[str, ...]
+    fallback_reasons: dict[str, str]
     uncertain_terms: tuple[str, ...]
 
 
@@ -89,21 +90,30 @@ def build_english_document(
     }
 
 
-def _require_complete_locales(
+def _prepare_locale_outcomes(
     batch: dict[str, object],
     report: TranslationReport,
 ) -> None:
     validated = set(report.validated_locales)
-    missing_report_locales = SUPPORTED_TRANSLATION_LOCALES - validated
-    if report.fallback_locales or missing_report_locales:
-        blocked = sorted(set(report.fallback_locales) | missing_report_locales)
+    fallback = set(report.fallback_locales)
+    classified = validated | fallback
+    missing_report_locales = SUPPORTED_TRANSLATION_LOCALES - classified
+    unexpected_locales = classified - SUPPORTED_TRANSLATION_LOCALES
+    if missing_report_locales or unexpected_locales or validated & fallback:
         raise ValueError(
-            "translation validation did not pass for: " + ", ".join(blocked)
+            "translation locale outcomes are incomplete or conflicting"
         )
+
+    fallback_reasons = report.fallback_reasons
+    if set(fallback_reasons) != fallback:
+        raise ValueError("every English fallback requires one reason")
+    if any(not reason.strip() for reason in fallback_reasons.values()):
+        raise ValueError("English fallback reasons must not be empty")
+
     changes = batch.get("changes")
     if not isinstance(changes, list) or not changes:
         raise ValueError("translation batch must contain changes")
-    required_locales = SUPPORTED_TRANSLATION_LOCALES | {"en"}
+    required_locales = validated | {"en"}
     for index, raw_change in enumerate(changes):
         if not isinstance(raw_change, dict):
             raise ValueError(f"translation change {index} must be an object")
@@ -112,13 +122,16 @@ def _require_complete_locales(
             raise ValueError(
                 f"translation change {index} has no localizations",
             )
+        for locale in fallback:
+            localizations.pop(locale, None)
+
         missing = required_locales - set(localizations)
         if missing:
             raise ValueError(
                 f"translation change {index} is missing: "
                 + ", ".join(sorted(missing))
             )
-        for locale in SUPPORTED_TRANSLATION_LOCALES:
+        for locale in validated:
             localization = localizations[locale]
             if not isinstance(localization, dict):
                 raise ValueError(f"{locale} localization must be an object")
@@ -151,11 +164,15 @@ def coordinate_release(
         before = json.loads(files.data.read_text(encoding="utf-8"))
         has_incoming_changes = bool(english_document.get("changes"))
         terminology_warnings: tuple[str, ...] = ()
+        validated_locales: tuple[str, ...] = ()
+        fallback_reasons: dict[str, str] = {}
         if has_incoming_changes:
             batch = translate(deepcopy(english_document))
             report = validate(batch)
-            _require_complete_locales(batch, report)
+            _prepare_locale_outcomes(batch, report)
             terminology_warnings = report.uncertain_terms
+            validated_locales = report.validated_locales
+            fallback_reasons = report.fallback_reasons
         else:
             batch = {
                 "retrievedAt": english_document["updatedAt"],
@@ -191,6 +208,14 @@ def coordinate_release(
         warning_summary = summarize_terminology_warnings(
             terminology_warnings
         )
+        validated_text = ", ".join(validated_locales) or "None"
+        fallback_text = (
+            ", ".join(
+                f"{locale} ({fallback_reasons[locale]})"
+                for locale in sorted(fallback_reasons)
+            )
+            or "None"
+        )
         summary = ReleaseSummary(
             live_patch=current_patch,
             ptr_patch=_ptr_patch(english_document),
@@ -198,8 +223,8 @@ def coordinate_release(
             updated=refresh_result.promoted + refresh_result.localized,
             removed=refresh_result.removed,
             locale_text=(
-                "Validated deDE, esES, esMX, frFR, itIT, koKR, ptBR, "
-                "ruRU, zhCN, and zhTW; no English fallbacks; "
+                f"Validated {validated_text}; English fallbacks: "
+                f"{fallback_text}; "
                 + warning_summary.changelog_text
                 if has_incoming_changes
                 else "No new localized records; retained records unchanged"

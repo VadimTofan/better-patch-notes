@@ -167,6 +167,17 @@ def _format_leaf_path(path: list[str]) -> str:
     return f"{' — '.join(cleaned[:-1])}: {cleaned[-1]}"
 
 
+def _is_unscoped_class_prose(path: list[str]) -> bool:
+    if len(path) == 1:
+        return True
+
+    return path[0].rstrip().endswith((".", "!", "?"))
+
+
+def _structural_key(text: str) -> str:
+    return text.lstrip("▶▼▸▾ ").casefold()
+
+
 def _is_pvp_only(text: str) -> bool:
     normalized = text.casefold()
     return (
@@ -285,24 +296,25 @@ def extract_changes(
         specialization = ""
         if section == "Class":
             class_positions = [
-                (position, CLASS_NAMES[value.casefold()])
+                (position, CLASS_NAMES[_structural_key(value)])
                 for position, value in enumerate(path)
-                if value.casefold() in CLASS_NAMES
+                if _structural_key(value) in CLASS_NAMES
             ]
             if class_positions:
                 class_position, context_name = class_positions[0]
                 context_anchor = section_anchor
                 path = path[class_position + 1 :]
             elif not context_name:
-                if not class_positions:
-                    raise AmbiguousPatchNote(
-                        "class bullet has no recognized class",
-                    )
+                if _is_unscoped_class_prose(path):
+                    continue
+                raise AmbiguousPatchNote(
+                    "class bullet has no recognized class",
+                )
             specifications = SPECIALIZATION_NAMES[context_name]
             specification_positions = [
-                (position, specifications[value.casefold()])
+                (position, specifications[_structural_key(value)])
                 for position, value in enumerate(path)
-                if value.casefold() in specifications
+                if _structural_key(value) in specifications
             ]
             if specification_positions:
                 position, specialization = specification_positions[0]
@@ -311,9 +323,9 @@ def extract_changes(
                 continue
         elif section in {"Dungeon", "Raid", "Instance"}:
             instance_positions = [
-                (position, INSTANCE_NAMES[value.casefold()])
+                (position, INSTANCE_NAMES[_structural_key(value)])
                 for position, value in enumerate(path)
-                if value.casefold() in INSTANCE_NAMES
+                if _structural_key(value) in INSTANCE_NAMES
             ]
             if instance_positions:
                 instance_position, context_name = instance_positions[0]

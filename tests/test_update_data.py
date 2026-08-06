@@ -786,6 +786,51 @@ class JsonDataMergeTests(unittest.TestCase):
                 official["localizations"]["en"]["change"],
             )
 
+    def test_skips_equivalent_changes_from_the_same_forum_topic(self) -> None:
+        with TemporaryDirectory() as temporary_directory:
+            # Given a stored topic summary and its equivalent post-specific data
+            temporary_path = Path(temporary_directory)
+            first_path = temporary_path / "first.json"
+            repeated_path = temporary_path / "repeated.json"
+            data_path = temporary_path / "retail-patch-notes.json"
+            topic_url = "https://us.forums.blizzard.com/en/wow/t/notes/123"
+            _write_batch(
+                first_path,
+                [
+                    _change(
+                        change=[
+                            "Boss – Strike: Damage reduced by 10%.",
+                            "Boss: Health reduced by 5%.",
+                        ],
+                        sourceUrl=topic_url,
+                    )
+                ],
+            )
+            _write_batch(
+                repeated_path,
+                [
+                    _change(
+                        change=[
+                            "Boss: Health reduced by 5%",
+                            "Boss — Strike: Damage reduced by 10%",
+                        ],
+                        sourceUrl=f"{topic_url}/5",
+                    )
+                ],
+            )
+            first_result = _run_updater(first_path, data_path)
+            self.assertEqual(0, first_result.returncode, first_result.stderr)
+
+            # When the post-specific formatting variant is processed
+            result = _run_updater(repeated_path, data_path)
+
+            # Then it is recognized as the same official change set
+            self.assertEqual(0, result.returncode, result.stderr)
+            report = json.loads(result.stdout)
+            self.assertEqual(0, report["ambiguous"])
+            self.assertEqual(1, report["skipped"])
+            self.assertEqual(1, len(_read_data(data_path)["changes"]))
+
     def test_sorts_newest_changes_first_with_stable_tie_breakers(self) -> None:
         with TemporaryDirectory() as temporary_directory:
             # Given changes supplied in a non-deterministic order

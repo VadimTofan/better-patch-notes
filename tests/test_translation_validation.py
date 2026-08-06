@@ -141,6 +141,45 @@ class TranslationValidationTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "numeric values"):
             self.validator.validate_translation_batch(batch, self.terminology)
 
+    def test_classifies_an_invalid_locale_as_a_documented_fallback(self) -> None:
+        # Given one locale changes a protected numeric value
+        batch = _translation_batch()
+        russian = batch["changes"][0]["localizations"]["ruRU"]
+        russian["change"] = [
+            "Урон от Moonfire увеличен на 15% на 8 секунд."
+        ]
+
+        # When the batch is classified for automatic publication
+        report = self.validator.classify_translation_batch(
+            batch,
+            self.terminology,
+        )
+
+        # Then that locale receives a reasoned English fallback
+        self.assertIn("ruRU", report.fallback_locales)
+        self.assertNotIn("ruRU", report.validated_locales)
+        self.assertIn("numeric values", report.fallback_reasons["ruRU"])
+
+    def test_preserves_a_generation_fallback_reason(self) -> None:
+        # Given a locale was omitted because automatic generation failed
+        batch = _translation_batch()
+        del batch["changes"][0]["localizations"]["ruRU"]
+        batch["fallbackReasons"] = {
+            "ruRU": "automatic translation generation failed",
+        }
+
+        # When the incomplete batch is classified
+        report = self.validator.classify_translation_batch(
+            batch,
+            self.terminology,
+        )
+
+        # Then the release report retains the exact safe fallback reason
+        self.assertEqual(
+            "automatic translation generation failed",
+            report.fallback_reasons["ruRU"],
+        )
+
     def test_rejects_reversed_change_direction(self) -> None:
         # Given an increase is translated as a decrease
         batch = _translation_batch()
@@ -152,6 +191,25 @@ class TranslationValidationTests(unittest.TestCase):
         # When / Then the reversed semantic direction is rejected
         with self.assertRaisesRegex(ValueError, "change direction"):
             self.validator.validate_translation_batch(batch, self.terminology)
+
+    def test_accepts_the_irregular_spanish_redujo_direction(self) -> None:
+        # Given Spanish correctly uses the irregular preterite "redujo"
+        english = "Damage bonus reduced to 5% per stack (was 6%)."
+        localized = (
+            "La bonificación de daño se redujo a 5% por acumulación "
+            "(antes 6%)."
+        )
+
+        # When the aligned direction is checked
+        try:
+            self.validator._validate_semantic_structure(
+                "esMX",
+                1,
+                english,
+                localized,
+            )
+        except ValueError as error:
+            self.fail(f"valid Spanish reduction was rejected: {error}")
 
     def test_rejects_a_lost_condition(self) -> None:
         # Given the English bullet has a condition missing from the translation
@@ -168,6 +226,76 @@ class TranslationValidationTests(unittest.TestCase):
         # When / Then the missing condition remains a release blocker
         with self.assertRaisesRegex(ValueError, "condition"):
             self.validator.validate_translation_batch(batch, self.terminology)
+
+    def test_accepts_spanish_tras_for_an_after_condition(self) -> None:
+        # Given a natural Spanish translation using "tras" for "after"
+        english = "Removed Ghastly Brute after Mchimba the Embalmer."
+        localized = (
+            "Se eliminó Ghastly Brute tras Mchimba the Embalmer."
+        )
+
+        # When the aligned bullet is checked
+        try:
+            self.validator._validate_semantic_structure(
+                "esES",
+                1,
+                english,
+                localized,
+            )
+        except ValueError as error:
+            self.fail(f"valid Spanish after-condition was rejected: {error}")
+
+    def test_accepts_spanish_talent_context_for_a_while_condition(self) -> None:
+        # Given "while talented" is naturally expressed as "con el talento"
+        english = "Aimed Shot failed while talented into Aspect of the Hydra."
+        localized = (
+            "Aimed Shot fallaba con el talento Aspect of the Hydra."
+        )
+
+        # When the aligned bullet is checked
+        try:
+            self.validator._validate_semantic_structure(
+                "esES",
+                1,
+                english,
+                localized,
+            )
+        except ValueError as error:
+            self.fail(f"valid Spanish while-condition was rejected: {error}")
+
+    def test_accepts_korean_si_for_a_when_condition(self) -> None:
+        # Given Korean expresses "when killing" as the construction "처치 시"
+        english = "Items could be missing when killing the World Boss."
+        localized = (
+            "World Boss 처치 시 아이템을 받지 못할 수 있었습니다."
+        )
+
+        # When the aligned bullet is checked
+        try:
+            self.validator._validate_semantic_structure(
+                "koKR",
+                1,
+                english,
+                localized,
+            )
+        except ValueError as error:
+            self.fail(f"valid Korean when-condition was rejected: {error}")
+
+    def test_rejects_a_spanish_pattern_for_the_wrong_condition_type(self) -> None:
+        # Given an after-condition is mistranslated as unrelated talent context
+        english = "Removed Ghastly Brute after Mchimba the Embalmer."
+        localized = (
+            "Se eliminó Ghastly Brute con el talento Mchimba the Embalmer."
+        )
+
+        # When / Then source-aware validation rejects the wrong relationship
+        with self.assertRaisesRegex(ValueError, "condition"):
+            self.validator._validate_semantic_structure(
+                "esES",
+                1,
+                english,
+                localized,
+            )
 
     def test_rejects_an_altered_protected_uncertain_term(self) -> None:
         # Given an uncertain ability name is altered in the translated bullet

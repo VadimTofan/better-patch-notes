@@ -14,7 +14,11 @@ from types import SimpleNamespace
 from typing import Protocol
 from urllib.parse import urlsplit
 
-from automation.coordinator import build_english_document, coordinate_release
+from automation.coordinator import (
+    SUPPORTED_TRANSLATION_LOCALES,
+    build_english_document,
+    coordinate_release,
+)
 from automation.discovery import (
     discover_forum_documents,
     discover_forum_topic_urls,
@@ -300,20 +304,39 @@ def _translator(
             json.dumps(document, ensure_ascii=False, indent=2) + "\n",
             encoding="utf-8",
         )
-        _run(
-            [
-                sys.executable,
-                str(TRANSLATION_SCRIPT),
-                "--input",
-                str(input_path),
-                "--output",
-                str(output_path),
-                "--terminology",
-                str(terminology_path),
-            ]
+        try:
+            _run(
+                [
+                    sys.executable,
+                    str(TRANSLATION_SCRIPT),
+                    "--input",
+                    str(input_path),
+                    "--output",
+                    str(output_path),
+                    "--terminology",
+                    str(terminology_path),
+                ]
+            )
+            batch = json.loads(output_path.read_text(encoding="utf-8"))
+        except RuntimeError:
+            batch = {
+                "retrievedAt": document["updatedAt"],
+                "fallbackReasons": {
+                    locale: "automatic translation generation failed"
+                    for locale in sorted(SUPPORTED_TRANSLATION_LOCALES)
+                },
+                "changes": deepcopy(document["changes"]),
+            }
+            for change in batch["changes"]:
+                change["replacesSourceUrl"] = ""
+
+        WORK_DIRECTORY.mkdir(parents=True, exist_ok=True)
+        (WORK_DIRECTORY / "translation-batch.json").write_text(
+            json.dumps(batch, ensure_ascii=False, indent=2) + "\n",
+            encoding="utf-8",
         )
 
-        return json.loads(output_path.read_text(encoding="utf-8"))
+        return batch
 
 
 def _validator(
@@ -341,6 +364,7 @@ def _validator(
         return SimpleNamespace(
             validated_locales=tuple(report["validated_locales"]),
             fallback_locales=tuple(report["fallback_locales"]),
+            fallback_reasons=dict(report["fallback_reasons"]),
             uncertain_terms=tuple(report["uncertain_terms"]),
         )
 

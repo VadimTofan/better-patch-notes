@@ -68,6 +68,70 @@ class PatchNoteExtractionTests(unittest.TestCase):
             any(change.specialization == "Fire" for change in changes)
         )
 
+    def test_skips_general_class_section_notes_without_a_class(self) -> None:
+        # Given Blizzard places a general tuning note before class headings
+        document = replace(
+            _document("class-notes.html"),
+            body=(
+                b"<h2>Classes</h2><ul>"
+                b"<li>Player health and enemy damage increased globally.</li>"
+                b"<li>Mage<ul><li>Arcane<ul>"
+                b"<li>Arcane Blast damage increased by 20%.</li>"
+                b"</ul></li></ul></li></ul>"
+            ),
+        )
+
+        # When class changes are extracted
+        changes = extract_changes(document)
+
+        # Then the unscoped note is excluded and the class note remains
+        self.assertEqual(1, len(changes))
+        self.assertEqual("Mage", changes[0].name)
+        self.assertEqual("Arcane", changes[0].specialization)
+
+    def test_skips_nested_explanation_for_a_general_class_note(self) -> None:
+        # Given Blizzard nests a developer explanation under a general note
+        document = replace(
+            _document("class-notes.html"),
+            body=(
+                b"<h2>Classes</h2><ul>"
+                b"<li>Player health increased globally."
+                b"<ul><li>Developers' notes: This applies to everyone.</li>"
+                b"</ul></li>"
+                b"<li>Mage<ul><li>Arcane<ul>"
+                b"<li>Arcane Blast damage increased by 20%.</li>"
+                b"</ul></li></ul></li></ul>"
+            ),
+        )
+
+        # When class changes are extracted
+        changes = extract_changes(document)
+
+        # Then the complete unscoped note is excluded
+        self.assertEqual(1, len(changes))
+        self.assertEqual("Mage", changes[0].name)
+        self.assertEqual("Arcane", changes[0].specialization)
+
+    def test_recognizes_a_class_prefixed_by_a_disclosure_glyph(self) -> None:
+        # Given Blizzard prefixes a collapsible class label with a glyph
+        document = replace(
+            _document("class-notes.html"),
+            body=(
+                b"<h2>Classes</h2><ul><li>\xe2\x96\xb6 Mage<ul>"
+                b"<li>Arcane<ul>"
+                b"<li>Arcane Blast damage increased by 20%.</li>"
+                b"</ul></li></ul></li></ul>"
+            ),
+        )
+
+        # When class changes are extracted
+        changes = extract_changes(document)
+
+        # Then the glyph is ignored only for structural label matching
+        self.assertEqual(1, len(changes))
+        self.assertEqual("Mage", changes[0].name)
+        self.assertEqual("Arcane", changes[0].specialization)
+
     def test_preserves_dungeon_hierarchy_and_source_anchor(self) -> None:
         # Given
         document = _document("dungeon-notes.html")

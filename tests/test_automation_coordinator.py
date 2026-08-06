@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import date
 import json
 from pathlib import Path
@@ -19,6 +19,7 @@ from automation.release_files import ReleaseFiles, read_versions
 class _TranslationReport:
     validated_locales: tuple[str, ...]
     fallback_locales: tuple[str, ...] = ()
+    fallback_reasons: dict[str, str] = field(default_factory=dict)
     uncertain_terms: tuple[str, ...] = ()
 
 
@@ -116,7 +117,7 @@ def _validator(batch: dict[str, object]) -> _TranslationReport:
     )
 
 
-# Describe: all-or-nothing automatic refresh coordination
+# Describe: safe automatic refresh coordination
 class AutomationCoordinatorTests(unittest.TestCase):
     def test_builds_schema_compatible_english_input(self) -> None:
         # Given / When
@@ -160,11 +161,11 @@ class AutomationCoordinatorTests(unittest.TestCase):
                 before,
             )
 
-    def test_one_failed_locale_blocks_and_restores_the_release(self) -> None:
+    def test_one_failed_locale_uses_a_documented_english_fallback(self) -> None:
         with TemporaryDirectory() as temporary_directory:
-            # Given
+            # Given one locale whose generated translation could not validate
             files = _release_files(Path(temporary_directory))
-            before = {path: path.read_bytes() for path in files.paths()}
+            captured_batch: dict[str, object] = {}
 
             def failed_validator(batch: dict[str, object]) -> _TranslationReport:
                 return _TranslationReport(
@@ -172,9 +173,29 @@ class AutomationCoordinatorTests(unittest.TestCase):
                         sorted(SUPPORTED_TRANSLATION_LOCALES - {"ruRU"})
                     ),
                     fallback_locales=("ruRU",),
+                    fallback_reasons={
+                        "ruRU": "automatic semantic validation failed",
+                    },
                 )
 
-            # When
+            def refresh(batch_path: Path, data: Path, lua: Path, patch: str):
+                captured_batch.update(
+                    json.loads(batch_path.read_text(encoding="utf-8"))
+                )
+                data.write_text(
+                    json.dumps(
+                        {
+                            "schemaVersion": 5,
+                            "updatedAt": "2026-08-05T04:07:00+02:00",
+                            "changes": [{"id": "new-change"}],
+                        }
+                    ),
+                    encoding="utf-8",
+                )
+                lua.write_text("new lua", encoding="utf-8")
+                return _RefreshResult(localized=9)
+
+            # When the release is coordinated
             outcome = coordinate_release(
                 files=files,
                 english_document=_english_document(),
@@ -182,15 +203,17 @@ class AutomationCoordinatorTests(unittest.TestCase):
                 release_date=date(2026, 8, 5),
                 translate=_translated_batch,
                 validate=failed_validator,
-                refresh=lambda *args: _RefreshResult(),
+                refresh=refresh,
             )
 
-            # Then
-            self.assertEqual(outcome.status, RefreshStatus.BLOCKED)
-            self.assertIn("ruRU", outcome.reason)
-            self.assertEqual(
-                {path: path.read_bytes() for path in files.paths()},
-                before,
+            # Then only that locale falls back and the release can proceed
+            self.assertEqual(outcome.status, RefreshStatus.RELEASE_READY)
+            localizations = captured_batch["changes"][0]["localizations"]
+            self.assertNotIn("ruRU", localizations)
+            self.assertIn("deDE", localizations)
+            self.assertIn(
+                "ruRU (automatic semantic validation failed)",
+                files.changelog.read_text(encoding="utf-8"),
             )
 
     def test_meaningful_change_prepares_one_synchronized_release(self) -> None:

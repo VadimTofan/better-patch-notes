@@ -738,6 +738,82 @@ class TranslationGenerationTests(unittest.TestCase):
         self.assertEqual("de: first", translations[("de", "first")])
         self.assertEqual("fr: second", translations[("fr", "second")])
 
+    def test_uses_interactive_translation_when_batch_wait_times_out(
+        self,
+    ) -> None:
+        # Given Gemini accepts a batch job that remains queued past the deadline
+        self.assertIsNotNone(self.generator)
+        requested_languages: list[str] = []
+
+        def interactive_batch(_api_key, serialized_texts, language):
+            requested_languages.append(language)
+            source_texts = json.loads(serialized_texts)
+            return json.dumps(
+                [f"{language}: {text}" for text in source_texts]
+            )
+
+        # When the bounded batch wait expires
+        with (
+            patch.object(
+                self.generator,
+                "submit_inline_batch",
+                return_value=("batches/queued", "test-key"),
+            ),
+            patch.object(
+                self.generator,
+                "wait_for_inline_batch",
+                side_effect=self.generator.GeminiBatchTimeoutError(
+                    "Gemini batch timed out."
+                ),
+            ),
+            patch.object(
+                self.generator,
+                "request_gemini_translation_batch",
+                interactive_batch,
+            ),
+        ):
+            translations, transport = (
+                self.generator.generate_protected_translations(
+                    ("test-key",),
+                    ("first", "second"),
+                    {"de": "German", "fr": "French"},
+                )
+            )
+
+        # Then the existing rate-limited interactive transport completes it
+        self.assertEqual("interactive", transport)
+        self.assertEqual(["de", "fr"], requested_languages)
+        self.assertEqual("de: first", translations[("de", "first")])
+        self.assertEqual("fr: second", translations[("fr", "second")])
+
+    def test_batch_polling_stops_at_its_deadline(self) -> None:
+        # Given Gemini keeps an accepted batch job in a queued state
+        self.assertIsNotNone(self.generator)
+        clock = iter((0.0, 0.0, 10.0))
+        sleeps: list[float] = []
+
+        # When polling reaches the configured deadline
+        with patch.object(
+            self.generator,
+            "_open_json_request",
+            return_value={"state": "JOB_STATE_QUEUED"},
+        ):
+            with self.assertRaisesRegex(
+                self.generator.GeminiBatchTimeoutError,
+                "10 seconds",
+            ):
+                self.generator.wait_for_inline_batch(
+                    "batches/queued",
+                    "test-key",
+                    poll_interval=30,
+                    timeout_seconds=10,
+                    monotonic=lambda: next(clock),
+                    sleep=sleeps.append,
+                )
+
+        # Then it sleeps only to the deadline and does not poll forever
+        self.assertEqual([10.0], sleeps)
+
     def test_builds_every_requested_locale_without_changing_bullet_count(self) -> None:
         # Given one canonical English record and two target locales
         self.assertIsNotNone(self.generator)
@@ -969,6 +1045,47 @@ class TranslationGenerationTests(unittest.TestCase):
         # Then ordinary sentence words remain translatable
         self.assertNotIn("If", terms)
         self.assertNotIn("Chance", terms)
+
+    def test_does_not_protect_change_direction_as_part_of_a_wow_term(
+        self,
+    ) -> None:
+        # Given an encounter name follows an uppercase direction word
+        self.assertIsNotNone(self.generator)
+
+        # When candidate terms are identified
+        _protected, _replacements, terms = self.generator._protect_text(
+            "Burrow: Reduced Merektha’s movement speed by 10%."
+        )
+
+        # Then only the encounter term is protected and direction can translate
+        self.assertIn("Merektha’s", terms)
+        self.assertFalse(any(term.startswith("Reduced") for term in terms))
+
+    def test_does_not_protect_physical_change_direction_prose(self) -> None:
+        # Given a capitalized damage school follows an increase direction
+        self.assertIsNotNone(self.generator)
+
+        # When candidate terms are identified
+        _protected, _replacements, terms = self.generator._protect_text(
+            "Corruption: Increased Physical damage vulnerability to 300%."
+        )
+
+        # Then the complete semantic phrase remains translatable
+        self.assertNotIn("Increased Physical", terms)
+        self.assertNotIn("Physical", terms)
+
+    def test_does_not_protect_sentence_pronouns(self) -> None:
+        # Given ordinary capitalized pronouns begin sentences
+        self.assertIsNotNone(self.generator)
+
+        # When candidate terms are identified
+        _protected, _replacements, terms = self.generator._protect_text(
+            "We adjusted the talent. They now decrease damage taken."
+        )
+
+        # Then ordinary prose remains available to the translator
+        self.assertNotIn("We", terms)
+        self.assertNotIn("They", terms)
 
     def test_does_not_protect_developer_note_prose_as_wow_terms(self) -> None:
         # Given a developer note with ordinary prose before a class name

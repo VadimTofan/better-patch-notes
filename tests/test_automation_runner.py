@@ -1,6 +1,8 @@
 from datetime import date
 from hashlib import sha256
+import json
 from pathlib import Path
+from tempfile import TemporaryDirectory
 import unittest
 from unittest.mock import patch
 
@@ -8,6 +10,8 @@ from unittest.mock import patch
 from automation.models import HttpResponse, RegisteredSource, SourceRegistry
 from automation.runner import (
     _run,
+    _translator,
+    _validator,
     build_runtime_terminology,
     collect_official_changes,
 )
@@ -37,6 +41,131 @@ class _FixtureClient:
 
 # Describe: end-to-end collection from allowlisted Blizzard responses
 class AutomationRunnerTests(unittest.TestCase):
+    def test_loads_documented_fallback_reasons_from_validation(self) -> None:
+        with TemporaryDirectory() as temporary_directory:
+            # Given the validation process classifies one locale as fallback
+            root = Path(temporary_directory)
+            terminology_path = root / "terminology.json"
+            terminology_path.write_text("{}", encoding="utf-8")
+            output = json.dumps(
+                {
+                    "validated_locales": ["deDE"],
+                    "fallback_locales": ["ruRU"],
+                    "fallback_reasons": {
+                        "ruRU": "automatic semantic validation failed",
+                    },
+                    "uncertain_terms": [],
+                }
+            )
+
+            # When the runner loads the validator report
+            with patch("automation.runner._run", return_value=output):
+                report = _validator({"changes": []}, terminology_path)
+
+            # Then the coordinator receives the exact documented reason
+            self.assertEqual(
+                {
+                    "ruRU": "automatic semantic validation failed",
+                },
+                report.fallback_reasons,
+            )
+
+    def test_preserves_the_generated_batch_for_private_auditing(self) -> None:
+        with TemporaryDirectory() as temporary_directory:
+            # Given the translation child process produces a complete batch
+            root = Path(temporary_directory)
+            terminology_path = root / "terminology.json"
+            terminology_path.write_text("{}", encoding="utf-8")
+            audit_path = root / "translation-batch.json"
+            expected_batch = {
+                "retrievedAt": "2026-08-06T04:07:00+02:00",
+                "changes": [{"category": "Dungeon"}],
+            }
+
+            def write_translation(command: list[str]) -> str:
+                output_index = command.index("--output") + 1
+                output_path = Path(command[output_index])
+                output_path.write_text(
+                    json.dumps(expected_batch),
+                    encoding="utf-8",
+                )
+                return ""
+
+            # When the generated batch is loaded for coordination
+            with (
+                patch(
+                    "automation.runner._run",
+                    side_effect=write_translation,
+                ),
+                patch("automation.runner.WORK_DIRECTORY", root),
+            ):
+                actual_batch = _translator(
+                    {"updatedAt": "2026-08-06T04:07:00+02:00"},
+                    terminology_path,
+                )
+
+            # Then an aligned private diagnostic copy remains in .bpn-work
+            self.assertEqual(expected_batch, actual_batch)
+            self.assertTrue(audit_path.exists())
+            self.assertEqual(
+                expected_batch,
+                json.loads(audit_path.read_text(encoding="utf-8")),
+            )
+
+    def test_translation_failure_returns_an_english_only_batch(self) -> None:
+        with TemporaryDirectory() as temporary_directory:
+            # Given automatic generation fails before producing an output file
+            root = Path(temporary_directory)
+            terminology_path = root / "terminology.json"
+            terminology_path.write_text("{}", encoding="utf-8")
+            document = {
+                "updatedAt": "2026-08-06T04:07:00+02:00",
+                "changes": [
+                    {
+                        "channel": "live",
+                        "category": "Class",
+                        "date": "2026-08-06",
+                        "patch": "12.0.7",
+                        "localizations": {
+                            "en": {
+                                "name": "Mage",
+                                "specialization": "Arcane",
+                                "change": ["Damage increased by 5%."],
+                                "source": "Blizzard",
+                                "sourceUrl": "https://news.blizzard.com/example",
+                                "translationType": "official",
+                                "translatedFrom": "",
+                                "terminologySourceUrls": [],
+                            }
+                        },
+                    }
+                ],
+            }
+
+            # When translation generation fails safely
+            with (
+                patch(
+                    "automation.runner._run",
+                    side_effect=RuntimeError("placeholder repair failed"),
+                ),
+                patch("automation.runner.WORK_DIRECTORY", root),
+            ):
+                batch = _translator(document, terminology_path)
+
+            # Then English remains publishable and every locale can fall back
+            self.assertEqual(document["updatedAt"], batch["retrievedAt"])
+            change = batch["changes"][0]
+            self.assertEqual({"en"}, set(change["localizations"]))
+            self.assertEqual("", change["replacesSourceUrl"])
+            self.assertEqual(
+                batch,
+                json.loads(
+                    (root / "translation-batch.json").read_text(
+                        encoding="utf-8"
+                    )
+                ),
+            )
+
     def test_child_tools_are_forced_to_use_utf8_output(self) -> None:
         # Given
         completed = type(

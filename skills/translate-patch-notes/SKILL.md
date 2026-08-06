@@ -43,8 +43,11 @@ the authoritative comparison baseline, not the preferred player-facing result.
    placeholders. It prefers whole-bullet requests through Gemini's asynchronous
    Batch API, which has separate Tier 1 high-volume quota. When Google returns
    `400 FAILED_PRECONDITION` because Batch is unavailable to a working free-tier
-   key, the generator uses bounded, ordered requests through the interactive
-   API. Missing, failed, or incomplete results stop the run.
+   key, or when an accepted Batch job does not finish within 10 minutes, the
+   generator uses bounded, ordered requests through the interactive API.
+   A missing, failed, or incomplete locale is omitted from the published
+   localization batch and classified as a documented English fallback. The
+   other locales continue through validation independently.
 5. Do not guess a localized game term. Class and specialization terminology
    remains a hard blocker because it controls addon navigation. An unknown
    ability, boss, NPC, encounter, dungeon, or raid name may remain exactly in
@@ -84,10 +87,11 @@ It tries the fallback after the primary key is rejected, forbidden, exhausted,
 or remains unavailable after retries. It disables a rejected credential for
 the remainder of the process.
 
-If every configured key fails, stop translation and do not write partial
-output. Never fall back to an unauthenticated translation endpoint. Never
-print, commit, copy into generated data, or include credentials in an error
-message.
+If every configured key fails, publish an English-only translation batch with
+one documented generation-failure reason for every target locale; do not write
+partial output. Generate the complete English-only fallback batch instead.
+Never fall back to an unauthenticated translation endpoint. Never print,
+commit, copy into generated data, or include credentials in an error message.
 
 ## Agent-Assisted MCP Workflow
 

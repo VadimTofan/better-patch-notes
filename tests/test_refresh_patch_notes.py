@@ -101,12 +101,13 @@ class PatchNoteRefreshTests(unittest.TestCase):
         )
         data_path = PROJECT_ROOT / "data" / "retail-patch-notes.json"
         document = json.loads(data_path.read_text(encoding="utf-8"))
+        as_of_date = str(document["updatedAt"]).split("T", 1)[0]
 
         # When current-build retention is evaluated without publishing
         retained_document, removed = module.retain_relevant_changes(
             document,
             game_patch,
-            "2026-08-02",
+            as_of_date,
         )
 
         # Then every stored record is relevant to this WoW installation
