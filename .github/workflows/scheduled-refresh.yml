@@ -1,0 +1,265 @@
+name: Refresh Blizzard patch notes
+
+on:
+  schedule:
+    - cron: "7 4 * * *"
+      timezone: "Europe/Copenhagen"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Validate without changing release files or publishing
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  issues: write
+  actions: read
+
+concurrency:
+  group: better-patch-notes-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    outputs:
+      outcome: ${{ steps.result.outputs.outcome }}
+      commit_sha: ${{ steps.commit.outputs.commit_sha }}
+      artifact_name: ${{ steps.metadata.outputs.artifact_name }}
+      dry_run: ${{ steps.metadata.outputs.dry_run }}
+
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements-dev.txt
+
+      - name: Set up Node
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: web-app/.nvmrc
+          cache: npm
+          cache-dependency-path: web-app/package-lock.json
+
+      - name: Install validation dependencies
+        run: |
+          python -m pip install --requirement requirements-dev.txt
+          npm ci --prefix web-app
+
+      - name: Prepare run metadata
+        id: metadata
+        env:
+          REQUESTED_DRY_RUN: ${{ inputs.dry_run || 'false' }}
+        run: |
+          echo "artifact_name=refresh-audit-${GITHUB_RUN_ID}" >> "$GITHUB_OUTPUT"
+          echo "dry_run=$REQUESTED_DRY_RUN" >> "$GITHUB_OUTPUT"
+
+      - name: Require publishing secrets
+        id: secrets
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+        run: |
+          mkdir -p .bpn-work
+          missing=()
+          [ -n "$GEMINI_API_KEY" ] || missing+=(GEMINI_API_KEY)
+          [ -n "$CF_API_TOKEN" ] || missing+=(CF_API_TOKEN)
+          if [ "${#missing[@]}" -gt 0 ]; then
+            reason="Missing required repository secrets: ${missing[*]}"
+            python - "$reason" <<'PY'
+          import json
+          from pathlib import Path
+          import sys
+
+          Path(".bpn-work/automation-result.json").write_text(
+              json.dumps(
+                  {
+                      "status": "BLOCKED",
+                      "reason": sys.argv[1],
+                      "sourceUrls": [],
+                  },
+                  indent=2,
+              ) + "\n",
+              encoding="utf-8",
+          )
+          PY
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Collect, translate, and coordinate release
+        if: steps.secrets.outputs.ready == 'true'
+        continue-on-error: true
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_API_KEY2: ${{ secrets.GEMINI_API_KEY2 }}
+        run: |
+          dry_run_argument=()
+          if [ "${{ steps.metadata.outputs.dry_run }}" = "true" ]; then
+            dry_run_argument=(--dry-run)
+          fi
+          python -m automation.coordinator "${dry_run_argument[@]}"
+
+      - name: Read coordinator result
+        id: result
+        if: always()
+        run: |
+          if [ ! -f .bpn-work/automation-result.json ]; then
+            echo "Coordinator did not produce automation-result.json"
+            exit 1
+          fi
+          outcome="$(python -c "import json; print(json.load(open('.bpn-work/automation-result.json', encoding='utf-8'))['status'])")"
+          case "$outcome" in
+            NO_CHANGE|BLOCKED|RELEASE_READY) ;;
+            *) echo "Unknown coordinator outcome: $outcome"; exit 1 ;;
+          esac
+          echo "outcome=$outcome" >> "$GITHUB_OUTPUT"
+
+      - name: Run complete Python suite
+        if: >-
+          steps.result.outputs.outcome == 'RELEASE_READY' &&
+          steps.metadata.outputs.dry_run != 'true'
+        run: python -m unittest discover -s tests -v
+
+      - name: Test and build public website
+        if: >-
+          steps.result.outputs.outcome == 'RELEASE_READY' &&
+          steps.metadata.outputs.dry_run != 'true'
+        working-directory: web-app
+        run: |
+          npm run prepare:data
+          npm test
+          npm run build
+
+      - name: Validate exact release diff
+        if: >-
+          steps.result.outputs.outcome == 'RELEASE_READY' &&
+          steps.metadata.outputs.dry_run != 'true'
+        run: |
+          git diff --check
+          allowed='^(Addon.lua|BetterPatchNotes.toc|PatchNotesData.lua|README.md|changelog.txt|data/retail-patch-notes.json)$'
+          changed_files="$(git status --short | sed -E 's/^...//')"
+          if [ -z "$changed_files" ]; then
+            echo "RELEASE_READY produced no changed files"
+            exit 1
+          fi
+          while IFS= read -r changed_file; do
+            if ! grep -Eq "$allowed" <<< "$changed_file"; then
+              echo "Refresh produced an unauthorized file change: $changed_file"
+              exit 1
+            fi
+          done <<< "$changed_files"
+
+      - name: Commit verified data release
+        id: commit
+        if: >-
+          steps.result.outputs.outcome == 'RELEASE_READY' &&
+          steps.metadata.outputs.dry_run != 'true'
+        run: |
+          release_date="$(python -c "import json; print(json.load(open('.bpn-work/automation-result.json', encoding='utf-8'))['asOfDate'])")"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- BetterPatchNotes.toc Addon.lua README.md changelog.txt \
+            PatchNotesData.lua data/retail-patch-notes.json
+          git diff --cached --check
+          git commit -m "data: refresh retail patch notes for $release_date"
+          commit_sha="$(git rev-parse HEAD)"
+          git push origin HEAD:main
+          echo "commit_sha=$commit_sha" >> "$GITHUB_OUTPUT"
+
+      - name: Upload refresh audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.metadata.outputs.artifact_name }}
+          path: .bpn-work/
+          if-no-files-found: error
+          retention-days: 30
+
+  release:
+    needs: refresh
+    if: >-
+      needs.refresh.result == 'success' &&
+      needs.refresh.outputs.outcome == 'RELEASE_READY' &&
+      needs.refresh.outputs.dry_run != 'true'
+    uses: ./.github/workflows/release.yml
+    with:
+      commit_sha: ${{ needs.refresh.outputs.commit_sha }}
+    secrets:
+      CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+
+  report:
+    needs: [refresh, release]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out reporting code
+        uses: actions/checkout@v6
+
+      - name: Download refresh audit
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ needs.refresh.outputs.artifact_name }}
+          path: .bpn-work
+
+      - name: Create or update a blocked-refresh issue
+        if: >-
+          needs.refresh.result == 'failure' ||
+          needs.refresh.outputs.outcome == 'BLOCKED' ||
+          needs.release.result == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          WORKFLOW_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          ARTIFACT_NAME: ${{ needs.refresh.outputs.artifact_name }}
+          RELEASE_RESULT: ${{ needs.release.result }}
+        run: |
+          stage=refresh
+          if [ "$RELEASE_RESULT" = "failure" ]; then
+            stage=curseforge-release
+          fi
+          python -m automation.reporting \
+            --result .bpn-work/automation-result.json \
+            --stage "$stage" \
+            --workflow-url "$WORKFLOW_URL" \
+            --artifact-name "$ARTIFACT_NAME" \
+            --output .bpn-work/issue.json
+          issue_number="$(gh issue list --state open --limit 100 \
+            --json number,body \
+            --jq '.[] | select(.body | contains("better-patch-notes-automation")) | .number' \
+            | head -n 1)"
+          title="$(python -c "import json; print(json.load(open('.bpn-work/issue.json', encoding='utf-8'))['title'])")"
+          python -c "import json; print(json.load(open('.bpn-work/issue.json', encoding='utf-8'))['body'])" > .bpn-work/issue-body.md
+          if [ -n "$issue_number" ]; then
+            gh issue edit "$issue_number" --title "$title" --body-file .bpn-work/issue-body.md
+          else
+            gh issue create --title "$title" --body-file .bpn-work/issue-body.md
+          fi
+          exit 1
+
+      - name: Close the previous blocked-refresh issue
+        if: >-
+          needs.refresh.result == 'success' &&
+          needs.refresh.outputs.outcome != 'BLOCKED' &&
+          needs.release.result != 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          issue_number="$(gh issue list --state open --limit 100 \
+            --json number,body \
+            --jq '.[] | select(.body | contains("better-patch-notes-automation")) | .number' \
+            | head -n 1)"
+          if [ -n "$issue_number" ]; then
+            gh issue close "$issue_number" \
+              --comment "A later automatic refresh completed successfully."
+          fi

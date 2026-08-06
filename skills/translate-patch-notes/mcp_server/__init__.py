@@ -1,0 +1,1 @@
+"""BetterPatchNotes translation MCP server."""

@@ -11,6 +11,28 @@ __pycache__/
 !/.github/workflows/
 /.github/workflows/*
 !/.github/workflows/release.yml
+!/.github/workflows/scheduled-refresh.yml
+
+# Automatic refresh implementation and verification inputs.
+!/.codex/
+/.codex/*
+!/.codex/config.toml
+!/AGENTS.md
+!/requirements-dev.txt
+!/automation/
+!/automation/**
+!/docs/
+!/docs/**
+!/skills/
+/skills/*
+!/skills/fetch-retail-patch-notes/
+!/skills/fetch-retail-patch-notes/**
+!/skills/translate-patch-notes/
+!/skills/translate-patch-notes/**
+!/tests/
+!/tests/**
+**/__pycache__/
+*.pyc
 
 # Public project documentation.
 !/README.md

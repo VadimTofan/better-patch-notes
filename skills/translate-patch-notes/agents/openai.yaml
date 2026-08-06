@@ -1,0 +1,4 @@
+interface:
+  display_name: "Translate Patch Notes"
+  short_description: "Ground WoW patch-note translations in official terms"
+  default_prompt: "Use $translate-patch-notes and the project MCP tools to translate each locale separately, verify Blizzard terminology, run the 30-check audit, and finalize only a complete locale matrix."

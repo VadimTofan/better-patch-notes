@@ -1,0 +1,30 @@
+{
+  "sections": [],
+  "feed": {
+    "contentItems": [
+      {
+        "contentType": "blogs",
+        "properties": {
+          "title": "Hotfixes: August 4, 2026",
+          "summary": "Recent World of Warcraft hotfixes.",
+          "lastUpdated": "2026-08-04T18:00:00Z",
+          "author": "Blizzard Entertainment",
+          "newsUrl": "https://news.blizzard.com/en-us/article/24299999/hotfixes-august-4-2026"
+        }
+      },
+      {
+        "contentType": "blogs",
+        "properties": {
+          "title": "WoW Weekly: August 2026",
+          "summary": "Weekly news.",
+          "lastUpdated": "2026-08-03T18:00:00Z",
+          "author": "Blizzard Entertainment",
+          "newsUrl": "https://news.blizzard.com/en-us/article/24299998/wow-weekly-august-2026"
+        }
+      }
+    ],
+    "pagination": {
+      "hasNextPage": false
+    }
+  }
+}

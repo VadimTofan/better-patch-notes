@@ -1,6 +1,22 @@
 name: Release to CurseForge
 
 on:
+  workflow_call:
+    inputs:
+      commit_sha:
+        description: Exact release commit to package
+        required: false
+        type: string
+    secrets:
+      CF_API_TOKEN:
+        required: true
+    outputs:
+      version:
+        value: ${{ jobs.release.outputs.version }}
+      tag:
+        value: ${{ jobs.release.outputs.tag }}
+      file_id:
+        value: ${{ jobs.release.outputs.file_id }}
   push:
     branches: [main]
     paths:
@@ -26,12 +42,17 @@ concurrency:
 jobs:
   release:
     runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.validate.outputs.version }}
+      tag: ${{ steps.validate.outputs.tag }}
+      file_id: ${{ steps.upload.outputs.file_id }}
 
     steps:
       - name: Check out repository
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
+          ref: ${{ inputs.commit_sha || github.sha }}
 
       - name: Require CurseForge token
         env:
@@ -136,6 +157,7 @@ jobs:
           echo "archive=$archive" >> "$GITHUB_OUTPUT"
 
       - name: Upload release to CurseForge
+        id: upload
         shell: bash
         env:
           CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
@@ -208,6 +230,7 @@ jobs:
           file_id="$(jq -er '.id | select(type == "number")' \
             "$upload_response_file")"
           echo "Uploaded CurseForge file ID: $file_id"
+          echo "file_id=$file_id" >> "$GITHUB_OUTPUT"
 
       - name: Publish release tag
         shell: bash

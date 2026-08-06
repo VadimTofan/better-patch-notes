@@ -1,0 +1,8 @@
+[mcp_servers.better_patch_notes_translation]
+command = "python"
+args = ["skills/translate-patch-notes/mcp_server/server.py"]
+cwd = "."
+enabled = true
+required = false
+default_tools_approval_mode = "writes"
+tool_timeout_sec = 60

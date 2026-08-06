@@ -63,6 +63,16 @@ Install an updated addon release to receive newer notes. Live entries target
 the installed Retail patch, while PTR entries may target a newer test build.
 The packaged history is intentionally limited to recent, relevant changes.
 
+Maintainer releases are refreshed automatically from reviewed official
+Blizzard news and blue-post sources at 04:07 Europe/Copenhagen. A release is
+published only when its build, 14-day window, all supported translations,
+canonical JSON/Lua pair, version, changelog, addon tests, and website build all
+pass. A no-change or uncertain run publishes nothing and leaves a GitHub audit
+artifact; blocked runs also create or update one maintainer issue.
+
+See [automatic refresh operations](docs/automatic-refresh-operations.md) for
+configuration, dry runs, failure handling, and release verification.
+
 ## Localization
 
 The interface supports these official WoW client locales:

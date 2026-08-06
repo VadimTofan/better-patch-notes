@@ -1,0 +1,4 @@
+interface:
+  display_name: "Fetch Retail Patch Notes"
+  short_description: "Refresh localized live and PTR Retail patch notes"
+  default_prompt: "Use $fetch-retail-patch-notes to refresh localized live and PTR Retail class, dungeon, and raid changes."

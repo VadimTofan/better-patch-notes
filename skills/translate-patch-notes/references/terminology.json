@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "locales": {
+    "deDE": {
+      "terms": {
+        "Druid": {
+          "localized": "Druide",
+          "type": "class",
+          "sourceUrl": "https://worldofwarcraft.blizzard.com/de-de/game/classes/druid",
+          "reviewedAt": "2026-08-02"
+        }
+      }
+    },
+    "esES": {
+      "terms": {
+        "Druid": {
+          "localized": "Druida",
+          "type": "class",
+          "sourceUrl": "https://worldofwarcraft.blizzard.com/es-es/game/classes/druid",
+          "reviewedAt": "2026-08-02"
+        }
+      }
+    },
+    "esMX": {
+      "terms": {
+        "Druid": {
+          "localized": "Druida",
+          "type": "class",
+          "sourceUrl": "https://worldofwarcraft.blizzard.com/es-mx/game/classes/druid",
+          "reviewedAt": "2026-08-02"
+        }
+      }
+    },
+    "frFR": {
+      "terms": {
+        "Druid": {
+          "localized": "Druide",
+          "type": "class",
+          "sourceUrl": "https://worldofwarcraft.blizzard.com/fr-fr/game/classes/druid",
+          "reviewedAt": "2026-08-02"
+        }
+      }
+    },
+    "itIT": {
+      "terms": {
+        "Druid": {
+          "localized": "Druido",
+          "type": "class",
+          "sourceUrl": "https://worldofwarcraft.blizzard.com/it-it/game/classes/druid",
+          "reviewedAt": "2026-08-02"
+        }
+      }
+    },
+    "koKR": {
+      "terms": {
+        "Druid": {
+          "localized": "드루이드",
+          "type": "class",
+          "sourceUrl": "https://worldofwarcraft.blizzard.com/ko-kr/game/classes/druid",
+          "reviewedAt": "2026-08-02"
+        }
+      }
+    },
+    "ptBR": {
+      "terms": {
+        "Druid": {
+          "localized": "Druida",
+          "type": "class",
+          "sourceUrl": "https://worldofwarcraft.blizzard.com/pt-br/game/classes/druid",
+          "reviewedAt": "2026-08-02"
+        }
+      }
+    },
+    "ruRU": {
+      "terms": {
+        "Druid": {
+          "localized": "Друид",
+          "type": "class",
+          "sourceUrl": "https://worldofwarcraft.blizzard.com/ru-ru/game/classes/druid",
+          "reviewedAt": "2026-08-02"
+        }
+      }
+    },
+    "zhCN": {
+      "terms": {
+        "Druid": {
+          "localized": "德鲁伊",
+          "type": "class",
+          "sourceUrl": "https://worldofwarcraft.blizzard.com/zh-cn/game/classes/druid",
+          "reviewedAt": "2026-08-02"
+        }
+      }
+    },
+    "zhTW": {
+      "terms": {
+        "Druid": {
+          "localized": "德魯伊",
+          "type": "class",
+          "sourceUrl": "https://worldofwarcraft.blizzard.com/zh-tw/game/classes/druid",
+          "reviewedAt": "2026-08-02"
+        }
+      }
+    }
+  }
+}

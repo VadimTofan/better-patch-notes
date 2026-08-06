@@ -1,0 +1,29 @@
+{
+  "id": 2317811,
+  "slug": "midnight-curse-of-ulatek-ptr-development-notes",
+  "title": "Midnight: Curse of Ula'tek PTR Development Notes",
+  "post_stream": {
+    "posts": [
+      {
+        "post_number": 18,
+        "post_type": 1,
+        "username": "Linxy",
+        "primary_group_name": "community-manager",
+        "staff": true,
+        "created_at": "2026-07-31T18:49:00Z",
+        "updated_at": "2026-07-31T18:55:00Z",
+        "cooked": "<h2>CLASSES</h2><p>Mage</p><ul><li>Arcane Blast damage increased by 20%.</li></ul>"
+      },
+      {
+        "post_number": 19,
+        "post_type": 1,
+        "username": "PlayerOne",
+        "primary_group_name": null,
+        "staff": false,
+        "created_at": "2026-07-31T19:00:00Z",
+        "updated_at": "2026-07-31T19:00:00Z",
+        "cooked": "<p>I like these changes.</p>"
+      }
+    ]
+  }
+}

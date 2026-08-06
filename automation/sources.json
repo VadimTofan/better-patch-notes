@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "allowedHosts": [
+    "news.blizzard.com",
+    "worldofwarcraft.blizzard.com",
+    "us.forums.blizzard.com",
+    "eu.forums.blizzard.com",
+    "us.version.battle.net",
+    "eu.version.battle.net"
+  ],
+  "blueAuthors": [
+    "Bornakk",
+    "Kaivax",
+    "Linxy",
+    "Nethaera",
+    "SpeedyRogue-2168761"
+  ],
+  "maxResponseBytes": 5000000,
+  "timeoutSeconds": 20,
+  "sources": [
+    {
+      "url": "https://news.blizzard.com/en-us/api/news/world-of-warcraft",
+      "kind": "news_feed",
+      "channel": "live",
+      "patch": "current",
+      "locale": "en",
+      "titlePatterns": [
+        "hotfixes",
+        "content update notes"
+      ]
+    },
+    {
+      "url": "https://us.forums.blizzard.com/en/wow/c/341.json",
+      "kind": "forum_category",
+      "channel": "ptr",
+      "patch": "12.1.0",
+      "locale": "en",
+      "titlePatterns": [
+        "development notes",
+        "dungeon test"
+      ]
+    },
+    {
+      "url": "https://us.version.battle.net/wow/versions",
+      "kind": "version",
+      "channel": "live",
+      "patch": "current",
+      "locale": "en",
+      "titlePatterns": [
+        "wow"
+      ]
+    },
+    {
+      "url": "https://eu.version.battle.net/wow/versions",
+      "kind": "version",
+      "channel": "live",
+      "patch": "current",
+      "locale": "en",
+      "titlePatterns": [
+        "wow"
+      ]
+    }
+  ]
+}

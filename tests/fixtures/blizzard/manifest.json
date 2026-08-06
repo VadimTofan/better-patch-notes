@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-08-05T00:00:00Z",
+  "fixtures": [
+    {
+      "file": "news-feed.json",
+      "sourceUrl": "https://news.blizzard.com/en-us/api/news/world-of-warcraft",
+      "verifiedAt": "2026-08-05",
+      "fullResponseSha256": "fa35c10dd5cc6911e3c1a1b44d5aeb2e5099719314dc3dd96a790cd5a2b36c7e"
+    },
+    {
+      "file": "live-hotfix-notes.html",
+      "sourceUrl": "https://news.blizzard.com/en-us/article/24287397/hotfixes-july-21-2026",
+      "verifiedAt": "2026-08-05",
+      "fullResponseSha256": "7bd2f2641129f4ce801d113882d6119de1e7a09a5310d51ebf34bd9dab434876"
+    },
+    {
+      "file": "forum-topic.json",
+      "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/midnight-curse-of-ulatek-ptr-development-notes/2317811/18",
+      "verifiedAt": "2026-08-05",
+      "fullResponseSha256": "9e5350774ed8e28eefe3773780d013a24454b9686c4bc3e032edc38e53a6a20f"
+    },
+    {
+      "file": "forum-category.json",
+      "sourceUrl": "https://us.forums.blizzard.com/en/wow/c/341.json",
+      "verifiedAt": "2026-08-06",
+      "fullResponseSha256": "a6aaa90c16ca7e1d8735c3f158cb8ece890b666cc2235b01e01cd2cc0fc51d60"
+    }
+  ]
+}
