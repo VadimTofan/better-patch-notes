@@ -77,6 +77,7 @@ class ScheduledRefreshWorkflowTests(unittest.TestCase):
             "BLOCKED",
             "if: always()",
             "actions/upload-artifact@",
+            "include-hidden-files: true",
             "better-patch-notes-automation",
             "gh issue list",
             "gh issue create",

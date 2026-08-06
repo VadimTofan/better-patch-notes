@@ -184,6 +184,7 @@ jobs:
         with:
           name: ${{ steps.metadata.outputs.artifact_name }}
           path: .bpn-work/
+          include-hidden-files: true
           if-no-files-found: error
           retention-days: 30
 
