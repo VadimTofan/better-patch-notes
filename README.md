@@ -70,9 +70,6 @@ canonical JSON/Lua pair, version, changelog, addon tests, and website build all
 pass. A no-change or uncertain run publishes nothing and leaves a GitHub audit
 artifact; blocked runs also create or update one maintainer issue.
 
-See [automatic refresh operations](docs/automatic-refresh-operations.md) for
-configuration, dry runs, failure handling, and release verification.
-
 ## Localization
 
 The interface supports these official WoW client locales:

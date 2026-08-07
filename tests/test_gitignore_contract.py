@@ -51,7 +51,6 @@ class GitIgnoreContractTests(unittest.TestCase):
             "data/retail-patch-notes.json",
             "automation/models.py",
             "automation/sources.json",
-            "docs/automatic-refresh-operations.md",
             "skills/fetch-retail-patch-notes/scripts/refresh_patch_notes.py",
             "skills/translate-patch-notes/references/terminology.json",
             "skills/translate-patch-notes/scripts/generate_translations.py",
