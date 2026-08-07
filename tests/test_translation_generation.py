@@ -267,8 +267,8 @@ class TranslationGenerationTests(unittest.TestCase):
         )
         self.assertEqual(1, rate_limiter.wait_count)
 
-    def test_limits_translation_request_starts_to_ten_per_minute(self) -> None:
-        # Given a limiter configured for ten request starts per minute
+    def test_limits_translation_request_starts_to_five_per_minute(self) -> None:
+        # Given a limiter configured for five request starts per minute
         self.assertIsNotNone(self.generator)
         current_time = [100.0]
         sleep_durations: list[float] = []
@@ -281,7 +281,7 @@ class TranslationGenerationTests(unittest.TestCase):
             current_time[0] += seconds
 
         limiter = self.generator.GeminiRequestRateLimiter(
-            requests_per_minute=10,
+            requests_per_minute=5,
             monotonic=monotonic,
             sleep=sleep,
         )
@@ -291,8 +291,8 @@ class TranslationGenerationTests(unittest.TestCase):
         limiter.wait()
         limiter.wait()
 
-        # Then starts are spaced six seconds apart
-        self.assertEqual([6.0, 6.0], sleep_durations)
+        # Then starts are spaced twelve seconds apart
+        self.assertEqual([12.0, 12.0], sleep_durations)
 
     def test_rate_limits_batch_submission(self) -> None:
         # Given one Batch API submission and a shared request limiter

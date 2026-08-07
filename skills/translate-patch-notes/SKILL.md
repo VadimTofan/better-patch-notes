@@ -67,9 +67,9 @@ translation request, including normal chunks, malformed-bullet repairs, and
 Batch submissions. Do not substitute another Gemini model unless the user
 explicitly changes this rule.
 
-Limit generation traffic to 10 translation request starts per rolling minute,
+Limit generation traffic to 5 translation request starts per rolling minute,
 shared across all configured credentials and transports. Space request starts
-at least six seconds apart. Count retries and fallback-key attempts toward the
+at least twelve seconds apart. Count retries and fallback-key attempts toward the
 limit; Batch status polling is not a translation request start.
 
 Store credentials in the repository-root `.env` file or the process

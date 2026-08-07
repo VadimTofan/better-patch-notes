@@ -24,7 +24,7 @@ GEMINI_INTERACTIONS_URL = (
 GEMINI_MODEL = "gemini-3.5-flash-lite"
 GEMINI_BATCH_MODEL = "gemini-3.5-flash-lite"
 GEMINI_API_BASE_URL = "https://generativelanguage.googleapis.com/v1beta"
-GEMINI_REQUESTS_PER_MINUTE = 10
+GEMINI_REQUESTS_PER_MINUTE = 5
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
 
 LANGUAGE_NAMES = {

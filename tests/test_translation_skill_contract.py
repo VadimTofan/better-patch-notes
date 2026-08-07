@@ -100,7 +100,7 @@ class TranslationSkillContractTests(unittest.TestCase):
             "do not write partial output",
             "Never fall back to an unauthenticated translation endpoint",
             "Gemini 3.5 Flash-Lite",
-            "10 translation request starts per rolling minute",
+            "5 translation request starts per rolling minute",
             "authorization key",
             "September 2026",
             "Updated: 2026-08-06",
