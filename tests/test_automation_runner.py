@@ -118,6 +118,7 @@ class AutomationRunnerTests(unittest.TestCase):
             root = Path(temporary_directory)
             terminology_path = root / "terminology.json"
             terminology_path.write_text("{}", encoding="utf-8")
+            error_reason = "placeholder repair failed"
             document = {
                 "updatedAt": "2026-08-06T04:07:00+02:00",
                 "changes": [
@@ -146,7 +147,7 @@ class AutomationRunnerTests(unittest.TestCase):
             with (
                 patch(
                     "automation.runner._run",
-                    side_effect=RuntimeError("placeholder repair failed"),
+                    side_effect=RuntimeError(error_reason),
                 ),
                 patch("automation.runner.WORK_DIRECTORY", root),
             ):
@@ -154,6 +155,7 @@ class AutomationRunnerTests(unittest.TestCase):
 
             # Then English remains publishable and every locale can fall back
             self.assertEqual(document["updatedAt"], batch["retrievedAt"])
+            self.assertEqual(error_reason, batch["translationGenerationError"])
             change = batch["changes"][0]
             self.assertEqual({"en"}, set(change["localizations"]))
             self.assertEqual("", change["replacesSourceUrl"])

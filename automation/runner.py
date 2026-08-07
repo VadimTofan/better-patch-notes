@@ -292,6 +292,13 @@ def _run(command: list[str]) -> str:
     return (completed.stdout or "").strip()
 
 
+def _translation_failure_message(error: RuntimeError) -> str:
+    message = " ".join(str(error).split())
+    if message:
+        return message
+    return "automatic translation generation failed"
+
+
 def _translator(
     document: dict[str, object],
     terminology_path: Path,
@@ -318,13 +325,15 @@ def _translator(
                 ]
             )
             batch = json.loads(output_path.read_text(encoding="utf-8"))
-        except RuntimeError:
+        except RuntimeError as error:
+            translation_error = _translation_failure_message(error)
             batch = {
                 "retrievedAt": document["updatedAt"],
                 "fallbackReasons": {
                     locale: "automatic translation generation failed"
                     for locale in sorted(SUPPORTED_TRANSLATION_LOCALES)
                 },
+                "translationGenerationError": translation_error,
                 "changes": deepcopy(document["changes"]),
             }
             for change in batch["changes"]:
