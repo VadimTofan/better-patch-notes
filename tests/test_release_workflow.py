@@ -191,6 +191,24 @@ class ReleaseWorkflowTests(unittest.TestCase):
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, workflow)
 
+    def test_upload_retries_one_server_error_after_ten_minutes(self) -> None:
+        # Given a transient CurseForge server failure
+        expected_phrases = (
+            "upload_attempt=1",
+            '[[ "$upload_status" =~ ^5[0-9][0-9]$ ]]',
+            '[ "$upload_attempt" -eq 1 ]',
+            "sleep 600",
+            "upload_attempt=2",
+        )
+
+        # When the CurseForge upload retry policy is inspected
+        workflow = WORKFLOW_PATH.read_text(encoding="utf-8")
+
+        # Then one retry is allowed after ten minutes for HTTP 5xx responses
+        for phrase in expected_phrases:
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, workflow)
+
     def test_package_step_lists_only_runtime_files(self) -> None:
         # Given the exact set of files loaded by the addon at runtime
         runtime_files = (

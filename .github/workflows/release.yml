@@ -213,19 +213,35 @@ jobs:
               releaseType: "release"
             }')"
 
-          if ! upload_status="$(printf '%s' "$metadata" | \
-            curl --fail-with-body --silent --show-error \
-            --request POST \
-            --output "$upload_response_file" \
-            --write-out "%{http_code}" \
-            --header "X-Api-Token: $CF_API_TOKEN" \
-            --form "metadata=<-" \
-            --form "file=@$archive" \
-            "https://wow.curseforge.com/api/projects/1635519/upload-file")"; then
+          upload_attempt=1
+          while true; do
+            if upload_status="$(printf '%s' "$metadata" | \
+              curl --fail-with-body --silent --show-error \
+              --request POST \
+              --output "$upload_response_file" \
+              --write-out "%{http_code}" \
+              --header "X-Api-Token: $CF_API_TOKEN" \
+              --form "metadata=<-" \
+              --form "file=@$archive" \
+              "https://wow.curseforge.com/api/projects/1635519/upload-file")"
+            then
+              break
+            fi
+
             echo "CurseForge upload failed with HTTP $upload_status"
             print_api_error "$upload_response_file"
+
+            if [[ "$upload_status" =~ ^5[0-9][0-9]$ ]] \
+              && [ "$upload_attempt" -eq 1 ]
+            then
+              echo "Retrying CurseForge upload in 10 minutes"
+              sleep 600
+              upload_attempt=2
+              continue
+            fi
+
             exit 1
-          fi
+          done
 
           file_id="$(jq -er '.id | select(type == "number")' \
             "$upload_response_file")"
