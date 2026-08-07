@@ -10713,588 +10713,63 @@ addon.PatchNotesData = {
             retrievedAt = "2026-08-02T19:00:00+02:00",
             specializationId = 0,
         },
-        {
-            category = "Dungeon",
-            channel = "ptr",
-            classToken = "",
-            date = "2026-07-24",
-            id = "change-e6dea0e79bafb702",
-            localizations = {
-                deDE = {
-                    change = {
-                        "Kreaturengesundheit in Mythic+ um 4% erhöht.",
-                    },
-                    name = "All Dungeons",
-                    source = "Blizzard",
-                    sourceUrl = "https://us.forums.blizzard.com/en/wow/t/feedback-midnight-season-2-dungeon-test-july-21st-july-27th/2328928/7",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://worldofwarcraft.blizzard.com/de-de/game/classes/druid",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                en = {
-                    change = {
-                        "Increased creature health in Mythic+ by 4%.",
-                    },
-                    name = "All Dungeons",
-                    source = "Blizzard",
-                    sourceUrl = "https://us.forums.blizzard.com/en/wow/t/feedback-midnight-season-2-dungeon-test-july-21st-july-27th/2328928/7",
-                    specialization = "",
-                    terminologySourceUrls = {},
-                    translatedFrom = "",
-                    translationType = "official",
-                },
-                esES = {
-                    change = {
-                        "Salud de las criaturas aumentada en Mythic+ en un 4%.",
-                    },
-                    name = "All Dungeons",
-                    source = "Blizzard",
-                    sourceUrl = "https://us.forums.blizzard.com/en/wow/t/feedback-midnight-season-2-dungeon-test-july-21st-july-27th/2328928/7",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://worldofwarcraft.blizzard.com/es-es/game/classes/druid",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                esMX = {
-                    change = {
-                        "Se aumentó la salud de las criaturas en Mythic+ en 4%.",
-                    },
-                    name = "All Dungeons",
-                    source = "Blizzard",
-                    sourceUrl = "https://us.forums.blizzard.com/en/wow/t/feedback-midnight-season-2-dungeon-test-july-21st-july-27th/2328928/7",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://worldofwarcraft.blizzard.com/es-mx/game/classes/druid",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                frFR = {
-                    change = {
-                        "Santé des créatures augmentée dans Mythic+ de 4%.",
-                    },
-                    name = "All Dungeons",
-                    source = "Blizzard",
-                    sourceUrl = "https://us.forums.blizzard.com/en/wow/t/feedback-midnight-season-2-dungeon-test-july-21st-july-27th/2328928/7",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://worldofwarcraft.blizzard.com/fr-fr/game/classes/druid",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                itIT = {
-                    change = {
-                        "Salute delle creature aumentata in Mythic+ di 4%.",
-                    },
-                    name = "All Dungeons",
-                    source = "Blizzard",
-                    sourceUrl = "https://us.forums.blizzard.com/en/wow/t/feedback-midnight-season-2-dungeon-test-july-21st-july-27th/2328928/7",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://worldofwarcraft.blizzard.com/it-it/game/classes/druid",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                koKR = {
-                    change = {
-                        "Mythic+ 단계를의 적 생명력이 4%만큼 증가했습니다.",
-                    },
-                    name = "All Dungeons",
-                    source = "Blizzard",
-                    sourceUrl = "https://us.forums.blizzard.com/en/wow/t/feedback-midnight-season-2-dungeon-test-july-21st-july-27th/2328928/7",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://worldofwarcraft.blizzard.com/ko-kr/game/classes/druid",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                ptBR = {
-                    change = {
-                        "Aumentada a vida das criaturas em Mythic+ em 4%.",
-                    },
-                    name = "All Dungeons",
-                    source = "Blizzard",
-                    sourceUrl = "https://us.forums.blizzard.com/en/wow/t/feedback-midnight-season-2-dungeon-test-july-21st-july-27th/2328928/7",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://worldofwarcraft.blizzard.com/pt-br/game/classes/druid",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                ruRU = {
-                    change = {
-                        "Запас здоровья существ в Mythic+ увеличен на 4%.",
-                    },
-                    name = "All Dungeons",
-                    source = "Blizzard",
-                    sourceUrl = "https://us.forums.blizzard.com/en/wow/t/feedback-midnight-season-2-dungeon-test-july-21st-july-27th/2328928/7",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://worldofwarcraft.blizzard.com/ru-ru/game/classes/druid",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                zhCN = {
-                    change = {
-                        "提高了 Mythic 及以上层数中怪物的生命值，幅度为 4%。",
-                    },
-                    name = "All Dungeons",
-                    source = "Blizzard",
-                    sourceUrl = "https://us.forums.blizzard.com/en/wow/t/feedback-midnight-season-2-dungeon-test-july-21st-july-27th/2328928/7",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://worldofwarcraft.blizzard.com/zh-cn/game/classes/druid",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                zhTW = {
-                    change = {
-                        "提高 Mythic+ 中生物的生命值，幅度為 4%。",
-                    },
-                    name = "All Dungeons",
-                    source = "Blizzard",
-                    sourceUrl = "https://us.forums.blizzard.com/en/wow/t/feedback-midnight-season-2-dungeon-test-july-21st-july-27th/2328928/7",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://worldofwarcraft.blizzard.com/zh-tw/game/classes/druid",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-            },
-            patch = "12.1",
-            retrievedAt = "2026-08-02T19:00:00+02:00",
-            specializationId = 0,
-        },
-        {
-            category = "Dungeon",
-            channel = "ptr",
-            classToken = "",
-            date = "2026-07-24",
-            id = "change-944ba874aea530ca",
-            localizations = {
-                deDE = {
-                    change = {
-                        "Kokia Blazehoof – Molten Boulder: Der The-Ort der finalen Explosion wird nun sofort beim Beginn des Zaubers angezeigt.",
-                        "Kyrakka and Erkhart Stormvein: Die Zeit, die nach der Landung von Kyrakka für die finale Phase vergeht, bevor sie angreifen kann, wurde erhöht.",
-                    },
-                    name = "Ruby Life Pools",
-                    source = "Blizzard",
-                    sourceUrl = "https://us.forums.blizzard.com/en/wow/t/feedback-midnight-season-2-dungeon-test-july-21st-july-27th/2328928/5",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://worldofwarcraft.blizzard.com/de-de/game/classes/druid",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                en = {
-                    change = {
-                        "Kokia Blazehoof – Molten Boulder: The location of the final explosion is now shown immediately when the cast begins.",
-                        "Kyrakka and Erkhart Stormvein: Increased the time after Kyrakka lands for the final phase before she can attack.",
-                    },
-                    name = "Ruby Life Pools",
-                    source = "Blizzard",
-                    sourceUrl = "https://us.forums.blizzard.com/en/wow/t/feedback-midnight-season-2-dungeon-test-july-21st-july-27th/2328928/5",
-                    specialization = "",
-                    terminologySourceUrls = {},
-                    translatedFrom = "",
-                    translationType = "official",
-                },
-                esES = {
-                    change = {
-                        "Kokia Blazehoof – Molten Boulder: The ubicación de la explosión final se muestra ahora de inmediato al comenzar el lanzamiento.",
-                        "Kyrakka and Erkhart Stormvein: Se ha aumentado el tiempo tras el aterrizaje de Kyrakka en la fase final antes de que pueda atacar.",
-                    },
-                    name = "Ruby Life Pools",
-                    source = "Blizzard",
-                    sourceUrl = "https://us.forums.blizzard.com/en/wow/t/feedback-midnight-season-2-dungeon-test-july-21st-july-27th/2328928/5",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://worldofwarcraft.blizzard.com/es-es/game/classes/druid",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                esMX = {
-                    change = {
-                        "Kokia Blazehoof – Molten Boulder: La ubicación The de la explosión final ahora se muestra de inmediato al comenzar el lanzamiento.",
-                        "Kyrakka and Erkhart Stormvein: Se aumentó el tiempo tras el aterrizaje de Kyrakka para la fase final antes de que pueda atacar.",
-                    },
-                    name = "Ruby Life Pools",
-                    source = "Blizzard",
-                    sourceUrl = "https://us.forums.blizzard.com/en/wow/t/feedback-midnight-season-2-dungeon-test-july-21st-july-27th/2328928/5",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://worldofwarcraft.blizzard.com/es-mx/game/classes/druid",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                frFR = {
-                    change = {
-                        "Kokia Blazehoof – Molten Boulder : L'emplacement de The de l'explosion finale est désormais affiché immédiatement au début de l'incantation.",
-                        "Kyrakka and Erkhart Stormvein : Augmentation du temps entre l'atterrissage de Kyrakka et le début de la phase finale où elle peut attaquer.",
-                    },
-                    name = "Ruby Life Pools",
-                    source = "Blizzard",
-                    sourceUrl = "https://us.forums.blizzard.com/en/wow/t/feedback-midnight-season-2-dungeon-test-july-21st-july-27th/2328928/5",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://worldofwarcraft.blizzard.com/fr-fr/game/classes/druid",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                itIT = {
-                    change = {
-                        "Kokia Blazehoof – Molten Boulder: La posizione di The dell'esplosione finale viene ora mostrata immediatamente all'inizio del lancio.",
-                        "Kyrakka and Erkhart Stormvein: Aumentato il tempo dopo l'atterraggio di Kyrakka per la fase finale prima che possa attaccare.",
-                    },
-                    name = "Ruby Life Pools",
-                    source = "Blizzard",
-                    sourceUrl = "https://us.forums.blizzard.com/en/wow/t/feedback-midnight-season-2-dungeon-test-july-21st-july-27th/2328928/5",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://worldofwarcraft.blizzard.com/it-it/game/classes/druid",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                koKR = {
-                    change = {
-                        "Kokia Blazehoof – Molten Boulder: 이제 시전이 시작될 때 최종 폭발의 The 위치가 즉시 표시됩니다.",
-                        "Kyrakka and Erkhart Stormvein: Kyrakka이(가) 착지한 후 마지막 페이즈에서 공격을 시작하기까지의 대기 시간이 증가했습니다.",
-                    },
-                    name = "Ruby Life Pools",
-                    source = "Blizzard",
-                    sourceUrl = "https://us.forums.blizzard.com/en/wow/t/feedback-midnight-season-2-dungeon-test-july-21st-july-27th/2328928/5",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://worldofwarcraft.blizzard.com/ko-kr/game/classes/druid",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                ptBR = {
-                    change = {
-                        "Kokia Blazehoof – Molten Boulder: A localização de The da explosão final agora é exibida imediatamente quando o lançamento começa.",
-                        "Kyrakka and Erkhart Stormvein: O tempo após a aterrissagem de Kyrakka para a fase final antes que ela possa atacar foi aumentado.",
-                    },
-                    name = "Ruby Life Pools",
-                    source = "Blizzard",
-                    sourceUrl = "https://us.forums.blizzard.com/en/wow/t/feedback-midnight-season-2-dungeon-test-july-21st-july-27th/2328928/5",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://worldofwarcraft.blizzard.com/pt-br/game/classes/druid",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                ruRU = {
-                    change = {
-                        "Kokia Blazehoof – Molten Boulder: The местоположение финального взрыва теперь отображается сразу при начале применения.",
-                        "Kyrakka and Erkhart Stormvein: увеличено время после приземления Kyrakka перед началом финальной фазы, в течение которого она не может атаковать.",
-                    },
-                    name = "Ruby Life Pools",
-                    source = "Blizzard",
-                    sourceUrl = "https://us.forums.blizzard.com/en/wow/t/feedback-midnight-season-2-dungeon-test-july-21st-july-27th/2328928/5",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://worldofwarcraft.blizzard.com/ru-ru/game/classes/druid",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                zhCN = {
-                    change = {
-                        "Kokia Blazehoof – Molten Boulder：最终爆炸的 The 位置现在会在开始施法时立即显示。",
-                        "Kyrakka and Erkhart Stormvein：延长了在 Kyrakka 落地后到进入最后阶段且其能够攻击之前的这段时间。",
-                    },
-                    name = "Ruby Life Pools",
-                    source = "Blizzard",
-                    sourceUrl = "https://us.forums.blizzard.com/en/wow/t/feedback-midnight-season-2-dungeon-test-july-21st-july-27th/2328928/5",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://worldofwarcraft.blizzard.com/zh-cn/game/classes/druid",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                zhTW = {
-                    change = {
-                        "Kokia Blazehoof – Molten Boulder：現在會在施法開始時立即顯示最終爆炸的 The 位置。",
-                        "Kyrakka and Erkhart Stormvein：延長 Kyrakka 落地後到最終階段她能發動攻擊之間的時間。",
-                    },
-                    name = "Ruby Life Pools",
-                    source = "Blizzard",
-                    sourceUrl = "https://us.forums.blizzard.com/en/wow/t/feedback-midnight-season-2-dungeon-test-july-21st-july-27th/2328928/5",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://worldofwarcraft.blizzard.com/zh-tw/game/classes/druid",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-            },
-            patch = "12.1",
-            retrievedAt = "2026-08-02T19:00:00+02:00",
-            specializationId = 0,
-        },
-        {
-            category = "Dungeon",
-            channel = "ptr",
-            classToken = "",
-            date = "2026-07-24",
-            id = "change-643c1610b0e62c7b",
-            localizations = {
-                deDE = {
-                    change = {
-                        "Der Erfassungsradius von Loose Sparks wurde verringert, um besser zur Optik zu passen.",
-                        "Avatar of Sethraliss: Mistweaver’s Way des Crane kann nun den Avatar für Heilung anvisieren, wenn die Heilung nicht durch Defiling Taint blockiert wird.",
-                        "Twisted Hexxer – Hex Muck: Die Tick-Rate des periodischen Effekts wurde von alle 1.5 Sek. auf alle 2 Sek. verringert.",
-                    },
-                    name = "Temple of Sethraliss",
-                    source = "Blizzard",
-                    sourceUrl = "https://us.forums.blizzard.com/en/wow/t/feedback-midnight-season-2-dungeon-test-july-21st-july-27th/2328928/5",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://worldofwarcraft.blizzard.com/de-de/game/classes/druid",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                en = {
-                    change = {
-                        "Reduced the detection radius of Loose Sparks to better match the visual.",
-                        "Avatar of Sethraliss: Mistweaver’s Way of the Crane can now target the Avatar for healing when healing is not blocked by Defiling Taint.",
-                        "Twisted Hexxer – Hex Muck: Reduced the periodic tick rate to every 2 sec from every 1.5 sec.",
-                    },
-                    name = "Temple of Sethraliss",
-                    source = "Blizzard",
-                    sourceUrl = "https://us.forums.blizzard.com/en/wow/t/feedback-midnight-season-2-dungeon-test-july-21st-july-27th/2328928/5",
-                    specialization = "",
-                    terminologySourceUrls = {},
-                    translatedFrom = "",
-                    translationType = "official",
-                },
-                esES = {
-                    change = {
-                        "Se ha reducido el radio de detección de Loose Sparks para que coincida mejor con el apartado visual.",
-                        "Avatar of Sethraliss: Mistweaver’s Way de los Crane ahora puede seleccionar como objetivo a Avatar para curarlo cuando la sanación no esté bloqueda por Defiling Taint.",
-                        "Twisted Hexxer – Hex Muck: Frecuencia de los ticks periódicos reducida a uno cada 2 s (antes cada 1.5 s).",
-                    },
-                    name = "Temple of Sethraliss",
-                    source = "Blizzard",
-                    sourceUrl = "https://us.forums.blizzard.com/en/wow/t/feedback-midnight-season-2-dungeon-test-july-21st-july-27th/2328928/5",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://worldofwarcraft.blizzard.com/es-es/game/classes/druid",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                esMX = {
-                    change = {
-                        "Se redujo el radio de detección de Loose Sparks para coincidir mejor con el efecto visual.",
-                        "Avatar of Sethraliss: Mistweaver’s Way de Crane ahora puede apuntar a Avatar para curar cuando la sanación no esté bloqueada por Defiling Taint.",
-                        "Twisted Hexxer – Hex Muck: Frecuencia de ticks periódicos reducida a cada 2 s (antes cada 1.5 s).",
-                    },
-                    name = "Temple of Sethraliss",
-                    source = "Blizzard",
-                    sourceUrl = "https://us.forums.blizzard.com/en/wow/t/feedback-midnight-season-2-dungeon-test-july-21st-july-27th/2328928/5",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://worldofwarcraft.blizzard.com/es-mx/game/classes/druid",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                frFR = {
-                    change = {
-                        "Réduction du rayon de détection de Loose Sparks pour mieux correspondre à l'effet visuel.",
-                        "Avatar of Sethraliss : Mistweaver’s Way du Crane peut désormais cibler Avatar pour des soins lorsque les soins ne sont pas bloqués par Defiling Taint.",
-                        "Twisted Hexxer – Hex Muck : Fréquence des tics périodiques réduite à toutes les 2 s au lieu de toutes les 1.5 s.",
-                    },
-                    name = "Temple of Sethraliss",
-                    source = "Blizzard",
-                    sourceUrl = "https://us.forums.blizzard.com/en/wow/t/feedback-midnight-season-2-dungeon-test-july-21st-july-27th/2328928/5",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://worldofwarcraft.blizzard.com/fr-fr/game/classes/druid",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                itIT = {
-                    change = {
-                        "Raggio di rilevamento di Loose Sparks ridotto per corrispondere meglio alla grafica.",
-                        "Avatar of Sethraliss: Mistweaver’s Way di Crane può ora bersagliare Avatar per le cure quando le cure non sono bloccate da Defiling Taint.",
-                        "Twisted Hexxer – Hex Muck: Frequenza dei tick periodici ridotta a ogni 2 sec da ogni 1.5 sec.",
-                    },
-                    name = "Temple of Sethraliss",
-                    source = "Blizzard",
-                    sourceUrl = "https://us.forums.blizzard.com/en/wow/t/feedback-midnight-season-2-dungeon-test-july-21st-july-27th/2328928/5",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://worldofwarcraft.blizzard.com/it-it/game/classes/druid",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                koKR = {
-                    change = {
-                        "시각적 효과와 더 잘 일치하도록 Loose Sparks의 감지 반경이 감소했습니다.",
-                        "Avatar of Sethraliss: 이제 Crane의 Mistweaver’s Way이(가) Defiling Taint(으)로 인해 치유가 차단되지 않은 경우 Avatar을(를) 대상으로 지정하여 치유할 수 있습니다.",
-                        "Twisted Hexxer – Hex Muck: 주기적인 피해 주기가 매 1.5초마다에서 매 2초마다로 변경되었습니다.",
-                    },
-                    name = "Temple of Sethraliss",
-                    source = "Blizzard",
-                    sourceUrl = "https://us.forums.blizzard.com/en/wow/t/feedback-midnight-season-2-dungeon-test-july-21st-july-27th/2328928/5",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://worldofwarcraft.blizzard.com/ko-kr/game/classes/druid",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                ptBR = {
-                    change = {
-                        "Reduzido o raio de detecção de Loose Sparks para combinar melhor com o visual.",
-                        "Avatar of Sethraliss: Mistweaver’s Way de Crane agora pode ter como alvo Avatar para cura quando a cura não estiver bloqueada por Defiling Taint.",
-                        "Twisted Hexxer – Hex Muck: A taxa de tiques periódicos foi reduzida para a cada 2 s (antes era a cada 1.5 s).",
-                    },
-                    name = "Temple of Sethraliss",
-                    source = "Blizzard",
-                    sourceUrl = "https://us.forums.blizzard.com/en/wow/t/feedback-midnight-season-2-dungeon-test-july-21st-july-27th/2328928/5",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://worldofwarcraft.blizzard.com/pt-br/game/classes/druid",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                ruRU = {
-                    change = {
-                        "Радиус обнаружения Loose Sparks уменьшен, чтобы лучше соответствовать визуальному отображению.",
-                        "Avatar of Sethraliss: Mistweaver’s Way из Crane теперь может выбирать целью для исцеления Avatar, если исцеление не заблокировано Defiling Taint.",
-                        "Twisted Hexxer – Hex Muck: интервал периодических срабатываний уменьшен до каждого 2 сек. с каждого 1.5 сек.",
-                    },
-                    name = "Temple of Sethraliss",
-                    source = "Blizzard",
-                    sourceUrl = "https://us.forums.blizzard.com/en/wow/t/feedback-midnight-season-2-dungeon-test-july-21st-july-27th/2328928/5",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://worldofwarcraft.blizzard.com/ru-ru/game/classes/druid",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                zhCN = {
-                    change = {
-                        "降低了 Loose Sparks 的侦测半径，以更好地匹配其视觉效果。",
-                        "Avatar of Sethraliss：当治疗未被 Defiling Taint 阻止时，Crane 的 Mistweaver’s Way 现在可以以 Avatar 为目标进行治疗。",
-                        "Twisted Hexxer – Hex Muck：周期性跳伤害频率从每 1.5 秒一次缩短至每 2 秒一次。",
-                    },
-                    name = "Temple of Sethraliss",
-                    source = "Blizzard",
-                    sourceUrl = "https://us.forums.blizzard.com/en/wow/t/feedback-midnight-season-2-dungeon-test-july-21st-july-27th/2328928/5",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://worldofwarcraft.blizzard.com/zh-cn/game/classes/druid",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                zhTW = {
-                    change = {
-                        "降低 Loose Sparks 的偵測半徑，以更符合視覺效果。",
-                        "Avatar of Sethraliss：當治療未受到 Defiling Taint 阻礙時，Crane 的 Mistweaver’s Way 現在可以將 Avatar 作為治療目標。",
-                        "Twisted Hexxer – Hex Muck：週期性觸發頻率從每 1.5 秒一次加快至每 2 秒一次。",
-                    },
-                    name = "Temple of Sethraliss",
-                    source = "Blizzard",
-                    sourceUrl = "https://us.forums.blizzard.com/en/wow/t/feedback-midnight-season-2-dungeon-test-july-21st-july-27th/2328928/5",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://worldofwarcraft.blizzard.com/zh-tw/game/classes/druid",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-            },
-            patch = "12.1",
-            retrievedAt = "2026-08-02T19:00:00+02:00",
-            specializationId = 0,
-        },
     },
     channelVersions = {
         live = "1d52b0b697246d83",
-        ptr = "c824ef3b9f5eb6da",
+        ptr = "2ee4096cc2bd3f83",
     },
     classChannelVersions = {
         DEATHKNIGHT = {
             live = "edbad9a668e344cf",
-            ptr = "e699d15fa6d99632",
+            ptr = "1921f15f01c1cd66",
         },
         DEMONHUNTER = {
             live = "2761ea32437676e1",
-            ptr = "2571b19bf838a7c2",
+            ptr = "7d39bcebfd8b3cb9",
         },
         DRUID = {
             live = "84450f8490b58eac",
-            ptr = "c9d34a23b2b8af5f",
+            ptr = "8f0099cce284f6a1",
         },
         EVOKER = {
             live = "b6eccf1762237f1d",
-            ptr = "7a0b47a7982e2135",
+            ptr = "edc18b4ed4ffba39",
         },
         HUNTER = {
             live = "dd1faa3d308eb912",
-            ptr = "b6723159ebb937d2",
+            ptr = "fc058bb36f001a35",
         },
         MAGE = {
             live = "bcb98aab0ce1595e",
-            ptr = "08f300ac16ef4c15",
+            ptr = "d91f528ed8cc5c83",
         },
         MONK = {
             live = "bb7e4c96d05faa79",
-            ptr = "28b4d4dac536b1fc",
+            ptr = "544baac53b8f45d4",
         },
         PALADIN = {
             live = "9d01d96a559c9176",
-            ptr = "29acbcf7ae38cf45",
+            ptr = "048ab5708afe543d",
         },
         PRIEST = {
             live = "70430365295e009f",
-            ptr = "df061ef30ecb54e4",
+            ptr = "62ecacd826f1266d",
         },
         ROGUE = {
             live = "4666ef6872fe2bbc",
-            ptr = "b1f74e267899e73a",
+            ptr = "4a10da0a626ed5c8",
         },
         SHAMAN = {
             live = "1d10bfd60de8ed04",
-            ptr = "a5825908892f06d7",
+            ptr = "75a1840d80b2241b",
         },
         WARLOCK = {
             live = "06acb866cf1a6109",
-            ptr = "967aca583db37358",
+            ptr = "af12a24679e3ac6e",
         },
         WARRIOR = {
             live = "701aa6d5127a4dd9",
-            ptr = "8ed205723caf2e3f",
+            ptr = "dbc57db81702dd7f",
         },
     },
     classLatestDates = {
@@ -11357,8 +10832,8 @@ addon.PatchNotesData = {
     },
     recordCounts = {
         live = 54,
-        ptr = 63,
+        ptr = 60,
     },
     schemaVersion = 5,
-    updatedAt = "2026-08-06T17:50:01.260286+00:00",
+    updatedAt = "2026-08-07T04:31:22.092537+00:00",
 }
