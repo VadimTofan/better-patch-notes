@@ -738,6 +738,85 @@ class TranslationGenerationTests(unittest.TestCase):
         self.assertEqual("de: first", translations[("de", "first")])
         self.assertEqual("fr: second", translations[("fr", "second")])
 
+    def test_interactive_failure_is_isolated_to_one_locale(self) -> None:
+        # Given German drops a protected term while French preserves it
+        self.assertIsNotNone(self.generator)
+
+        def unavailable_batch(_api_keys, _requests):
+            raise self.generator.GeminiApiError(
+                400,
+                "failed_precondition",
+            )
+
+        def interactive_batch(_api_key, serialized_texts, language):
+            source_texts = json.loads(serialized_texts)
+            if language == "de":
+                return json.dumps(["de: placeholder missing"])
+            return json.dumps(
+                [f"{language}: {text}" for text in source_texts]
+            )
+
+        def interactive_repair(_api_key, _text, language):
+            if language == "de":
+                return "de: placeholder still missing"
+            return "fr: __BPN0000__"
+
+        # When the interactive fallback translates both locales
+        with (
+            patch.object(
+                self.generator,
+                "submit_inline_batch",
+                unavailable_batch,
+            ),
+            patch.object(
+                self.generator,
+                "request_gemini_translation_batch",
+                interactive_batch,
+            ),
+            patch.object(
+                self.generator,
+                "request_gemini_translation",
+                interactive_repair,
+            ),
+        ):
+            translations, transport = (
+                self.generator.generate_protected_translations(
+                    ("test-key",),
+                    ("source __BPN0000__",),
+                    {"de": "German", "fr": "French"},
+                )
+            )
+
+        # Then French remains publishable and only German is a fallback
+        self.assertEqual("interactive", transport)
+        self.assertNotIn(("de", "source __BPN0000__"), translations)
+        self.assertEqual(
+            "fr: source __BPN0000__",
+            translations[("fr", "source __BPN0000__")],
+        )
+
+    def test_failed_language_becomes_only_its_locale_fallback(self) -> None:
+        # Given French succeeded while German produced no translations
+        self.assertIsNotNone(self.generator)
+        translations = {
+            ("fr", "source __BPN0000__"): "fr: source __BPN0000__",
+        }
+
+        # When translation results are mapped back to WoW locales
+        successful, fallback_reasons = (
+            self.generator.classify_locale_outcomes(
+                translations,
+                {"deDE": "de", "frFR": "fr"},
+            )
+        )
+
+        # Then only the failed locale receives an English fallback
+        self.assertEqual({"frFR": "fr"}, successful)
+        self.assertEqual(
+            {"deDE": "automatic translation generation failed"},
+            fallback_reasons,
+        )
+
     def test_uses_interactive_translation_when_batch_wait_times_out(
         self,
     ) -> None:
@@ -1104,6 +1183,43 @@ class TranslationGenerationTests(unittest.TestCase):
         )
         self.assertNotIn("We’re", terms)
         self.assertIn("Arms Warrior’s", terms)
+
+    def test_does_not_protect_prose_in_the_feral_developer_note(self) -> None:
+        # Given the developer note that caused the automatic German failure
+        self.assertIsNotNone(self.generator)
+        text = (
+            "Developers' notes: Feral updates in Curse of Ula'tek are "
+            "aimed at talent diversity. We'd like Chomp to be stronger. "
+            "Additionally, Feral struggles in AOE. Much of its damage comes "
+            "from Rampant Ferocity. To make it easier, move it to Gate 1."
+        )
+
+        # When candidate terms and numeric values are protected
+        _protected, replacements, terms = self.generator._protect_text(text)
+
+        # Then prose stays translatable while WoW terms and numbers remain safe
+        for prose_term in (
+            "Developers' notes",
+            "notes",
+            "We'd",
+            "Additionally",
+            "Much",
+            "To",
+        ):
+            self.assertNotIn(prose_term, terms)
+        for wow_term in (
+            "Feral",
+            "Curse of Ula'tek",
+            "Chomp",
+            "AOE",
+            "Rampant Ferocity",
+            "Gate",
+        ):
+            self.assertIn(wow_term, terms)
+        protected_originals = {
+            original for _placeholder, original in replacements
+        }
+        self.assertIn("1", protected_originals)
 
     def test_protects_number_words_that_locales_may_render_as_digits(self) -> None:
         # Given an ordinal word Korean commonly renders with a numeral

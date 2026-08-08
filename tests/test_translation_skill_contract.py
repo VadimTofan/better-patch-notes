@@ -103,7 +103,7 @@ class TranslationSkillContractTests(unittest.TestCase):
             "5 translation request starts per rolling minute",
             "authorization key",
             "September 2026",
-            "Updated: 2026-08-06",
+            "Updated: 2026-08-08",
             "Last reviewed: 2026-08-06",
         )
 

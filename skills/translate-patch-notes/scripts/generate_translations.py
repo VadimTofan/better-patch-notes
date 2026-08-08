@@ -66,6 +66,7 @@ TARGET_LANGUAGE_CODES = {
 GENERIC_SENTENCE_STARTS = {
     "Added",
     "Addressed",
+    "Additionally",
     "Adjusted",
     "All",
     "Cast",
@@ -83,6 +84,7 @@ GENERIC_SENTENCE_STARTS = {
     "If",
     "Increased",
     "Melee",
+    "Much",
     "New Talent",
     "Now",
     "Physical",
@@ -95,7 +97,10 @@ GENERIC_SENTENCE_STARTS = {
     "This",
     "Time",
     "Timer",
+    "To",
     "We",
+    "We'd",
+    "We’d",
     "We're",
     "We’re",
 }
@@ -773,12 +778,16 @@ def _generate_interactive_translations(
     )
     translations: dict[tuple[str, str], str] = {}
     for language in languages:
-        localized_texts = translate_text_batch(
-            protected_texts,
-            language,
-            translator,
-            repair_translator=repair_translator,
-        )
+        try:
+            localized_texts = translate_text_batch(
+                protected_texts,
+                language,
+                translator,
+                repair_translator=repair_translator,
+            )
+        except RuntimeError:
+            continue
+
         for source_text, localized_text in zip(
             protected_texts,
             localized_texts,
@@ -841,6 +850,27 @@ def generate_protected_translations(
     return translations, "batch"
 
 
+def classify_locale_outcomes(
+    translations: Mapping[tuple[str, str], str],
+    locale_languages: Mapping[str, str],
+) -> tuple[dict[str, str], dict[str, str]]:
+    successful_languages = {
+        language for language, _source_text in translations
+    }
+    successful_locales = {
+        locale: language
+        for locale, language in locale_languages.items()
+        if language in successful_languages
+    }
+    fallback_reasons = {
+        locale: "automatic translation generation failed"
+        for locale, language in locale_languages.items()
+        if language not in successful_languages
+    }
+
+    return successful_locales, fallback_reasons
+
+
 def _candidate_terms(text: str) -> tuple[str, ...]:
     candidates: list[str] = []
     prefix, separator, _remainder = text.partition(":")
@@ -852,6 +882,9 @@ def _candidate_terms(text: str) -> tuple[str, ...]:
     terms: list[str] = []
     for candidate in candidates:
         candidate = candidate.strip(" .,:;()")
+        if candidate in GENERIC_SENTENCE_STARTS:
+            continue
+
         words = candidate.split()
         while len(words) > 1 and words[0] in GENERIC_SENTENCE_STARTS:
             words.pop(0)
@@ -1114,16 +1147,22 @@ def main() -> int:
         batch_languages,
     )
     print(f"Gemini translation transport: {transport}")
+    successful_locales, fallback_reasons = classify_locale_outcomes(
+        translated_cache,
+        TARGET_LANGUAGE_CODES,
+    )
 
     def cached_translator(text: str, language: str) -> str:
         return translated_cache[(language, text)]
 
     batch = build_translation_batch(
         document,
-        TARGET_LANGUAGE_CODES,
+        successful_locales,
         cached_translator,
         terminology,
     )
+    if fallback_reasons:
+        batch["fallbackReasons"] = fallback_reasons
     arguments.output.write_text(
         json.dumps(batch, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
