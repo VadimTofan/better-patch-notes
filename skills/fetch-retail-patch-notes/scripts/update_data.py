@@ -677,11 +677,11 @@ def _source_document_key(url: str) -> str:
     host = parsed_url.hostname or ""
     if host.endswith("forums.blizzard.com"):
         topic_match = re.match(
-            r"^(?P<topic>/.*/t/[^/]+/\d+)(?:/\d+)?/?$",
+            r"^/.*/t/[^/]+/(?P<topic_id>\d+)(?:/\d+)?/?$",
             parsed_url.path,
         )
         if topic_match is not None:
-            return f"{host.casefold()}{topic_match.group('topic')}"
+            return f"{host.casefold()}/t/{topic_match.group('topic_id')}"
 
     return url.casefold().rstrip("/")
 

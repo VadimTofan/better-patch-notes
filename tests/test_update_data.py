@@ -831,6 +831,47 @@ class JsonDataMergeTests(unittest.TestCase):
             self.assertEqual(1, report["skipped"])
             self.assertEqual(1, len(_read_data(data_path)["changes"]))
 
+    def test_skips_same_forum_topic_after_its_slug_changes(self) -> None:
+        with TemporaryDirectory() as temporary_directory:
+            # Given the same Blizzard topic under its old and new slugs
+            temporary_path = Path(temporary_directory)
+            first_path = temporary_path / "first.json"
+            renamed_path = temporary_path / "renamed.json"
+            data_path = temporary_path / "retail-patch-notes.json"
+            old_topic_url = (
+                "https://us.forums.blizzard.com/en/wow/t/"
+                "dungeon-test-july-28th-august-3rd/2330956/1"
+            )
+            new_topic_url = (
+                "https://us.forums.blizzard.com/en/wow/t/"
+                "dungeon-test-july-28th-august-11th/2330956/1"
+            )
+            _write_batch(
+                first_path,
+                [_change(sourceUrl=old_topic_url)],
+            )
+            _write_batch(
+                renamed_path,
+                [
+                    _change(
+                        change=["Frostbolt damage increased by 5%"],
+                        sourceUrl=new_topic_url,
+                    )
+                ],
+            )
+            first_result = _run_updater(first_path, data_path)
+            self.assertEqual(0, first_result.returncode, first_result.stderr)
+
+            # When the renamed topic is processed
+            result = _run_updater(renamed_path, data_path)
+
+            # Then the topic ID identifies it as the same source document
+            self.assertEqual(0, result.returncode, result.stderr)
+            report = json.loads(result.stdout)
+            self.assertEqual(0, report["ambiguous"])
+            self.assertEqual(1, report["skipped"])
+            self.assertEqual(1, len(_read_data(data_path)["changes"]))
+
     def test_sorts_newest_changes_first_with_stable_tie_breakers(self) -> None:
         with TemporaryDirectory() as temporary_directory:
             # Given changes supplied in a non-deterministic order
