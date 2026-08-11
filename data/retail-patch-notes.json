@@ -1,7 +1,228 @@
 {
   "schemaVersion": 5,
-  "updatedAt": "2026-08-11T03:52:50.047648+00:00",
+  "updatedAt": "2026-08-11T09:42:42.863456+00:00",
   "changes": [
+    {
+      "id": "change-6c134b17d1e4606c",
+      "channel": "ptr",
+      "category": "Dungeon",
+      "date": "2026-08-07",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Altar of Fangs",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/feedback-midnight-season-2-dungeon-test-july-28th-august-11th/2330956/8",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "General: Removed a Ravenous Descendant from the patrolling pack near the final totem",
+            "General: Removed a Primal Serpent from near the second and third totem",
+            "Zul’jan — Fang Empowered: Reduced periodic damage by 25%"
+          ],
+          "terminologySourceUrls": []
+        }
+      },
+      "retrievedAt": "2026-08-11T09:42:42.863456+00:00"
+    },
+    {
+      "id": "change-1e5c6ea4bd34720b",
+      "channel": "ptr",
+      "category": "Dungeon",
+      "date": "2026-08-07",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Den of Nalorakk",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/feedback-midnight-season-2-dungeon-test-july-28th-august-11th/2330956/8",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "Starvation Effigy — Insatiable Hunger: Increased cast time to 6 sec from 5 sec"
+          ],
+          "terminologySourceUrls": []
+        }
+      },
+      "retrievedAt": "2026-08-11T09:42:42.863456+00:00"
+    },
+    {
+      "id": "change-0acf676a2956c52c",
+      "channel": "ptr",
+      "category": "Dungeon",
+      "date": "2026-08-07",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Kings’ Rest",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/feedback-midnight-season-2-dungeon-test-july-28th-august-11th/2330956/8",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "Half-Finished Mummy and Finished Mummy — Wretched Discharge: Reduced periodic damage by 25%",
+            "Shadow of Zul — Pool of Darkness: Increased cooldown by 10%"
+          ],
+          "terminologySourceUrls": []
+        }
+      },
+      "retrievedAt": "2026-08-11T09:42:42.863456+00:00"
+    },
+    {
+      "id": "change-6a9e9b6e318153ef",
+      "channel": "ptr",
+      "category": "Dungeon",
+      "date": "2026-08-07",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Murder Row",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/feedback-midnight-season-2-dungeon-test-july-28th-august-11th/2330956/8",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "Kystia Manaheart — Destabilized: Increased damage vulnerability to 115% from 100%",
+            "Defiled Golem: Combat reach increased"
+          ],
+          "terminologySourceUrls": []
+        }
+      },
+      "retrievedAt": "2026-08-11T09:42:42.863456+00:00"
+    },
+    {
+      "id": "change-3135b684fba4e2cf",
+      "channel": "ptr",
+      "category": "Dungeon",
+      "date": "2026-08-07",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Ruby Life Pools",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/feedback-midnight-season-2-dungeon-test-july-28th-august-11th/2330956/8",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "Melidrussa Chillworn: Reduced health by 6%",
+            "Melidrussa Chillworn: Increased pace of ability schedule",
+            "Melidrussa Chillworn — Chillstorm: Reduced duration to 7 sec from 9 sec",
+            "Melidrussa Chillworn — Chillstorm: Increased periodic damage by 10%",
+            "Kokia Blazehoof: Increased health by 7%",
+            "Thunderhead: Reduced health by 13%",
+            "Thunderhead — Rolling Thunder: Reduced periodic damage by 19%",
+            "Thunderhead — Electrical Discharge: Reduced impact damage by 11%",
+            "Thunderhead — Electrical Discharge: Reduced periodic damage by 14%",
+            "Earthbound Guardian: Increased health by 10%",
+            "Earthbound Guardian — Earthbound Imprint: Increased periodic damage by 7%",
+            "Ashseer Flamelasher: Increased health by 10%",
+            "Storm Warrior: Increased health by 10%",
+            "Storm Warrior — Thunderous Stomp: Increased damage by 10%",
+            "Tempest Channeler and High Channeler Ryvati — Lightning Torrent: Increased periodic damage by 8%"
+          ],
+          "terminologySourceUrls": []
+        }
+      },
+      "retrievedAt": "2026-08-11T09:42:42.863456+00:00"
+    },
+    {
+      "id": "change-e16590cbb46d96ae",
+      "channel": "ptr",
+      "category": "Dungeon",
+      "date": "2026-08-07",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Temple of Sethraliss",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/feedback-midnight-season-2-dungeon-test-july-28th-august-11th/2330956/8",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "General: Reduced the timer to 32 minutes from 33 minutes",
+            "Adderis and Aspix: Increased the amount of time between Thunder and Lightning and Tempest Winds",
+            "Merektha — Burrow: Added a directional indicator",
+            "Galvazzt: Increased health by 7%",
+            "Avatar of Sethraliss — Corrupted Guardian — Corrupted Lifeforce: Corruption Burst now only occurs upon failure to soak",
+            "Avatar of Sethraliss — Corrupted Guardian — Corrupted Lifeforce: Unstable Corruption now forms an additional Corrupted Lifeforce",
+            "Avatar of Sethraliss — Corrupted Guardian — Corrupted Lifeforce: Reduced time to soak to 4.5 sec from 12 sec",
+            "Avatar of Sethraliss — Corrupted Guardian — Corruption Burst: Increased base damage by 150%",
+            "Avatar of Sethraliss — Corrupted Guardian — Corruption Burst: Vulnerability reduced to 100% from 150%",
+            "Avatar of Sethraliss — Corrupted Guardian — Corruption: Reduced healing reduction per stack to 33% from 50%",
+            "Avatar of Sethraliss — Corrupted Guardian — Cleansed Lifeforce: Reduced initial healing to 2% of the Avatar’s maximum health from 5%",
+            "Avatar of Sethraliss — Corrupted Guardian — Cleansed Lifeforce: Increased the time between periodic ticks of healing to 2 sec from 1 sec",
+            "Avatar of Sethraliss — Corrupted Guardian — Siphon the Weak: Increased healing to 0.7% of the Avatar’s maximum health from 0.6%",
+            "Avatar of Sethraliss — Twisted Hexxer — Latent Hex: Reduced number of targets to 1 from 2",
+            "Avatar of Sethraliss — Twisted Hexxer — Latent Hex: Now prefers to target the healer",
+            "Orb Watcher — Caustic Stomp: Increased periodic damage by 15%",
+            "Poisonous Viper — Cytotoxin: Increased impact damage by 7%",
+            "Poisonous Viper — Cytotoxin: Increased periodic damage by 7%",
+            "Imbued Stormcaller — Imbued Conduction: Increased periodic damage by 10%",
+            "Sandswept Hunter: Sandburst Arrow is now the first ability cast, and Arrow Barrage is now the second ability cast",
+            "Faithless Subjugator — Addle Mind: Increased cast time to 5 sec from 4 sec",
+            "Faithless Subjugator — Addle Mind: Fixed an issue where crowd control abilities would initiate the cooldown for this ability"
+          ],
+          "terminologySourceUrls": []
+        }
+      },
+      "retrievedAt": "2026-08-11T09:42:42.863456+00:00"
+    },
+    {
+      "id": "change-d3c0e717103b5f11",
+      "channel": "ptr",
+      "category": "Dungeon",
+      "date": "2026-08-07",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "The Blinding Vale",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/feedback-midnight-season-2-dungeon-test-july-28th-august-11th/2330956/8",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "General: Reduced timer to 30 minutes from 31 minutes",
+            "Lightwarden Ruia — Lightfire Beams: Updated direction visual to snap to the ground",
+            "Lightwarden Ruia — Lightfire Beams: Reduced area trigger size to 1.5 yards from 2 yards",
+            "Ziekket — Lightspawn Lasher: Addressed an issue where tanks could fail to get threat before the lashers became active",
+            "Ziekket — Lightbloom Essence: Addressed an issue where players could fail to soak the essence when in close proximity to Ziekket",
+            "Thorny Saptor — Hunting Leap: Improved impact area visual"
+          ],
+          "terminologySourceUrls": []
+        }
+      },
+      "retrievedAt": "2026-08-11T09:42:42.863456+00:00"
+    },
+    {
+      "id": "change-ab9ed61da8ddb630",
+      "channel": "ptr",
+      "category": "Dungeon",
+      "date": "2026-08-07",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Voidscar Arena",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/feedback-midnight-season-2-dungeon-test-july-28th-august-11th/2330956/8",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "Proof of Master and Proof of Endurance: Now permanent until players leave the instance",
+            "Proof of Master and Proof of Endurance: Reduced potency of the buffs to 3% from 5%"
+          ],
+          "terminologySourceUrls": []
+        }
+      },
+      "retrievedAt": "2026-08-11T09:42:42.863456+00:00"
+    },
     {
       "id": "change-fa207c4e7f0d8944",
       "channel": "live",
