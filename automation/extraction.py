@@ -55,6 +55,7 @@ SECTION_NAMES = {
     "dungeons": "Dungeon",
     "dungeon changes": "Dungeon",
     "dungeon update": "Dungeon",
+    "we have made the following changes to dungeons:": "Dungeon",
     "dungeons and raids": "Instance",
     "raid": "Raid",
     "raids": "Raid",

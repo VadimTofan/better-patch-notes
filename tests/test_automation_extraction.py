@@ -169,6 +169,31 @@ class PatchNoteExtractionTests(unittest.TestCase):
         self.assertEqual(len(changes), 1)
         self.assertEqual(changes[0].name, "All Dungeons")
 
+    def test_recognizes_blizzard_dungeon_intro_sentence(self) -> None:
+        # Given
+        document = replace(
+            _document("dungeon-notes.html"),
+            body=(
+                b"<p>We have made the following changes to dungeons:</p>"
+                b"<p><strong>Altar of Fangs</strong></p>"
+                b"<ul><li>General<ul>"
+                b"<li>Removed a Ravenous Descendant.</li>"
+                b"</ul></li></ul>"
+            ),
+        )
+
+        # When
+        changes = extract_changes(document)
+
+        # Then
+        self.assertEqual(1, len(changes))
+        self.assertEqual("Dungeon", changes[0].category)
+        self.assertEqual("Altar of Fangs", changes[0].name)
+        self.assertEqual(
+            ("General: Removed a Ravenous Descendant.",),
+            changes[0].change,
+        )
+
     def test_extracts_raid_changes_independently(self) -> None:
         # Given
         document = _document("raid-notes.html")
