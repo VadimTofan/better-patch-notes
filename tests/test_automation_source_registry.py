@@ -7,6 +7,9 @@ import unittest
 from automation.source_registry import load_registry
 
 
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+
+
 def _valid_registry() -> dict[str, object]:
     return {
         "schemaVersion": 1,
@@ -48,6 +51,23 @@ def _write_registry(document: dict[str, object], directory: Path) -> Path:
 
 # Describe: trusted Blizzard source registry
 class SourceRegistryTests(unittest.TestCase):
+    def test_keeps_the_reviewed_dungeon_topic_explicit(self) -> None:
+        # Given
+        path = PROJECT_ROOT / "automation" / "sources.json"
+
+        # When
+        registry = load_registry(path)
+        dungeon_sources = [
+            source
+            for source in registry.sources
+            if "dungeon test" in source.title_patterns
+        ]
+
+        # Then
+        self.assertEqual(1, len(dungeon_sources))
+        self.assertEqual("forum_topic", dungeon_sources[0].kind)
+        self.assertTrue(dungeon_sources[0].url.endswith("/t/2330956"))
+
     def test_rejects_a_non_blizzard_source_host(self) -> None:
         with TemporaryDirectory() as temporary_directory:
             # Given
