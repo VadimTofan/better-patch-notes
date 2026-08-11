@@ -2,8 +2,9 @@ local _, addon = ...
 
 local function newDatabase()
     return {
-        schemaVersion = 1,
+        schemaVersion = 2,
         seen = {},
+        sharedSeen = {},
         window = {
             point = "CENTER",
             x = 0,
@@ -48,14 +49,16 @@ local function sanitizeWindow(database)
 end
 
 function addon.InitializeState()
-    if type(BetterPatchNotesDB) ~= "table"
-        or BetterPatchNotesDB.schemaVersion ~= 1
-    then
+    if type(BetterPatchNotesDB) ~= "table" then
         BetterPatchNotesDB = newDatabase()
     end
 
+    BetterPatchNotesDB.schemaVersion = 2
     if type(BetterPatchNotesDB.seen) ~= "table" then
         BetterPatchNotesDB.seen = {}
+    end
+    if type(BetterPatchNotesDB.sharedSeen) ~= "table" then
+        BetterPatchNotesDB.sharedSeen = {}
     end
     sanitizeWindow(BetterPatchNotesDB)
     sanitizeMinimap(BetterPatchNotesDB)
@@ -82,21 +85,44 @@ function addon.HasUnseen(classToken, channel)
     return classSeen(classToken)[channel] ~= version
 end
 
-function addon.MarkAllSeen(classToken)
+function addon.HasUnseenShared(channel)
+    local version = addon.PatchNotesData.sharedChannelVersions[channel]
+    if version == "" then
+        return false
+    end
+
+    return addon.db.sharedSeen[channel] ~= version
+end
+
+function addon.MarkChannelSeen(classToken, channel)
     local seen = classSeen(classToken)
     local versions = addon.PatchNotesData.classChannelVersions[classToken]
-    seen.live = versions.live
-    seen.ptr = versions.ptr
+    seen[channel] = versions[channel]
+    addon.db.sharedSeen[channel] =
+        addon.PatchNotesData.sharedChannelVersions[channel]
+end
+
+local function latestDate(classDate, sharedDate)
+    classDate = classDate or ""
+    sharedDate = sharedDate or ""
+    if sharedDate > classDate then
+        return sharedDate
+    end
+
+    return classDate
 end
 
 function addon.SelectInitialChannel(classToken)
     local liveUnseen = addon.HasUnseen(classToken, "live")
+        or addon.HasUnseenShared("live")
     local ptrUnseen = addon.HasUnseen(classToken, "ptr")
+        or addon.HasUnseenShared("ptr")
 
     if liveUnseen and ptrUnseen then
-        local dates = addon.PatchNotesData.classLatestDates[classToken]
-        local liveDate = dates.live or ""
-        local ptrDate = dates.ptr or ""
+        local classDates = addon.PatchNotesData.classLatestDates[classToken]
+        local sharedDates = addon.PatchNotesData.sharedLatestDates
+        local liveDate = latestDate(classDates.live, sharedDates.live)
+        local ptrDate = latestDate(classDates.ptr, sharedDates.ptr)
         if ptrDate > liveDate then
             return "ptr"
         end

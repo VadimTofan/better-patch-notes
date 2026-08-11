@@ -99,8 +99,8 @@ class LuaDataGenerationTests(unittest.TestCase):
         self.assertIn('ptr = "2026-07-31"', first_output)
         self.assertTrue(first_output.endswith("\n"))
 
-    def test_versions_only_alert_classes_affected_by_the_changes(self) -> None:
-        # Given a Mage-only change and a dungeon change shared by every class
+    def test_versions_separate_class_and_account_wide_changes(self) -> None:
+        # Given a Mage-only change and a dungeon change shared by the account
         generator = _load_generator()
         mage_document = _document()
         dungeon_document = _document(
@@ -110,22 +110,22 @@ class LuaDataGenerationTests(unittest.TestCase):
         dungeon_change = dungeon_document["changes"][0]
         dungeon_change["category"] = "Dungeon"
 
-        # When per-class channel versions are prepared
-        mage_versions = generator._prepare_document(
-            mage_document
-        )["classChannelVersions"]
-        dungeon_versions = generator._prepare_document(
-            dungeon_document
-        )["classChannelVersions"]
+        # When class and shared channel versions are prepared
+        mage_data = generator._prepare_document(mage_document)
+        dungeon_data = generator._prepare_document(dungeon_document)
 
-        # Then Mage-only notes differ by class, while dungeon notes affect all
-        self.assertNotEqual(
-            mage_versions["MAGE"]["ptr"],
-            mage_versions["WARRIOR"]["ptr"],
-        )
+        # Then class versions contain only the affected class
+        self.assertNotEqual("", mage_data["classChannelVersions"]["MAGE"]["ptr"])
         self.assertEqual(
-            dungeon_versions["MAGE"]["ptr"],
-            dungeon_versions["WARRIOR"]["ptr"],
+            "",
+            mage_data["classChannelVersions"]["WARRIOR"]["ptr"],
+        )
+
+        # And dungeon versions are account-wide, not copied into class versions
+        self.assertNotEqual("", dungeon_data["sharedChannelVersions"]["ptr"])
+        self.assertEqual(
+            "",
+            dungeon_data["classChannelVersions"]["MAGE"]["ptr"],
         )
 
     def test_escapes_lua_strings_without_losing_unicode(self) -> None:

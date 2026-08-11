@@ -151,6 +151,7 @@ local classButtons = {}
 local headerPool = {}
 local notePool = {}
 local collapsed = {}
+local viewedChannels = {}
 local activeChannel = "live"
 local selectedClassToken
 local playerClassToken
@@ -185,6 +186,7 @@ local function CreateTab(channel, label, offset)
     button.label:SetText(label)
     button:SetScript("OnClick", function()
         activeChannel = channel
+        viewedChannels[channel] = true
         addon.RefreshWindow()
     end)
     tabs[channel] = button
@@ -521,6 +523,7 @@ end
 
 function addon.ShowWindow(channel)
     activeChannel = channel or "live"
+    viewedChannels = { [activeChannel] = true }
     playerClassToken = addon.GetPlayerContext()
     selectedClassToken = playerClassToken
     restorePosition()
@@ -553,7 +556,9 @@ frame:SetScript("OnHide", function()
 
     local classToken = addon.GetPlayerContext()
     if classToken ~= nil then
-        addon.MarkAllSeen(classToken)
+        for channel in pairs(viewedChannels) do
+            addon.MarkChannelSeen(classToken, channel)
+        end
     end
 end)
 

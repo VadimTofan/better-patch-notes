@@ -10,7 +10,9 @@ local function showForPlayer()
     end
 
     local hasLive = addon.HasUnseen(classToken, "live")
+        or addon.HasUnseenShared("live")
     local hasPtr = addon.HasUnseen(classToken, "ptr")
+        or addon.HasUnseenShared("ptr")
     if not hasLive and not hasPtr then
         return
     end

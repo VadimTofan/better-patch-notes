@@ -183,7 +183,7 @@ class DataAndStateContractTests(unittest.TestCase):
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, data_text)
 
-    def test_state_module_tracks_versions_per_class_and_channel(self) -> None:
+    def test_state_tracks_class_and_account_versions_per_channel(self) -> None:
         # Given an account-wide SavedVariables table
         state_text = (PROJECT_ROOT / "State.lua").read_text("utf-8-sig")
 
@@ -192,8 +192,9 @@ class DataAndStateContractTests(unittest.TestCase):
         required_contract = (
             "function addon.InitializeState",
             "BetterPatchNotesDB",
-            "schemaVersion = 1",
+            "schemaVersion = 2",
             "seen = {}",
+            "sharedSeen = {}",
             'point = "CENTER"',
             "minimap = {",
             "hidden = false",
@@ -201,8 +202,12 @@ class DataAndStateContractTests(unittest.TestCase):
             "sanitizeMinimap",
             "function addon.HasUnseen",
             "classChannelVersions[classToken]",
-            "function addon.MarkAllSeen",
+            "function addon.HasUnseenShared",
+            "sharedChannelVersions[channel]",
+            "function addon.MarkChannelSeen",
             "function addon.SelectInitialChannel",
+            "local function latestDate",
+            "if sharedDate > classDate then",
             'return "live"',
         )
         for phrase in required_contract:
@@ -231,7 +236,8 @@ class WindowAndCoreContractTests(unittest.TestCase):
             'addon.GetText("ENGLISH_FALLBACK")',
             "function addon.ShowWindow",
             "function addon.RefreshWindow",
-            "addon.MarkAllSeen",
+            "addon.MarkChannelSeen",
+            "viewedChannels",
             "StartMoving",
             "StopMovingOrSizing",
             "UISpecialFrames",
@@ -276,7 +282,10 @@ class WindowAndCoreContractTests(unittest.TestCase):
 
         # And closing the browser still records only the real player class
         self.assertIn("local classToken = addon.GetPlayerContext()", window_text)
-        self.assertIn("addon.MarkAllSeen(classToken)", window_text)
+        self.assertIn(
+            "addon.MarkChannelSeen(classToken, channel)",
+            window_text,
+        )
 
     def test_core_handles_login_combat_deferral_and_slash_reopen(self) -> None:
         # Given automatic first-login display and manual reopen behavior
@@ -293,6 +302,7 @@ class WindowAndCoreContractTests(unittest.TestCase):
             "addon.InitializeMinimapButton()",
             "InCombatLockdown()",
             "addon.HasUnseen",
+            "addon.HasUnseenShared",
             "addon.SelectInitialChannel",
             "addon.ShowWindow",
             'SLASH_BETTERPATCHNOTES1 = "/bpn"',

@@ -168,8 +168,8 @@ def _prepare_document(document: object) -> dict[str, object]:
             relevant_changes = [
                 change
                 for change in changes_by_channel[channel]
-                if change["category"] != "Class"
-                or change["classToken"] == class_token
+                if change["category"] == "Class"
+                and change["classToken"] == class_token
             ]
             if relevant_changes:
                 canonical_relevant = json.dumps(
@@ -194,12 +194,42 @@ def _prepare_document(document: object) -> dict[str, object]:
                 default="",
             )
 
+    shared_channel_versions: dict[str, str] = {}
+    shared_latest_dates: dict[str, str] = {}
+    for channel in VALID_CHANNELS:
+        shared_changes = [
+            change
+            for change in changes_by_channel[channel]
+            if change["category"] != "Class"
+        ]
+        if shared_changes:
+            canonical_shared = json.dumps(
+                sorted(
+                    shared_changes,
+                    key=lambda item: str(item.get("id", "")),
+                ),
+                ensure_ascii=False,
+                separators=(",", ":"),
+                sort_keys=True,
+            ).encode("utf-8")
+            shared_version = sha256(canonical_shared).hexdigest()[:16]
+        else:
+            shared_version = ""
+
+        shared_channel_versions[channel] = shared_version
+        shared_latest_dates[channel] = max(
+            (str(change.get("date", "")) for change in shared_changes),
+            default="",
+        )
+
     return {
         "schemaVersion": SCHEMA_VERSION,
         "updatedAt": updated_at,
         "channelVersions": channel_versions,
         "classChannelVersions": class_channel_versions,
         "classLatestDates": class_latest_dates,
+        "sharedChannelVersions": shared_channel_versions,
+        "sharedLatestDates": shared_latest_dates,
         "latestDates": latest_dates,
         "recordCounts": record_counts,
         "changes": prepared_changes,

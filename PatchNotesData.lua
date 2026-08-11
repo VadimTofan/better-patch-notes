@@ -8961,109 +8961,109 @@ addon.PatchNotesData = {
     classChannelVersions = {
         DEATHKNIGHT = {
             live = "9d6f1840c23488ae",
-            ptr = "39a388e0f07034f8",
+            ptr = "6c24f47ca3c507f6",
         },
         DEMONHUNTER = {
             live = "2761ea32437676e1",
-            ptr = "c5fa07321def4b5d",
+            ptr = "ff932861ca8417ba",
         },
         DRUID = {
             live = "84450f8490b58eac",
-            ptr = "5cd2539de5381bdb",
+            ptr = "ef4e99c9dcb4f4b2",
         },
         EVOKER = {
             live = "b6eccf1762237f1d",
-            ptr = "82a3acc050cb7980",
+            ptr = "c1d1cf4aa7588da0",
         },
         HUNTER = {
             live = "dd1faa3d308eb912",
-            ptr = "e5193726a4f58a80",
+            ptr = "c4d62b7530857165",
         },
         MAGE = {
             live = "bcb98aab0ce1595e",
-            ptr = "b2c7165b31c2bcc0",
+            ptr = "4da0b0ddb9d618b8",
         },
         MONK = {
             live = "bb7e4c96d05faa79",
-            ptr = "c86a09fbf2c836bd",
+            ptr = "",
         },
         PALADIN = {
             live = "9d01d96a559c9176",
-            ptr = "9b4a2eb270732ad9",
+            ptr = "219325d737148695",
         },
         PRIEST = {
             live = "70430365295e009f",
-            ptr = "fe3c4887f56a442e",
+            ptr = "a65e23bbf49e3a78",
         },
         ROGUE = {
             live = "4666ef6872fe2bbc",
-            ptr = "0b8fba7a33c9629c",
+            ptr = "88eaf70b60d6e233",
         },
         SHAMAN = {
             live = "1d10bfd60de8ed04",
-            ptr = "0ac89996c8edcab5",
+            ptr = "3aa20c173028a014",
         },
         WARLOCK = {
             live = "06acb866cf1a6109",
-            ptr = "8bc06f0c534d29d7",
+            ptr = "c6b899b7d3c28adf",
         },
         WARRIOR = {
             live = "701aa6d5127a4dd9",
-            ptr = "54514b2cb5d52dc3",
+            ptr = "f661508ea3469057",
         },
     },
     classLatestDates = {
         DEATHKNIGHT = {
             live = "2026-08-06",
-            ptr = "2026-08-07",
+            ptr = "2026-07-31",
         },
         DEMONHUNTER = {
             live = "2026-08-06",
-            ptr = "2026-08-07",
+            ptr = "2026-07-31",
         },
         DRUID = {
             live = "2026-08-06",
-            ptr = "2026-08-07",
+            ptr = "2026-07-31",
         },
         EVOKER = {
             live = "2026-08-06",
-            ptr = "2026-08-07",
+            ptr = "2026-07-31",
         },
         HUNTER = {
             live = "2026-08-06",
-            ptr = "2026-08-07",
+            ptr = "2026-07-31",
         },
         MAGE = {
             live = "2026-08-06",
-            ptr = "2026-08-07",
+            ptr = "2026-07-31",
         },
         MONK = {
             live = "2026-08-06",
-            ptr = "2026-08-07",
+            ptr = "",
         },
         PALADIN = {
             live = "2026-08-06",
-            ptr = "2026-08-07",
+            ptr = "2026-07-31",
         },
         PRIEST = {
             live = "2026-08-06",
-            ptr = "2026-08-07",
+            ptr = "2026-07-31",
         },
         ROGUE = {
             live = "2026-08-06",
-            ptr = "2026-08-07",
+            ptr = "2026-07-31",
         },
         SHAMAN = {
             live = "2026-08-06",
-            ptr = "2026-08-07",
+            ptr = "2026-07-31",
         },
         WARLOCK = {
             live = "2026-08-06",
-            ptr = "2026-08-07",
+            ptr = "2026-07-31",
         },
         WARRIOR = {
             live = "2026-08-06",
-            ptr = "2026-08-07",
+            ptr = "2026-07-31",
         },
     },
     latestDates = {
@@ -9075,5 +9075,13 @@ addon.PatchNotesData = {
         ptr = 55,
     },
     schemaVersion = 5,
+    sharedChannelVersions = {
+        live = "",
+        ptr = "c86a09fbf2c836bd",
+    },
+    sharedLatestDates = {
+        live = "",
+        ptr = "2026-08-07",
+    },
     updatedAt = "2026-08-11T09:42:42.863456+00:00",
 }

@@ -73,7 +73,7 @@ class SkillContractTests(unittest.TestCase):
             "direct source URL",
             "untrusted content",
             "future database",
-            "Updated: 2026-08-06",
+            "Updated: 2026-08-11",
             "Last reviewed: 2026-08-02",
         )
         forbidden_phrases = (
