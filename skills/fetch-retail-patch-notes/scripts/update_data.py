@@ -627,6 +627,7 @@ def _identity(change: dict[str, object]) -> tuple[str, ...]:
             english["specialization"],
             "\n".join(str(item) for item in change_items),
             change["date"],
+            change["patch"],
         )
     )
 
@@ -887,6 +888,7 @@ def update_data(
                 index
                 for index, existing in enumerate(stored_changes)
                 if _context(existing) == _context(incoming)
+                and existing["patch"] == incoming["patch"]
                 and _same_source_document(existing, incoming)
                 and _has_equivalent_change_items(existing, incoming)
             ),

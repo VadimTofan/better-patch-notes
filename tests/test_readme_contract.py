@@ -58,6 +58,12 @@ class ReadmeContractTests(unittest.TestCase):
                 self.assertNotIn(phrase, readme)
         self.assertNotIn("TODO", readme)
         self.assertNotIn("TBD", readme)
+        self.assertIn(
+            "The PTR tab appears only when PTR notes are bundled.",
+            readme,
+        )
+        self.assertIn("**Bundled data:** Live 12.1; PTR unavailable", readme)
+        self.assertIn("**Interface version:** 120100", readme)
 
     def test_license_contains_the_standard_mit_grant(self) -> None:
         # Given the approved MIT licensing choice

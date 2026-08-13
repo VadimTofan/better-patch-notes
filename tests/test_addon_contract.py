@@ -32,7 +32,7 @@ class AddonManifestTests(unittest.TestCase):
         toc_text = TOC_PATH.read_text(encoding="utf-8-sig")
 
         # Then WoW loads every module in its dependency order
-        self.assertIn("## Interface: 120007", toc_text)
+        self.assertIn("## Interface: 120100", toc_text)
         self.assertIn("## SavedVariables: BetterPatchNotesDB", toc_text)
         self.assertEqual(expected_files, _toc_files())
 
@@ -148,6 +148,7 @@ class DataAndStateContractTests(unittest.TestCase):
         required_contract = (
             "function addon.GetLocalizedChange",
             "function addon.GetSourceUrl",
+            "function addon.HasChannelChanges",
             'sourceUrl:match("^https://")',
             "change.localizations[locale]",
             "local locale = GetLocale()",
@@ -217,6 +218,23 @@ class DataAndStateContractTests(unittest.TestCase):
 
 # Describe: player-facing patch-note window and lifecycle
 class WindowAndCoreContractTests(unittest.TestCase):
+    def test_window_hides_ptr_when_no_ptr_changes_are_bundled(self) -> None:
+        # Given a bundled dataset that may or may not contain PTR notes
+        window_text = (PROJECT_ROOT / "Window.lua").read_text("utf-8-sig")
+
+        # When the window refreshes its channel controls
+        # Then PTR visibility follows the data and Live remains the fallback
+        self.assertIn(
+            'local hasPtrChanges = addon.HasChannelChanges("ptr")',
+            window_text,
+        )
+        self.assertIn("tabs.ptr:SetShown(hasPtrChanges)", window_text)
+        self.assertIn(
+            'if activeChannel == "ptr" and not hasPtrChanges then',
+            window_text,
+        )
+        self.assertIn('activeChannel = "live"', window_text)
+
     def test_window_is_movable_scrollable_tabbed_and_collapsible(self) -> None:
         # Given the approved patch-note window behavior
         window_text = (PROJECT_ROOT / "Window.lua").read_text("utf-8-sig")

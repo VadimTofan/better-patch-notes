@@ -30,26 +30,6 @@
       ]
     },
     {
-      "url": "https://us.forums.blizzard.com/en/wow/c/341.json",
-      "kind": "forum_category",
-      "channel": "ptr",
-      "patch": "12.1.0",
-      "locale": "en",
-      "titlePatterns": [
-        "development notes"
-      ]
-    },
-    {
-      "url": "https://us.forums.blizzard.com/en/wow/t/2330956",
-      "kind": "forum_topic",
-      "channel": "ptr",
-      "patch": "12.1.0",
-      "locale": "en",
-      "titlePatterns": [
-        "dungeon test"
-      ]
-    },
-    {
       "url": "https://us.version.battle.net/wow/versions",
       "kind": "version",
       "channel": "live",

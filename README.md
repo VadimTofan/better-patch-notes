@@ -44,7 +44,8 @@ open the addon or hide the button, and drag it to move it around the minimap.
 Use `/bpn minimap` to toggle the button after hiding it. Press **Escape** to
 close the patch-note window.
 
-Use the **Live** and **PTR** tabs to change channels. Select a class icon to
+Use the **Live** and **PTR** tabs to change channels.
+The PTR tab appears only when PTR notes are bundled. Select a class icon to
 browse that class; other classes show their class-wide and specialization
 changes together. Dungeon and raid sections remain available regardless of
 the selected class.
@@ -95,10 +96,10 @@ new CurseForge addon release.
 
 ## Current status
 
-- **Addon version:** 0.2.14
+- **Addon version:** 0.2.15
 - **Game:** World of Warcraft Retail
-- **Interface version:** 120007
-- **Bundled data:** Live 12.0.7 and PTR 12.1
+- **Interface version:** 120100
+- **Bundled data:** Live 12.1; PTR unavailable
 - **Status:** Active development
 
 See [changelog.txt](changelog.txt) for release details.

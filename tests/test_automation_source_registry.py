@@ -51,23 +51,6 @@ def _write_registry(document: dict[str, object], directory: Path) -> Path:
 
 # Describe: trusted Blizzard source registry
 class SourceRegistryTests(unittest.TestCase):
-    def test_keeps_the_reviewed_dungeon_topic_explicit(self) -> None:
-        # Given
-        path = PROJECT_ROOT / "automation" / "sources.json"
-
-        # When
-        registry = load_registry(path)
-        dungeon_sources = [
-            source
-            for source in registry.sources
-            if "dungeon test" in source.title_patterns
-        ]
-
-        # Then
-        self.assertEqual(1, len(dungeon_sources))
-        self.assertEqual("forum_topic", dungeon_sources[0].kind)
-        self.assertTrue(dungeon_sources[0].url.endswith("/t/2330956"))
-
     def test_rejects_a_non_blizzard_source_host(self) -> None:
         with TemporaryDirectory() as temporary_directory:
             # Given
@@ -103,6 +86,19 @@ class SourceRegistryTests(unittest.TestCase):
                 {source.patch for source in registry.sources},
                 {"current", "12.1.0"},
             )
+
+    def test_project_registry_has_no_ptr_sources_without_an_active_ptr(self) -> None:
+        # Given the reviewed project registry for the current Live-only cycle
+        registry_path = PROJECT_ROOT / "automation" / "sources.json"
+
+        # When the configured sources are loaded
+        registry = load_registry(registry_path)
+
+        # Then unattended discovery does not treat old Live notes as PTR
+        self.assertNotIn(
+            "ptr",
+            {source.channel for source in registry.sources},
+        )
 
     def test_rejects_unknown_registry_properties(self) -> None:
         with TemporaryDirectory() as temporary_directory:

@@ -831,6 +831,34 @@ class JsonDataMergeTests(unittest.TestCase):
             self.assertEqual(1, report["skipped"])
             self.assertEqual(1, len(_read_data(data_path)["changes"]))
 
+    def test_keeps_equivalent_wording_separate_across_patches(self) -> None:
+        with TemporaryDirectory() as temporary_directory:
+            # Given equivalent Live notes published for consecutive patches
+            temporary_path = Path(temporary_directory)
+            previous_path = temporary_path / "previous.json"
+            current_path = temporary_path / "current.json"
+            data_path = temporary_path / "retail-patch-notes.json"
+            _write_batch(previous_path, [_change(patch="12.0.7")])
+            _write_batch(current_path, [_change(patch="12.1.0")])
+            first_result = _run_updater(previous_path, data_path)
+            self.assertEqual(0, first_result.returncode, first_result.stderr)
+
+            # When the current-patch note is merged
+            result = _run_updater(current_path, data_path)
+
+            # Then it remains distinct so retention can keep the current patch
+            self.assertEqual(0, result.returncode, result.stderr)
+            changes = _read_data(data_path)["changes"]
+            self.assertEqual(2, len(changes))
+            self.assertEqual(
+                {"12.0.7", "12.1.0"},
+                {change["patch"] for change in changes},
+            )
+            self.assertEqual(
+                2,
+                len({change["id"] for change in changes}),
+            )
+
     def test_skips_same_forum_topic_after_its_slug_changes(self) -> None:
         with TemporaryDirectory() as temporary_directory:
             # Given the same Blizzard topic under its old and new slugs

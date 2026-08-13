@@ -66,6 +66,16 @@ function addon.HasClassChanges(channel, classToken)
     return false
 end
 
+function addon.HasChannelChanges(channel)
+    for _, change in ipairs(addon.PatchNotesData.changes) do
+        if change.channel == channel then
+            return true
+        end
+    end
+
+    return false
+end
+
 function addon.GetSections(
     channel,
     classToken,

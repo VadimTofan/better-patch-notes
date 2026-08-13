@@ -124,7 +124,7 @@ record so both histories remain available.
       "channel": "live",
       "category": "Class",
       "date": "2026-07-21",
-      "patch": "12.0.7",
+      "patch": "12.1.0",
       "localizations": {
         "en": {
           "name": "Mage",
@@ -184,7 +184,7 @@ Lua outputs synchronized.
 It reads the active Retail build from Blizzard's `.build.info` file and prunes
 records that do not satisfy the current-build retention rules.
 
-Use `--game-version 12.0.7` only to override automatic detection for tests or
+Use `--game-version 12.1.0` only to override automatic detection for tests or
 when operating on data for a different WoW installation.
 
 Delete the temporary batch after a successful update. Report the updater's
@@ -223,8 +223,8 @@ to the categories and channels this skill covers.
 
 ## Maintenance
 
-Updated: 2026-08-11
-Last reviewed: 2026-08-02
+Updated: 2026-08-13
+Last reviewed: 2026-08-13
 Canonical sources:
 
 - https://worldofwarcraft.blizzard.com/en-us/content-update-notes

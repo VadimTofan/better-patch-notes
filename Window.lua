@@ -448,6 +448,13 @@ function addon.RefreshWindow()
         return
     end
 
+    local hasPtrChanges = addon.HasChannelChanges("ptr")
+    tabs.ptr:SetShown(hasPtrChanges)
+    if activeChannel == "ptr" and not hasPtrChanges then
+        activeChannel = "live"
+        viewedChannels.live = true
+    end
+
     hidePooledWidgets()
     styleTab(tabs.live, activeChannel == "live")
     styleTab(tabs.ptr, activeChannel == "ptr")
