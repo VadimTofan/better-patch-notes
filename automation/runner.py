@@ -7,6 +7,7 @@ from datetime import date, datetime, timedelta, timezone
 import json
 import os
 from pathlib import Path
+import re
 import subprocess
 import sys
 from tempfile import TemporaryDirectory
@@ -25,8 +26,10 @@ from automation.discovery import (
     discover_news_documents,
 )
 from automation.extraction import AmbiguousPatchNote, extract_changes
+from automation.localization import align_official_localizations
 from automation.http_client import BlizzardHttpClient
 from automation.models import (
+    ExtractedChange,
     HttpResponse,
     RefreshOutcome,
     RefreshStatus,
@@ -228,6 +231,8 @@ def _qualify_documents(
 ) -> QualificationResult:
     extracted_changes = []
     for document in documents:
+        if document.locale != "en":
+            continue
         try:
             extracted_changes.extend(
                 extract_changes(
@@ -242,6 +247,103 @@ def _qualify_documents(
             ) from error
 
     return qualify(tuple(extracted_changes), current_patch, as_of_date)
+
+
+OFFICIAL_LOCALIZATION_LOCALES = {
+    "deDE",
+    "esES",
+    "esMX",
+    "frFR",
+    "itIT",
+    "koKR",
+    "ptBR",
+    "zhTW",
+}
+ARTICLE_ID_PATTERN = re.compile(r"/article/(\d+)/")
+
+
+def _article_id(url: str) -> str:
+    match = ARTICLE_ID_PATTERN.search(url)
+    if match is None:
+        raise ValueError(f"official article URL has no article id: {url}")
+    return match.group(1)
+
+
+def add_official_localizations(
+    document: dict[str, object],
+    changes: tuple[ExtractedChange, ...],
+    source_documents: tuple[SourceDocument, ...],
+) -> None:
+    articles = {
+        (_article_id(source.url), source.locale): source
+        for source in source_documents
+        if "/article/" in source.url
+    }
+    incoming_changes = document.get("changes")
+    if not isinstance(incoming_changes, list):
+        raise ValueError("English document has invalid changes")
+
+    for english_source in source_documents:
+        if (
+            english_source.locale != "en"
+            or "/article/" not in english_source.url
+        ):
+            continue
+        article_id = _article_id(english_source.url)
+        article_changes = tuple(
+            change
+            for change in changes
+            if _article_id(change.source_url) == article_id
+        )
+        if not article_changes:
+            continue
+
+        for locale in sorted(OFFICIAL_LOCALIZATION_LOCALES):
+            localized_source = articles.get((article_id, locale))
+            if localized_source is None:
+                raise ValueError(
+                    f"official {locale} localization is missing for article "
+                    f"{article_id}"
+                )
+            localized_changes = align_official_localizations(
+                english_source,
+                localized_source,
+                article_changes,
+            )
+            for english_change, localized_change in zip(
+                article_changes,
+                localized_changes,
+                strict=True,
+            ):
+                target = next(
+                    (
+                        item
+                        for item in incoming_changes
+                        if item["category"] == english_change.category
+                        and item["date"]
+                        == english_change.effective_date.isoformat()
+                        and item["patch"] == english_change.patch
+                        and item["localizations"]["en"]["name"]
+                        == english_change.name
+                        and item["localizations"]["en"]["specialization"]
+                        == english_change.specialization
+                        and item["localizations"]["en"]["change"]
+                        == list(english_change.change)
+                    ),
+                    None,
+                )
+                if target is None:
+                    raise ValueError("official localization target is missing")
+                target["localizations"][locale] = {
+                    "name": localized_change.name,
+                    "specialization": localized_change.specialization,
+                    "change": list(localized_change.change),
+                    "source": "Blizzard",
+                    "sourceUrl": localized_change.source_url,
+                    "translationType": "official",
+                    "translatedFrom": "",
+                    "terminologySourceUrls": [],
+                }
 
 
 def collect_official_changes(
@@ -469,6 +571,11 @@ def run_refresh(*, dry_run: bool, now: datetime | None = None) -> tuple[RefreshO
     english_document = build_english_document(
         qualification.accepted,
         refreshed_at.isoformat(),
+    )
+    add_official_localizations(
+        english_document,
+        qualification.accepted,
+        documents,
     )
     base_terminology = json.loads(
         TERMINOLOGY_PATH.read_text(encoding="utf-8")

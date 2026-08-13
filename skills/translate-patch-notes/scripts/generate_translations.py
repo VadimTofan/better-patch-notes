@@ -63,6 +63,11 @@ TARGET_LANGUAGE_CODES = {
     "zhTW": "zh-TW",
 }
 
+AGENT_TARGET_LANGUAGE_CODES = {
+    "ruRU": TARGET_LANGUAGE_CODES["ruRU"],
+    "zhCN": TARGET_LANGUAGE_CODES["zhCN"],
+}
+
 GENERIC_SENTENCE_STARTS = {
     "Added",
     "Addressed",
@@ -920,19 +925,28 @@ def translate_guarded_text(
     text: str,
     language: str,
     translator: Translator,
+    localized_terms: Mapping[str, str] | None = None,
 ) -> tuple[str, tuple[str, ...]]:
     protected_text, replacements, terms = _protect_text(text)
     translated = translator(protected_text, language)
 
     for placeholder, original in replacements:
+        replacement = original
+        if original in terms and localized_terms is not None:
+            replacement = localized_terms.get(original, "")
+            if not replacement:
+                raise ValueError(
+                    "verified localization is missing for " + original
+                )
         translated = _restore_protected_text(
             translated,
             placeholder,
-            original,
+            replacement,
             language,
         )
 
-    return translated, terms
+    uncertain_terms = terms if localized_terms is None else ()
+    return translated, uncertain_terms
 
 
 def _restore_protected_text(
@@ -988,8 +1002,9 @@ def _translation_segments(
 
 def _protect_text(
     text: str,
+    protect_terms: bool = True,
 ) -> tuple[str, list[tuple[str, str]], tuple[str, ...]]:
-    terms = _candidate_terms(text)
+    terms = _candidate_terms(text) if protect_terms else ()
     protected_text = text
     replacements: list[tuple[str, str]] = []
     protected_terms: set[str] = set()
@@ -1032,12 +1047,6 @@ def _protect_text(
     return protected_text, replacements, actual_terms
 
 
-def _terminology_url(terminology: dict[str, object], locale: str) -> str:
-    locale_data = terminology["locales"][locale]
-    druid = locale_data["terms"]["Druid"]
-    return druid["sourceUrl"]
-
-
 def _localized_term(
     terminology: dict[str, object],
     locale: str,
@@ -1049,6 +1058,26 @@ def _localized_term(
         return english_term
 
     return entry["localized"]
+
+
+def translate_agent_text(
+    text: str,
+    language: str,
+    translator: Translator,
+) -> str:
+    protected_text, replacements, _terms = _protect_text(
+        text,
+        protect_terms=False,
+    )
+    translated = translator(protected_text, language)
+    for placeholder, original in replacements:
+        translated = _restore_protected_text(
+            translated,
+            placeholder,
+            original,
+            language,
+        )
+    return translated
 
 
 def build_translation_batch(
@@ -1092,41 +1121,50 @@ def build_translation_batch(
 
         for locale, language in locale_languages.items():
             translated_changes: list[str] = []
-            uncertain_terms: list[str] = []
             for bullet in english["change"]:
-                translated, bullet_terms = translate_guarded_text(
+                translated = translate_agent_text(
                     bullet,
                     language,
                     translator,
                 )
                 translated_changes.append(translated)
-                for term in bullet_terms:
-                    if term not in uncertain_terms:
-                        uncertain_terms.append(term)
+
+            localized_name = _localized_term(
+                terminology,
+                locale,
+                english["name"],
+            )
+            if localized_name == english["name"]:
+                localized_name = translate_agent_text(
+                    english["name"],
+                    language,
+                    translator,
+                )
+            localized_specialization = _localized_term(
+                terminology,
+                locale,
+                english["specialization"],
+            )
+            if (
+                localized_specialization == english["specialization"]
+                and english["specialization"] not in {"", "All"}
+            ):
+                localized_specialization = translate_agent_text(
+                    english["specialization"],
+                    language,
+                    translator,
+                )
 
             localization = {
-                "name": _localized_term(
-                    terminology,
-                    locale,
-                    english["name"],
-                ),
-                "specialization": _localized_term(
-                    terminology,
-                    locale,
-                    english["specialization"],
-                ),
+                "name": localized_name,
+                "specialization": localized_specialization,
                 "change": translated_changes,
                 "source": english["source"],
                 "sourceUrl": english["sourceUrl"],
                 "translationType": "agent",
                 "translatedFrom": "en",
-                "terminologySourceUrls": [
-                    _terminology_url(terminology, locale)
-                ],
+                "terminologySourceUrls": [english["sourceUrl"]],
             }
-            if uncertain_terms:
-                localization["uncertainTerms"] = uncertain_terms
-
             change["localizations"][locale] = localization
 
         batch["changes"].append(change)
@@ -1147,17 +1185,25 @@ def main() -> int:
     document = json.loads(arguments.input.read_text(encoding="utf-8"))
     terminology = json.loads(arguments.terminology.read_text(encoding="utf-8"))
     api_keys = load_gemini_api_keys(PROJECT_ROOT / ".env")
-    unique_bullets = {
-        bullet
+    unique_texts = {
+        text
         for change in document["changes"]
-        for bullet in change["localizations"]["en"]["change"]
+        for text in (
+            *change["localizations"]["en"]["change"],
+            change["localizations"]["en"]["name"],
+            change["localizations"]["en"]["specialization"],
+        )
+        if text and text != "All"
     }
     protected_texts = tuple(
-        sorted(_protect_text(bullet)[0] for bullet in unique_bullets)
+        sorted(
+            _protect_text(text, protect_terms=False)[0]
+            for text in unique_texts
+        )
     )
     batch_languages = {
         language: LANGUAGE_NAMES[language]
-        for language in dict.fromkeys(TARGET_LANGUAGE_CODES.values())
+        for language in dict.fromkeys(AGENT_TARGET_LANGUAGE_CODES.values())
     }
     translated_cache, transport, generation_failures = (
         generate_protected_translations(
@@ -1169,7 +1215,7 @@ def main() -> int:
     print(f"Gemini translation transport: {transport}")
     successful_locales, fallback_reasons = classify_locale_outcomes(
         translated_cache,
-        TARGET_LANGUAGE_CODES,
+        AGENT_TARGET_LANGUAGE_CODES,
         generation_failures,
     )
 

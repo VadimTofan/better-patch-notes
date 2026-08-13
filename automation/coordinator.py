@@ -180,6 +180,13 @@ def coordinate_release(
                     reason="automatic translation coverage is incomplete",
                     locale_failures=dict(sorted(fallback_reasons.items())),
                 )
+            if terminology_warnings:
+                restore_snapshot(snapshot)
+                return RefreshOutcome(
+                    status=RefreshStatus.BLOCKED,
+                    reason="verified localized terminology is incomplete",
+                    terminology_warnings=terminology_warnings,
+                )
         else:
             batch = {
                 "retrievedAt": english_document["updatedAt"],

@@ -48,12 +48,11 @@ the authoritative comparison baseline, not the preferred player-facing result.
    A missing, failed, or incomplete locale is omitted from the published
    localization batch and classified as a documented English fallback. The
    other locales continue through validation independently.
-5. Do not guess a localized game term. Class and specialization terminology
-   remains a hard blocker because it controls addon navigation. An unknown
-   ability, boss, NPC, encounter, dungeon, or raid name may remain exactly in
-   English as a preserved English terminology warning. The warning does not
-   waive validation: numbers, direction, conditions, bullet order, and every
-   protected English term must remain unchanged.
+5. Do not guess a localized game term. Missing verified terminology for a
+   class, specialization, ability, boss, NPC, encounter, dungeon, or raid is a
+   hard blocker. Never publish a protected English game term as a warning.
+   Numbers, direction, conditions, bullet order, and every protected term must
+   remain unchanged in meaning.
 6. Add `translationType: "agent"`, `translatedFrom: "en"`, and the verified
    `terminologySourceUrls`. Retain the English Blizzard `sourceUrl` as the
    underlying patch-note source.
@@ -157,16 +156,16 @@ documented fallback reason.
 Translate `deDE`, `esES`, `esMX`, `frFR`, `itIT`, `koKR`, `ptBR`, `ruRU`,
 `zhCN`, and `zhTW` separately. Do not copy regional Spanish or Chinese text
 between locales. The English fallback remains authoritative when validation
-fails. Preserved English non-class terminology is a warning, not a whole-locale
-fallback.
+fails. Any unverified protected terminology blocks publication for that
+locale.
 
 An official Blizzard localization always replaces an agent translation. An
 agent translation must never replace official localized text.
 
 ## Validation Report
 
-Report validated locales, English fallback locales, uncertain terminology,
-and warning counts per locale.
+Report validated locales, English fallback locales, and terminology blockers
+per locale.
 Confirm matching bullet counts and unchanged numbers, percentages, durations,
 and semantic increase/reduction direction.
 
@@ -177,12 +176,12 @@ and semantic increase/reduction direction.
 | Translating an ability from memory | Verify it in official localized material. |
 | Calling generated text official | Mark it as an unofficial translation. |
 | Treating a portal translation as Blizzard text | Keep it unofficial and retain the English Blizzard source. |
-| Silently publishing an uncertain term | Keep English and report the uncertainty. |
+| Publishing an uncertain term | Block publication and verify it first. |
 
 ## Maintenance
 
-Updated: 2026-08-08
-Last reviewed: 2026-08-06
+Updated: 2026-08-13
+Last reviewed: 2026-08-13
 Canonical sources:
 
 - https://worldofwarcraft.blizzard.com/en-us/game/classes

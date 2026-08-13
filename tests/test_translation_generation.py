@@ -531,6 +531,44 @@ class TranslationGenerationTests(unittest.TestCase):
         )
         self.assertEqual(["second __BPN0000__"], repair_requests)
 
+    def test_restores_a_protected_term_with_verified_localization(self) -> None:
+        # Given a translated bullet containing a protected English game term
+        self.assertIsNotNone(self.generator)
+
+        # When the protected text is restored with verified German terminology
+        translated, uncertain_terms = self.generator.translate_guarded_text(
+            "Death Knight damage increased by 5%.",
+            "de",
+            lambda text, _language: text.replace(
+                "damage increased by",
+                "Schaden wurde um",
+            ),
+            {"Death Knight": "Todesritter"},
+        )
+
+        # Then the published bullet contains the localized term, not English
+        self.assertEqual(
+            "Todesritter Schaden wurde um 5%.",
+            translated,
+        )
+        self.assertEqual((), uncertain_terms)
+
+    def test_rejects_a_protected_term_without_verified_localization(self) -> None:
+        # Given a bullet containing an ability absent from verified terminology
+        self.assertIsNotNone(self.generator)
+
+        # When / Then generation blocks instead of restoring the English term
+        with self.assertRaisesRegex(
+            ValueError,
+            "verified localization is missing for Dread Plague",
+        ):
+            self.generator.translate_guarded_text(
+                "Dread Plague damage increased by 5%.",
+                "de",
+                lambda text, _language: text,
+                {},
+            )
+
     def test_normalizes_placeholder_case_without_an_extra_request(self) -> None:
         # Given Gemini changes only the capitalization of a placeholder
         self.assertIsNotNone(self.generator)

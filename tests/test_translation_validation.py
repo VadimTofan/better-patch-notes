@@ -61,7 +61,7 @@ def _translation_batch() -> dict[str, object]:
                         "name": "Друид",
                         "specialization": "All",
                         "change": [
-                            "Урон от Moonfire увеличен на 12,5% на 8 секунд."
+                            "Урон от Лунный огонь увеличен на 12,5% на 8 секунд."
                         ],
                         "source": "Blizzard",
                         "sourceUrl": source_url,
@@ -70,7 +70,6 @@ def _translation_batch() -> dict[str, object]:
                         "terminologySourceUrls": [
                             "https://worldofwarcraft.blizzard.com/ru-ru/game/classes/druid"
                         ],
-                        "uncertainTerms": ["Moonfire"],
                     },
                 },
             }
@@ -85,9 +84,17 @@ class TranslationValidationTests(unittest.TestCase):
         self.terminology = json.loads(
             TERMINOLOGY_PATH.read_text(encoding="utf-8")
         )
+        self.terminology["locales"]["ruRU"]["terms"]["Moonfire"] = {
+            "localized": "Лунный огонь",
+            "type": "ability",
+            "sourceUrl": (
+                "https://worldofwarcraft.blizzard.com/ru-ru/game/classes/druid"
+            ),
+            "reviewedAt": "2026-08-13",
+        }
 
     def test_accepts_grounded_translation_and_reports_fallbacks(self) -> None:
-        # Given one grounded Russian translation with an English ability fallback
+        # Given one grounded Russian translation with verified terminology
         batch = _translation_batch()
 
         # When the translation batch is validated
@@ -96,11 +103,11 @@ class TranslationValidationTests(unittest.TestCase):
             self.terminology,
         )
 
-        # Then the locale, fallbacks, and uncertain English term are explicit
+        # Then the locale and documented generation fallback are explicit
         self.assertEqual(("ruRU",), report.validated_locales)
         self.assertNotIn("ruRU", report.fallback_locales)
         self.assertIn("deDE", report.fallback_locales)
-        self.assertEqual(("ruRU: Moonfire",), report.uncertain_terms)
+        self.assertEqual((), report.uncertain_terms)
 
     def test_rejects_a_translation_with_a_missing_bullet(self) -> None:
         # Given English notes with two bullets and a one-bullet translation
@@ -128,12 +135,55 @@ class TranslationValidationTests(unittest.TestCase):
         ):
             self.validator.validate_translation_batch(batch, self.terminology)
 
+    def test_rejects_any_unverified_term_left_in_english(self) -> None:
+        # Given an ability name remains English without verified terminology
+        batch = _translation_batch()
+        russian = batch["changes"][0]["localizations"]["ruRU"]
+        russian["uncertainTerms"] = ["Moonfire"]
+
+        # When / Then every unresolved game term blocks publication
+        with self.assertRaisesRegex(
+            ValueError,
+            "unverified terminology for Moonfire",
+        ):
+            self.validator.validate_translation_batch(batch, self.terminology)
+
+    def test_accepts_a_distinct_agent_translated_russian_heading(self) -> None:
+        # Given Russian uses a reviewed agent translation for a missing term
+        batch = _translation_batch()
+        english = batch["changes"][0]["localizations"]["en"]
+        russian = batch["changes"][0]["localizations"]["ruRU"]
+        english["name"] = "Chronomancer"
+        russian["name"] = "Хрономант"
+
+        # When the strict validator reviews the agent-only locale
+        report = self.validator.validate_translation_batch(
+            batch,
+            self.terminology,
+        )
+
+        # Then a distinct translation can pass without pretending it is official
+        self.assertEqual(("ruRU",), report.validated_locales)
+
+    def test_rejects_english_leakage_in_simplified_chinese(self) -> None:
+        # Given an otherwise translated Chinese bullet leaves English prose
+        batch = _translation_batch()
+        russian = batch["changes"][0]["localizations"].pop("ruRU")
+        chinese = dict(russian)
+        chinese["name"] = "德鲁伊"
+        chinese["change"] = ["Moonfire 伤害提高 12.5%，持续 8 秒。"]
+        batch["changes"][0]["localizations"]["zhCN"] = chinese
+
+        # When / Then untranslated English is a hard blocker
+        with self.assertRaisesRegex(ValueError, "English leakage"):
+            self.validator.validate_translation_batch(batch, self.terminology)
+
     def test_rejects_changed_numeric_meaning(self) -> None:
         # Given a translation that changes 12.5% to 15%
         batch = _translation_batch()
         russian = batch["changes"][0]["localizations"]["ruRU"]
         russian["change"] = [
-            "Урон от Moonfire увеличен на 15% на 8 секунд."
+            "Урон от Лунный огонь увеличен на 15% на 8 секунд."
         ]
 
         # When numeric tokens are compared
@@ -146,7 +196,7 @@ class TranslationValidationTests(unittest.TestCase):
         batch = _translation_batch()
         russian = batch["changes"][0]["localizations"]["ruRU"]
         russian["change"] = [
-            "Урон от Moonfire увеличен на 15% на 8 секунд."
+            "Урон от Лунный огонь увеличен на 15% на 8 секунд."
         ]
 
         # When the batch is classified for automatic publication
@@ -185,7 +235,7 @@ class TranslationValidationTests(unittest.TestCase):
         batch = _translation_batch()
         russian = batch["changes"][0]["localizations"]["ruRU"]
         russian["change"] = [
-            "Урон от Moonfire уменьшен на 12,5% на 8 секунд."
+            "Урон от Лунный огонь уменьшен на 12,5% на 8 секунд."
         ]
 
         # When / Then the reversed semantic direction is rejected
@@ -220,7 +270,7 @@ class TranslationValidationTests(unittest.TestCase):
             "Moonfire damage increased by 12.5% when active for 8 seconds."
         ]
         russian["change"] = [
-            "Урон от Moonfire увеличен на 12,5% на 8 секунд."
+            "Урон от Лунный огонь увеличен на 12,5% на 8 секунд."
         ]
 
         # When / Then the missing condition remains a release blocker
@@ -304,9 +354,10 @@ class TranslationValidationTests(unittest.TestCase):
         russian["change"] = [
             "Урон от Lunar Fire увеличен на 12,5% на 8 секунд."
         ]
+        russian["uncertainTerms"] = ["Moonfire"]
 
-        # When / Then preserved English fallback terminology is enforced
-        with self.assertRaisesRegex(ValueError, "must remain"):
+        # When / Then unresolved terminology blocks publication
+        with self.assertRaisesRegex(ValueError, "unverified terminology"):
             self.validator.validate_translation_batch(batch, self.terminology)
 
     def test_accepts_locale_spacing_before_a_percent_sign(self) -> None:
@@ -341,7 +392,7 @@ class TranslationValidationTests(unittest.TestCase):
         batch = _translation_batch()
         russian = batch["changes"][0]["localizations"]["ruRU"]
         russian["change"] = [
-            "В течение 8 секунд урон от Moonfire увеличен на 12,5%."
+            "В течение 8 секунд урон от Лунный огонь увеличен на 12,5%."
         ]
 
         # When the complete translation is validated

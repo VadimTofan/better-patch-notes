@@ -30,6 +30,70 @@
       ]
     },
     {
+      "url": "https://news.blizzard.com/de-de/api/news/world-of-warcraft",
+      "kind": "news_feed",
+      "channel": "live",
+      "patch": "current",
+      "locale": "deDE",
+      "titlePatterns": ["Fluch von Ula'tek"]
+    },
+    {
+      "url": "https://news.blizzard.com/es-es/api/news/world-of-warcraft",
+      "kind": "news_feed",
+      "channel": "live",
+      "patch": "current",
+      "locale": "esES",
+      "titlePatterns": ["maldición de Ula'tek"]
+    },
+    {
+      "url": "https://news.blizzard.com/es-mx/api/news/world-of-warcraft",
+      "kind": "news_feed",
+      "channel": "live",
+      "patch": "current",
+      "locale": "esMX",
+      "titlePatterns": ["maldición de Ula'tek"]
+    },
+    {
+      "url": "https://news.blizzard.com/fr-fr/api/news/world-of-warcraft",
+      "kind": "news_feed",
+      "channel": "live",
+      "patch": "current",
+      "locale": "frFR",
+      "titlePatterns": ["malédiction d’Ula’tek"]
+    },
+    {
+      "url": "https://news.blizzard.com/it-it/api/news/world-of-warcraft",
+      "kind": "news_feed",
+      "channel": "live",
+      "patch": "current",
+      "locale": "itIT",
+      "titlePatterns": ["Maledizione di Ula'tek"]
+    },
+    {
+      "url": "https://news.blizzard.com/ko-kr/api/news/world-of-warcraft",
+      "kind": "news_feed",
+      "channel": "live",
+      "patch": "current",
+      "locale": "koKR",
+      "titlePatterns": ["울라텍의 저주"]
+    },
+    {
+      "url": "https://news.blizzard.com/pt-br/api/news/world-of-warcraft",
+      "kind": "news_feed",
+      "channel": "live",
+      "patch": "current",
+      "locale": "ptBR",
+      "titlePatterns": ["Maldição de Ula’tek"]
+    },
+    {
+      "url": "https://news.blizzard.com/zh-tw/api/news/world-of-warcraft",
+      "kind": "news_feed",
+      "channel": "live",
+      "patch": "current",
+      "locale": "zhTW",
+      "titlePatterns": ["烏拉特克的詛咒"]
+    },
+    {
       "url": "https://us.version.battle.net/wow/versions",
       "kind": "version",
       "channel": "live",

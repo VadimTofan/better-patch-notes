@@ -3,6 +3,12 @@
   "locales": {
     "deDE": {
       "terms": {
+        "Death Knight": {
+          "localized": "Todesritter",
+          "type": "class",
+          "sourceUrl": "https://worldofwarcraft.blizzard.com/de-de/game/classes/death-knight",
+          "reviewedAt": "2026-08-13"
+        },
         "Druid": {
           "localized": "Druide",
           "type": "class",
@@ -13,6 +19,12 @@
     },
     "esES": {
       "terms": {
+        "Death Knight": {
+          "localized": "Caballero de la Muerte",
+          "type": "class",
+          "sourceUrl": "https://worldofwarcraft.blizzard.com/es-es/game/classes/death-knight",
+          "reviewedAt": "2026-08-13"
+        },
         "Druid": {
           "localized": "Druida",
           "type": "class",
@@ -23,6 +35,12 @@
     },
     "esMX": {
       "terms": {
+        "Death Knight": {
+          "localized": "Caballero de la muerte",
+          "type": "class",
+          "sourceUrl": "https://worldofwarcraft.blizzard.com/es-mx/game/classes/death-knight",
+          "reviewedAt": "2026-08-13"
+        },
         "Druid": {
           "localized": "Druida",
           "type": "class",
@@ -33,6 +51,12 @@
     },
     "frFR": {
       "terms": {
+        "Death Knight": {
+          "localized": "Chevalier de la mort",
+          "type": "class",
+          "sourceUrl": "https://worldofwarcraft.blizzard.com/fr-fr/game/classes/death-knight",
+          "reviewedAt": "2026-08-13"
+        },
         "Druid": {
           "localized": "Druide",
           "type": "class",
@@ -43,6 +67,12 @@
     },
     "itIT": {
       "terms": {
+        "Death Knight": {
+          "localized": "Cavaliere della Morte",
+          "type": "class",
+          "sourceUrl": "https://worldofwarcraft.blizzard.com/it-it/game/classes/death-knight",
+          "reviewedAt": "2026-08-13"
+        },
         "Druid": {
           "localized": "Druido",
           "type": "class",
@@ -53,6 +83,12 @@
     },
     "koKR": {
       "terms": {
+        "Death Knight": {
+          "localized": "죽음의 기사",
+          "type": "class",
+          "sourceUrl": "https://worldofwarcraft.blizzard.com/ko-kr/game/classes/death-knight",
+          "reviewedAt": "2026-08-13"
+        },
         "Druid": {
           "localized": "드루이드",
           "type": "class",
@@ -63,6 +99,12 @@
     },
     "ptBR": {
       "terms": {
+        "Death Knight": {
+          "localized": "Cavaleiro da Morte",
+          "type": "class",
+          "sourceUrl": "https://worldofwarcraft.blizzard.com/pt-br/game/classes/death-knight",
+          "reviewedAt": "2026-08-13"
+        },
         "Druid": {
           "localized": "Druida",
           "type": "class",
@@ -73,6 +115,12 @@
     },
     "ruRU": {
       "terms": {
+        "Death Knight": {
+          "localized": "Рыцарь смерти",
+          "type": "class",
+          "sourceUrl": "https://worldofwarcraft.blizzard.com/ru-ru/game/classes/death-knight",
+          "reviewedAt": "2026-08-13"
+        },
         "Druid": {
           "localized": "Друид",
           "type": "class",
@@ -83,6 +131,12 @@
     },
     "zhCN": {
       "terms": {
+        "Death Knight": {
+          "localized": "死亡骑士",
+          "type": "class",
+          "sourceUrl": "https://worldofwarcraft.blizzard.com/zh-cn/game/classes/death-knight",
+          "reviewedAt": "2026-08-13"
+        },
         "Druid": {
           "localized": "德鲁伊",
           "type": "class",
@@ -93,6 +147,12 @@
     },
     "zhTW": {
       "terms": {
+        "Death Knight": {
+          "localized": "死亡騎士",
+          "type": "class",
+          "sourceUrl": "https://worldofwarcraft.blizzard.com/zh-tw/game/classes/death-knight",
+          "reviewedAt": "2026-08-13"
+        },
         "Druid": {
           "localized": "德魯伊",
           "type": "class",

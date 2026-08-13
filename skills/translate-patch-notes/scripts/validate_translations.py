@@ -220,6 +220,7 @@ def _validate_term(
     terminology: dict[str, object],
     uncertain_terms: set[str],
     require_verified: bool = False,
+    allow_agent_translation: bool = False,
 ) -> None:
     if not english_term or english_term == "All":
         return
@@ -229,6 +230,8 @@ def _validate_term(
     terms = _require_dict(locale_data.get("terms"), f"terminology {locale} terms")
     raw_entry = terms.get(english_term)
     if raw_entry is None:
+        if allow_agent_translation and localized_term != english_term:
+            return
         if require_verified:
             raise ValueError(
                 f"{locale} uses unverified class terminology for "
@@ -263,6 +266,7 @@ def _validate_agent_translation(
         raise ValueError(f"{locale} must retain the en sourceUrl")
 
     _validate_terminology_urls(localization)
+    allow_agent_terminology = locale in {"ruRU", "zhCN"}
     _validate_term(
         locale,
         _require_string(english.get("name"), "en name"),
@@ -270,6 +274,7 @@ def _validate_agent_translation(
         terminology,
         uncertain_terms,
         require_verified=category == "Class",
+        allow_agent_translation=allow_agent_terminology,
     )
     _validate_term(
         locale,
@@ -281,6 +286,7 @@ def _validate_agent_translation(
         terminology,
         uncertain_terms,
         require_verified=category == "Class",
+        allow_agent_translation=allow_agent_terminology,
     )
 
     english_changes = _require_list(english.get("change"), "en change")
@@ -299,6 +305,28 @@ def _validate_agent_translation(
             localized_change,
             f"{locale} change entry",
         )
+        if allow_agent_terminology:
+            english_words = {
+                word.casefold()
+                for word in re.findall(
+                    r"[A-Za-z][A-Za-z'’\-]{2,}",
+                    english_text,
+                )
+            }
+            localized_words = {
+                word.casefold()
+                for word in re.findall(
+                    r"[A-Za-z][A-Za-z'’\-]{2,}",
+                    localized_text,
+                )
+            }
+            leaked_words = english_words & localized_words
+            if leaked_words:
+                leaked = ", ".join(sorted(leaked_words))
+                raise ValueError(
+                    f"{locale} bullet {index + 1} contains English leakage: "
+                    f"{leaked}"
+                )
         if Counter(_numeric_tokens(english_text)) != Counter(
             _numeric_tokens(localized_text)
         ):
@@ -313,16 +341,10 @@ def _validate_agent_translation(
         )
 
     raw_uncertain = localization.get("uncertainTerms", [])
-    for raw_term in _require_list(raw_uncertain, f"{locale} uncertainTerms"):
-        term = _require_string(raw_term, f"{locale} uncertain term")
-        if not any(
-            term in _require_string(change, f"{locale} change entry")
-            for change in localized_changes
-        ):
-            raise ValueError(
-                f"{locale} uncertain term must remain in the translated text"
-            )
-        uncertain_terms.add(f"{locale}: {term}")
+    uncertain = _require_list(raw_uncertain, f"{locale} uncertainTerms")
+    if uncertain:
+        term = _require_string(uncertain[0], f"{locale} uncertain term")
+        raise ValueError(f"{locale} uses unverified terminology for {term}")
 
 
 def validate_translation_batch(
