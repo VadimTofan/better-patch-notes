@@ -6,7 +6,7 @@ import App from "./App.vue";
 import { createAppRouter } from "./router";
 
 describe("public patch-note browser", () => {
-  it("opens a shareable class route with all classes and channel controls", async () => {
+  it("hides PTR when the bundled data has no PTR notes", async () => {
     // Given the public Druid route
     const router = createAppRouter(createMemoryHistory());
     await router.push("/druid");
@@ -17,11 +17,11 @@ describe("public patch-note browser", () => {
       global: { plugins: [router] },
     });
 
-    // Then the class browser and both channels are available
+    // Then the class browser and only the relevant Live channel are available
     expect(wrapper.get('[data-testid="page-title"]').text()).toContain("Druid");
     expect(wrapper.findAll('[data-testid="class-link"]')).toHaveLength(13);
     expect(wrapper.find('[data-testid="channel-live"]').exists()).toBe(true);
-    expect(wrapper.find('[data-testid="channel-ptr"]').exists()).toBe(true);
+    expect(wrapper.find('[data-testid="channel-ptr"]').exists()).toBe(false);
   });
 
   it("persists a manually selected locale", async () => {

@@ -2,7 +2,8 @@
 
 The public Vue 3 companion to the Better Patch Notes World of Warcraft addon.
 It presents the same curated Retail class, dungeon, and raid changes in a
-responsive browser interface with Live/PTR switching and 11 locales.
+responsive browser interface with Live/PTR switching when PTR notes are
+available, and 11 locales.
 
 ## Local development
 

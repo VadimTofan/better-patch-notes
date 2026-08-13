@@ -19,6 +19,9 @@ const channel = ref<PatchChannel>("live");
 const classSlug = computed(() => route.params.classSlug as ClassSlug);
 const selectedClass = computed(() => getWowClass(classSlug.value));
 const text = computed(() => messages[locale.value]);
+const hasPtrChanges = computed(() =>
+  patchNotes.changes.some((record) => record.channel === "ptr"),
+);
 const visibleNotes = computed(() =>
   getVisiblePatchNotes(patchNotes.changes, classSlug.value, channel.value),
 );
@@ -145,6 +148,7 @@ watch(
         {{ text.live }}
       </button>
       <button
+        v-if="hasPtrChanges"
         class="rounded-lg px-4 py-2 font-semibold text-muted"
         :class="{ 'bg-surface-raised text-text': channel === 'ptr' }"
         data-testid="channel-ptr"
