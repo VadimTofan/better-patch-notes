@@ -43,6 +43,10 @@ class AutomationReportingTests(unittest.TestCase):
             workflow_url="https://github.com/example/actions/runs/123",
             artifact_name="refresh-audit-123",
             source_urls=source_urls,
+            locale_failures={
+                "deDE": "placeholder repair failed",
+                "ruRU": "numeric values changed",
+            },
         )
 
         # Then
@@ -51,6 +55,8 @@ class AutomationReportingTests(unittest.TestCase):
         self.assertIn("translation", body)
         self.assertIn("refresh-audit-123", body)
         self.assertIn(source_urls[0], body)
+        self.assertIn("deDE: placeholder repair failed", body)
+        self.assertIn("ruRU: numeric values changed", body)
 
     def test_redacts_supported_secret_shapes(self) -> None:
         # Given

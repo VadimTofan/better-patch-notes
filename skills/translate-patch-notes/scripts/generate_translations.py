@@ -767,7 +767,11 @@ def _generate_interactive_translations(
     api_keys: tuple[str, ...],
     protected_texts: tuple[str, ...],
     languages: Mapping[str, str],
-) -> tuple[dict[tuple[str, str], str], str]:
+) -> tuple[
+    dict[tuple[str, str], str],
+    str,
+    dict[str, str],
+]:
     translator = GeminiTranslator(
         api_keys,
         request_translation=request_gemini_translation_batch,
@@ -777,6 +781,7 @@ def _generate_interactive_translations(
         request_translation=request_gemini_translation,
     )
     translations: dict[tuple[str, str], str] = {}
+    failure_reasons: dict[str, str] = {}
     for language in languages:
         try:
             localized_texts = translate_text_batch(
@@ -785,7 +790,11 @@ def _generate_interactive_translations(
                 translator,
                 repair_translator=repair_translator,
             )
-        except RuntimeError:
+        except RuntimeError as error:
+            reason = " ".join(str(error).split())
+            failure_reasons[language] = (
+                reason or "automatic translation generation failed"
+            )
             continue
 
         for source_text, localized_text in zip(
@@ -795,14 +804,18 @@ def _generate_interactive_translations(
         ):
             translations[(language, source_text)] = localized_text
 
-    return translations, "interactive"
+    return translations, "interactive", failure_reasons
 
 
 def generate_protected_translations(
     api_keys: tuple[str, ...],
     protected_texts: tuple[str, ...],
     languages: Mapping[str, str],
-) -> tuple[dict[tuple[str, str], str], str]:
+) -> tuple[
+    dict[tuple[str, str], str],
+    str,
+    dict[str, str],
+]:
     inline_requests = build_inline_batch_requests(
         protected_texts,
         languages,
@@ -847,13 +860,15 @@ def generate_protected_translations(
         for language in languages
         for text_index, source_text in enumerate(protected_texts)
     }
-    return translations, "batch"
+    return translations, "batch", {}
 
 
 def classify_locale_outcomes(
     translations: Mapping[tuple[str, str], str],
     locale_languages: Mapping[str, str],
+    failure_reasons: Mapping[str, str] | None = None,
 ) -> tuple[dict[str, str], dict[str, str]]:
+    documented_failures = failure_reasons or {}
     successful_languages = {
         language for language, _source_text in translations
     }
@@ -863,7 +878,10 @@ def classify_locale_outcomes(
         if language in successful_languages
     }
     fallback_reasons = {
-        locale: "automatic translation generation failed"
+        locale: documented_failures.get(
+            language,
+            "automatic translation generation failed",
+        )
         for locale, language in locale_languages.items()
         if language not in successful_languages
     }
@@ -1141,15 +1159,18 @@ def main() -> int:
         language: LANGUAGE_NAMES[language]
         for language in dict.fromkeys(TARGET_LANGUAGE_CODES.values())
     }
-    translated_cache, transport = generate_protected_translations(
-        api_keys,
-        protected_texts,
-        batch_languages,
+    translated_cache, transport, generation_failures = (
+        generate_protected_translations(
+            api_keys,
+            protected_texts,
+            batch_languages,
+        )
     )
     print(f"Gemini translation transport: {transport}")
     successful_locales, fallback_reasons = classify_locale_outcomes(
         translated_cache,
         TARGET_LANGUAGE_CODES,
+        generation_failures,
     )
 
     def cached_translator(text: str, language: str) -> str:

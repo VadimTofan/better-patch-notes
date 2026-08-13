@@ -173,6 +173,13 @@ def coordinate_release(
             terminology_warnings = report.uncertain_terms
             validated_locales = report.validated_locales
             fallback_reasons = report.fallback_reasons
+            if fallback_reasons:
+                restore_snapshot(snapshot)
+                return RefreshOutcome(
+                    status=RefreshStatus.BLOCKED,
+                    reason="automatic translation coverage is incomplete",
+                    locale_failures=dict(sorted(fallback_reasons.items())),
+                )
         else:
             batch = {
                 "retrievedAt": english_document["updatedAt"],

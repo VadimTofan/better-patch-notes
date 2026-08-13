@@ -68,6 +68,7 @@ def build_issue_payload(
     workflow_url: str,
     artifact_name: str,
     source_urls: tuple[str, ...],
+    locale_failures: dict[str, str] | None = None,
 ) -> tuple[str, str]:
     safe_stage = redact_secrets(stage)
     safe_error = redact_secrets(error)
@@ -77,6 +78,15 @@ def build_issue_payload(
     source_lines = "\n".join(f"- {url}" for url in safe_sources)
     if not source_lines:
         source_lines = "- No source URL was reached before the failure."
+    failure_lines = "\n".join(
+        f"- {redact_secrets(locale)}: {redact_secrets(reason)}"
+        for locale, reason in sorted((locale_failures or {}).items())
+    )
+    failure_section = (
+        f"\n\nLocale failures:\n\n{failure_lines}"
+        if failure_lines
+        else ""
+    )
 
     body = (
         f"{ISSUE_MARKER}\n"
@@ -87,7 +97,8 @@ def build_issue_payload(
         f"- Workflow: {safe_workflow_url}\n"
         f"- Audit artifact: `{safe_artifact_name}`\n\n"
         "Official source URLs reached:\n\n"
-        f"{source_lines}\n"
+        f"{source_lines}"
+        f"{failure_section}\n"
     )
 
     return ISSUE_TITLE, body
@@ -109,12 +120,20 @@ def main() -> int:
     source_urls = tuple(
         str(url) for url in raw_urls if isinstance(url, str)
     )
+    raw_locale_failures = result.get("localeFailures", {})
+    locale_failures: dict[str, str] = {}
+    if isinstance(raw_locale_failures, dict):
+        locale_failures = {
+            str(locale): str(reason)
+            for locale, reason in raw_locale_failures.items()
+        }
     title, body = build_issue_payload(
         stage=arguments.stage,
         error=str(result.get("reason", "workflow validation failed")),
         workflow_url=arguments.workflow_url,
         artifact_name=arguments.artifact_name,
         source_urls=source_urls,
+        locale_failures=locale_failures,
     )
     arguments.output.write_text(
         json.dumps({"title": title, "body": body}, ensure_ascii=False) + "\n",

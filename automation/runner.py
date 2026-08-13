@@ -330,7 +330,7 @@ def _translator(
             batch = {
                 "retrievedAt": document["updatedAt"],
                 "fallbackReasons": {
-                    locale: "automatic translation generation failed"
+                    locale: translation_error
                     for locale in sorted(SUPPORTED_TRANSLATION_LOCALES)
                 },
                 "translationGenerationError": translation_error,
@@ -528,6 +528,7 @@ def run_refresh(*, dry_run: bool, now: datetime | None = None) -> tuple[RefreshO
     audit = {
         **asdict(outcome),
         "status": outcome.status.value,
+        "localeFailures": outcome.locale_failures,
         "dryRun": dry_run,
         "currentPatch": current_patch,
         "asOfDate": refreshed_at.date().isoformat(),

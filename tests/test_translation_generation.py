@@ -724,7 +724,7 @@ class TranslationGenerationTests(unittest.TestCase):
                 interactive_batch,
             ),
         ):
-            translations, transport = (
+            translations, transport, failure_reasons = (
                 self.generator.generate_protected_translations(
                     ("test-key",),
                     ("first", "second"),
@@ -734,6 +734,7 @@ class TranslationGenerationTests(unittest.TestCase):
 
         # Then normal requests provide complete, keyed fallback results
         self.assertEqual("interactive", transport)
+        self.assertEqual({}, failure_reasons)
         self.assertEqual(["de", "fr"], requested_languages)
         self.assertEqual("de: first", translations[("de", "first")])
         self.assertEqual("fr: second", translations[("fr", "second")])
@@ -779,7 +780,7 @@ class TranslationGenerationTests(unittest.TestCase):
                 interactive_repair,
             ),
         ):
-            translations, transport = (
+            translations, transport, failure_reasons = (
                 self.generator.generate_protected_translations(
                     ("test-key",),
                     ("source __BPN0000__",),
@@ -789,6 +790,7 @@ class TranslationGenerationTests(unittest.TestCase):
 
         # Then French remains publishable and only German is a fallback
         self.assertEqual("interactive", transport)
+        self.assertIn("de", failure_reasons)
         self.assertNotIn(("de", "source __BPN0000__"), translations)
         self.assertEqual(
             "fr: source __BPN0000__",
@@ -815,6 +817,40 @@ class TranslationGenerationTests(unittest.TestCase):
         self.assertEqual(
             {"deDE": "automatic translation generation failed"},
             fallback_reasons,
+        )
+
+    def test_interactive_failure_preserves_the_exact_language_reason(self) -> None:
+        # Given one language fails while another language succeeds
+        self.assertIsNotNone(self.generator)
+
+        def translate_batch(_texts, language, _translator, **_kwargs):
+            if language == "de":
+                raise RuntimeError("placeholder repair failed for German")
+            return ("traduction française",)
+
+        # When interactive translations are generated
+        with patch.object(
+            self.generator,
+            "translate_text_batch",
+            side_effect=translate_batch,
+        ):
+            translations, transport, failure_reasons = (
+                self.generator._generate_interactive_translations(
+                    ("test-key",),
+                    ("source",),
+                    {"de": "German", "fr": "French"},
+                )
+            )
+
+        # Then the failed language keeps its exact diagnostic
+        self.assertEqual("interactive", transport)
+        self.assertEqual(
+            {("fr", "source"): "traduction française"},
+            translations,
+        )
+        self.assertEqual(
+            {"de": "placeholder repair failed for German"},
+            failure_reasons,
         )
 
     def test_uses_interactive_translation_when_batch_wait_times_out(
@@ -851,7 +887,7 @@ class TranslationGenerationTests(unittest.TestCase):
                 interactive_batch,
             ),
         ):
-            translations, transport = (
+            translations, transport, failure_reasons = (
                 self.generator.generate_protected_translations(
                     ("test-key",),
                     ("first", "second"),
@@ -861,6 +897,7 @@ class TranslationGenerationTests(unittest.TestCase):
 
         # Then the existing rate-limited interactive transport completes it
         self.assertEqual("interactive", transport)
+        self.assertEqual({}, failure_reasons)
         self.assertEqual(["de", "fr"], requested_languages)
         self.assertEqual("de: first", translations[("de", "first")])
         self.assertEqual("fr: second", translations[("fr", "second")])

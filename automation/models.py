@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import date, datetime
 from enum import StrEnum
 
@@ -76,3 +76,4 @@ class RefreshOutcome:
     version: str = ""
     reason: str = ""
     terminology_warnings: tuple[str, ...] = ()
+    locale_failures: dict[str, str] = field(default_factory=dict)

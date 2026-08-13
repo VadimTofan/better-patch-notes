@@ -9,6 +9,7 @@ from unittest.mock import patch
 
 from automation.models import HttpResponse, RegisteredSource, SourceRegistry
 from automation.runner import (
+    SUPPORTED_TRANSLATION_LOCALES,
     _run,
     _translator,
     _validator,
@@ -153,9 +154,16 @@ class AutomationRunnerTests(unittest.TestCase):
             ):
                 batch = _translator(document, terminology_path)
 
-            # Then English remains publishable and every locale can fall back
+            # Then every locale retains the exact safe generation failure
             self.assertEqual(document["updatedAt"], batch["retrievedAt"])
             self.assertEqual(error_reason, batch["translationGenerationError"])
+            self.assertEqual(
+                {
+                    locale: error_reason
+                    for locale in sorted(SUPPORTED_TRANSLATION_LOCALES)
+                },
+                batch["fallbackReasons"],
+            )
             change = batch["changes"][0]
             self.assertEqual({"en"}, set(change["localizations"]))
             self.assertEqual("", change["replacesSourceUrl"])
