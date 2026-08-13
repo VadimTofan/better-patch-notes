@@ -225,6 +225,41 @@ class AutomationRunnerTests(unittest.TestCase):
         self.assertEqual(terms["Mage"]["localized"], "Маг")
         self.assertEqual(terms["Arcane"]["localized"], "Тайная магия")
 
+    def test_ignores_an_untranslated_bundled_term(self) -> None:
+        # Given contaminated canonical data stores an English heading as zhTW
+        base = {
+            "schemaVersion": 1,
+            "locales": {"zhTW": {"terms": {}}},
+        }
+        canonical = {
+            "changes": [
+                {
+                    "localizations": {
+                        "en": {
+                            "name": "Death Knight",
+                            "specialization": "All",
+                        },
+                        "zhTW": {
+                            "name": "Death Knight",
+                            "specialization": "All",
+                            "terminologySourceUrls": [
+                                "https://worldofwarcraft.blizzard.com/zh-tw/game/classes/druid"
+                            ],
+                        },
+                    }
+                }
+            ]
+        }
+
+        # When runtime terminology is built from canonical history
+        terminology = build_runtime_terminology(base, canonical)
+
+        # Then untranslated text is not promoted as verified terminology
+        self.assertNotIn(
+            "Death Knight",
+            terminology["locales"]["zhTW"]["terms"],
+        )
+
     def test_rejects_conflicting_bundled_terminology(self) -> None:
         # Given
         base = {"schemaVersion": 1, "locales": {"ruRU": {"terms": {}}}}

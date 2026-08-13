@@ -145,6 +145,7 @@ def build_runtime_terminology(
                     or english_term == "All"
                     or not isinstance(localized_term, str)
                     or not localized_term
+                    or localized_term == english_term
                 ):
                     continue
                 existing = terms.get(english_term)
