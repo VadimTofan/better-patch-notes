@@ -1212,6 +1212,14 @@ def _record_checkpoint_key(change: dict[str, object]) -> str:
     return json.dumps(identity, ensure_ascii=False, sort_keys=True)
 
 
+def load_checkpoint(path: Path) -> dict[str, object] | None:
+    content = path.read_text(encoding="utf-8")
+    if not content.strip():
+        return None
+
+    return json.loads(content)
+
+
 def reuse_validated_checkpoint(
     document: dict[str, object],
     checkpoint: dict[str, object],
@@ -1348,15 +1356,14 @@ def main() -> int:
     if arguments.checkpoint and arguments.checkpoint.exists():
         from validate_translations import validate_translation_batch
 
-        checkpoint = json.loads(
-            arguments.checkpoint.read_text(encoding="utf-8")
-        )
-        document = reuse_validated_checkpoint(
-            document,
-            checkpoint,
-            terminology,
-            validate_translation_batch,
-        )
+        checkpoint = load_checkpoint(arguments.checkpoint)
+        if checkpoint is not None:
+            document = reuse_validated_checkpoint(
+                document,
+                checkpoint,
+                terminology,
+                validate_translation_batch,
+            )
     api_keys = load_gemini_api_keys(PROJECT_ROOT / ".env")
     agent_locale_languages = missing_agent_locale_languages(document)
     verified_terms = _verified_english_terms(

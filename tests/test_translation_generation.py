@@ -128,6 +128,18 @@ class TranslationGenerationTests(unittest.TestCase):
         localizations = reused["changes"][0]["localizations"]
         self.assertEqual({"en"}, set(localizations))
 
+    def test_treats_an_empty_checkpoint_as_absent(self) -> None:
+        # Given an optional checkpoint file with no content
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            checkpoint_path = Path(temporary_directory) / "checkpoint.json"
+            checkpoint_path.write_text("", encoding="utf-8")
+
+            # When the checkpoint is loaded
+            checkpoint = self.generator.load_checkpoint(checkpoint_path)
+
+            # Then generation can continue without cached translations
+            self.assertIsNone(checkpoint)
+
     def setUp(self) -> None:
         self.generator = _load_generator_module()
 
