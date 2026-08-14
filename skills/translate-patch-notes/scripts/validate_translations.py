@@ -68,13 +68,22 @@ DECREASE_MARKERS = {
 }
 
 CONDITION_MARKERS = {
-    "deDE": ("wenn", "während", "solange", "falls", "sofern", "nachdem", "bevor"),
+    "deDE": (
+        "wenn", "während", "solange", "falls", "sofern", "nachdem",
+        "bevor", "bei der verwendung", "beherrscht ihr", "ohne", "beim",
+    ),
     "esES": (" si ", "cuando", "mientras", "siempre que", "después", "antes"),
     "esMX": (" si ", "cuando", "mientras", "siempre que", "después", "antes"),
-    "frFR": (" si ", "lorsque", "quand", "pendant que", "tant que", "après", "avant"),
-    "itIT": (" se ", "quando", "mentre", "finché", "dopo", "prima"),
+    "frFR": (
+        " si ", "lorsque", "quand", "pendant", "tant que", "après",
+        "avant", "lors de",
+    ),
+    "itIT": (" se ", "quando", "mentre", "finché", "dopo", "prima", "all'utilizzo"),
     "koKR": ("경우", "때", "동안", "중", "후", "전", " 시 "),
-    "ptBR": (" se ", "quando", "enquanto", "sempre que", "após", "antes"),
+    "ptBR": (
+        " se ", "quando", "enquanto", "sempre que", "após", "antes",
+        "ao ser", " ao ",
+    ),
     "ruRU": ("если", "когда", "пока", "во время", " при ", "после", "до того"),
     "zhCN": ("如果", "当", "时", "期间", "只要", "后", "前"),
     "zhTW": ("如果", "當", "時", "期間", "只要", "後", "前"),
@@ -161,10 +170,15 @@ def _preserves_conditions(
     english_text: str,
     localized_text: str,
 ) -> bool:
-    condition_types = tuple(
-        match.group(0).casefold()
-        for match in ENGLISH_CONDITION_PATTERN.finditer(english_text)
-    )
+    condition_types = []
+    for match in ENGLISH_CONDITION_PATTERN.finditer(english_text):
+        trailing_text = english_text[match.end():]
+        is_after_title = (
+            match.group(0).casefold() == "after"
+            and re.match(r"\s+the\s+[A-Z]", trailing_text) is not None
+        )
+        if not is_after_title:
+            condition_types.append(match.group(0).casefold())
     if not condition_types:
         return True
 
@@ -346,17 +360,27 @@ def _validate_agent_translation(
             f"{locale} change entry",
         )
         if allow_agent_terminology:
+            heading_terms = {
+                _require_string(english.get("name"), "en name"),
+                _require_string(
+                    english.get("specialization"),
+                    "en specialization",
+                ),
+            }
             checked_english_text = english_text
             checked_localized_text = localized_text
             for term in sorted(protected_terms, key=len, reverse=True):
                 if term in english_text:
-                    if term not in localized_text:
+                    if term not in localized_text and term not in heading_terms:
                         raise ValueError(
                             f"{locale} bullet {index + 1} changes "
                             f"protected term: {term}"
                         )
                     checked_english_text = checked_english_text.replace(term, "")
-                    checked_localized_text = checked_localized_text.replace(term, "")
+                    if term in localized_text:
+                        checked_localized_text = (
+                            checked_localized_text.replace(term, "")
+                        )
             english_words = {
                 word.casefold()
                 for word in re.findall(

@@ -668,6 +668,94 @@ def parse_inline_batch_results(
     return translations
 
 
+ENGLISH_PROSE_REPAIR_WORDS = {
+    "been", "damage", "each", "first", "for", "has", "increased",
+    "one", "reduced", "taken", "the", "updated", "was", "when",
+    "while", "your",
+}
+
+
+def _needs_translation_repair(
+    source_text: str,
+    localized_text: str,
+    language: str,
+) -> bool:
+    source_without_placeholders = PLACEHOLDER_PATTERN.sub("", source_text)
+    localized_without_placeholders = PLACEHOLDER_PATTERN.sub(
+        "",
+        localized_text,
+    )
+    english_words = {
+        word.casefold()
+        for word in re.findall(
+            r"[A-Za-z][A-Za-z'’\-]{2,}",
+            source_without_placeholders,
+        )
+    }
+    localized_words = {
+        word.casefold()
+        for word in re.findall(
+            r"[A-Za-z][A-Za-z'’\-]{2,}",
+            localized_without_placeholders,
+        )
+    }
+
+    leaked_words = english_words & localized_words
+    if language in {"ru", "zh-CN", "zh-TW"}:
+        return bool(leaked_words)
+
+    suspicious_prose = leaked_words & ENGLISH_PROSE_REPAIR_WORDS
+    return len(suspicious_prose) >= 2
+
+
+def _repair_batch_leakage(
+    translations: dict[tuple[str, str], str],
+    api_keys: tuple[str, ...],
+) -> dict[str, str]:
+    translator = GeminiTranslator(
+        api_keys,
+        request_translation=request_gemini_translation_batch,
+    )
+    failures: dict[str, str] = {}
+    for (language, source_text), localized_text in tuple(
+        translations.items()
+    ):
+        if not _needs_translation_repair(
+            source_text,
+            localized_text,
+            language,
+        ):
+            continue
+
+        try:
+            repaired = translate_text_batch(
+                (source_text,),
+                language,
+                translator,
+                batch_size=1,
+            )[0]
+        except RuntimeError as error:
+            failures[language] = " ".join(str(error).split())
+            continue
+        if _needs_translation_repair(
+            source_text,
+            repaired,
+            language,
+        ):
+            failures[language] = (
+                "automatic translation retained English prose"
+            )
+            continue
+        translations[(language, source_text)] = repaired
+
+    for language in failures:
+        for key in tuple(translations):
+            if key[0] == language:
+                del translations[key]
+
+    return failures
+
+
 def _open_json_request(request: Request, timeout: int = 30) -> dict[str, object]:
     try:
         with urlopen(request, timeout=timeout) as response:
@@ -899,7 +987,11 @@ def generate_protected_translations(
         for language in languages
         for text_index, source_text in enumerate(protected_texts)
     }
-    return translations, "batch", {}
+    failures = _repair_batch_leakage(
+        translations,
+        api_keys,
+    )
+    return translations, "batch", failures
 
 
 def classify_locale_outcomes(

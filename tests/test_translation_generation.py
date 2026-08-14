@@ -923,6 +923,78 @@ class TranslationGenerationTests(unittest.TestCase):
         self.assertEqual("de: first", translations[("de", "first")])
         self.assertEqual("fr: second", translations[("fr", "second")])
 
+    def test_repairs_untranslated_russian_batch_items_interactively(self) -> None:
+        # Given Batch API returns one Russian item unchanged in English
+        self.assertIsNotNone(self.generator)
+        batch_job = {
+            "dest": {
+                "inlinedResponses": [
+                    {
+                        "metadata": {"key": "ru:0"},
+                        "response": {
+                            "candidates": [
+                                {
+                                    "content": {
+                                        "parts": [
+                                            {"text": "Damage increased."}
+                                        ]
+                                    }
+                                }
+                            ]
+                        },
+                    }
+                ]
+            }
+        }
+
+        # When generated translations are checked before acceptance
+        with (
+            patch.object(
+                self.generator,
+                "submit_inline_batch",
+                return_value=("batches/1", "test-key"),
+            ),
+            patch.object(
+                self.generator,
+                "wait_for_inline_batch",
+                return_value=batch_job,
+            ),
+            patch.object(
+                self.generator,
+                "request_gemini_translation_batch",
+                return_value='["Урон увеличен."]',
+            ),
+        ):
+            translations, transport, failures = (
+                self.generator.generate_protected_translations(
+                    ("test-key",),
+                    ("Damage increased.",),
+                    {"ru": "Russian"},
+                )
+            )
+
+        # Then only the bad item is repaired and the locale remains usable
+        self.assertEqual("batch", transport)
+        self.assertEqual({}, failures)
+        self.assertEqual(
+            "Урон увеличен.",
+            translations[("ru", "Damage increased.")],
+        )
+
+    def test_detects_multiple_english_prose_words_in_a_latin_locale(self) -> None:
+        # Given an otherwise German result leaks two English prose words
+        source = "Complete the campaign on one character first."
+        localized = "Schließt die Kampagne auf one Charakter first ab."
+
+        # When / Then the partial translation is selected for repair
+        self.assertTrue(
+            self.generator._needs_translation_repair(
+                source,
+                localized,
+                "de",
+            )
+        )
+
     def test_interactive_failure_is_isolated_to_one_locale(self) -> None:
         # Given German drops a protected term while French preserves it
         self.assertIsNotNone(self.generator)

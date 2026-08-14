@@ -312,6 +312,71 @@ class TranslationValidationTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "condition"):
             self.validator.validate_translation_batch(batch, self.terminology)
 
+    def test_accepts_conditions_expressed_with_natural_locale_grammar(self) -> None:
+        # Given equivalent conditions use idiomatic grammar instead of if/when
+        examples = (
+            (
+                "deDE",
+                "If you know Rend, strike.",
+                "Beherrscht ihr 'Verwunden', schlagt zu.",
+            ),
+            (
+                "deDE",
+                "Damage applies when activating it.",
+                "Schaden gilt beim Aktivieren.",
+            ),
+            (
+                "frFR",
+                "Damage fades while active.",
+                "Les dégâts diminuent pendant son activation.",
+            ),
+            (
+                "itIT",
+                "The effect applies when used.",
+                "L'effetto si applica all'utilizzo.",
+            ),
+            (
+                "ptBR",
+                "The effect applies when used.",
+                "O efeito é aplicado ao ser usado.",
+            ),
+            (
+                "frFR",
+                "The effect applies when used.",
+                "L’effet s’applique lors de son utilisation.",
+            ),
+            (
+                "ptBR",
+                "The effect applies when activated.",
+                "O efeito é aplicado ao ativar a técnica.",
+            ),
+        )
+
+        # When / Then each condition remains detectable
+        for locale, english, localized in examples:
+            with self.subTest(locale=locale):
+                self.assertTrue(
+                    self.validator._preserves_conditions(
+                        locale,
+                        english,
+                        localized,
+                    )
+                )
+
+    def test_does_not_treat_an_ability_name_as_an_after_condition(self) -> None:
+        # Given After the Wildfire is an ability name, not conditional prose
+        english = "After the Wildfire healing increased by 25%."
+        localized = "Die Heilung von 'Nach dem Lauffeuer' wurde erhöht."
+
+        # When / Then the title does not create a condition requirement
+        self.assertTrue(
+            self.validator._preserves_conditions(
+                "deDE",
+                english,
+                localized,
+            )
+        )
+
     def test_accepts_spanish_tras_for_an_after_condition(self) -> None:
         # Given a natural Spanish translation using "tras" for "after"
         english = "Removed Ghastly Brute after Mchimba the Embalmer."
@@ -441,6 +506,40 @@ class TranslationValidationTests(unittest.TestCase):
 
         # Then the locale remains valid because no numeric meaning was lost
         self.assertEqual(("ruRU",), report.validated_locales)
+
+    def test_heading_term_may_be_localized_inside_patch_note_prose(self) -> None:
+        # Given Blood is preserved as a specialization heading but translated
+        # naturally when it appears inside an ability name in Chinese prose
+        batch = _translation_batch()
+        english = batch["changes"][0]["localizations"]["en"]
+        russian = batch["changes"][0]["localizations"].pop("ruRU")
+        english["name"] = "Death Knight"
+        english["specialization"] = "Blood"
+        english["change"] = ["Blood Plague healing increased by 25%."]
+        chinese = dict(russian)
+        chinese["name"] = "Death Knight"
+        chinese["specialization"] = "Blood"
+        chinese["change"] = ["血之瘟疫的治疗量提高 25%。"]
+        chinese["protectedTerms"] = ["Death Knight", "Blood"]
+        batch["changes"][0]["localizations"]["zhCN"] = chinese
+        locale_terms = self.terminology["locales"]["zhCN"]["terms"]
+        locale_terms["Death Knight"] = {
+            "localized": "Death Knight",
+            "sourceUrl": "https://worldofwarcraft.blizzard.com/en-us/game/classes/death-knight",
+        }
+        locale_terms["Blood"] = {
+            "localized": "Blood",
+            "sourceUrl": "https://worldofwarcraft.blizzard.com/en-us/game/classes/death-knight",
+        }
+
+        # When the prose is validated
+        report = self.validator.validate_translation_batch(
+            batch,
+            self.terminology,
+        )
+
+        # Then the heading remains English without forcing prose to do so
+        self.assertEqual(("zhCN",), report.validated_locales)
 
     def test_rejects_an_unverified_localized_class_name(self) -> None:
         # Given a Russian class name that disagrees with the official glossary
