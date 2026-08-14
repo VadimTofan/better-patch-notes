@@ -219,19 +219,16 @@ def _validate_term(
     localized_term: str,
     terminology: dict[str, object],
     uncertain_terms: set[str],
+    protected_terms: set[str],
     require_verified: bool = False,
-    allow_agent_translation: bool = False,
 ) -> None:
     if not english_term or english_term == "All":
         return
-
     locales = _require_dict(terminology.get("locales"), "terminology locales")
     locale_data = _require_dict(locales.get(locale), f"terminology {locale}")
     terms = _require_dict(locale_data.get("terms"), f"terminology {locale} terms")
     raw_entry = terms.get(english_term)
     if raw_entry is None:
-        if allow_agent_translation and localized_term != english_term:
-            return
         if require_verified:
             raise ValueError(
                 f"{locale} uses unverified class terminology for "
@@ -242,6 +239,9 @@ def _validate_term(
                 f"{locale} uses unverified terminology for {english_term}"
             )
         uncertain_terms.add(f"{locale}: {english_term}")
+        return
+
+    if english_term in protected_terms and localized_term == english_term:
         return
 
     entry = _require_dict(raw_entry, f"terminology {locale} {english_term}")
@@ -266,6 +266,46 @@ def _validate_agent_translation(
         raise ValueError(f"{locale} must retain the en sourceUrl")
 
     _validate_terminology_urls(localization)
+    raw_protected_terms = _require_list(
+        localization.get("protectedTerms", []),
+        f"{locale} protectedTerms",
+    )
+    protected_terms = {
+        _require_string(term, f"{locale} protected term")
+        for term in raw_protected_terms
+    }
+    english_content = "\n".join(
+        (
+            _require_string(english.get("name"), "en name"),
+            _require_string(english.get("specialization"), "en specialization"),
+            *(
+                _require_string(change, "en change entry")
+                for change in _require_list(english.get("change"), "en change")
+            ),
+        )
+    )
+    for term in protected_terms:
+        if not term or term not in english_content or not term[0].isupper():
+            raise ValueError(f"{locale} has an invalid protected term: {term}")
+
+    terminology_locales = _require_dict(
+        terminology.get("locales"),
+        "terminology locales",
+    )
+    locale_terminology = _require_dict(
+        terminology_locales.get(locale),
+        f"terminology {locale}",
+    )
+    verified_terms = _require_dict(
+        locale_terminology.get("terms"),
+        f"terminology {locale} terms",
+    )
+    for term in protected_terms:
+        if term not in verified_terms:
+            raise ValueError(
+                f"{locale} uses unverified terminology for {term}"
+            )
+
     allow_agent_terminology = locale in {"ruRU", "zhCN"}
     _validate_term(
         locale,
@@ -273,8 +313,8 @@ def _validate_agent_translation(
         _require_string(localization.get("name"), f"{locale} name"),
         terminology,
         uncertain_terms,
+        protected_terms,
         require_verified=category == "Class",
-        allow_agent_translation=allow_agent_terminology,
     )
     _validate_term(
         locale,
@@ -285,8 +325,8 @@ def _validate_agent_translation(
         ),
         terminology,
         uncertain_terms,
+        protected_terms,
         require_verified=category == "Class",
-        allow_agent_translation=allow_agent_terminology,
     )
 
     english_changes = _require_list(english.get("change"), "en change")
@@ -306,18 +346,29 @@ def _validate_agent_translation(
             f"{locale} change entry",
         )
         if allow_agent_terminology:
+            checked_english_text = english_text
+            checked_localized_text = localized_text
+            for term in sorted(protected_terms, key=len, reverse=True):
+                if term in english_text:
+                    if term not in localized_text:
+                        raise ValueError(
+                            f"{locale} bullet {index + 1} changes "
+                            f"protected term: {term}"
+                        )
+                    checked_english_text = checked_english_text.replace(term, "")
+                    checked_localized_text = checked_localized_text.replace(term, "")
             english_words = {
                 word.casefold()
                 for word in re.findall(
                     r"[A-Za-z][A-Za-z'’\-]{2,}",
-                    english_text,
+                    checked_english_text,
                 )
             }
             localized_words = {
                 word.casefold()
                 for word in re.findall(
                     r"[A-Za-z][A-Za-z'’\-]{2,}",
-                    localized_text,
+                    checked_localized_text,
                 )
             }
             leaked_words = english_words & localized_words

@@ -50,7 +50,8 @@ class TranslationGenerationTests(unittest.TestCase):
             env_path = Path(temporary_directory) / ".env"
             env_path.write_text(
                 "GEMINI_API_KEY=file-primary\n"
-                "GEMINI_API_KEY2=file-secondary\n",
+                "GEMINI_API_KEY2=file-secondary\n"
+                "GEMINI_API_KEY3=file-tertiary\n",
                 encoding="utf-8",
             )
 
@@ -63,8 +64,38 @@ class TranslationGenerationTests(unittest.TestCase):
 
         # Then process values take precedence and the fallback remains usable
         self.assertEqual(
-            ("process-primary", "file-secondary"),
+            ("process-primary", "file-secondary", "file-tertiary"),
             keys,
+        )
+
+    def test_uses_third_key_after_two_authentication_failures(self) -> None:
+        # Given two rejected credentials followed by a working third key
+        attempted_keys: list[str] = []
+
+        def request_translation(
+            api_key: str,
+            _text: str,
+            _language: str,
+        ) -> str:
+            attempted_keys.append(api_key)
+            if api_key != "tertiary-secret":
+                raise self.generator.GeminiApiError(401, "authentication")
+            return "перевод"
+
+        translator = self.generator.GeminiTranslator(
+            ("primary-secret", "secondary-secret", "tertiary-secret"),
+            request_translation=request_translation,
+            sleep=lambda _seconds: None,
+        )
+
+        # When translation is requested
+        translated = translator("translation", "ru")
+
+        # Then the third credential provides the result
+        self.assertEqual("перевод", translated)
+        self.assertEqual(
+            ["primary-secret", "secondary-secret", "tertiary-secret"],
+            attempted_keys,
         )
 
     def test_uses_fallback_key_after_primary_authentication_failure(
@@ -407,6 +438,121 @@ class TranslationGenerationTests(unittest.TestCase):
             translated,
         )
         self.assertEqual(("Merektha", "Toxic Viper"), uncertain_terms)
+
+    def test_keeps_class_and_ability_names_in_english_in_agent_batches(self) -> None:
+        # Given a class change with a verified English ability name
+        source_url = "https://news.blizzard.com/en-us/example"
+        document = {
+            "updatedAt": "2026-08-13T12:00:00Z",
+            "changes": [
+                {
+                    "channel": "live",
+                    "category": "Class",
+                    "date": "2026-08-13",
+                    "patch": "12.1.0",
+                    "localizations": {
+                        "en": {
+                            "name": "Druid",
+                            "specialization": "All",
+                            "change": [
+                                "Moonfire damage increased by 5%."
+                            ],
+                            "source": "Blizzard",
+                            "sourceUrl": source_url,
+                            "translationType": "official",
+                            "translatedFrom": "",
+                            "terminologySourceUrls": [],
+                        }
+                    },
+                }
+            ],
+        }
+
+        def fake_translator(protected_text: str, _language: str) -> str:
+            return protected_text.replace(
+                "damage increased by",
+                "урон увеличен на",
+            )
+
+        terminology = {
+            "locales": {
+                "ruRU": {
+                    "terms": {
+                        "Druid": {"localized": "Друид"},
+                        "Moonfire": {"localized": "Лунный огонь"},
+                    }
+                }
+            }
+        }
+
+        # When an agent translation batch is built
+        batch = self.generator.build_translation_batch(
+            document,
+            {"ruRU": "ru"},
+            fake_translator,
+            terminology,
+        )
+
+        # Then game entities remain English and are declared for validation
+        russian = batch["changes"][0]["localizations"]["ruRU"]
+        self.assertEqual("Druid", russian["name"])
+        self.assertIn("Moonfire", russian["change"][0])
+        self.assertEqual(
+            ["Druid", "Moonfire"],
+            russian["protectedTerms"],
+        )
+
+    def test_does_not_protect_an_unverified_capitalized_phrase(self) -> None:
+        # Given official prose contains a capitalized phrase absent from registry
+        source_url = "https://news.blizzard.com/en-us/example"
+        document = {
+            "updatedAt": "2026-08-13T12:00:00Z",
+            "changes": [
+                {
+                    "channel": "live",
+                    "category": "Class",
+                    "date": "2026-08-13",
+                    "patch": "12.1.0",
+                    "localizations": {
+                        "en": {
+                            "name": "Druid",
+                            "specialization": "All",
+                            "change": ["Chronomancer damage increased by 5%."],
+                            "source": "Blizzard",
+                            "sourceUrl": source_url,
+                            "translationType": "official",
+                            "translatedFrom": "",
+                            "terminologySourceUrls": [],
+                        }
+                    },
+                }
+            ],
+        }
+        terminology = {
+            "locales": {
+                "ruRU": {
+                    "terms": {"Druid": {"localized": "Друид"}}
+                }
+            }
+        }
+
+        def fake_translator(protected_text: str, _language: str) -> str:
+            return protected_text.replace(
+                "damage increased by",
+                "урон увеличен на",
+            )
+
+        # When an agent batch is built
+        batch = self.generator.build_translation_batch(
+            document,
+            {"ruRU": "ru"},
+            fake_translator,
+            terminology,
+        )
+
+        # Then the unknown phrase is not granted protected status
+        russian = batch["changes"][0]["localizations"]["ruRU"]
+        self.assertNotIn("Chronomancer", russian["protectedTerms"])
 
     def test_translates_each_bullet_as_one_grammatical_request(self) -> None:
         # Given a sentence containing protected game terminology and a number
@@ -1000,11 +1146,24 @@ class TranslationGenerationTests(unittest.TestCase):
         def fake_translator(text: str, language: str) -> str:
             return f"{language}: {text}"
 
+        terminology = {
+            "locales": {
+                locale: {
+                    "terms": {
+                        "Mage": {"localized": "Mage"},
+                        "Fire": {"localized": "Fire"},
+                    }
+                }
+                for locale in ("deDE", "frFR")
+            }
+        }
+
         # When translations are generated
         batch = self.generator.build_translation_batch(
             document,
             {"deDE": "de", "frFR": "fr"},
             fake_translator,
+            terminology,
         )
 
         # Then each locale is present and remains aligned with English

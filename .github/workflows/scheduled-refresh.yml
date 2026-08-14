@@ -106,6 +106,7 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_API_KEY2: ${{ secrets.GEMINI_API_KEY2 }}
+          GEMINI_API_KEY3: ${{ secrets.GEMINI_API_KEY3 }}
         run: |
           dry_run_argument=()
           if [ "${{ steps.metadata.outputs.dry_run }}" = "true" ]; then

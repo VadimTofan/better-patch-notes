@@ -127,11 +127,12 @@ class TranslationValidationTests(unittest.TestCase):
         russian = batch["changes"][0]["localizations"]["ruRU"]
         english["name"] = "Chronomancer"
         russian["name"] = "Chronomancer"
+        russian["protectedTerms"] = ["Chronomancer"]
 
         # When / Then class navigation terminology remains a hard blocker
         with self.assertRaisesRegex(
             ValueError,
-            "unverified class terminology",
+            "unverified terminology",
         ):
             self.validator.validate_translation_batch(batch, self.terminology)
 
@@ -148,22 +149,23 @@ class TranslationValidationTests(unittest.TestCase):
         ):
             self.validator.validate_translation_batch(batch, self.terminology)
 
-    def test_accepts_a_distinct_agent_translated_russian_heading(self) -> None:
-        # Given Russian uses a reviewed agent translation for a missing term
+    def test_rejects_an_unverified_agent_translated_russian_heading(self) -> None:
+        # Given Russian invents a translation for an unknown class heading
         batch = _translation_batch()
         english = batch["changes"][0]["localizations"]["en"]
         russian = batch["changes"][0]["localizations"]["ruRU"]
         english["name"] = "Chronomancer"
         russian["name"] = "Хрономант"
 
-        # When the strict validator reviews the agent-only locale
-        report = self.validator.validate_translation_batch(
-            batch,
-            self.terminology,
-        )
-
-        # Then a distinct translation can pass without pretending it is official
-        self.assertEqual(("ruRU",), report.validated_locales)
+        # When / Then agent wording cannot verify game terminology
+        with self.assertRaisesRegex(
+            ValueError,
+            "unverified class terminology",
+        ):
+            self.validator.validate_translation_batch(
+                batch,
+                self.terminology,
+            )
 
     def test_rejects_english_leakage_in_simplified_chinese(self) -> None:
         # Given an otherwise translated Chinese bullet leaves English prose
@@ -175,6 +177,39 @@ class TranslationValidationTests(unittest.TestCase):
         batch["changes"][0]["localizations"]["zhCN"] = chinese
 
         # When / Then untranslated English is a hard blocker
+        with self.assertRaisesRegex(ValueError, "English leakage"):
+            self.validator.validate_translation_batch(batch, self.terminology)
+
+    def test_accepts_verified_english_game_terms_in_translated_prose(self) -> None:
+        # Given verified class and ability names intentionally remain English
+        batch = _translation_batch()
+        russian = batch["changes"][0]["localizations"]["ruRU"]
+        russian["name"] = "Druid"
+        russian["change"] = [
+            "Урон от Moonfire увеличен на 12,5% на 8 секунд."
+        ]
+        russian["protectedTerms"] = ["Druid", "Moonfire"]
+
+        # When the translated prose is validated
+        report = self.validator.validate_translation_batch(
+            batch,
+            self.terminology,
+        )
+
+        # Then exact verified game terms do not count as English leakage
+        self.assertEqual(("ruRU",), report.validated_locales)
+
+    def test_rejects_english_prose_outside_verified_game_terms(self) -> None:
+        # Given a verified ability is followed by untranslated English prose
+        batch = _translation_batch()
+        russian = batch["changes"][0]["localizations"]["ruRU"]
+        russian["name"] = "Druid"
+        russian["change"] = [
+            "Moonfire damage increased на 12,5% на 8 секунд."
+        ]
+        russian["protectedTerms"] = ["Druid", "Moonfire"]
+
+        # When / Then only the protected name is exempt from leakage checks
         with self.assertRaisesRegex(ValueError, "English leakage"):
             self.validator.validate_translation_batch(batch, self.terminology)
 
