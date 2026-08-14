@@ -66,12 +66,14 @@ jobs:
           restore-keys: translation-checkpoint-v1-
 
       - name: Seed checkpoint from the latest refresh audit
-        if: steps.translation-checkpoint.outputs.cache-hit != 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          if [ -s .bpn-work/translation-checkpoint.json ]; then
+            exit 0
+          fi
           artifact_id="$(gh api "repos/$GITHUB_REPOSITORY/actions/artifacts?per_page=100" \
-            --jq '[.artifacts[] | select(.expired == false) | select(.name | startswith("refresh-audit-"))][0].id // empty')"
+            --jq '[.artifacts[] | select(.expired == false) | select(.name | startswith("refresh-audit-"))] | sort_by(.created_at) | reverse | .[0].id // empty')"
           if [ -z "$artifact_id" ]; then
             exit 0
           fi
