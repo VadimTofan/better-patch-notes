@@ -1037,6 +1037,38 @@ class TranslationGenerationTests(unittest.TestCase):
             failure_reasons,
         )
 
+    def test_retries_an_invalid_locale_batch_in_smaller_chunks(self) -> None:
+        # Given Gemini returns one malformed full-size locale batch
+        self.assertIsNotNone(self.generator)
+        calls: list[int | None] = []
+
+        def translate_batch(texts, _language, _translator, **kwargs):
+            calls.append(kwargs.get("batch_size"))
+            if len(calls) == 1:
+                raise self.generator.InvalidTranslationBatchError(
+                    "Gemini returned an invalid translation batch."
+                )
+            return tuple(f"translated: {text}" for text in texts)
+
+        # When interactive translation handles that locale
+        with patch.object(
+            self.generator,
+            "translate_text_batch",
+            side_effect=translate_batch,
+        ):
+            translations, _transport, failure_reasons = (
+                self.generator._generate_interactive_translations(
+                    ("test-key",),
+                    ("first", "second"),
+                    {"fr": "French"},
+                )
+            )
+
+        # Then one smaller retry succeeds before the locale is rejected
+        self.assertEqual([None, 20], calls)
+        self.assertEqual({}, failure_reasons)
+        self.assertEqual("translated: first", translations[("fr", "first")])
+
     def test_uses_interactive_translation_when_batch_wait_times_out(
         self,
     ) -> None:

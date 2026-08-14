@@ -31,6 +31,11 @@ GEMINI_API_BASE_URL = "https://generativelanguage.googleapis.com/v1beta"
 GEMINI_REQUESTS_PER_MINUTE = 5
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
 
+
+class InvalidTranslationBatchError(RuntimeError):
+    pass
+
+
 LANGUAGE_NAMES = {
     "de": "German",
     "es-ES": "Spanish (Spain)",
@@ -514,7 +519,7 @@ def _parse_translation_array(
     try:
         translated = json.loads(normalized)
     except json.JSONDecodeError as error:
-        raise RuntimeError(
+        raise InvalidTranslationBatchError(
             "Gemini returned an invalid translation batch."
         ) from error
 
@@ -523,7 +528,7 @@ def _parse_translation_array(
         or len(translated) != expected_length
         or not all(isinstance(item, str) and item for item in translated)
     ):
-        raise RuntimeError(
+        raise InvalidTranslationBatchError(
             "Gemini returned an incomplete translation batch."
         )
 
@@ -809,6 +814,21 @@ def _generate_interactive_translations(
                 translator,
                 repair_translator=repair_translator,
             )
+        except InvalidTranslationBatchError:
+            try:
+                localized_texts = translate_text_batch(
+                    protected_texts,
+                    language,
+                    translator,
+                    batch_size=20,
+                    repair_translator=repair_translator,
+                )
+            except RuntimeError as error:
+                reason = " ".join(str(error).split())
+                failure_reasons[language] = (
+                    reason or "automatic translation generation failed"
+                )
+                continue
         except RuntimeError as error:
             reason = " ".join(str(error).split())
             failure_reasons[language] = (

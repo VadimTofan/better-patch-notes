@@ -25,7 +25,11 @@ from automation.discovery import (
     discover_forum_topic_urls,
     discover_news_documents,
 )
-from automation.extraction import AmbiguousPatchNote, extract_changes
+from automation.extraction import (
+    CLASS_SPECIALIZATIONS,
+    AmbiguousPatchNote,
+    extract_changes,
+)
 from automation.localization import align_official_localizations
 from automation.http_client import BlizzardHttpClient
 from automation.models import (
@@ -160,6 +164,28 @@ def build_runtime_terminology(
                     "localized": localized_term,
                     "sourceUrl": source_url,
                 }
+
+    for locale_data in locales.values():
+        if not isinstance(locale_data, dict):
+            raise ValueError("terminology locale has an invalid shape")
+        terms = locale_data.get("terms")
+        if not isinstance(terms, dict):
+            raise ValueError("terminology locale terms have an invalid shape")
+
+        for class_name, specializations in CLASS_SPECIALIZATIONS.items():
+            class_slug = class_name.lower().replace(" ", "-")
+            source_url = (
+                "https://worldofwarcraft.blizzard.com/en-us/game/classes/"
+                f"{class_slug}"
+            )
+            for english_term in (class_name, *sorted(specializations)):
+                terms.setdefault(
+                    english_term,
+                    {
+                        "localized": english_term,
+                        "sourceUrl": source_url,
+                    },
+                )
 
     return terminology
 

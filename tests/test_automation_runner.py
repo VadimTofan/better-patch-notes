@@ -290,8 +290,29 @@ class AutomationRunnerTests(unittest.TestCase):
         self.assertEqual(terms["Mage"]["localized"], "Маг")
         self.assertEqual(terms["Arcane"]["localized"], "Тайная магия")
 
+    def test_protects_known_class_taxonomy_with_blizzard_provenance(self) -> None:
+        # Given an empty locale registry and the reviewed addon taxonomy
+        base = {"schemaVersion": 1, "locales": {"deDE": {"terms": {}}}}
+        canonical = {"changes": []}
+
+        # When runtime terminology is prepared
+        terminology = build_runtime_terminology(base, canonical)
+
+        # Then class and specialization headings remain verified English terms
+        terms = terminology["locales"]["deDE"]["terms"]
+        self.assertEqual("Warlock", terms["Warlock"]["localized"])
+        self.assertEqual("Blood", terms["Blood"]["localized"])
+        self.assertEqual(
+            "https://worldofwarcraft.blizzard.com/en-us/game/classes/warlock",
+            terms["Warlock"]["sourceUrl"],
+        )
+        self.assertEqual(
+            "https://worldofwarcraft.blizzard.com/en-us/game/classes/death-knight",
+            terms["Blood"]["sourceUrl"],
+        )
+
     def test_ignores_an_untranslated_bundled_term(self) -> None:
-        # Given contaminated canonical data stores an English heading as zhTW
+        # Given contaminated canonical data stores an unknown English heading
         base = {
             "schemaVersion": 1,
             "locales": {"zhTW": {"terms": {}}},
@@ -301,11 +322,11 @@ class AutomationRunnerTests(unittest.TestCase):
                 {
                     "localizations": {
                         "en": {
-                            "name": "Death Knight",
+                            "name": "Chronomancer",
                             "specialization": "All",
                         },
                         "zhTW": {
-                            "name": "Death Knight",
+                            "name": "Chronomancer",
                             "specialization": "All",
                             "terminologySourceUrls": [
                                 "https://worldofwarcraft.blizzard.com/zh-tw/game/classes/druid"
@@ -321,7 +342,7 @@ class AutomationRunnerTests(unittest.TestCase):
 
         # Then untranslated text is not promoted as verified terminology
         self.assertNotIn(
-            "Death Knight",
+            "Chronomancer",
             terminology["locales"]["zhTW"]["terms"],
         )
 
