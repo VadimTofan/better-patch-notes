@@ -82,7 +82,7 @@ jobs:
             gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/$artifact_id/zip" \
               > /tmp/translation-checkpoint.zip
             if unzip -Z1 /tmp/translation-checkpoint.zip \
-              | rg -xq "translation-batch.json"; then
+              | grep -Fxq "translation-batch.json"; then
               unzip -p /tmp/translation-checkpoint.zip translation-batch.json \
                 > .bpn-work/translation-checkpoint.json
               exit 0

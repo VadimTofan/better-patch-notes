@@ -95,7 +95,7 @@ class ScheduledRefreshWorkflowTests(unittest.TestCase):
             "sort_by(.created_at) | reverse",
             'for artifact_id in $artifact_ids; do',
             "unzip -Z1 /tmp/translation-checkpoint.zip",
-            'rg -xq "translation-batch.json"',
+            'grep -Fxq "translation-batch.json"',
             "translation-checkpoint.json",
             "actions/cache/save@v4",
             "timeout-minutes: 30",
