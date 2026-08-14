@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 from collections.abc import Mapping
+from concurrent.futures import as_completed, ThreadPoolExecutor
 from copy import deepcopy
 import json
 import os
@@ -1260,6 +1261,44 @@ def reuse_validated_checkpoint(
     return reused
 
 
+def generate_language_translations(
+    api_keys: tuple[str, ...],
+    texts_by_language: Mapping[str, set[str]],
+    workers: int,
+    generate: Callable = generate_protected_translations,
+) -> tuple[
+    dict[tuple[str, str], str],
+    set[str],
+    dict[str, str],
+]:
+    if workers < 1:
+        raise ValueError("translation workers must be positive")
+    if not texts_by_language:
+        return {}, set(), {}
+
+    worker_count = min(workers, len(texts_by_language))
+    translations: dict[tuple[str, str], str] = {}
+    transports: set[str] = set()
+    failures: dict[str, str] = {}
+    with ThreadPoolExecutor(max_workers=worker_count) as executor:
+        jobs = {
+            executor.submit(
+                generate,
+                api_keys,
+                tuple(sorted(language_texts)),
+                {language: LANGUAGE_NAMES[language]},
+            ): language
+            for language, language_texts in texts_by_language.items()
+        }
+        for job in as_completed(jobs):
+            generated, transport, language_failures = job.result()
+            translations.update(generated)
+            transports.add(transport)
+            failures.update(language_failures)
+
+    return translations, transports, failures
+
+
 def build_translation_batch(
     document: dict[str, object],
     locale_languages: dict[str, str],
@@ -1388,18 +1427,13 @@ def main() -> int:
                 if text and text != "All"
             )
 
-    translated_cache: dict[tuple[str, str], str] = {}
-    generation_failures: dict[str, str] = {}
-    transports: set[str] = set()
-    for language, language_texts in texts_by_language.items():
-        translations, transport, failures = generate_protected_translations(
+    translated_cache, transports, generation_failures = (
+        generate_language_translations(
             api_keys,
-            tuple(sorted(language_texts)),
-            {language: LANGUAGE_NAMES[language]},
+            texts_by_language,
+            arguments.workers,
         )
-        translated_cache.update(translations)
-        generation_failures.update(failures)
-        transports.add(transport)
+    )
     print("Gemini translation transport: " + ", ".join(sorted(transports)))
     successful_locales, fallback_reasons = classify_locale_outcomes(
         translated_cache,

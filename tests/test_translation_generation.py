@@ -3,6 +3,7 @@ import json
 from pathlib import Path
 import sys
 import tempfile
+from threading import Event, Lock
 import unittest
 from unittest.mock import patch
 
@@ -139,6 +140,38 @@ class TranslationGenerationTests(unittest.TestCase):
 
             # Then generation can continue without cached translations
             self.assertIsNone(checkpoint)
+
+    def test_generates_independent_languages_concurrently(self) -> None:
+        # Given two missing languages and a generator that waits for both
+        both_started = Event()
+        start_lock = Lock()
+        started_languages: list[str] = []
+
+        def generate(_keys, texts, languages):
+            language = next(iter(languages))
+            with start_lock:
+                started_languages.append(language)
+                if len(started_languages) == 2:
+                    both_started.set()
+            self.assertTrue(both_started.wait(timeout=1))
+            translations = {(language, texts[0]): f"{language}: translated"}
+            return translations, "batch", {}
+
+        # When both language jobs are generated with two workers
+        translations, transports, failures = (
+            self.generator.generate_language_translations(
+                ("key",),
+                {"ru": {"protected"}, "zh-CN": {"protected"}},
+                workers=2,
+                generate=generate,
+            )
+        )
+
+        # Then both start concurrently and their results are combined
+        self.assertEqual({"ru", "zh-CN"}, set(started_languages))
+        self.assertEqual({"batch"}, transports)
+        self.assertEqual({}, failures)
+        self.assertEqual(2, len(translations))
 
     def setUp(self) -> None:
         self.generator = _load_generator_module()
