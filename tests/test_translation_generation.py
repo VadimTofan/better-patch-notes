@@ -1137,7 +1137,19 @@ class TranslationGenerationTests(unittest.TestCase):
                             "translationType": "official",
                             "translatedFrom": "",
                             "terminologySourceUrls": [],
-                        }
+                        },
+                        "deDE": {
+                            "name": "Magier",
+                            "specialization": "Feuer",
+                            "change": ["Aller Schaden wurde um 6 % erhöht."],
+                            "source": "Blizzard",
+                            "sourceUrl": (
+                                "https://news.blizzard.com/de-de/example"
+                            ),
+                            "translationType": "official",
+                            "translatedFrom": "",
+                            "terminologySourceUrls": [],
+                        },
                     },
                 }
             ],
@@ -1177,6 +1189,8 @@ class TranslationGenerationTests(unittest.TestCase):
         localizations = batch["changes"][0]["localizations"]
         self.assertEqual({"en", "deDE", "frFR"}, set(localizations))
         self.assertEqual(1, len(localizations["deDE"]["change"]))
+        self.assertEqual("official", localizations["deDE"]["translationType"])
+        self.assertEqual("Magier", localizations["deDE"]["name"])
         self.assertEqual("agent", localizations["frFR"]["translationType"])
         self.assertEqual("en", localizations["frFR"]["translatedFrom"])
 

@@ -67,10 +67,20 @@ TARGET_LANGUAGE_CODES = {
     "zhTW": "zh-TW",
 }
 
-AGENT_TARGET_LANGUAGE_CODES = {
-    "ruRU": TARGET_LANGUAGE_CODES["ruRU"],
-    "zhCN": TARGET_LANGUAGE_CODES["zhCN"],
-}
+def missing_agent_locale_languages(
+    document: Mapping[str, object],
+) -> dict[str, str]:
+    changes = document["changes"]
+
+    return {
+        locale: language
+        for locale, language in TARGET_LANGUAGE_CODES.items()
+        if any(
+            locale not in change["localizations"]
+            for change in changes
+        )
+    }
+
 
 GENERIC_SENTENCE_STARTS = {
     "Added",
@@ -1081,7 +1091,7 @@ def build_translation_batch(
     terminology_locales = terminology["locales"]
     verification_locales = tuple(
         locale
-        for locale in AGENT_TARGET_LANGUAGE_CODES
+        for locale in locale_languages
         if locale in terminology_locales
     )
     verified_terms = _verified_english_terms(
@@ -1105,6 +1115,9 @@ def build_translation_batch(
         english = change["localizations"]["en"]
 
         for locale, language in locale_languages.items():
+            if locale in change["localizations"]:
+                continue
+
             translated_changes: list[str] = []
             protected_terms: set[str] = set()
             if english["name"] in verified_terms:
@@ -1156,6 +1169,7 @@ def main() -> int:
     document = json.loads(arguments.input.read_text(encoding="utf-8"))
     terminology = json.loads(arguments.terminology.read_text(encoding="utf-8"))
     api_keys = load_gemini_api_keys(PROJECT_ROOT / ".env")
+    agent_locale_languages = missing_agent_locale_languages(document)
     unique_texts = {
         text
         for change in document["changes"]
@@ -1168,7 +1182,7 @@ def main() -> int:
     }
     verified_terms = _verified_english_terms(
         terminology,
-        tuple(AGENT_TARGET_LANGUAGE_CODES),
+        tuple(agent_locale_languages),
     )
     protected_texts = tuple(
         sorted(
@@ -1178,7 +1192,7 @@ def main() -> int:
     )
     batch_languages = {
         language: LANGUAGE_NAMES[language]
-        for language in dict.fromkeys(AGENT_TARGET_LANGUAGE_CODES.values())
+        for language in dict.fromkeys(agent_locale_languages.values())
     }
     translated_cache, transport, generation_failures = (
         generate_protected_translations(
@@ -1190,7 +1204,7 @@ def main() -> int:
     print(f"Gemini translation transport: {transport}")
     successful_locales, fallback_reasons = classify_locale_outcomes(
         translated_cache,
-        AGENT_TARGET_LANGUAGE_CODES,
+        agent_locale_languages,
         generation_failures,
     )
 

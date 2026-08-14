@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import date, datetime, timezone
 from hashlib import sha256
 import json
 from pathlib import Path
@@ -7,12 +7,19 @@ import unittest
 from unittest.mock import patch
 
 
-from automation.models import HttpResponse, RegisteredSource, SourceRegistry
+from automation.models import (
+    ExtractedChange,
+    HttpResponse,
+    RegisteredSource,
+    SourceDocument,
+    SourceRegistry,
+)
 from automation.runner import (
     SUPPORTED_TRANSLATION_LOCALES,
     _run,
     _translator,
     _validator,
+    add_official_localizations,
     build_runtime_terminology,
     collect_official_changes,
 )
@@ -42,6 +49,64 @@ class _FixtureClient:
 
 # Describe: end-to-end collection from allowlisted Blizzard responses
 class AutomationRunnerTests(unittest.TestCase):
+    def test_missing_official_article_locale_is_left_for_agent_translation(
+        self,
+    ) -> None:
+        # Given an English article has no current German counterpart
+        source_url = (
+            "https://news.blizzard.com/en-us/article/24296142/"
+            "hotfixes-august-13-2026"
+        )
+        source = SourceDocument(
+            url=source_url,
+            channel="live",
+            patch="12.1.0",
+            title="Hotfixes: August 13, 2026",
+            published_at=datetime(2026, 8, 14, tzinfo=timezone.utc),
+            updated_at=None,
+            author="Blizzard Entertainment",
+            author_is_blue=True,
+            body=b"<p>English</p>",
+            mime_type="text/html",
+            locale="en",
+            content_hash="fixture-hash",
+        )
+        change = ExtractedChange(
+            channel="live",
+            category="Class",
+            effective_date=date(2026, 8, 13),
+            patch="12.1.0",
+            name="Warlock",
+            specialization="All",
+            change=("Example change.",),
+            source_url=source_url,
+        )
+        document = {
+            "changes": [
+                {
+                    "category": "Class",
+                    "date": "2026-08-13",
+                    "patch": "12.1.0",
+                    "localizations": {
+                        "en": {
+                            "name": "Warlock",
+                            "specialization": "All",
+                            "change": ["Example change."],
+                        }
+                    },
+                }
+            ]
+        }
+
+        # When official localizations are merged
+        add_official_localizations(document, (change,), (source,))
+
+        # Then the missing locale remains available for agent translation
+        self.assertNotIn(
+            "deDE",
+            document["changes"][0]["localizations"],
+        )
+
     def test_loads_documented_fallback_reasons_from_validation(self) -> None:
         with TemporaryDirectory() as temporary_directory:
             # Given the validation process classifies one locale as fallback

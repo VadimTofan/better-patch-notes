@@ -302,10 +302,7 @@ def add_official_localizations(
         for locale in sorted(OFFICIAL_LOCALIZATION_LOCALES):
             localized_source = articles.get((article_id, locale))
             if localized_source is None:
-                raise ValueError(
-                    f"official {locale} localization is missing for article "
-                    f"{article_id}"
-                )
+                continue
             localized_changes = align_official_localizations(
                 english_source,
                 localized_source,
