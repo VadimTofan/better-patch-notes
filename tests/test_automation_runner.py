@@ -3,6 +3,7 @@ from hashlib import sha256
 import json
 from pathlib import Path
 from tempfile import TemporaryDirectory
+from types import SimpleNamespace
 import unittest
 from unittest.mock import patch
 
@@ -148,7 +149,10 @@ class AutomationRunnerTests(unittest.TestCase):
                 "changes": [{"category": "Dungeon"}],
             }
 
-            def write_translation(command: list[str]) -> str:
+            def write_translation(
+                command: list[str],
+                _timeout_seconds: int | None = None,
+            ) -> str:
                 output_index = command.index("--output") + 1
                 output_path = Path(command[output_index])
                 output_path.write_text(
@@ -177,6 +181,21 @@ class AutomationRunnerTests(unittest.TestCase):
                 expected_batch,
                 json.loads(audit_path.read_text(encoding="utf-8")),
             )
+
+    def test_translation_process_has_a_twenty_five_minute_budget(self) -> None:
+        # Given a translation child process invocation
+        completed = SimpleNamespace(returncode=0, stdout="", stderr="")
+
+        # When the bounded runner starts it
+        with patch(
+            "automation.runner.subprocess.run",
+            return_value=completed,
+        ) as run:
+            _run(["python", "translate.py"], 1500)
+
+        # Then the operating-system timeout leaves validation five minutes
+        run.assert_called_once()
+        self.assertEqual(1500, run.call_args.kwargs["timeout"])
 
     def test_translation_failure_returns_an_english_only_batch(self) -> None:
         with TemporaryDirectory() as temporary_directory:

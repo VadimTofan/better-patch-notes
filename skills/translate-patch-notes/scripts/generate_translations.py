@@ -1199,6 +1199,59 @@ def _verified_english_terms(
     return set.intersection(*locale_terms)
 
 
+def _record_checkpoint_key(change: dict[str, object]) -> str:
+    localizations = change.get("localizations", {})
+    english = localizations.get("en", {})
+    identity = {
+        "channel": change.get("channel"),
+        "category": change.get("category"),
+        "date": change.get("date"),
+        "patch": change.get("patch"),
+        "english": english,
+    }
+    return json.dumps(identity, ensure_ascii=False, sort_keys=True)
+
+
+def reuse_validated_checkpoint(
+    document: dict[str, object],
+    checkpoint: dict[str, object],
+    terminology: dict[str, object],
+    validate: Callable[[object, object], object],
+) -> dict[str, object]:
+    reused = deepcopy(document)
+    checkpoint_changes = {
+        _record_checkpoint_key(change): change
+        for change in checkpoint.get("changes", [])
+        if isinstance(change, dict)
+    }
+
+    for change in reused.get("changes", []):
+        if not isinstance(change, dict):
+            continue
+        cached = checkpoint_changes.get(_record_checkpoint_key(change))
+        if cached is None:
+            continue
+        cached_localizations = cached.get("localizations", {})
+        if not isinstance(cached_localizations, dict):
+            continue
+        localizations = change["localizations"]
+        for locale, localization in cached_localizations.items():
+            if locale == "en" or not isinstance(localization, dict):
+                continue
+            candidate = deepcopy(change)
+            candidate["localizations"] = {
+                "en": localizations["en"],
+                locale: localization,
+            }
+            try:
+                validate({"changes": [candidate]}, terminology)
+            except ValueError:
+                continue
+            localizations[locale] = deepcopy(localization)
+
+    return reused
+
+
 def build_translation_batch(
     document: dict[str, object],
     locale_languages: dict[str, str],
@@ -1237,6 +1290,7 @@ def build_translation_batch(
 
             translated_changes: list[str] = []
             protected_terms: set[str] = set()
+            uncertain_terms: set[str] = set()
             if english["name"] in verified_terms:
                 protected_terms.add(english["name"])
             if (
@@ -1250,10 +1304,14 @@ def build_translation_batch(
                     bullet,
                     language,
                     translator,
-                    verified_terms=verified_terms,
                 )
                 translated_changes.append(translated)
-                protected_terms.update(bullet_terms)
+                protected_terms.update(
+                    term for term in bullet_terms if term in verified_terms
+                )
+                uncertain_terms.update(
+                    term for term in bullet_terms if term not in verified_terms
+                )
 
             localization = {
                 "name": english["name"],
@@ -1265,6 +1323,7 @@ def build_translation_batch(
                 "translatedFrom": "en",
                 "terminologySourceUrls": [english["sourceUrl"]],
                 "protectedTerms": sorted(protected_terms),
+                "uncertainTerms": sorted(uncertain_terms),
             }
             change["localizations"][locale] = localization
 
@@ -1280,45 +1339,61 @@ def main() -> int:
     parser.add_argument("--input", required=True, type=Path)
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--terminology", required=True, type=Path)
+    parser.add_argument("--checkpoint", type=Path)
     parser.add_argument("--workers", default=8, type=int)
     arguments = parser.parse_args()
 
     document = json.loads(arguments.input.read_text(encoding="utf-8"))
     terminology = json.loads(arguments.terminology.read_text(encoding="utf-8"))
+    if arguments.checkpoint and arguments.checkpoint.exists():
+        from validate_translations import validate_translation_batch
+
+        checkpoint = json.loads(
+            arguments.checkpoint.read_text(encoding="utf-8")
+        )
+        document = reuse_validated_checkpoint(
+            document,
+            checkpoint,
+            terminology,
+            validate_translation_batch,
+        )
     api_keys = load_gemini_api_keys(PROJECT_ROOT / ".env")
     agent_locale_languages = missing_agent_locale_languages(document)
-    unique_texts = {
-        text
-        for change in document["changes"]
-        for text in (
-            *change["localizations"]["en"]["change"],
-            change["localizations"]["en"]["name"],
-            change["localizations"]["en"]["specialization"],
-        )
-        if text and text != "All"
-    }
     verified_terms = _verified_english_terms(
         terminology,
         tuple(agent_locale_languages),
     )
-    protected_texts = tuple(
-        sorted(
-            _protect_text(text, verified_terms=verified_terms)[0]
-            for text in unique_texts
+    texts_by_language: dict[str, set[str]] = {}
+    for change in document["changes"]:
+        english = change["localizations"]["en"]
+        source_texts = (
+            *english["change"],
+            english["name"],
+            english["specialization"],
         )
-    )
-    batch_languages = {
-        language: LANGUAGE_NAMES[language]
-        for language in dict.fromkeys(agent_locale_languages.values())
-    }
-    translated_cache, transport, generation_failures = (
-        generate_protected_translations(
+        for locale, language in agent_locale_languages.items():
+            if locale in change["localizations"]:
+                continue
+            language_texts = texts_by_language.setdefault(language, set())
+            language_texts.update(
+                _protect_text(text)[0]
+                for text in source_texts
+                if text and text != "All"
+            )
+
+    translated_cache: dict[tuple[str, str], str] = {}
+    generation_failures: dict[str, str] = {}
+    transports: set[str] = set()
+    for language, language_texts in texts_by_language.items():
+        translations, transport, failures = generate_protected_translations(
             api_keys,
-            protected_texts,
-            batch_languages,
+            tuple(sorted(language_texts)),
+            {language: LANGUAGE_NAMES[language]},
         )
-    )
-    print(f"Gemini translation transport: {transport}")
+        translated_cache.update(translations)
+        generation_failures.update(failures)
+        transports.add(transport)
+    print("Gemini translation transport: " + ", ".join(sorted(transports)))
     successful_locales, fallback_reasons = classify_locale_outcomes(
         translated_cache,
         agent_locale_languages,

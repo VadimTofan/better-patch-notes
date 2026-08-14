@@ -136,18 +136,23 @@ class TranslationValidationTests(unittest.TestCase):
         ):
             self.validator.validate_translation_batch(batch, self.terminology)
 
-    def test_rejects_any_unverified_term_left_in_english(self) -> None:
+    def test_reports_a_preserved_unverified_ability_as_a_warning(self) -> None:
         # Given an ability name remains English without verified terminology
         batch = _translation_batch()
         russian = batch["changes"][0]["localizations"]["ruRU"]
+        russian["change"] = [
+            "Урон от Moonfire увеличен на 12,5% на 8 секунд."
+        ]
         russian["uncertainTerms"] = ["Moonfire"]
 
-        # When / Then every unresolved game term blocks publication
-        with self.assertRaisesRegex(
-            ValueError,
-            "unverified terminology for Moonfire",
-        ):
-            self.validator.validate_translation_batch(batch, self.terminology)
+        # When the exact ability is preserved in translated prose
+        report = self.validator.validate_translation_batch(
+            batch,
+            self.terminology,
+        )
+
+        # Then it is auditable without being mistaken for English prose
+        self.assertEqual(("ruRU: Moonfire",), report.uncertain_terms)
 
     def test_rejects_an_unverified_agent_translated_russian_heading(self) -> None:
         # Given Russian invents a translation for an unknown class heading
@@ -467,7 +472,7 @@ class TranslationValidationTests(unittest.TestCase):
         russian["uncertainTerms"] = ["Moonfire"]
 
         # When / Then unresolved terminology blocks publication
-        with self.assertRaisesRegex(ValueError, "unverified terminology"):
+        with self.assertRaisesRegex(ValueError, "invalid uncertain term"):
             self.validator.validate_translation_batch(batch, self.terminology)
 
     def test_accepts_locale_spacing_before_a_percent_sign(self) -> None:

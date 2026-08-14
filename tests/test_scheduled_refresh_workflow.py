@@ -89,6 +89,11 @@ class ScheduledRefreshWorkflowTests(unittest.TestCase):
             "needs.refresh.outputs.dry_run != 'true'",
             "needs.refresh.outputs.outcome == 'RELEASE_READY'",
             "needs.release.result == 'success'",
+            "actions/cache/restore@v4",
+            "Seed checkpoint from the latest refresh audit",
+            "translation-checkpoint.json",
+            "actions/cache/save@v4",
+            "timeout-minutes: 30",
         )
         for phrase in expected:
             with self.subTest(phrase=phrase):

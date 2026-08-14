@@ -240,7 +240,7 @@ class AutomationCoordinatorTests(unittest.TestCase):
             self.assertEqual(outcome.version, "0.2.10")
             self.assertEqual(read_versions(files), {"0.2.10"})
 
-    def test_terminology_warnings_block_a_release(self) -> None:
+    def test_terminology_warnings_do_not_block_a_release(self) -> None:
         with TemporaryDirectory() as temporary_directory:
             # Given every locale validates with preserved English terms
             files = _release_files(Path(temporary_directory))
@@ -281,9 +281,9 @@ class AutomationCoordinatorTests(unittest.TestCase):
                 refresh=refresh,
             )
 
-            # Then unresolved English terminology blocks publication
-            self.assertEqual(outcome.status, RefreshStatus.BLOCKED)
-            self.assertEqual(outcome.terminology_warnings, warnings)
+            # Then preserved game names remain warnings, not fallbacks
+            self.assertEqual(outcome.status, RefreshStatus.RELEASE_READY)
+            self.assertEqual(warnings, outcome.terminology_warnings)
 
     def test_empty_collection_can_prune_stale_data_without_translation(self) -> None:
         with TemporaryDirectory() as temporary_directory:

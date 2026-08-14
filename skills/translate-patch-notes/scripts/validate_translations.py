@@ -354,6 +354,22 @@ def _validate_agent_translation(
     if len(english_changes) != len(localized_changes):
         raise ValueError(f"{locale} bullet count does not match en")
 
+    raw_uncertain = localization.get("uncertainTerms", [])
+    uncertain = _require_list(raw_uncertain, f"{locale} uncertainTerms")
+    preserved_uncertain_terms = {
+        _require_string(term, f"{locale} uncertain term")
+        for term in uncertain
+    }
+    for term in preserved_uncertain_terms:
+        if (
+            not term
+            or not term[0].isupper()
+            or term not in english_content
+            or term not in "\n".join(localized_changes)
+        ):
+            raise ValueError(f"{locale} has an invalid uncertain term: {term}")
+    prose_exempt_terms = protected_terms | preserved_uncertain_terms
+
     for index, (english_change, localized_change) in enumerate(
         zip(english_changes, localized_changes, strict=True)
     ):
@@ -372,7 +388,7 @@ def _validate_agent_translation(
             }
             checked_english_text = english_text
             checked_localized_text = localized_text
-            for term in sorted(protected_terms, key=len, reverse=True):
+            for term in sorted(prose_exempt_terms, key=len, reverse=True):
                 if term in english_text:
                     if term not in localized_text and term not in heading_terms:
                         raise ValueError(
@@ -418,11 +434,9 @@ def _validate_agent_translation(
             localized_text,
         )
 
-    raw_uncertain = localization.get("uncertainTerms", [])
-    uncertain = _require_list(raw_uncertain, f"{locale} uncertainTerms")
-    if uncertain:
-        term = _require_string(uncertain[0], f"{locale} uncertain term")
-        raise ValueError(f"{locale} uses unverified terminology for {term}")
+    uncertain_terms.update(
+        f"{locale}: {term}" for term in preserved_uncertain_terms
+    )
 
 
 def validate_translation_batch(

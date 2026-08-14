@@ -35,8 +35,99 @@ def _load_generator_module():
     return module
 
 
+def _checkpoint_document() -> dict[str, object]:
+    source_url = "https://news.blizzard.com/en-us/example"
+    return {
+        "schemaVersion": 5,
+        "updatedAt": "2026-08-14T04:07:00+02:00",
+        "changes": [{
+            "channel": "live",
+            "category": "Class",
+            "date": "2026-08-14",
+            "patch": "12.1.0",
+            "localizations": {"en": {
+                "name": "Mage",
+                "specialization": "Fire",
+                "change": ["Damage increased by 5%."],
+                "source": "Blizzard",
+                "sourceUrl": source_url,
+                "translationType": "official",
+                "translatedFrom": "",
+                "terminologySourceUrls": [],
+            }},
+        }],
+    }
+
+
+def _checkpoint_terminology() -> dict[str, object]:
+    return {
+        "locales": {
+            locale: {"terms": {
+                "Mage": {"localized": "Mage"},
+                "Fire": {"localized": "Fire"},
+            }}
+            for locale in ("deDE", "ruRU")
+        }
+    }
+
+
 # Describe: safe generation of unofficial patch-note localizations
 class TranslationGenerationTests(unittest.TestCase):
+    def test_reuses_only_checkpoint_localizations_that_validate(self) -> None:
+        # Given one exact cached record with valid German and invalid Russian
+        document = _checkpoint_document()
+        terminology = _checkpoint_terminology()
+        checkpoint = self.generator.build_translation_batch(
+            document,
+            {"deDE": "de", "ruRU": "ru"},
+            lambda text, language: f"{language}: {text}",
+            terminology,
+        )
+
+        def validate(record, _terminology):
+            locales = record["changes"][0]["localizations"]
+            if "ruRU" in locales:
+                raise ValueError("invalid Russian")
+
+        # When the checkpoint is applied to the unchanged English input
+        reused = self.generator.reuse_validated_checkpoint(
+            document,
+            checkpoint,
+            terminology,
+            validate,
+        )
+
+        # Then only the independently valid localization is reused
+        localizations = reused["changes"][0]["localizations"]
+        self.assertIn("deDE", localizations)
+        self.assertNotIn("ruRU", localizations)
+
+    def test_does_not_reuse_checkpoint_after_english_changes(self) -> None:
+        # Given a checkpoint whose English bullet no longer matches
+        document = _checkpoint_document()
+        terminology = _checkpoint_terminology()
+        checkpoint = self.generator.build_translation_batch(
+            document,
+            {"deDE": "de"},
+            lambda text, language: f"{language}: {text}",
+            terminology,
+        )
+        document["changes"][0]["localizations"]["en"]["change"] = [
+            "Different English source."
+        ]
+
+        # When the stale checkpoint is considered
+        reused = self.generator.reuse_validated_checkpoint(
+            document,
+            checkpoint,
+            terminology,
+            lambda _record, _terminology: None,
+        )
+
+        # Then no cached locale crosses the exact-English boundary
+        localizations = reused["changes"][0]["localizations"]
+        self.assertEqual({"en"}, set(localizations))
+
     def setUp(self) -> None:
         self.generator = _load_generator_module()
 

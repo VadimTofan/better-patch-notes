@@ -396,19 +396,28 @@ def _release_files(root: Path) -> ReleaseFiles:
     )
 
 
-def _run(command: list[str]) -> str:
+def _run(
+    command: list[str],
+    timeout_seconds: int | None = None,
+) -> str:
     child_environment = os.environ.copy()
     child_environment["PYTHONUTF8"] = "1"
     child_environment["PYTHONIOENCODING"] = "utf-8"
-    completed = subprocess.run(
-        command,
-        cwd=PROJECT_ROOT,
-        env=child_environment,
-        capture_output=True,
-        text=True,
-        encoding="utf-8",
-        check=False,
-    )
+    try:
+        completed = subprocess.run(
+            command,
+            cwd=PROJECT_ROOT,
+            env=child_environment,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            check=False,
+            timeout=timeout_seconds,
+        )
+    except subprocess.TimeoutExpired as error:
+        raise RuntimeError(
+            f"translation generation exceeded {timeout_seconds} seconds"
+        ) from error
     if completed.returncode:
         standard_error = (completed.stderr or "").strip()
         standard_output = (completed.stdout or "").strip()
@@ -448,7 +457,10 @@ def _translator(
                     str(output_path),
                     "--terminology",
                     str(terminology_path),
-                ]
+                    "--checkpoint",
+                    str(WORK_DIRECTORY / "translation-checkpoint.json"),
+                ],
+                1500,
             )
             batch = json.loads(output_path.read_text(encoding="utf-8"))
         except RuntimeError as error:
@@ -470,6 +482,11 @@ def _translator(
             json.dumps(batch, ensure_ascii=False, indent=2) + "\n",
             encoding="utf-8",
         )
+        if "translationGenerationError" not in batch:
+            (WORK_DIRECTORY / "translation-checkpoint.json").write_text(
+                json.dumps(batch, ensure_ascii=False, indent=2) + "\n",
+                encoding="utf-8",
+            )
 
         return batch
 
