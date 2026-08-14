@@ -30,6 +30,7 @@ GEMINI_MODEL = "gemini-3.5-flash-lite"
 GEMINI_BATCH_MODEL = "gemini-3.5-flash-lite"
 GEMINI_API_BASE_URL = "https://generativelanguage.googleapis.com/v1beta"
 GEMINI_REQUESTS_PER_MINUTE = 5
+GEMINI_BATCH_WAIT_SECONDS = 60
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
 
 
@@ -824,7 +825,7 @@ def wait_for_inline_batch(
     job_name: str,
     api_key: str,
     poll_interval: int = 30,
-    timeout_seconds: int = 600,
+    timeout_seconds: int = GEMINI_BATCH_WAIT_SECONDS,
     monotonic: Callable[[], float] = time.monotonic,
     sleep: Callable[[float], None] = time.sleep,
 ) -> dict[str, object]:

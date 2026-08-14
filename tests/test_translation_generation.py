@@ -1427,6 +1427,14 @@ class TranslationGenerationTests(unittest.TestCase):
         # Then it sleeps only to the deadline and does not poll forever
         self.assertEqual([10.0], sleeps)
 
+    def test_batch_queue_wait_preserves_time_for_interactive_fallback(self) -> None:
+        # Given the complete workflow has a 30-minute hard limit
+        # When the Gemini batch queue wait is configured
+        timeout_seconds = self.generator.GEMINI_BATCH_WAIT_SECONDS
+
+        # Then queued work falls back quickly enough for interactive translation
+        self.assertEqual(60, timeout_seconds)
+
     def test_builds_every_requested_locale_without_changing_bullet_count(self) -> None:
         # Given one canonical English record and two target locales
         self.assertIsNotNone(self.generator)
