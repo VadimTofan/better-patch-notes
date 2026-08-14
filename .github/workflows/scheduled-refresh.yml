@@ -72,19 +72,22 @@ jobs:
           if [ -s .bpn-work/translation-checkpoint.json ]; then
             exit 0
           fi
-          artifact_id="$(gh api "repos/$GITHUB_REPOSITORY/actions/artifacts?per_page=100" \
-            --jq '[.artifacts[] | select(.expired == false) | select(.name | startswith("refresh-audit-"))] | sort_by(.created_at) | reverse | .[0].id // empty')"
-          if [ -z "$artifact_id" ]; then
+          artifact_ids="$(gh api "repos/$GITHUB_REPOSITORY/actions/artifacts?per_page=100" \
+            --jq '[.artifacts[] | select(.expired == false) | select(.name | startswith("refresh-audit-"))] | sort_by(.created_at) | reverse | .[].id')"
+          if [ -z "$artifact_ids" ]; then
             exit 0
           fi
           mkdir -p .bpn-work
-          gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/$artifact_id/zip" \
-            > /tmp/translation-checkpoint.zip
-          if unzip -Z1 /tmp/translation-checkpoint.zip \
-            | rg -xq "translation-batch.json"; then
-            unzip -p /tmp/translation-checkpoint.zip translation-batch.json \
-              > .bpn-work/translation-checkpoint.json
-          fi
+          for artifact_id in $artifact_ids; do
+            gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/$artifact_id/zip" \
+              > /tmp/translation-checkpoint.zip
+            if unzip -Z1 /tmp/translation-checkpoint.zip \
+              | rg -xq "translation-batch.json"; then
+              unzip -p /tmp/translation-checkpoint.zip translation-batch.json \
+                > .bpn-work/translation-checkpoint.json
+              exit 0
+            fi
+          done
 
       - name: Prepare run metadata
         id: metadata
