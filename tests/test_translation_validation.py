@@ -346,9 +346,19 @@ class TranslationValidationTests(unittest.TestCase):
                 "L’effet s’applique lors de son utilisation.",
             ),
             (
+                "frFR",
+                "The effect applies when used.",
+                "L’effet s’applique à l’utilisation.",
+            ),
+            (
                 "ptBR",
                 "The effect applies when activated.",
                 "O efeito é aplicado ao ativar a técnica.",
+            ),
+            (
+                "itIT",
+                "If its healing would overheal, transfer the excess.",
+                "Le sovracure si trasferiscono a un alleato.",
             ),
         )
 

@@ -1141,6 +1141,79 @@ class TranslationGenerationTests(unittest.TestCase):
         self.assertEqual({}, failure_reasons)
         self.assertEqual("translated: first", translations[("fr", "first")])
 
+    def test_retries_a_twice_invalid_locale_batch_at_ten_items(self) -> None:
+        # Given Gemini returns invalid arrays at the two larger chunk sizes
+        self.assertIsNotNone(self.generator)
+        calls: list[int | None] = []
+
+        def translate_batch(texts, _language, _translator, **kwargs):
+            calls.append(kwargs.get("batch_size"))
+            if len(calls) < 3:
+                raise self.generator.InvalidTranslationBatchError(
+                    "Gemini returned an invalid translation batch."
+                )
+            return tuple(f"translated: {text}" for text in texts)
+
+        # When interactive translation retries that locale
+        with patch.object(
+            self.generator,
+            "translate_text_batch",
+            side_effect=translate_batch,
+        ):
+            translations, _transport, failures = (
+                self.generator._generate_interactive_translations(
+                    ("test-key",),
+                    ("first", "second"),
+                    {"de": "German"},
+                )
+            )
+
+        # Then a final bounded ten-item attempt can recover the locale
+        self.assertEqual([None, 20, 10], calls)
+        self.assertEqual({}, failures)
+        self.assertEqual("translated: first", translations[("de", "first")])
+
+    def test_repairs_english_leakage_after_interactive_fallback(self) -> None:
+        # Given interactive generation leaves Russian prose untranslated
+        self.assertIsNotNone(self.generator)
+
+        def translate_batch(_texts, _language, _translator, **_kwargs):
+            return ("Damage increased.",)
+
+        def repair_leakage(translations, _api_keys):
+            translations[("ru", "Damage increased.")] = "Урон увеличен."
+            return {}
+
+        # When the interactive locale finishes generation
+        with (
+            patch.object(
+                self.generator,
+                "translate_text_batch",
+                side_effect=translate_batch,
+            ),
+            patch.object(
+                self.generator,
+                "_repair_batch_leakage",
+                side_effect=repair_leakage,
+            ) as repair,
+        ):
+            translations, transport, failures = (
+                self.generator._generate_interactive_translations(
+                    ("test-key",),
+                    ("Damage increased.",),
+                    {"ru": "Russian"},
+                )
+            )
+
+        # Then the same repair gate used by Batch API protects publication
+        repair.assert_called_once()
+        self.assertEqual("interactive", transport)
+        self.assertEqual({}, failures)
+        self.assertEqual(
+            "Урон увеличен.",
+            translations[("ru", "Damage increased.")],
+        )
+
     def test_uses_interactive_translation_when_batch_wait_times_out(
         self,
     ) -> None:

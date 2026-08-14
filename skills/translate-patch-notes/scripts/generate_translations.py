@@ -895,33 +895,36 @@ def _generate_interactive_translations(
     translations: dict[tuple[str, str], str] = {}
     failure_reasons: dict[str, str] = {}
     for language in languages:
-        try:
-            localized_texts = translate_text_batch(
-                protected_texts,
-                language,
-                translator,
-                repair_translator=repair_translator,
-            )
-        except InvalidTranslationBatchError:
+        localized_texts: tuple[str, ...] | None = None
+        for batch_size in (None, 20, 10):
             try:
-                localized_texts = translate_text_batch(
-                    protected_texts,
-                    language,
-                    translator,
-                    batch_size=20,
-                    repair_translator=repair_translator,
-                )
+                if batch_size is None:
+                    localized_texts = translate_text_batch(
+                        protected_texts,
+                        language,
+                        translator,
+                        repair_translator=repair_translator,
+                    )
+                else:
+                    localized_texts = translate_text_batch(
+                        protected_texts,
+                        language,
+                        translator,
+                        batch_size=batch_size,
+                        repair_translator=repair_translator,
+                    )
+                break
+            except InvalidTranslationBatchError as error:
+                if batch_size == 10:
+                    reason = " ".join(str(error).split())
+                    failure_reasons[language] = reason
             except RuntimeError as error:
                 reason = " ".join(str(error).split())
                 failure_reasons[language] = (
                     reason or "automatic translation generation failed"
                 )
-                continue
-        except RuntimeError as error:
-            reason = " ".join(str(error).split())
-            failure_reasons[language] = (
-                reason or "automatic translation generation failed"
-            )
+                break
+        if localized_texts is None:
             continue
 
         for source_text, localized_text in zip(
@@ -931,6 +934,8 @@ def _generate_interactive_translations(
         ):
             translations[(language, source_text)] = localized_text
 
+    repair_failures = _repair_batch_leakage(translations, api_keys)
+    failure_reasons.update(repair_failures)
     return translations, "interactive", failure_reasons
 
 

@@ -76,9 +76,12 @@ CONDITION_MARKERS = {
     "esMX": (" si ", "cuando", "mientras", "siempre que", "después", "antes"),
     "frFR": (
         " si ", "lorsque", "quand", "pendant", "tant que", "après",
-        "avant", "lors de",
+        "avant", "lors de", "à l’utilisation", "à l'utilisation",
     ),
-    "itIT": (" se ", "quando", "mentre", "finché", "dopo", "prima", "all'utilizzo"),
+    "itIT": (
+        " se ", "quando", "mentre", "finché", "dopo", "prima",
+        "all'utilizzo", "sovracur",
+    ),
     "koKR": ("경우", "때", "동안", "중", "후", "전", " 시 "),
     "ptBR": (
         " se ", "quando", "enquanto", "sempre que", "após", "antes",
