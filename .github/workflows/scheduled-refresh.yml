@@ -78,8 +78,11 @@ jobs:
           mkdir -p .bpn-work
           gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/$artifact_id/zip" \
             > /tmp/translation-checkpoint.zip
-          unzip -p /tmp/translation-checkpoint.zip translation-batch.json \
-            > .bpn-work/translation-checkpoint.json
+          if unzip -Z1 /tmp/translation-checkpoint.zip \
+            | rg -xq "translation-batch.json"; then
+            unzip -p /tmp/translation-checkpoint.zip translation-batch.json \
+              > .bpn-work/translation-checkpoint.json
+          fi
 
       - name: Prepare run metadata
         id: metadata
