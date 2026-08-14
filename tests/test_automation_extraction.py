@@ -243,6 +243,24 @@ class PatchNoteExtractionTests(unittest.TestCase):
         )
         self.assertEqual(raid.category, "Raid")
 
+    def test_skips_unscoped_dungeon_prose_in_the_august_hotfix_shape(self) -> None:
+        # Given Blizzard places a general sentence before a named dungeon
+        document = _document(
+            "live-hotfix-august-13-2026.html",
+            channel="live",
+        )
+
+        # When the reviewed current article shape is extracted
+        changes = extract_changes(document)
+
+        # Then only the explicitly named dungeon change is published
+        self.assertEqual(1, len(changes))
+        self.assertEqual("Altar of Fangs", changes[0].name)
+        self.assertEqual(
+            ("Example encounter change.",),
+            changes[0].change,
+        )
+
     def test_ignores_unknown_instances_outside_the_requested_window(self) -> None:
         # Given
         document = replace(

@@ -332,6 +332,13 @@ def extract_changes(
                 instance_position, context_name = instance_positions[0]
                 context_anchor = section_anchor
                 path = path[instance_position + 1 :]
+            elif (
+                section != "Instance"
+                and not context_name
+                and len(path) == 1
+                and path[0].rstrip().endswith((".", "!", "?"))
+            ):
+                continue
             elif not context_name or section == "Instance":
                 raise AmbiguousPatchNote("instance bullet has no name")
             if not path:
