@@ -62,6 +62,15 @@ SECTION_NAMES = {
     "raids": "Raid",
     "raid changes": "Raid",
 }
+NON_PATCH_SECTION_HEADINGS = {
+    "delves",
+    "items",
+    "lairs",
+    "player versus player",
+    "professions",
+    "quests",
+    "world",
+}
 BLOCK_TAGS = {"h1", "h2", "h3", "h4", "h5", "h6", "p", "li"}
 
 
@@ -257,6 +266,14 @@ def extract_changes(
             continue
 
         candidate_section = _heading_section(text)
+        if (
+            block.tag == "p"
+            and text.strip().casefold() in NON_PATCH_SECTION_HEADINGS
+        ):
+            section = None
+            context_name = ""
+            context_anchor = ""
+            continue
         if block.tag == "h2" or (
             block.tag == "p" and candidate_section is not None
         ):

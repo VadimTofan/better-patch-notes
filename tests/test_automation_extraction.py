@@ -272,6 +272,8 @@ class PatchNoteExtractionTests(unittest.TestCase):
                 b"<p><strong>Dungeons and Raids</strong></p>"
                 b"<ul><li>Archmage Timear again permits players to queue for "
                 b"the Raid Finder wings of Tomb of Sargeras.</li></ul>"
+                b"<p><strong>Items</strong></p>"
+                b"<ul><li>An unrelated item change.</li></ul>"
             ),
         )
 
@@ -289,6 +291,28 @@ class PatchNoteExtractionTests(unittest.TestCase):
             ),
             changes[0].change,
         )
+
+    def test_unsupported_sections_do_not_leak_into_a_class(self) -> None:
+        # Given an unsupported section follows a named class
+        document = replace(
+            _document("live-hotfix-notes.html", channel="live"),
+            body=(
+                b"<p><strong>August 14, 2026</strong></p>"
+                b"<p><strong>Classes</strong></p>"
+                b"<ul><li><strong>Warlock</strong><ul>"
+                b"<li>A class change.</li></ul></li></ul>"
+                b"<p><strong>Delves</strong></p>"
+                b"<ul><li>An unrelated Delve change.</li></ul>"
+            ),
+        )
+
+        # When the reviewed section boundary is extracted
+        changes = extract_changes(document)
+
+        # Then the unsupported bullet is not assigned to Warlock
+        self.assertEqual(1, len(changes))
+        self.assertEqual("Warlock", changes[0].name)
+        self.assertEqual(("A class change.",), changes[0].change)
 
     def test_ignores_unknown_instances_outside_the_requested_window(self) -> None:
         # Given
