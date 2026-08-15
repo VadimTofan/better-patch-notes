@@ -113,10 +113,12 @@ GENERIC_SENTENCE_STARTS = {
     "Health",
     "If",
     "Increased",
+    "In",
     "Melee",
     "Much",
     "New Talent",
     "Now",
+    "Our",
     "Physical",
     "Reduced",
     "Removed",
@@ -134,6 +136,8 @@ GENERIC_SENTENCE_STARTS = {
     "We’d",
     "We're",
     "We’re",
+    "When",
+    "Your",
 }
 
 CAPITALIZED_TERM_PATTERN = re.compile(

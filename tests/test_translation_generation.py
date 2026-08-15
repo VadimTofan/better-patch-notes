@@ -1834,6 +1834,41 @@ class TranslationGenerationTests(unittest.TestCase):
         self.assertNotIn("If", terms)
         self.assertNotIn("Chance", terms)
 
+    def test_does_not_protect_prose_in_russian_placeholder_failure(
+        self,
+    ) -> None:
+        # Given the sentence prose that inflated Russian item 282 placeholders
+        text = (
+            "Revenge has been updated – Your successful dodges have a chance "
+            "to make your next Revenge cost no Rage. Protection’s free "
+            "Revenge mechanic varies. In dungeons, it triggers often. Our "
+            "goal is to make Revenge meaningful."
+        )
+
+        # When candidate game terms are identified
+        _protected, _replacements, terms = self.generator._protect_text(text)
+
+        # Then prose remains translatable while game names stay protected
+        for prose_term in ("Your", "In", "Our"):
+            self.assertNotIn(prose_term, terms)
+        for game_term in ("Revenge", "Rage", "Protection’s"):
+            self.assertIn(game_term, terms)
+
+    def test_does_not_protect_when_in_chinese_translation_failure(self) -> None:
+        # Given the conditional sentence that leaked English into Chinese
+        text = (
+            "Reanimation renamed to Lord of the Dead – When you control 3 "
+            "Magus of the Dead, summon Lord of the Dead for 15 seconds."
+        )
+
+        # When candidate game terms are identified
+        _protected, _replacements, terms = self.generator._protect_text(text)
+
+        # Then the condition translates while actual ability names stay safe
+        self.assertNotIn("When", terms)
+        self.assertIn("Lord of the Dead", terms)
+        self.assertIn("Magus of the Dead", terms)
+
     def test_does_not_protect_generic_capitalized_prose(self) -> None:
         # Given sentence starts that appeared as untranslated locale prose
         text = (
