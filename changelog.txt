@@ -1,3 +1,9 @@
+Version 0.2.16 - 2026-08-15
+- Data: Live 12.1.0; PTR None
+- Added or updated: 10 added; 416 updated
+- Removed: None
+- Locales: Validated deDE, esES, esMX, frFR, itIT, koKR, ptBR, zhTW; English fallbacks: ruRU (automatic translation failed validation), zhCN (automatic translation failed validation); 200 preserved English terminology warnings
+
 Version 0.2.15 - 2026-08-13
 - Data: Live 12.1.0; PTR None
 - Added or updated: 52 Live class records for Curse of Ula'tek
