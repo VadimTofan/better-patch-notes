@@ -95,15 +95,18 @@ GENERIC_SENTENCE_STARTS = {
     "Additionally",
     "Adjusted",
     "All",
+    "Between",
     "Cast",
     "Chance",
     "Cooldown",
     "Current",
     "Damage",
+    "Does",
     "Developers'",
     "Developers’",
     "Developers' notes",
     "Developers’ notes",
+    "Duration",
     "Fixed",
     "General",
     "Health",
@@ -119,6 +122,7 @@ GENERIC_SENTENCE_STARTS = {
     "Significantly",
     "Spell",
     "There",
+    "The",
     "They",
     "This",
     "Time",
@@ -1050,7 +1054,7 @@ def classify_locale_outcomes(
 def _candidate_terms(text: str) -> tuple[str, ...]:
     candidates: list[str] = []
     prefix, separator, _remainder = text.partition(":")
-    if separator:
+    if separator and len(prefix.split()) <= 8:
         candidates.extend(part.strip() for part in prefix.split(" – "))
 
     candidates.extend(CAPITALIZED_TERM_PATTERN.findall(text))
@@ -1066,7 +1070,11 @@ def _candidate_terms(text: str) -> tuple[str, ...]:
             words.pop(0)
         candidate = " ".join(words)
 
-        if not candidate or candidate in GENERIC_SENTENCE_STARTS:
+        if (
+            not candidate
+            or not candidate[0].isupper()
+            or candidate in GENERIC_SENTENCE_STARTS
+        ):
             continue
         if candidate not in terms:
             terms.append(candidate)

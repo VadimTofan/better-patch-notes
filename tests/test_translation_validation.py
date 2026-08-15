@@ -361,6 +361,11 @@ class TranslationValidationTests(unittest.TestCase):
                 "O efeito é aplicado ao ativar a técnica.",
             ),
             (
+                "ruRU",
+                "Damage is reduced while Blood Shield is active.",
+                "Урон снижен на время действия Blood Shield.",
+            ),
+            (
                 "itIT",
                 "If its healing would overheal, transfer the excess.",
                 "Le sovracure si trasferiscono a un alleato.",

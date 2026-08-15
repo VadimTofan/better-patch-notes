@@ -1769,6 +1769,37 @@ class TranslationGenerationTests(unittest.TestCase):
         self.assertNotIn("If", terms)
         self.assertNotIn("Chance", terms)
 
+    def test_does_not_protect_generic_capitalized_prose(self) -> None:
+        # Given sentence starts that appeared as untranslated locale prose
+        text = (
+            "Between those changes, damage improves. Duration increased. "
+            "Does not affect tanks. The following talents were removed."
+        )
+
+        # When candidate game terms are identified
+        _protected, _replacements, terms = self.generator._protect_text(text)
+
+        # Then ordinary prose remains available for translation
+        for prose_term in ("Between", "Duration", "Does", "The"):
+            self.assertNotIn(prose_term, terms)
+
+    def test_does_not_protect_a_long_explanatory_prefix(self) -> None:
+        # Given a nested patch-note explanation before a colon
+        text = (
+            "Aimed Shot now has a chance to cause your next Aimed Shot to "
+            "grant the Deathblow effect: Developers' notes: adjusted."
+        )
+
+        # When candidate game terms are identified
+        _protected, _replacements, terms = self.generator._protect_text(text)
+
+        # Then the complete explanatory clause is not treated as one game term
+        self.assertNotIn(
+            "Aimed Shot now has a chance to cause your next Aimed Shot to "
+            "grant the Deathblow effect",
+            terms,
+        )
+
     def test_does_not_protect_change_direction_as_part_of_a_wow_term(
         self,
     ) -> None:
