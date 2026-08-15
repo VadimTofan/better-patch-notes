@@ -1780,7 +1780,9 @@ class TranslationGenerationTests(unittest.TestCase):
         _protected, _replacements, terms = self.generator._protect_text(text)
 
         # Then ordinary prose remains available for translation
-        for prose_term in ("Between", "Duration", "Does", "The"):
+        for prose_term in (
+            "After", "Between", "Duration", "Does", "The",
+        ):
             self.assertNotIn(prose_term, terms)
 
     def test_does_not_protect_a_long_explanatory_prefix(self) -> None:
@@ -1799,6 +1801,31 @@ class TranslationGenerationTests(unittest.TestCase):
             "grant the Deathblow effect",
             terms,
         )
+
+    def test_does_not_protect_an_updated_prose_prefix(self) -> None:
+        # Given a short nested explanation that precedes a colon
+        text = (
+            "Ravager has been updated –: Ravager damage increased by 50%."
+        )
+
+        # When candidate game terms are identified
+        _protected, _replacements, terms = self.generator._protect_text(text)
+
+        # Then only the actual ability is protected
+        self.assertNotIn("Ravager has been updated –", terms)
+        self.assertIn("Ravager", terms)
+
+    def test_protects_multiple_lowercase_connectors_in_one_term(self) -> None:
+        # Given an ability name contains the compound connector "of the"
+        text = "Hammer of the Righteous damage increased by 10%."
+
+        # When candidate game terms are identified
+        _protected, _replacements, terms = self.generator._protect_text(text)
+
+        # Then the complete ability is one protected term
+        self.assertIn("Hammer of the Righteous", terms)
+        self.assertNotIn("Hammer", terms)
+        self.assertNotIn("Righteous", terms)
 
     def test_does_not_protect_change_direction_as_part_of_a_wow_term(
         self,

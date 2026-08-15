@@ -95,6 +95,7 @@ GENERIC_SENTENCE_STARTS = {
     "Additionally",
     "Adjusted",
     "All",
+    "After",
     "Between",
     "Cast",
     "Chance",
@@ -136,7 +137,7 @@ GENERIC_SENTENCE_STARTS = {
 }
 
 CAPITALIZED_TERM_PATTERN = re.compile(
-    r"\b[A-Z][A-Za-z’'\-]*(?:\s+(?:(?:of|the|and|By|is)\s+)?"
+    r"\b[A-Z][A-Za-z’'\-]*(?:\s+(?:(?:of the|of|the|and|By|is)\s+)?"
     r"[A-Z][A-Za-z’'\-]*)*"
 )
 NUMERIC_LITERAL_PATTERN = re.compile(
@@ -1055,7 +1056,16 @@ def _candidate_terms(text: str) -> tuple[str, ...]:
     candidates: list[str] = []
     prefix, separator, _remainder = text.partition(":")
     if separator and len(prefix.split()) <= 8:
-        candidates.extend(part.strip() for part in prefix.split(" – "))
+        for part in prefix.split(" – "):
+            candidate = part.strip()
+            words = re.findall(r"[A-Za-z’'\-]+", candidate)
+            is_title = all(
+                word[0].isupper()
+                or word in {"and", "is", "of", "the"}
+                for word in words
+            )
+            if is_title:
+                candidates.append(candidate)
 
     candidates.extend(CAPITALIZED_TERM_PATTERN.findall(text))
 
