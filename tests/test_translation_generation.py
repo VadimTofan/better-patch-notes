@@ -2012,6 +2012,59 @@ class TranslationGenerationTests(unittest.TestCase):
         self.assertNotIn("primary", translated)
         self.assertNotIn("secondary", translated)
 
+    def test_records_semantic_approval_from_two_independent_keys(self) -> None:
+        # Given a valid Russian synonym is absent from the phrase-list validator
+        self.assertIsNotNone(self.generator)
+        batch = {"changes": [{"localizations": {
+            "en": {
+                "change": [
+                    "Moonfire damage increased by 12.5% for 8 seconds."
+                ],
+                "translationType": "official",
+            },
+            "ruRU": {
+                "change": [
+                    "Урон от Лунный огонь стал больше на 12,5% на 8 секунд."
+                ],
+                "translationType": "agent",
+            },
+        }}]}
+        attempted_keys: list[str] = []
+
+        def judge(api_key: str, payload: str, language: str) -> str:
+            attempted_keys.append(api_key)
+            request = json.loads(payload)
+            self.assertEqual("ru", language)
+            self.assertEqual(["0:0"], [item["id"] for item in request])
+            equivalent = api_key != "third"
+            return json.dumps([{
+                "id": "0:0",
+                "equivalent": equivalent,
+            }])
+
+        def reject_phrase_list(
+            _locale: str,
+            _bullet: int,
+            _english: str,
+            _localized: str,
+        ) -> None:
+            raise ValueError("unlisted synonym")
+
+        # When three independent keys judge only the semantic failure
+        approvals = self.generator.build_semantic_approvals(
+            batch,
+            ("first", "second", "third"),
+            judge,
+            reject_phrase_list,
+        )
+
+        # Then a two-key majority records the exact internal bullet coordinate
+        self.assertEqual(
+            [{"change": 0, "locale": "ruRU", "bullet": 0}],
+            approvals,
+        )
+        self.assertEqual(["first", "second", "third"], attempted_keys)
+
 
 if __name__ == "__main__":
     unittest.main()

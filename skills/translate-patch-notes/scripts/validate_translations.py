@@ -279,6 +279,7 @@ def _validate_agent_translation(
     localization: dict[str, object],
     terminology: dict[str, object],
     uncertain_terms: set[str],
+    semantic_approvals: set[int],
 ) -> None:
     if localization.get("translatedFrom") != "en":
         raise ValueError(f"{locale} translatedFrom must be en")
@@ -430,12 +431,13 @@ def _validate_agent_translation(
             raise ValueError(
                 f"{locale} bullet {index + 1} changes numeric values"
             )
-        _validate_semantic_structure(
-            locale,
-            index + 1,
-            english_text,
-            localized_text,
-        )
+        if index not in semantic_approvals:
+            _validate_semantic_structure(
+                locale,
+                index + 1,
+                english_text,
+                localized_text,
+            )
 
     uncertain_terms.update(
         f"{locale}: {term}" for term in preserved_uncertain_terms
@@ -452,10 +454,34 @@ def validate_translation_batch(
         raise ValueError("unsupported terminology schemaVersion")
 
     changes = _require_list(document.get("changes"), "changes")
+    raw_semantic_approvals = _require_list(
+        document.get("semanticApprovals", []),
+        "semanticApprovals",
+    )
+    semantic_approvals: set[tuple[int, str, int]] = set()
+    for raw_approval in raw_semantic_approvals:
+        approval = _require_dict(raw_approval, "semantic approval")
+        change_index = approval.get("change")
+        locale = approval.get("locale")
+        bullet_index = approval.get("bullet")
+        if (
+            not isinstance(change_index, int)
+            or isinstance(change_index, bool)
+            or not isinstance(locale, str)
+            or locale not in SUPPORTED_TRANSLATION_LOCALES
+            or not isinstance(bullet_index, int)
+            or isinstance(bullet_index, bool)
+            or change_index < 0
+            or bullet_index < 0
+        ):
+            raise ValueError("semantic approval has invalid coordinates")
+        semantic_approvals.add((change_index, locale, bullet_index))
+
     validated_locales: set[str] = set()
     uncertain_terms: set[str] = set()
+    consumed_semantic_approvals: set[tuple[int, str, int]] = set()
 
-    for raw_change in changes:
+    for change_index, raw_change in enumerate(changes):
         change = _require_dict(raw_change, "change")
         category = _require_string(change.get("category"), "category")
         localizations = _require_dict(
@@ -482,6 +508,23 @@ def validate_translation_batch(
                     f"{locale} translationType must be official or agent"
                 )
 
+            approved_bullets = {
+                bullet_index
+                for approved_change, approved_locale, bullet_index
+                in semantic_approvals
+                if approved_change == change_index
+                and approved_locale == locale
+            }
+            localized_changes = _require_list(
+                localization.get("change"),
+                f"{locale} change",
+            )
+            if any(
+                bullet_index >= len(localized_changes)
+                for bullet_index in approved_bullets
+            ):
+                raise ValueError("semantic approval bullet is out of range")
+
             _validate_agent_translation(
                 locale,
                 category,
@@ -489,8 +532,17 @@ def validate_translation_batch(
                 localization,
                 terminology_document,
                 uncertain_terms,
+                approved_bullets,
+            )
+            consumed_semantic_approvals.update(
+                approval
+                for approval in semantic_approvals
+                if approval[0] == change_index and approval[1] == locale
             )
             validated_locales.add(locale)
+
+    if consumed_semantic_approvals != semantic_approvals:
+        raise ValueError("semantic approval does not match an agent translation")
 
     fallback_locales = (
         set(SUPPORTED_TRANSLATION_LOCALES) - validated_locales
@@ -520,6 +572,10 @@ def classify_translation_batch(
     validated_locales: set[str] = set()
     fallback_reasons: dict[str, str] = {}
     uncertain_terms: set[str] = set()
+    raw_semantic_approvals = _require_list(
+        document.get("semanticApprovals", []),
+        "semanticApprovals",
+    )
 
     for locale in sorted(SUPPORTED_TRANSLATION_LOCALES):
         locale_is_complete = all(
@@ -542,6 +598,12 @@ def classify_translation_batch(
             continue
 
         locale_batch = deepcopy(document)
+        locale_batch["semanticApprovals"] = [
+            approval
+            for approval in raw_semantic_approvals
+            if _require_dict(approval, "semantic approval").get("locale")
+            == locale
+        ]
         for raw_change in locale_batch["changes"]:
             localizations = raw_change["localizations"]
             raw_change["localizations"] = {

@@ -399,6 +399,25 @@ def request_gemini_segment_translation(
     return _request_gemini_output(api_key, prompt)
 
 
+def request_gemini_semantic_judgments(
+    api_key: str,
+    serialized_payload: str,
+    language: str,
+) -> str:
+    language_name = LANGUAGE_NAMES.get(language, language)
+    prompt = (
+        "Judge whether each localized World of Warcraft patch-note bullet "
+        f"has the same mechanical meaning as its English source in "
+        f"{language_name}. Check change direction and every condition. "
+        "Return only a JSON array in the original order. Each item must have "
+        "exactly its input id and an equivalent boolean. Mark false for any "
+        "meaning change, omission, ambiguity, or untranslated English prose. "
+        "Do not add explanations or Markdown fences.\n\n"
+        f"{serialized_payload}"
+    )
+    return _request_gemini_output(api_key, prompt)
+
+
 class GeminiTranslator:
     _TRANSIENT_STATUS_CODES = {408, 429, 500, 502, 503, 504}
 
@@ -656,6 +675,127 @@ def _parse_translation_segments(
         )
 
     return translated
+
+
+def _parse_semantic_judgments(
+    raw_judgments: str,
+    expected_ids: tuple[str, ...],
+) -> dict[str, bool]:
+    normalized = raw_judgments.strip()
+    if normalized.startswith("```"):
+        lines = normalized.splitlines()
+        normalized = "\n".join(lines[1:-1]).strip()
+
+    try:
+        parsed = json.loads(normalized)
+    except json.JSONDecodeError as error:
+        raise InvalidTranslationBatchError(
+            "Gemini returned invalid semantic judgments."
+        ) from error
+
+    if not isinstance(parsed, list) or len(parsed) != len(expected_ids):
+        raise InvalidTranslationBatchError(
+            "Gemini returned incomplete semantic judgments."
+        )
+
+    judgments: dict[str, bool] = {}
+    for item in parsed:
+        if not isinstance(item, dict) or set(item) != {"id", "equivalent"}:
+            raise InvalidTranslationBatchError(
+                "Gemini returned invalid semantic judgments."
+            )
+        item_id = item["id"]
+        equivalent = item["equivalent"]
+        if not isinstance(item_id, str) or not isinstance(equivalent, bool):
+            raise InvalidTranslationBatchError(
+                "Gemini returned invalid semantic judgments."
+            )
+        judgments[item_id] = equivalent
+
+    if tuple(judgments) != expected_ids:
+        raise InvalidTranslationBatchError(
+            "Gemini reordered semantic judgments."
+        )
+    return judgments
+
+
+def build_semantic_approvals(
+    batch: dict[str, object],
+    api_keys: tuple[str, ...],
+    request_judgments: GeminiRequest = request_gemini_semantic_judgments,
+    validate_semantics: Callable[[str, int, str, str], None] | None = None,
+) -> list[dict[str, object]]:
+    if validate_semantics is None:
+        from validate_translations import _validate_semantic_structure
+
+        validate_semantics = _validate_semantic_structure
+
+    failures_by_locale: dict[str, list[dict[str, str]]] = {}
+    for change_index, change in enumerate(batch["changes"]):
+        localizations = change["localizations"]
+        english_changes = localizations["en"]["change"]
+        for locale, localization in localizations.items():
+            if locale == "en" or localization["translationType"] != "agent":
+                continue
+            for bullet_index, (english_text, localized_text) in enumerate(
+                zip(
+                    english_changes,
+                    localization["change"],
+                    strict=True,
+                )
+            ):
+                try:
+                    validate_semantics(
+                        locale,
+                        bullet_index + 1,
+                        english_text,
+                        localized_text,
+                    )
+                except ValueError:
+                    failures_by_locale.setdefault(locale, []).append({
+                        "id": f"{change_index}:{bullet_index}",
+                        "english": english_text,
+                        "localized": localized_text,
+                    })
+
+    distinct_keys = tuple(dict.fromkeys(api_keys))[:3]
+    if len(distinct_keys) < 2:
+        return []
+
+    approvals: list[dict[str, object]] = []
+    for locale, failures in sorted(failures_by_locale.items()):
+        expected_ids = tuple(item["id"] for item in failures)
+        payload = json.dumps(failures, ensure_ascii=False)
+        yes_counts = {item_id: 0 for item_id in expected_ids}
+        language = TARGET_LANGUAGE_CODES[locale]
+        for api_key in distinct_keys:
+            try:
+                raw_judgments = request_judgments(
+                    api_key,
+                    payload,
+                    language,
+                )
+                judgments = _parse_semantic_judgments(
+                    raw_judgments,
+                    expected_ids,
+                )
+            except (GeminiApiError, InvalidTranslationBatchError, RuntimeError):
+                continue
+            for item_id, equivalent in judgments.items():
+                if equivalent:
+                    yes_counts[item_id] += 1
+
+        for item_id in expected_ids:
+            if yes_counts[item_id] < 2:
+                continue
+            change_text, bullet_text = item_id.split(":", 1)
+            approvals.append({
+                "change": int(change_text),
+                "locale": locale,
+                "bullet": int(bullet_text),
+            })
+
+    return approvals
 
 
 def _normalize_translation_placeholders(
@@ -1596,6 +1736,9 @@ def main() -> int:
         cached_translator,
         terminology,
     )
+    semantic_approvals = build_semantic_approvals(batch, api_keys)
+    if semantic_approvals:
+        batch["semanticApprovals"] = semantic_approvals
     if fallback_reasons:
         batch["fallbackReasons"] = fallback_reasons
     arguments.output.write_text(

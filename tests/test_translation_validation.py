@@ -318,6 +318,56 @@ class TranslationValidationTests(unittest.TestCase):
             # Then the valid increase wording must not be rejected
             self.fail(f"valid Chinese extension was rejected: {error}")
 
+    def test_accepts_majority_approved_semantic_synonym(self) -> None:
+        # Given two independent judges approved a valid unlisted Russian synonym
+        batch = _translation_batch()
+        russian = batch["changes"][0]["localizations"]["ruRU"]
+        russian["change"] = [
+            "Урон от Лунный огонь стал больше на 12,5% на 8 секунд."
+        ]
+        batch["semanticApprovals"] = [{
+            "change": 0,
+            "locale": "ruRU",
+            "bullet": 0,
+        }]
+
+        # When / Then the phrase-list semantic check accepts that coordinate
+        self.validator.validate_translation_batch(batch, self.terminology)
+
+    def test_semantic_approval_cannot_bypass_numeric_validation(self) -> None:
+        # Given an approved coordinate still changes a protected numeric value
+        batch = _translation_batch()
+        russian = batch["changes"][0]["localizations"]["ruRU"]
+        russian["change"] = [
+            "Урон от Лунный огонь стал больше на 15% на 8 секунд."
+        ]
+        batch["semanticApprovals"] = [{
+            "change": 0,
+            "locale": "ruRU",
+            "bullet": 0,
+        }]
+
+        # When / Then deterministic numeric validation remains authoritative
+        with self.assertRaisesRegex(ValueError, "numeric"):
+            self.validator.validate_translation_batch(batch, self.terminology)
+
+    def test_semantic_approval_cannot_bypass_english_leakage(self) -> None:
+        # Given an approved coordinate still contains untranslated prose
+        batch = _translation_batch()
+        russian = batch["changes"][0]["localizations"]["ruRU"]
+        russian["change"] = [
+            "Урон от Лунный огонь increased на 12,5% на 8 секунд."
+        ]
+        batch["semanticApprovals"] = [{
+            "change": 0,
+            "locale": "ruRU",
+            "bullet": 0,
+        }]
+
+        # When / Then untranslated English remains a hard release blocker
+        with self.assertRaisesRegex(ValueError, "English leakage"):
+            self.validator.validate_translation_batch(batch, self.terminology)
+
     def test_rejects_a_lost_condition(self) -> None:
         # Given the English bullet has a condition missing from the translation
         batch = _translation_batch()
