@@ -572,7 +572,12 @@ def _translate_prose_segments(
     translator: Translator,
 ) -> str:
     parts = PLACEHOLDER_PATTERN.split(source_text)
-    segments = parts[::2]
+    segment_indexes = [
+        index
+        for index in range(0, len(parts), 2)
+        if re.search(r"[A-Za-z]", parts[index])
+    ]
+    segments = [parts[index] for index in segment_indexes]
     payload = json.dumps(
         {"source": source_text, "segments": segments},
         ensure_ascii=False,
@@ -583,9 +588,15 @@ def _translate_prose_segments(
         len(segments),
     )
 
-    translated_iterator = iter(translated_segments)
+    translated_by_index = dict(zip(
+        segment_indexes,
+        translated_segments,
+        strict=True,
+    ))
     reconstructed_parts = [
-        next(translated_iterator) if index % 2 == 0 else part
+        translated_by_index[index]
+        if index in translated_by_index
+        else part
         for index, part in enumerate(parts)
     ]
     return "".join(reconstructed_parts)

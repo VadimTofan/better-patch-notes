@@ -301,6 +301,23 @@ class TranslationValidationTests(unittest.TestCase):
         except ValueError as error:
             self.fail(f"valid Spanish reduction was rejected: {error}")
 
+    def test_accepts_chinese_duration_extension_as_an_increase(self) -> None:
+        # Given a duration increase uses the natural Chinese verb for extension
+        english = "Duration increased to 10 seconds (was 6 seconds)."
+        localized = "持续时间延长至10秒（原为6秒）。"
+
+        # When the aligned direction is checked
+        try:
+            self.validator._validate_semantic_structure(
+                "zhCN",
+                1,
+                english,
+                localized,
+            )
+        except ValueError as error:
+            # Then the valid increase wording must not be rejected
+            self.fail(f"valid Chinese extension was rejected: {error}")
+
     def test_rejects_a_lost_condition(self) -> None:
         # Given the English bullet has a condition missing from the translation
         batch = _translation_batch()

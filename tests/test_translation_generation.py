@@ -1002,7 +1002,6 @@ class TranslationGenerationTests(unittest.TestCase):
         def segment_repair_translator(text: str, _language: str) -> str:
             segment_requests.append(json.loads(text))
             return json.dumps([
-                "",
                 " wurde aktualisiert: ",
                 " verursacht ",
                 " Schaden.",
@@ -1036,7 +1035,6 @@ class TranslationGenerationTests(unittest.TestCase):
                     "__BPN0002__ damage."
                 ),
                 "segments": [
-                    "",
                     " was updated: ",
                     " deals ",
                     " damage.",
@@ -1289,7 +1287,7 @@ class TranslationGenerationTests(unittest.TestCase):
             return "fr: __BPN0000__"
 
         def interactive_segment_repair(_api_key, _text, _language):
-            return json.dumps(["incomplete"])
+            return json.dumps([])
 
         # When the interactive fallback translates both locales
         with (
