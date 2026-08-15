@@ -261,6 +261,35 @@ class PatchNoteExtractionTests(unittest.TestCase):
             changes[0].change,
         )
 
+    def test_extracts_a_registered_raid_embedded_in_combined_section_prose(
+        self,
+    ) -> None:
+        # Given Blizzard names a raid inside a top-level combined-section bullet
+        document = replace(
+            _document("live-hotfix-notes.html", channel="live"),
+            body=(
+                b"<p><strong>August 14, 2026</strong></p>"
+                b"<p><strong>Dungeons and Raids</strong></p>"
+                b"<ul><li>Archmage Timear again permits players to queue for "
+                b"the Raid Finder wings of Tomb of Sargeras.</li></ul>"
+            ),
+        )
+
+        # When the reviewed current article shape is extracted
+        changes = extract_changes(document)
+
+        # Then the exact registered raid owns the unchanged source sentence
+        self.assertEqual(1, len(changes))
+        self.assertEqual("Raid", changes[0].category)
+        self.assertEqual("Tomb of Sargeras", changes[0].name)
+        self.assertEqual(
+            (
+                "Archmage Timear again permits players to queue for the Raid "
+                "Finder wings of Tomb of Sargeras.",
+            ),
+            changes[0].change,
+        )
+
     def test_ignores_unknown_instances_outside_the_requested_window(self) -> None:
         # Given
         document = replace(

@@ -45,6 +45,7 @@ RAIDS = {
     "Sporefall",
     "The Voidspire",
     "The Venomous Abyss",
+    "Tomb of Sargeras",
 }
 INSTANCE_NAMES = {
     name.casefold(): name for name in DUNGEONS | RAIDS
@@ -177,6 +178,18 @@ def _is_unscoped_class_prose(path: list[str]) -> bool:
 
 def _structural_key(text: str) -> str:
     return text.lstrip("▶▼▸▾ ").casefold()
+
+
+def _embedded_instance_names(values: list[str]) -> set[str]:
+    text = " ".join(values).casefold()
+    return {
+        instance_name
+        for normalized_name, instance_name in INSTANCE_NAMES.items()
+        if re.search(
+            rf"(?<!\w){re.escape(normalized_name)}(?!\w)",
+            text,
+        )
+    }
 
 
 def _is_pvp_only(text: str) -> bool:
@@ -339,6 +352,12 @@ def extract_changes(
                 and path[0].rstrip().endswith((".", "!", "?"))
             ):
                 continue
+            elif section == "Instance" and not context_name:
+                embedded_names = _embedded_instance_names(path)
+                if len(embedded_names) != 1:
+                    raise AmbiguousPatchNote("instance bullet has no name")
+                context_name = embedded_names.pop()
+                context_anchor = section_anchor
             elif not context_name or section == "Instance":
                 raise AmbiguousPatchNote("instance bullet has no name")
             if not path:
