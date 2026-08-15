@@ -1988,23 +1988,29 @@ class TranslationGenerationTests(unittest.TestCase):
         }
         self.assertIn("1", protected_originals)
 
-    def test_protects_number_words_that_locales_may_render_as_digits(self) -> None:
-        # Given an ordinal word Korean commonly renders with a numeral
+    def test_translates_primary_and_secondary_target_prose(self) -> None:
+        # Given target-order prose must be localized for a non-English client
         self.assertIsNotNone(self.generator)
 
-        def korean_translator(segment: str, _language: str) -> str:
-            return segment.replace("secondary", "2차")
+        def german_translator(segment: str, _language: str) -> str:
+            return (
+                segment
+                .replace("primary", "primären")
+                .replace("secondary", "sekundären")
+            )
 
         # When guarded translation runs
         translated, _uncertain_terms = self.generator.translate_guarded_text(
-            "Damage increased and secondary damage increased by 30%.",
-            "ko",
-            korean_translator,
+            "Damage to the primary and secondary targets increased by 30%.",
+            "de",
+            german_translator,
         )
 
-        # Then the translation cannot introduce a new numeric token
-        self.assertIn("secondary", translated)
-        self.assertNotIn("2차", translated)
+        # Then both ordinary prose words reach the translator
+        self.assertIn("primären", translated)
+        self.assertIn("sekundären", translated)
+        self.assertNotIn("primary", translated)
+        self.assertNotIn("secondary", translated)
 
 
 if __name__ == "__main__":

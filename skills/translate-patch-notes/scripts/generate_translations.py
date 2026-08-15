@@ -146,7 +146,7 @@ NUMERIC_LITERAL_PATTERN = re.compile(
 NUMERIC_WORD_PATTERN = re.compile(
     r"\b(?:zero|one|two|three|four|five|six|seven|eight|nine|ten|"
     r"first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|"
-    r"tenth|primary|secondary)\b",
+    r"tenth)\b",
     re.IGNORECASE,
 )
 PLACEHOLDER_PATTERN = re.compile(r"(__BPN\d{4}__)")
