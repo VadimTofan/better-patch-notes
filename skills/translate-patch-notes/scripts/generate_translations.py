@@ -379,6 +379,26 @@ def request_gemini_translation_batch(
     )
 
 
+def request_gemini_segment_translation(
+    api_key: str,
+    serialized_payload: str,
+    language: str,
+) -> str:
+    language_name = LANGUAGE_NAMES.get(language, language)
+    prompt = (
+        "Translate the prose segments in this JSON object from English to "
+        f"{language_name}. Use the complete protected World of Warcraft "
+        "source string as context. Return only a valid JSON array with one "
+        "translated string for every input segment, in the original order. "
+        "Keep empty segments empty. Do not return placeholders, explanations, "
+        "or Markdown fences. Preserve mechanical meaning and the direction "
+        "of the change. Do not add numeric literals; numbers are protected in "
+        "the source string.\n\n"
+        f"{serialized_payload}"
+    )
+    return _request_gemini_output(api_key, prompt)
+
+
 class GeminiTranslator:
     _TRANSIENT_STATUS_CODES = {408, 429, 500, 502, 503, 504}
 
@@ -474,6 +494,7 @@ def translate_text_batch(
     translator: Translator,
     batch_size: int = 40,
     repair_translator: Translator | None = None,
+    segment_repair_translator: Translator | None = None,
     repair_attempts: int = 3,
 ) -> tuple[str, ...]:
     if batch_size < 1:
@@ -518,6 +539,22 @@ def translate_text_batch(
                     )
                     if normalized is not None:
                         break
+            if normalized is None and segment_repair_translator is not None:
+                for _attempt in range(repair_attempts):
+                    try:
+                        repaired = _translate_prose_segments(
+                            source_text,
+                            language,
+                            segment_repair_translator,
+                        )
+                    except InvalidTranslationBatchError:
+                        continue
+                    normalized = _normalize_translation_placeholders(
+                        source_text,
+                        repaired,
+                    )
+                    if normalized is not None:
+                        break
             if normalized is None:
                 raise RuntimeError(
                     "Gemini changed protected translation placeholders "
@@ -527,6 +564,31 @@ def translate_text_batch(
             all_translations.append(normalized)
 
     return tuple(all_translations)
+
+
+def _translate_prose_segments(
+    source_text: str,
+    language: str,
+    translator: Translator,
+) -> str:
+    parts = PLACEHOLDER_PATTERN.split(source_text)
+    segments = parts[::2]
+    payload = json.dumps(
+        {"source": source_text, "segments": segments},
+        ensure_ascii=False,
+    )
+    raw_translation = translator(payload, language)
+    translated_segments = _parse_translation_segments(
+        raw_translation,
+        len(segments),
+    )
+
+    translated_iterator = iter(translated_segments)
+    reconstructed_parts = [
+        next(translated_iterator) if index % 2 == 0 else part
+        for index, part in enumerate(parts)
+    ]
+    return "".join(reconstructed_parts)
 
 
 def _parse_translation_array(
@@ -552,6 +614,34 @@ def _parse_translation_array(
     ):
         raise InvalidTranslationBatchError(
             "Gemini returned an incomplete translation batch."
+        )
+
+    return translated
+
+
+def _parse_translation_segments(
+    raw_translation: str,
+    expected_length: int,
+) -> list[str]:
+    normalized = raw_translation.strip()
+    if normalized.startswith("```"):
+        lines = normalized.splitlines()
+        normalized = "\n".join(lines[1:-1]).strip()
+
+    try:
+        translated = json.loads(normalized)
+    except json.JSONDecodeError as error:
+        raise InvalidTranslationBatchError(
+            "Gemini returned invalid translated prose segments."
+        ) from error
+
+    if (
+        not isinstance(translated, list)
+        or len(translated) != expected_length
+        or not all(isinstance(item, str) for item in translated)
+    ):
+        raise InvalidTranslationBatchError(
+            "Gemini returned incomplete translated prose segments."
         )
 
     return translated
@@ -919,6 +1009,10 @@ def _generate_interactive_translations(
         api_keys,
         request_translation=request_gemini_translation,
     )
+    segment_repair_translator = GeminiTranslator(
+        api_keys,
+        request_translation=request_gemini_segment_translation,
+    )
     translations: dict[tuple[str, str], str] = {}
     failure_reasons: dict[str, str] = {}
     for language in languages:
@@ -931,6 +1025,7 @@ def _generate_interactive_translations(
                         language,
                         translator,
                         repair_translator=repair_translator,
+                        segment_repair_translator=segment_repair_translator,
                     )
                 else:
                     localized_texts = translate_text_batch(
@@ -939,6 +1034,7 @@ def _generate_interactive_translations(
                         translator,
                         batch_size=batch_size,
                         repair_translator=repair_translator,
+                        segment_repair_translator=segment_repair_translator,
                     )
                 break
             except InvalidTranslationBatchError as error:

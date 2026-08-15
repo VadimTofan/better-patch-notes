@@ -986,6 +986,65 @@ class TranslationGenerationTests(unittest.TestCase):
         # Then retries remain bounded and no source text appears in the error
         self.assertEqual(3, len(repair_requests))
 
+    def test_reconstructs_protected_markers_after_repairs_fail(self) -> None:
+        # Given every whole-bullet attempt damages protected markers
+        self.assertIsNotNone(self.generator)
+        repair_requests: list[str] = []
+        segment_requests: list[dict[str, object]] = []
+
+        def batch_translator(_text: str, _language: str) -> str:
+            return json.dumps(["de: markers missing"])
+
+        def repair_translator(text: str, _language: str) -> str:
+            repair_requests.append(text)
+            return "de: markers still missing"
+
+        def segment_repair_translator(text: str, _language: str) -> str:
+            segment_requests.append(json.loads(text))
+            return json.dumps([
+                "",
+                " wurde aktualisiert: ",
+                " verursacht ",
+                " Schaden.",
+            ])
+
+        # When the failed item is repaired as contextual prose segments
+        translated = self.generator.translate_text_batch(
+            (
+                "__BPN0000__ was updated: __BPN0001__ deals "
+                "__BPN0002__ damage.",
+            ),
+            "de",
+            batch_translator,
+            repair_translator=repair_translator,
+            segment_repair_translator=segment_repair_translator,
+        )
+
+        # Then code restores the original markers around translated prose
+        self.assertEqual(
+            (
+                "__BPN0000__ wurde aktualisiert: __BPN0001__ verursacht "
+                "__BPN0002__ Schaden.",
+            ),
+            translated,
+        )
+        self.assertEqual(3, len(repair_requests))
+        self.assertEqual(
+            [{
+                "source": (
+                    "__BPN0000__ was updated: __BPN0001__ deals "
+                    "__BPN0002__ damage."
+                ),
+                "segments": [
+                    "",
+                    " was updated: ",
+                    " deals ",
+                    " damage.",
+                ],
+            }],
+            segment_requests,
+        )
+
     def test_builds_and_parses_keyed_batch_api_requests(self) -> None:
         # Given two protected bullets for two target languages
         self.assertIsNotNone(self.generator)
@@ -1229,6 +1288,9 @@ class TranslationGenerationTests(unittest.TestCase):
                 return "de: placeholder still missing"
             return "fr: __BPN0000__"
 
+        def interactive_segment_repair(_api_key, _text, _language):
+            return json.dumps(["incomplete"])
+
         # When the interactive fallback translates both locales
         with (
             patch.object(
@@ -1245,6 +1307,11 @@ class TranslationGenerationTests(unittest.TestCase):
                 self.generator,
                 "request_gemini_translation",
                 interactive_repair,
+            ),
+            patch.object(
+                self.generator,
+                "request_gemini_segment_translation",
+                interactive_segment_repair,
             ),
         ):
             translations, transport, failure_reasons = (
