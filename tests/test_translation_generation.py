@@ -234,6 +234,41 @@ class TranslationGenerationTests(unittest.TestCase):
             attempted_keys,
         )
 
+    def test_rotates_successful_requests_across_available_keys(self) -> None:
+        # Given three working Gemini credentials
+        attempted_keys: list[str] = []
+
+        def request_translation(
+            api_key: str,
+            _text: str,
+            _language: str,
+        ) -> str:
+            attempted_keys.append(api_key)
+            return f"translation from {api_key}"
+
+        translator = self.generator.GeminiTranslator(
+            ("primary", "secondary", "tertiary"),
+            request_translation=request_translation,
+            sleep=lambda _seconds: None,
+        )
+
+        # When validation requests three independent translation attempts
+        results = [translator("translation", "ru") for _ in range(3)]
+
+        # Then each credential can contribute an independently validated result
+        self.assertEqual(
+            ["primary", "secondary", "tertiary"],
+            attempted_keys,
+        )
+        self.assertEqual(
+            [
+                "translation from primary",
+                "translation from secondary",
+                "translation from tertiary",
+            ],
+            results,
+        )
+
     def test_uses_fallback_key_after_primary_authentication_failure(
         self,
     ) -> None:
@@ -1115,6 +1150,46 @@ class TranslationGenerationTests(unittest.TestCase):
         self.assertEqual(
             "Урон увеличен.",
             translations[("ru", "Damage increased.")],
+        )
+
+    def test_retries_english_leakage_with_alternate_keys(self) -> None:
+        # Given the first two credentials return untranslated Chinese prose
+        attempted_keys: list[str] = []
+
+        def request_translation(
+            api_key: str,
+            _text: str,
+            _language: str,
+        ) -> str:
+            attempted_keys.append(api_key)
+            if api_key != "tertiary":
+                return '["Damage increased."]'
+            return '["伤害提高。"]'
+
+        translations = {
+            ("zh-CN", "Damage increased."): "Damage increased.",
+        }
+
+        # When semantic validation repairs the leaked English prose
+        with patch.object(
+            self.generator,
+            "request_gemini_translation_batch",
+            request_translation,
+        ):
+            failures = self.generator._repair_batch_leakage(
+                translations,
+                ("primary", "secondary", "tertiary"),
+            )
+
+        # Then alternate credentials are tried until one validates
+        self.assertEqual({}, failures)
+        self.assertEqual(
+            ["primary", "secondary", "tertiary"],
+            attempted_keys,
+        )
+        self.assertEqual(
+            "伤害提高。",
+            translations[("zh-CN", "Damage increased.")],
         )
 
     def test_detects_multiple_english_prose_words_in_a_latin_locale(self) -> None:

@@ -390,7 +390,16 @@ class GeminiTranslator:
         self._max_attempts = max_attempts
         self._disabled_key_indexes: set[int] = set()
         self._disabled_key_statuses: dict[int, int] = {}
+        self._next_key_index = 0
         self._lock = Lock()
+
+    def _reserve_start_index(self) -> int:
+        with self._lock:
+            start_index = self._next_key_index
+            self._next_key_index = (
+                self._next_key_index + 1
+            ) % len(self._api_keys)
+        return start_index
 
     def _is_disabled(self, key_index: int) -> bool:
         with self._lock:
@@ -407,7 +416,13 @@ class GeminiTranslator:
 
     def __call__(self, text: str, language: str) -> str:
         failures: list[str] = []
-        for key_index, api_key in enumerate(self._api_keys):
+        start_index = self._reserve_start_index()
+        key_indexes = tuple(
+            (start_index + offset) % len(self._api_keys)
+            for offset in range(len(self._api_keys))
+        )
+        for key_index in key_indexes:
+            api_key = self._api_keys[key_index]
             if self._is_disabled(key_index):
                 status_code = self._disabled_status(key_index)
                 failures.append(
@@ -729,23 +744,28 @@ def _repair_batch_leakage(
         ):
             continue
 
-        try:
-            repaired = translate_text_batch(
-                (source_text,),
+        repaired = localized_text
+        repair_error = "automatic translation retained English prose"
+        for _attempt in range(len(api_keys)):
+            try:
+                repaired = translate_text_batch(
+                    (source_text,),
+                    language,
+                    translator,
+                    batch_size=1,
+                )[0]
+            except RuntimeError as error:
+                repair_error = " ".join(str(error).split())
+                continue
+            if not _needs_translation_repair(
+                source_text,
+                repaired,
                 language,
-                translator,
-                batch_size=1,
-            )[0]
-        except RuntimeError as error:
-            failures[language] = " ".join(str(error).split())
-            continue
-        if _needs_translation_repair(
-            source_text,
-            repaired,
-            language,
-        ):
+            ):
+                break
+        else:
             failures[language] = (
-                "automatic translation retained English prose"
+                repair_error
             )
             continue
         translations[(language, source_text)] = repaired
