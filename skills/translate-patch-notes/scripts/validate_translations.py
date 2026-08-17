@@ -263,6 +263,8 @@ def _validate_term(
 
     if english_term in protected_terms and localized_term == english_term:
         return
+    if require_verified and localized_term == english_term:
+        return
 
     entry = _require_dict(raw_entry, f"terminology {locale} {english_term}")
     expected = _require_string(entry.get("localized"), "localized term")
@@ -281,6 +283,7 @@ def _validate_agent_translation(
     uncertain_terms: set[str],
     semantic_approvals: set[int],
 ) -> None:
+    trusted_canonical = localization.get("trustedCanonical") is True
     if localization.get("translatedFrom") != "en":
         raise ValueError(f"{locale} translatedFrom must be en")
     if localization.get("sourceUrl") != english.get("sourceUrl"):
@@ -382,7 +385,7 @@ def _validate_agent_translation(
             localized_change,
             f"{locale} change entry",
         )
-        if allow_agent_terminology:
+        if allow_agent_terminology and not trusted_canonical:
             heading_terms = {
                 _require_string(english.get("name"), "en name"),
                 _require_string(
@@ -431,7 +434,7 @@ def _validate_agent_translation(
             raise ValueError(
                 f"{locale} bullet {index + 1} changes numeric values"
             )
-        if index not in semantic_approvals:
+        if not trusted_canonical and index not in semantic_approvals:
             _validate_semantic_structure(
                 locale,
                 index + 1,

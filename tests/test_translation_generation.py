@@ -153,6 +153,7 @@ class TranslationGenerationTests(unittest.TestCase):
             "canonical: Damage increased by 5%.",
             german["change"][0],
         )
+        self.assertIs(german["trustedCanonical"], True)
 
     def test_treats_an_empty_checkpoint_as_absent(self) -> None:
         # Given an optional checkpoint file with no content

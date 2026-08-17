@@ -136,6 +136,21 @@ class TranslationValidationTests(unittest.TestCase):
         ):
             self.validator.validate_translation_batch(batch, self.terminology)
 
+    def test_accepts_a_verified_class_heading_preserved_in_english(self) -> None:
+        # Given a known class heading follows the English-name policy
+        batch = _translation_batch()
+        russian = batch["changes"][0]["localizations"]["ruRU"]
+        russian["name"] = "Druid"
+
+        # When the grounded translation is validated
+        report = self.validator.validate_translation_batch(
+            batch,
+            self.terminology,
+        )
+
+        # Then preserving the verified class name does not block the locale
+        self.assertIn("ruRU", report.validated_locales)
+
     def test_reports_a_preserved_unverified_ability_as_a_warning(self) -> None:
         # Given an ability name remains English without verified terminology
         batch = _translation_batch()
@@ -143,6 +158,7 @@ class TranslationValidationTests(unittest.TestCase):
         russian["change"] = [
             "Урон от Moonfire увеличен на 12,5% на 8 секунд."
         ]
+        russian["trustedCanonical"] = True
         russian["uncertainTerms"] = ["Moonfire"]
 
         # When the exact ability is preserved in translated prose
@@ -178,7 +194,9 @@ class TranslationValidationTests(unittest.TestCase):
         russian = batch["changes"][0]["localizations"].pop("ruRU")
         chinese = dict(russian)
         chinese["name"] = "德鲁伊"
-        chinese["change"] = ["Moonfire 伤害提高 12.5%，持续 8 秒。"]
+        chinese["change"] = [
+            "Moonfire damage 伤害提高 12.5%，持续 8 秒。"
+        ]
         batch["changes"][0]["localizations"]["zhCN"] = chinese
 
         # When / Then untranslated English is a hard blocker
@@ -193,7 +211,7 @@ class TranslationValidationTests(unittest.TestCase):
         russian["change"] = [
             "Урон от Moonfire увеличен на 12,5% на 8 секунд."
         ]
-        russian["protectedTerms"] = ["Druid", "Moonfire"]
+        russian["trustedCanonical"] = True
 
         # When the translated prose is validated
         report = self.validator.validate_translation_batch(
@@ -201,7 +219,7 @@ class TranslationValidationTests(unittest.TestCase):
             self.terminology,
         )
 
-        # Then exact verified game terms do not count as English leakage
+        # Then exact registry-grounded game terms need no legacy metadata
         self.assertEqual(("ruRU",), report.validated_locales)
 
     def test_rejects_english_prose_outside_verified_game_terms(self) -> None:

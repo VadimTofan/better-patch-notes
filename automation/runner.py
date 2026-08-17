@@ -515,6 +515,10 @@ def _validator(
         )
         report = json.loads(output.splitlines()[-1])
 
+        for change in batch.get("changes", []):
+            for localization in change.get("localizations", {}).values():
+                localization.pop("trustedCanonical", None)
+
         return SimpleNamespace(
             validated_locales=tuple(report["validated_locales"]),
             fallback_locales=tuple(report["fallback_locales"]),

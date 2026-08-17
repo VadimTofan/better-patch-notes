@@ -758,6 +758,8 @@ def build_semantic_approvals(
         for locale, localization in localizations.items():
             if locale == "en" or localization["translationType"] != "agent":
                 continue
+            if localization.get("trustedCanonical") is True:
+                continue
             for bullet_index, (english_text, localized_text) in enumerate(
                 zip(
                     english_changes,
@@ -1562,12 +1564,18 @@ def reuse_trusted_checkpoint(
     document: dict[str, object],
     checkpoint: dict[str, object],
 ) -> dict[str, object]:
-    return reuse_validated_checkpoint(
+    reused = reuse_validated_checkpoint(
         document,
         checkpoint,
         {},
         lambda _record, _terminology: None,
     )
+    for change in reused.get("changes", []):
+        for locale, localization in change.get("localizations", {}).items():
+            if locale != "en":
+                localization["trustedCanonical"] = True
+
+    return reused
 
 
 def generate_language_translations(
