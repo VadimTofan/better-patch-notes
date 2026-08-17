@@ -222,6 +222,18 @@ def _effective_date(text: str) -> date | None:
         return None
 
 
+def _announced_tuning_date(document: SourceDocument) -> date | None:
+    match = re.fullmatch(
+        r"Class Tuning Incoming – ([A-Za-z]+ \d{1,2})",
+        document.title.strip(),
+    )
+    if match is None:
+        return None
+
+    value = f"{match.group(1)}, {document.published_at.year}"
+    return _effective_date(value)
+
+
 def extract_changes(
     document: SourceDocument,
     *,
@@ -244,7 +256,8 @@ def extract_changes(
     section_anchor = ""
     context_name = ""
     context_anchor = ""
-    current_date = document.published_at.date()
+    announced_date = _announced_tuning_date(document)
+    current_date = announced_date or document.published_at.date()
 
     def date_is_requested() -> bool:
         return (
@@ -267,14 +280,14 @@ def extract_changes(
 
         candidate_section = _heading_section(text)
         if (
-            block.tag == "p"
+            block.tag in {"h1", "h2", "p"}
             and text.strip().casefold() in NON_PATCH_SECTION_HEADINGS
         ):
             section = None
             context_name = ""
             context_anchor = ""
             continue
-        if block.tag == "h2" or (
+        if block.tag in {"h1", "h2"} or (
             block.tag == "p" and candidate_section is not None
         ):
             section = candidate_section

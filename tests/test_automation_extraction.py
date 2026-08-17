@@ -243,6 +243,42 @@ class PatchNoteExtractionTests(unittest.TestCase):
         )
         self.assertEqual(raid.category, "Raid")
 
+    def test_extracts_august_18_live_class_tuning_from_forum_shape(self) -> None:
+        # Given Blizzard puts the effective date in the tuning topic title
+        document = replace(
+            _document("class-notes.html", channel="live"),
+            title="Class Tuning Incoming – August 18",
+            published_at=datetime(
+                2026,
+                8,
+                15,
+                0,
+                11,
+                tzinfo=timezone.utc,
+            ),
+            body=(
+                b"<h1><strong>CLASS CHANGES</strong></h1>"
+                b"<ul><li><h3><strong>MAGE</strong></h3><ul>"
+                b"<li><strong>Arcane</strong><ul>"
+                b"<li>All ability damage increased by 3%.</li>"
+                b"</ul></li></ul></li></ul>"
+                b"<h1><strong>PLAYER VERSUS PLAYER</strong></h1>"
+                b"<ul><li><h3><strong>MAGE</strong></h3><ul>"
+                b"<li><strong>Fire</strong><ul>"
+                b"<li>Pyroblast damage increased by 10% in PvP combat.</li>"
+                b"</ul></li></ul></li></ul>"
+            ),
+        )
+
+        # When the reviewed live forum shape is extracted
+        changes = extract_changes(document)
+
+        # Then only PvE tuning is retained with its announced effective date
+        self.assertEqual(1, len(changes))
+        self.assertEqual("Mage", changes[0].name)
+        self.assertEqual("Arcane", changes[0].specialization)
+        self.assertEqual(date(2026, 8, 18), changes[0].effective_date)
+
     def test_skips_unscoped_dungeon_prose_in_the_august_hotfix_shape(self) -> None:
         # Given Blizzard places a general sentence before a named dungeon
         document = _document(

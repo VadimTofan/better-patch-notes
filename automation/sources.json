@@ -30,6 +30,16 @@
       ]
     },
     {
+      "url": "https://us.forums.blizzard.com/en/wow/t/2336820",
+      "kind": "forum_topic",
+      "channel": "live",
+      "patch": "current",
+      "locale": "en",
+      "titlePatterns": [
+        "Class Tuning Incoming"
+      ]
+    },
+    {
       "url": "https://news.blizzard.com/de-de/api/news/world-of-warcraft",
       "kind": "news_feed",
       "channel": "live",
