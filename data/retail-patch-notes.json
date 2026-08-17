@@ -1,7 +1,1549 @@
 {
   "schemaVersion": 5,
-  "updatedAt": "2026-08-17T14:42:59.326509+00:00",
+  "updatedAt": "2026-08-17T19:44:14.388737+00:00",
   "changes": [
+    {
+      "id": "change-4795649ce78b5556",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-08-18",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Death Knight",
+          "specialization": "Blood",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "San’layn: Visceral Strength now grants 6% strength (was 10%).",
+            "San’layn: Transfusion increases Dancing Rune Weapon damage by 5% (was 10%).",
+            "San’layn: Developers’ notes: The tooltip will be updated at a later date to reflect the new value."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Death Knight",
+          "specialization": "Blood",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "San’layn: Visceral Strength gewährt jetzt 6% Stärke (vorher 10%).",
+            "San’layn: Transfusion erhöht den Schaden von Dancing Rune Weapon um 5% (vorher 10%).",
+            "San’layn: Entwicklerkommentar: Der Tooltip wird zu einem späteren Zeitpunkt aktualisiert, um den neuen Wert widerzuspiegeln."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "koKR": {
+          "name": "Death Knight",
+          "specialization": "Blood",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "San’layn: Visceral Strength(이)가 이제 힘을 6%만큼 부여합니다 (기존 10%).",
+            "San’layn: Transfusion(이)가 Dancing Rune Weapon 피해량을 5%만큼 증가시킵니다 (기존 10%).",
+            "San’layn: 개발자의 말: 새로운 수치를 반영하기 위해 툴팁은 추후 업데이트될 예정입니다."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "ptBR": {
+          "name": "Death Knight",
+          "specialization": "Blood",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "San’layn: Visceral Strength agora concede 6% de força (antes era 10%).",
+            "San’layn: Transfusion aumenta o dano de Dancing Rune Weapon em 5% (antes era 10%).",
+            "San’layn: Notas dos desenvolvedores: A dica de ferramenta será atualizada posteriormente para refletir o novo valor."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "ruRU": {
+          "name": "Death Knight",
+          "specialization": "Blood",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "San’layn: Visceral Strength теперь дает 6% силы (ранее — 10%).",
+            "San’layn: Transfusion увеличивает урон Dancing Rune Weapon на 5% (ранее — 10%).",
+            "San’layn: Примечание разработчиков: подсказка будет обновлена позже, чтобы отразить новое значение."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "zhCN": {
+          "name": "Death Knight",
+          "specialization": "Blood",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "San’layn：Visceral Strength现在授予6%点力量（原为10%点）。",
+            "San’layn：Transfusion使Dancing Rune Weapon伤害提高5%（原为10%）。",
+            "San’layn：开发团队说明：鼠标提示将在日后更新以反映新的数值。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        }
+      },
+      "retrievedAt": "2026-08-17T19:44:14.388737+00:00"
+    },
+    {
+      "id": "change-bd60e28c868ce949",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-08-18",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Death Knight",
+          "specialization": "Frost",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "All ability damage increased by 9%.",
+            "The Venomous Abyss 2-set bonus has been updated – Now grants 1% attack speed per stack (was 2%). Now increases Icy Death Torrent damage by 2% per stack (was 4%)."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Death Knight",
+          "specialization": "Frost",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Der Schaden aller Fähigkeiten wurde um 9% erhöht.",
+            "Der 2-Setbonus von Venomous Abyss wurde aktualisiert – Gewährt jetzt 1% Angriffstempo pro Stapel (vorher 2%). Erhöht jetzt den Schaden von Icy Death Torrent um 2% pro Stapel (vorher 4%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "koKR": {
+          "name": "Death Knight",
+          "specialization": "Frost",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "모든 능력 피해가 9%만큼 증가합니다.",
+            "Venomous Abyss 2세트 효과가 변경되었습니다 – 이제 중첩당 공격 속도가 1%만큼 증가합니다 (기존 2%). 이제 중첩당 Icy Death Torrent 피해량이 2%만큼 증가합니다 (기존 4%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "ptBR": {
+          "name": "Death Knight",
+          "specialization": "Frost",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Todo o dano de habilidade foi aumentado em 9%.",
+            "O bônus de conjunto de 2 peças de Venomous Abyss foi atualizado – Agora concede 1% de velocidade de ataque por acúmulo (antes era 2%). Agora aumenta o dano de Icy Death Torrent em 2% por acúmulo (antes era 4%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "ruRU": {
+          "name": "Death Knight",
+          "specialization": "Frost",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Урон всех способностей увеличен на 9%.",
+            "Бонус от 2-предметов комплекта Venomous Abyss был обновлен: теперь увеличивает скорость атаки на 1% за каждый суммирующийся эффект (ранее — 2%). Теперь увеличивает урон Icy Death Torrent на 2% за каждый суммирующийся эффект (ранее — 4%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "zhCN": {
+          "name": "Death Knight",
+          "specialization": "Frost",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "所有技能伤害提高 9%。",
+            "Venomous Abyss 2件套奖励已更新——现在每层效果授予1%攻击速度（原为2%）。现在每层效果使Icy Death Torrent伤害提高2%（原为4%）。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        }
+      },
+      "retrievedAt": "2026-08-17T19:44:14.388737+00:00"
+    },
+    {
+      "id": "change-6731bb0fed2f6d49",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-08-18",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Demon Hunter",
+          "specialization": "Devourer",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "Developers’ notes: Devourer’s 4-piece set bonus is performing significantly above expectations, so we are reducing its power. To compensate for this set bonus reduction, we are increasing all ability damage. Additionally, Devourer has been overperforming, mostly in single target, so we are reducing the damage of Reap/Cull/Eradicate while increasing the AoE damage portion of Eradicate to reduce the impact of the change in AoE combat.",
+            "All ability damage increased by 14%. Does not affect PvP combat.",
+            "Reap/Cull/Eradicate damage reduced by 12%.",
+            "Eradicate’s area-of-effect damage increased to 90% of base damage (was 85%).",
+            "The Venomous Abyss 4-set bonus has been updated – Now generates 2 soul fragments (was 8 soul fragments) and increases Reap damage by 10% (was 20%)."
+          ],
+          "terminologySourceUrls": []
+        },
+        "koKR": {
+          "name": "Demon Hunter",
+          "specialization": "Devourer",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "개발자의 말: Devourer’s 4세트 효과가 예상보다 훨씬 뛰어난 성능을 보이고 있어 위력을 감소시킵니다. 세트 효과 감소를 보완하기 위해 모든 능력의 피해량을 증가시킵니다. 추가로, Devourer는 주로 단일 대상 전투에서 지나치게 강력한 성능을 보여 Reap/Cull/Eradicate의 피해량을 줄이는 동시에 Eradicate의 AoE 피해 비율을 높여 AoE 전투에서 변경이 미치는 영향을 줄입니다.",
+            "모든 능력 피해가 14%만큼 증가합니다. PvP 전투에는 적용되지 않습니다.",
+            "Reap/Cull/Eradicate 피해량이 12%만큼 감소했습니다.",
+            "Eradicate’s 광역 피해가 기본 피해량의 90%로 증가했습니다 (기존 85%).",
+            "Venomous Abyss 4세트 효과가 변경되었습니다 – 이제 영혼 조각을 2개 생성하고 (기존 8개), Reap 피해량을 10%만큼 증가시킵니다 (기존 20%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "ptBR": {
+          "name": "Demon Hunter",
+          "specialization": "Devourer",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Notas dos desenvolvedores: O bônus de conjunto de 4 peças de Devourer’s está com desempenho significativamente acima das expectativas, então estamos reduzindo seu poder. Para compensar essa redução no bônus de conjunto, estamos aumentando todo o dano de habilidade. Além disso, Devourer tem apresentado desempenho excessivo, principalmente em alvo único, então estamos reduzindo o dano de Reap/Cull/Eradicate enquanto aumentamos a porção de dano de AoE de Eradicate para reduzir o impacto da alteração no combate em AoE.",
+            "Todo o dano de habilidade foi aumentado em 14%. Não afeta o combate em PvP.",
+            "O dano de Reap/Cull/Eradicate foi reduzido em 12%.",
+            "O dano de área de efeito de Eradicate’s foi aumentado para 90% do dano base (antes era 85%).",
+            "O bônus de conjunto de 4 peças de Venomous Abyss foi atualizado – Agora gera 2 fragmentos de alma (antes eram 8 fragmentos de alma) e aumenta o dano de Reap em 10% (antes era 20%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "ruRU": {
+          "name": "Demon Hunter",
+          "specialization": "Devourer",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Примечание разработчиков: бонус от 4-предметов комплекта «Devourer’s» значительно превосходит ожидания, поэтому мы снижаем его мощность. Чтобы компенсировать уменьшение бонуса комплекта, мы увеличиваем урон всех способностей. Кроме того, Devourer демонстрировал избыточную эффективность, в основном при одиночной цели, поэтому мы уменьшаем урон Reap/Cull/Eradicate, одновременно увеличивая долю урона AoE в способности Eradicate, чтобы снизить влияние изменений в бою с AoE.",
+            "Урон всех способностей увеличен на 14%. Не влияет на бой против PvP.",
+            "Урон Reap/Cull/Eradicate уменьшен на 12%.",
+            "Урон по области Eradicate’s увеличен до 90% от базового урона (ранее — 85%).",
+            "Бонус от 4-предметов комплекта Venomous Abyss был обновлен: теперь он создает 2 осколка души (ранее — 8) и увеличивает урон Reap на 10% (ранее — 20%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "zhCN": {
+          "name": "Demon Hunter",
+          "specialization": "Devourer",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "开发团队说明：Devourer’s 4件套奖励的表现显著高于预期，因此我们正在降低其威力。为了弥补套装奖励的削减，我们正在提高所有技能的伤害。此外，Devourer的表现一直过高，主要是在单体目标方面，因此我们正在降低Reap/Cull/Eradicate的伤害，同时提高Eradicate中AoE伤害所占的比例，以减少该改动在AoE战斗中的影响。",
+            "所有技能伤害提高 14%。对PvP战斗无效。",
+            "Reap/Cull/Eradicate伤害降低12%。",
+            "Eradicate’s的范围伤害提高至基础伤害的90%（原为85%）。",
+            "Venomous Abyss 4件套奖励已更新——现在会产生2个灵魂碎片（原为8个灵魂碎片），并使Reap的伤害提高10%（原为20%）。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "deDE": {
+          "name": "Demon Hunter",
+          "specialization": "Devourer",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Entwicklernotizen: Der Devourer’s 4-Teile-Setbonus leistet deutlich mehr als erwartet, daher verringern wir seine Stärke. Um diese Setbonusverringerung zu kompensieren, erhöhen wir den Schaden aller Fähigkeiten. Darüber hinaus hat Devourer zu gut abgeschnitten, hauptsächlich bei Einzelzielen, weshalb wir den Schaden von Reap/Cull/Eradicate verringern, während wir den AoE-Schadensanteil von Eradicate erhöhen, um die Auswirkungen der Änderung bei AoE-Kombatten zu reduzieren.",
+            "Der Schaden aller Fähigkeiten um 14% erhöht. Betrifft nicht PvP-Kombatte.",
+            "Schaden von Reap/Cull/Eradicate um 12% verringert.",
+            "Flächenschaden von Eradicate’s auf 90% des Basisschadens erhöht (vorher 85%).",
+            "Der Venomous Abyss 4-Setbonus wurde aktualisiert – Erzeugt jetzt 2 Seelenfragmente (vorher 8 Seelenfragmente) und erhöht den Schaden von Reap um 10% (vorher 20%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        }
+      },
+      "retrievedAt": "2026-08-17T19:44:14.388737+00:00"
+    },
+    {
+      "id": "change-e7d552391e397d27",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-08-18",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Druid",
+          "specialization": "Restoration",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "Developers’ notes: We’re increasing Restoration Druid’s healing and damage as both aspects are underperforming relative to other healers.",
+            "All healing increased by 4%. Does not affect PvP combat.",
+            "All damage increased by 20%. Does not affect PvP combat."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Druid",
+          "specialization": "Restoration",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Entwicklerkommentar: Wir erhöhen die Heilung und den Schaden von Restoration Druid’s, da beide Aspekte im Vergleich zu anderen Heilern unterdurchschnittlich abschneiden.",
+            "Die gesamte Heilung wurde um 4% erhöht. Betrifft nicht den Kampf gegen PvP.",
+            "Der gesamte Schaden wurde um 20% erhöht. Betrifft nicht den Kampf gegen PvP."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "koKR": {
+          "name": "Druid",
+          "specialization": "Restoration",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "개발자의 말: Restoration Druid’s의 치유량과 피해량이 다른 치유 담당에 비해 다소 부진하여 양쪽 측면 모두 증가시킵니다.",
+            "모든 치유량이 4%만큼 증가합니다. PvP 전투에는 적용되지 않습니다.",
+            "모든 피해가 20%만큼 증가합니다. PvP 전투에는 적용되지 않습니다."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "ptBR": {
+          "name": "Druid",
+          "specialization": "Restoration",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Notas dos desenvolvedores: Estamos aumentando a cura e o dano de Restoration Druid’s, pois ambos os aspectos estão com desempenho inferior em relação a outros curadores.",
+            "Toda a cura foi aumentada em 4%. Não afeta o combate em PvP.",
+            "Todo o dano foi aumentado em 20%. Não afeta o combate em PvP."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "ruRU": {
+          "name": "Druid",
+          "specialization": "Restoration",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Примечание разработчиков: мы увеличиваем исцеление и урон Restoration Druid’s, так как оба этих показателя отстают от других лекарей.",
+            "Вся исцеляющая способность увеличена на 4%. Не влияет на бой против PvP.",
+            "Весь урон увеличен на 20%. Не влияет на бой против PvP."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "zhCN": {
+          "name": "Druid",
+          "specialization": "Restoration",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "开发团队说明：我们正在提高Restoration Druid’s的治疗量和伤害，因为这两个方面相对于其他治疗者而言表现均有所不足。",
+            "所有治疗效果提高 4%。对PvP战斗无效。",
+            "所有伤害提高 20%。对PvP战斗无效。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        }
+      },
+      "retrievedAt": "2026-08-17T19:44:14.388737+00:00"
+    },
+    {
+      "id": "change-469f5dcbea1a1e5c",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-08-18",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Hunter",
+          "specialization": "Beast Mastery",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "Developers’ notes: The new Venomous Abyss tier set bonus isn’t quite as strong as we would like it to be, so we are increasing the effects of the 4-set bonus.",
+            "The Venomous Abyss 4-set bonus has been updated – Now causes Cobra Shot to benefit from Beast Cleave at 30% effectiveness per stack (was 20%), or strike your target for an additional 20% damage per stack (was 15%)."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Hunter",
+          "specialization": "Beast Mastery",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Entwicklerkommentar: Der neue Klassensetbonus von Venomous Abyss ist nicht ganz so stark, wie wir es uns wünschen, deshalb erhöhen wir die Effekte des 4-Setbonus.",
+            "Der 4-Setbonus von Venomous Abyss wurde aktualisiert – Bewirkt jetzt, dass Cobra Shot von Beast Cleave mit 30% Effektivität pro Stapel profitiert (vorher 20%), oder trifft Euer Ziel für zusätzlichen Schaden von 20% pro Stapel (vorher 15%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "koKR": {
+          "name": "Hunter",
+          "specialization": "Beast Mastery",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "개발자의 말: 새로운 Venomous Abyss 티어 세트 효과가 우리가 원하는 만큼 강력하지 않으므로, 4 세트 효과의 효과를 증가시킵니다.",
+            "Venomous Abyss 4 세트 효과가 업데이트되었습니다. – 이제 Cobra Shot이(가) 중첩당 30%의 효율로 Beast Cleave의 효과를 받거나(기존 20%), 대상에게 중첩당 추가로 20%의 피해를 입힙니다(기존 15%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "ptBR": {
+          "name": "Hunter",
+          "specialization": "Beast Mastery",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Notas dos desenvolvedores: O novo bônus de conjunto de classe de Venomous Abyss não está tão forte quanto gostaríamos, então estamos aumentando os efeitos do bônus de conjunto de 4.",
+            "O bônus de conjunto de 4 peças de Venomous Abyss foi atualizado – Agora faz com que Cobra Shot se beneficie de Beast Cleave com 30% de eficácia por acúmulo (antes era 20%), ou atinja seu alvo causando 20% de dano adicional por acúmulo (antes era 15%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "ruRU": {
+          "name": "Hunter",
+          "specialization": "Beast Mastery",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Примечание разработчиков: новый бонус от кладового комплекта «Venomous Abyss» не так силен, как нам хотелось бы, поэтому мы увеличиваем эффекты бонуса комплекта «4».",
+            "Бонус от 4-предметов комплекта Venomous Abyss был обновлен: теперь заставляет Cobra Shot получать преимущества от Beast Cleave с эффективностью 30% за каждый суммирующийся эффект (ранее — 20%) либо поражает вашу цель дополнительным уроном в размере 20% за каждый суммирующийся эффект (ранее — 15%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "zhCN": {
+          "name": "Hunter",
+          "specialization": "Beast Mastery",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "开发团队说明：新的Venomous Abyss套装奖励不如我们预期得那么强力，因此我们正在提高4套装奖励的效果。",
+            "Venomous Abyss 4件套奖励已更新——现在使Cobra Shot从Beast Cleave中受益，每层效果提供30%的有效性（原为20%），或者每层效果对你的目标额外打击一次，造成20%伤害（原为15%）。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        }
+      },
+      "retrievedAt": "2026-08-17T19:44:14.388737+00:00"
+    },
+    {
+      "id": "change-cc53bb4912682af2",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-08-18",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Mage",
+          "specialization": "Arcane",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "Developers’ notes: The Venomous Abyss set bonus is overperforming our target tuning for set bonuses. However, the amount we need to reduce its value by would be a greater impact than intended to Arcane’s overall damage, so we are also making a small positive adjustment to Arcane’s baseline.",
+            "All ability damage increased by 3%.",
+            "Venomous Abyss 2-set bonus has been updated – Arcane Missiles damage bonus reduced to 5% (was 20%).",
+            "Venomous Abyss 4-set bonus has been updated – Cumulative Power damage bonus per stack reduced to 3% (was 5%)."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Mage",
+          "specialization": "Arcane",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Entwicklerkommentar: Der Setbonus von Venomous Abyss übertrifft unsere Zielabstimmung für Setboni. Der Betrag, um den wir seinen Wert reduzieren müssten, hätte jedoch einen größeren Einfluss als beabsichtigt auf den Gesamtschaden von Arcane’s, daher nehmen wir auch eine kleine positive Anpassung am Basiswert von Arcane’s vor.",
+            "Der Schaden aller Fähigkeiten wurde um 3% erhöht.",
+            "Der 2-Setbonus von Venomous Abyss wurde aktualisiert – Schadensbonus von Arcane Missiles auf 5% reduziert (vorher 20%).",
+            "Der 4-Setbonus von Venomous Abyss wurde aktualisiert – Schadensbonus pro Stapel von Cumulative Power auf 3% reduziert (vorher 5%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "koKR": {
+          "name": "Mage",
+          "specialization": "Arcane",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "개발자의 말: Venomous Abyss 세트 효과가 세트 효과에 대한 목표 조정치를 초과하여 발휘되고 있습니다. 하지만 그 가치를 낮춰야 하는 수치가 Arcane’s의 전체 피해에 의도한 것보다 더 큰 영향을 미치므로, Arcane’s의 기본값도 소폭 상향 조정합니다.",
+            "모든 능력 피해가 3%만큼 증가합니다.",
+            "Venomous Abyss 2세트 효과가 변경되었습니다 – Arcane Missiles 피해량 보너스가 5%으로 감소했습니다 (기존 20%).",
+            "Venomous Abyss 4세트 효과가 변경되었습니다 – 중첩당 Cumulative Power 피해량 보너스가 3%으로 감소했습니다 (기존 5%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "ptBR": {
+          "name": "Mage",
+          "specialization": "Arcane",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Notas dos desenvolvedores: O bônus de conjunto de Venomous Abyss está com desempenho acima da nossa sintonia de alvos para bônus de conjunto. No entanto, a quantidade pela qual precisamos reduzir o valor teria um impacto maior do que o pretendido no dano geral de Arcane’s, então também estamos fazendo um pequeno ajuste positivo na base de Arcane’s.",
+            "Todo o dano de habilidade foi aumentado em 3%.",
+            "O bônus de conjunto de 2 peças de Venomous Abyss foi atualizado – O bônus de dano de Arcane Missiles foi reduzido para 5% (antes era 20%).",
+            "O bônus de conjunto de 4 peças de Venomous Abyss foi atualizado – O bônus de dano de Cumulative Power por acúmulo foi reduzido para 3% (antes era 5%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "ruRU": {
+          "name": "Mage",
+          "specialization": "Arcane",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Примечание разработчиков: бонус от комплекта «Venomous Abyss» превышает наши целевые показатели настройки комплектов. Тем не менее, уменьшение его эффективности сильнее, чем планировалось, отразится на общем уроне Arcane’s, поэтому мы также вводим небольшую компенсацию для базовых характеристик Arcane’s.",
+            "Урон всех способностей увеличен на 3%.",
+            "Бонус от 2-предметов комплекта Venomous Abyss был обновлен: бонус к урону Arcane Missiles уменьшен до 5% (ранее — 20%).",
+            "Бонус от 4-предметов комплекта Venomous Abyss был обновлен: бонус к урону Cumulative Power за каждый суммирующийся эффект уменьшен до 3% (ранее — 5%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "zhCN": {
+          "name": "Mage",
+          "specialization": "Arcane",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "开发团队说明：Venomous Abyss套装奖励的强度超出了我们对套装奖励的目标调整预期。然而，我们需要削减的数值会对Arcane’s的整体伤害造成比预期更大的影响，因此我们同时也对Arcane’s的基础数值进行了小幅度的正面调整。",
+            "所有技能伤害提高 3%。",
+            "Venomous Abyss 2件套奖励已更新——Arcane Missiles伤害加成降低至5%（原为20%）。",
+            "Venomous Abyss 4件套奖励已更新——每层效果的Cumulative Power伤害加成降低至3%（原为5%）。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        }
+      },
+      "retrievedAt": "2026-08-17T19:44:14.388737+00:00"
+    },
+    {
+      "id": "change-4c0f984ef70be140",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-08-18",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Monk",
+          "specialization": "Mistweaver",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "Developers’ notes: Mistweaver has been underperforming so we are targeting increases to its casted healing and the Venomous Abyss 4-set bonus to improve its performance and maintain build diversity.",
+            "All healing increased by 8%. Does not affect PvP combat.",
+            "Venomous Abyss 4-set bonus has been updated – Activation rate increased by 33%."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Monk",
+          "specialization": "Mistweaver",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Entwicklerkommentar: Mistweaver hat eine unterdurchschnittliche Leistung gezeigt, weshalb wir gezielt die gewirkte Heilung und den 4-Setbonus von Venomous Abyss erhöhen, um seine Leistung zu verbessern und die Build-Vielfalt zu erhalten.",
+            "Die gesamte Heilung wurde um 8% erhöht. Betrifft nicht den Kampf gegen PvP.",
+            "Der Venomous Abyss-Setbonus von 4 wurde aktualisiert – Rate von Activation um 33% erhöht."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "koKR": {
+          "name": "Monk",
+          "specialization": "Mistweaver",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "개발자의 말: Mistweaver의 성능이 다소 부진하여 시전 치유량과 Venomous Abyss 4세트 효과를 상향 조정하여 성능을 개선하고 빌드 다양성을 유지하고자 합니다.",
+            "모든 치유량이 8%만큼 증가합니다. PvP 전투에는 적용되지 않습니다.",
+            "Venomous Abyss 4세트 효과가 변경되었습니다 – Activation 주기가 33%만큼 증가했습니다."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "ptBR": {
+          "name": "Monk",
+          "specialization": "Mistweaver",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Notas dos desenvolvedores: Mistweaver tem apresentado desempenho inferior, então estamos visando aumentos na sua cura conjurada e no bônus de conjunto de 4 peças de Venomous Abyss para melhorar seu desempenho e manter a diversidade de builds.",
+            "Toda a cura foi aumentada em 8%. Não afeta o combate em PvP.",
+            "O bônus de conjunto de 4 peças de Venomous Abyss foi atualizado – A taxa de Activation foi aumentada em 33%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "ruRU": {
+          "name": "Monk",
+          "specialization": "Mistweaver",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Примечание разработчиков: эффективность Mistweaver была снижена, поэтому мы целенаправленно увеличиваем его исцеление от произносимых заклинаний и бонус от 4-предметов комплекта «Venomous Abyss», чтобы улучшить его показатели и сохранить разнообразие сборок.",
+            "Вся исцеляющая способность увеличена на 8%. Не влияет на бой против PvP.",
+            "Бонус от 4-предметов комплекта Venomous Abyss был обновлен: скорость Activation увеличена на 33%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "zhCN": {
+          "name": "Monk",
+          "specialization": "Mistweaver",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "开发团队说明：Mistweaver的表现一直不足，因此我们着手提高其施法治疗量以及Venomous Abyss 4件套奖励，以改善其表现并维持构建的多样性。",
+            "所有治疗效果提高 8%。对PvP战斗无效。",
+            "Venomous Abyss 4件套奖励已更新——Activation触发几率提高33%。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        }
+      },
+      "retrievedAt": "2026-08-17T19:44:14.388737+00:00"
+    },
+    {
+      "id": "change-38da1bd707988038",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-08-18",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Priest",
+          "specialization": "Discipline",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "Developers’ notes: We are reducing Discipline Priest’s damage done and offsetting this in Atonement to not affect their overall healing as their damage has been overperforming compared to other healers. At the same time, we are increasing the damage of Entropic Rift to minimize the impact this will have on Voidweaver’s dungeon viability and help maintain high damage as one of its strengths.",
+            "All damage reduced by 30%. Does not affect PvP combat.",
+            "Entropic Rift damage increased by 20%.",
+            "Atonement now transfers 46% of damage into healing (was 32%). Does not affect PvP combat.",
+            "Void Shield reflects 10% of damage (was 15%)."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Priest",
+          "specialization": "Discipline",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Entwicklerkommentar: Wir verringern den verursachten Schaden von Discipline Priest’s und gleichen dies bei Atonement aus, um die Gesamtheilung nicht zu beeinträchtigen, da der Schaden im Vergleich zu anderen Heilern zu hoch war. At derselben Zeit erhöhen wir den Schaden von Entropic Rift, um die Auswirkungen auf die Dungeons-Überlebensfähigkeit von Voidweaver’s zu minimieren und dazu beizutragen, den hohen Schaden als eine ihrer Stärken beizubehalten.",
+            "Der gesamte Schaden wurde um 30% verringert. Betrifft nicht den Kampf gegen PvP.",
+            "Der Schaden von Entropic Rift wurde um 20% erhöht.",
+            "Atonement wandelt nun 46% des Schadens in Heilung um (vorher 32%). Betrifft nicht den Kampf gegen PvP.",
+            "Void Shield reflektiert 10% des Schadens (vorher 15%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "koKR": {
+          "name": "Priest",
+          "specialization": "Discipline",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "개발자의 말: 다른 치유 담당에 비해 피해량이 지나치게 높았기 때문에 Discipline Priest’s의 피해량을 줄이고 Atonement에서 이를 상쇄하여 전체 치유량에는 영향이 없도록 합니다. At와 동시에, Entropic Rift의 피해량을 증가시켜 이 변경이 Voidweaver’s 던전 생존력에 미치는 영향을 최소화하고 강력한 강점 중 하나인 높은 피해량을 유지하는 데 도움을 줍니다.",
+            "모든 피해가 30%만큼 감소합니다. PvP 전투에는 적용되지 않습니다.",
+            "Entropic Rift 피해량이 20%만큼 증가했습니다.",
+            "Atonement(이)가 피해의 46%를 치유량으로 전환합니다 (기존 32%). PvP 전투에는 적용되지 않습니다.",
+            "Void Shield(이)가 피해의 10%를 반사합니다 (기존 15%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "ptBR": {
+          "name": "Priest",
+          "specialization": "Discipline",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Notas dos desenvolvedores: Estamos reduzindo o dano causado por Discipline Priest’s e compensando isso em Atonement para não afetar a cura geral deles, já que o dano deles tem apresentado desempenho superior em comparação a outros curadores. Ao mesmo tempo (At), estamos aumentando o dano de Entropic Rift para minimizar o impacto que isso terá na viabilidade de Voidweaver’s em masmorras e ajudar a manter o dano alto como um de seus pontos fortes.",
+            "Todo o dano foi reduzido em 30%. Não afeta o combate em PvP.",
+            "O dano de Entropic Rift foi aumentado em 20%.",
+            "Atonement agora transfere 46% do dano em cura (antes era 32%). Não afeta o combate em PvP.",
+            "Void Shield reflete 10% de dano (antes era 15%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "ruRU": {
+          "name": "Priest",
+          "specialization": "Discipline",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Примечание разработчиков: мы уменьшаем урон, наносимый Discipline Priest’s, и компенсируем это в Atonement, чтобы не повлиять на общее исцеление, поскольку их урон превосходил показатели других лекарей. В то же время At мы увеличиваем урон Entropic Rift, чтобы минимизировать влияние этого изменения на жизнеспособность в подземельях для Voidweaver’s и помочь сохранить высокий урон как одно из его преимуществ.",
+            "Весь урон уменьшен на 30%. Не влияет на бой против PvP.",
+            "Урон от Entropic Rift увеличен на 20%.",
+            "Atonement теперь переносит 46% урона в исцеление (ранее — 32%). Не влияет на бой против PvP.",
+            "Void Shield отражает 10% урона (ранее — 15%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "zhCN": {
+          "name": "Priest",
+          "specialization": "Discipline",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "开发团队说明：我们正在降低Discipline Priest’s造成的伤害，并在Atonement中进行补偿，以避免影响其整体治疗量，因为与其他治疗者相比，他们的伤害表现一直过高。同时，At，我们正在提高Entropic Rift的伤害，以将此改动对Voidweaver’s在大秘境中的可行性影响降至最低，并协助保持高伤害作为其核心优势之一。",
+            "所有伤害降低 30%。对PvP战斗无效。",
+            "Entropic Rift伤害提高20%。",
+            "Atonement现在将46%的伤害转化为治疗效果（原为32%）。对PvP战斗无效。",
+            "Void Shield反弹10%的伤害（原为15%）。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        }
+      },
+      "retrievedAt": "2026-08-17T19:44:14.388737+00:00"
+    },
+    {
+      "id": "change-fd83da1095501465",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-08-18",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Priest",
+          "specialization": "Holy",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "Developers’ notes: We are increasing the healing throughput of Oracle so that it can serve as a competitive option against Archon. Furthermore, we are increasing the mana regeneration of Enlightenment to further help Holy Priest’s mana economy.",
+            "Enlightenment now regenerates mana 25% faster (was 10%).",
+            "Oracle: Words of the Wise now increases the healing of Holy Word: Serenity and Holy Word: Sanctify by 40% (was 10%). Does not affect PvP combat.",
+            "Oracle: Prompt Prognosis healing increased by 55%. Does not affect PvP combat.",
+            "Oracle: Preventive Measures now increases Prayer of Mending healing by 40% (was 15%). Does not affect PvP combat."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Priest",
+          "specialization": "Holy",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Entwicklerkommentar: Wir erhöhen den Heilungsdurchsatz von Oracle, damit es eine konkurrenzfähige Option gegenüber Archon sein kann. Furthermore erhöhen wir die Manaregeneration von Enlightenment, um die Manaökonomie von Holy Priest’s weiter zu unterstützen.",
+            "Enlightenment regeneriert Mana jetzt 25% schneller (vorher 10%).",
+            "Oracle: Words of the Wise erhöht nun die Heilung von Holy Word: Serenity and Holy Word: Sanctify um 40% (vorher 10%). Betrifft nicht den Kampf gegen PvP.",
+            "Oracle: Die Heilung von Prompt Prognosis wurde um 55% erhöht. Betrifft nicht den Kampf gegen PvP.",
+            "Oracle: Preventive Measures erhöht nun die Heilung von Prayer of Mending um 40% (vorher 15%). Betrifft nicht den Kampf gegen PvP."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "koKR": {
+          "name": "Priest",
+          "specialization": "Holy",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "개발자의 말: Oracle의 치유량을 증가시켜 Archon에 대항할 수 있는 경쟁력 있는 선택지가 되도록 합니다. Furthermore, Enlightenment의 마나 재생량을 증가시켜 Holy Priest’s의 마나 경제를 더욱 돕습니다.",
+            "Enlightenment의 마나 재생 속도가 25%만큼 빨라졌습니다 (기존 10%).",
+            "Oracle: Words of the Wise(이)가 이제 Holy Word: Serenity and Holy Word: Sanctify의 치유량을 40%만큼 증가시킵니다 (기존 10%). PvP 전투에는 적용되지 않습니다.",
+            "Oracle: Prompt Prognosis 치유량이 55%만큼 증가했습니다. PvP 전투에는 적용되지 않습니다.",
+            "Oracle: Preventive Measures(이)가 이제 Prayer of Mending의 치유량을 40%만큼 증가시킵니다 (기존 15%). PvP 전투에는 적용되지 않습니다."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "ptBR": {
+          "name": "Priest",
+          "specialization": "Holy",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Notas dos desenvolvedores: Estamos aumentando a eficácia de cura de Oracle para que sirva como uma opção competitiva contra Archon. Furthermore, estamos aumentando a regeneração de mana de Enlightenment para ajudar ainda mais a economia de mana de Holy Priest’s.",
+            "Enlightenment agora regenera mana 25% mais rápido (antes era 10%).",
+            "Oracle: Words of the Wise agora aumenta a cura de Holy Word: Serenity and Holy Word: Sanctify em 40% (antes era 10%). Não afeta o combate em PvP.",
+            "Oracle: A cura de Prompt Prognosis foi aumentada em 55%. Não afeta o combate em PvP.",
+            "Oracle: Preventive Measures agora aumenta a cura de Prayer of Mending em 40% (antes era 15%). Não afeta o combate em PvP."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "ruRU": {
+          "name": "Priest",
+          "specialization": "Holy",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Примечание разработчиков: мы увеличиваем эффективность исцеления заклинания Oracle, чтобы оно могло составить конкуренцию Archon. Кроме того, Furthermore мы увеличиваем скорость восполнения маны для Enlightenment, чтобы дополнительно поддержать экономику маны Holy Priest’s.",
+            "Enlightenment теперь восполняет ману на 25% быстрее (ранее — 10%).",
+            "Oracle: Words of the Wise теперь увеличивает исцеление от Holy Word: Serenity and Holy Word: Sanctify на 40% (ранее — 10%). Не влияет на бой против PvP.",
+            "Oracle: исцеление от Prompt Prognosis увеличено на 55%. Не влияет на бой против PvP.",
+            "Oracle: Preventive Measures теперь увеличивает исцеление Prayer of Mending на 40% (ранее — 15%). Не влияет на бой против PvP."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "zhCN": {
+          "name": "Priest",
+          "specialization": "Holy",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "开发团队说明：我们正在提高Oracle的治疗量，使其能够成为对抗Archon时具有竞争力的选项。此外，Furthermore，我们正在提高Enlightenment的法力回复速度，以进一步协助Holy Priest’s的法力经济。",
+            "Enlightenment现在恢复法力的速度加快25%（原为10%）。",
+            "Oracle：Words of the Wise现在使Holy Word：Serenity and Holy Word：Sanctify的治疗量提高40%（原为10%）。对PvP战斗无效。",
+            "Oracle：Prompt Prognosis治疗量提高55%。对PvP战斗无效。",
+            "Oracle：Preventive Measures现在使Prayer of Mending的治疗量提高40%（原为15%）。对PvP战斗无效。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        }
+      },
+      "retrievedAt": "2026-08-17T19:44:14.388737+00:00"
+    },
+    {
+      "id": "change-1448d2d5d0b685b4",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-08-18",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Rogue",
+          "specialization": "Assassination",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "All damage increased by 4%."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Rogue",
+          "specialization": "Assassination",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Der gesamte Schaden wurde um 4% erhöht."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "koKR": {
+          "name": "Rogue",
+          "specialization": "Assassination",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "모든 피해가 4%만큼 증가합니다."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "ptBR": {
+          "name": "Rogue",
+          "specialization": "Assassination",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Todo o dano foi aumentado em 4%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "ruRU": {
+          "name": "Rogue",
+          "specialization": "Assassination",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Весь урон увеличен на 4%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "zhCN": {
+          "name": "Rogue",
+          "specialization": "Assassination",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "所有伤害提高 4%。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        }
+      },
+      "retrievedAt": "2026-08-17T19:44:14.388737+00:00"
+    },
+    {
+      "id": "change-c20fb6e5d90b0845",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-08-18",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Rogue",
+          "specialization": "Subtlety",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "Developers’ notes: Subtlety’s 4-piece set bonus is overperforming expectation, so its effectiveness is being reduced. An overall buff to Subtlety’s damage is being applied to compensate.",
+            "All damage increased by 6%.",
+            "The Venomous Abyss 4-set bonus has been updated – Effectiveness reduced to 60% (was 100%)."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Rogue",
+          "specialization": "Subtlety",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Entwicklerhinweise: Subtlety’s 4-Set-Bonus übertrifft die Erwartungen, daher wird seine Wirksamkeit verringert. An allgemeiner Stärkungszauber für Subtlety’s Schaden wird als Ausgleich angewendet.",
+            "Der gesamte Schaden wurde um 6% erhöht.",
+            "Der 4-Setbonus von Venomous Abyss wurde aktualisiert – Effectiveness auf 60% reduziert (vorher 100%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "koKR": {
+          "name": "Rogue",
+          "specialization": "Subtlety",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "개발자 노트: Subtlety’s 4세트 효과가 예상보다 너무 강력한 성능을 보여 효과가 감소합니다. 이를 보완하기 위해 Subtlety’s 피해량이 전반적으로 상향됩니다. An",
+            "모든 피해가 6%만큼 증가합니다.",
+            "Venomous Abyss 4세트 효과가 변경되었습니다 – Effectiveness(이)가 60%(으)로 감소했습니다 (기존 100%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "ptBR": {
+          "name": "Rogue",
+          "specialization": "Subtlety",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Notas dos desenvolvedores: O bônus de conjunto de 4 peças de Subtlety’s está com desempenho acima das expectativas, então sua eficácia está sendo reduzida. Um buff geral no dano de Subtlety’s está sendo aplicado para compensar (An).",
+            "Todo o dano foi aumentado em 6%.",
+            "O bônus de conjunto de 4 peças de Venomous Abyss foi atualizado – Effectiveness reduzido para 60% (antes era 100%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "ruRU": {
+          "name": "Rogue",
+          "specialization": "Subtlety",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Заметки разработчиков: Бонус от 4 предметов Subtlety’s превосходит ожидания, поэтому его эффективность снижается. В качестве компенсации применяется общее усиление урона Subtlety’s на An.",
+            "Весь урон увеличен на 6%.",
+            "Бонус от 4-предметов комплекта Venomous Abyss был обновлен: Effectiveness уменьшен до 60% (ранее — 100%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "zhCN": {
+          "name": "Rogue",
+          "specialization": "Subtlety",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "开发者说明：Subtlety’s 4件套套装奖励的表现超出了预期，因此其效果正在被降低。作为补偿，将对 Subtlety’s 的伤害进行整体的An加强。",
+            "所有伤害提高 6%。",
+            "Venomous Abyss 4件套奖励已更新——Effectiveness降低至60%（原为100%）。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        }
+      },
+      "retrievedAt": "2026-08-17T19:44:14.388737+00:00"
+    },
+    {
+      "id": "change-20b850e2e3a24dc0",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-08-18",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Shaman",
+          "specialization": "Enhancement",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "All damage increased by 5%."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Shaman",
+          "specialization": "Enhancement",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Der gesamte Schaden wurde um 5% erhöht."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "koKR": {
+          "name": "Shaman",
+          "specialization": "Enhancement",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "모든 피해가 5%만큼 증가합니다."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "ptBR": {
+          "name": "Shaman",
+          "specialization": "Enhancement",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Todo o dano foi aumentado em 5%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "ruRU": {
+          "name": "Shaman",
+          "specialization": "Enhancement",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Весь урон увеличен на 5%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "zhCN": {
+          "name": "Shaman",
+          "specialization": "Enhancement",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "所有伤害提高 5%。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        }
+      },
+      "retrievedAt": "2026-08-17T19:44:14.388737+00:00"
+    },
+    {
+      "id": "change-ea69a2b07d7e5431",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-08-18",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Warlock",
+          "specialization": "Demonology",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "Developers’ notes: We are increasing the throughput of the Venomous Abyss 2-set bonus for Demonology so that its performance is closer to other specialization tier set bonuses.",
+            "The Venomous Abyss 2-set bonus has been updated – Wild Imps now Implode at 350% effectiveness to their main target (was 250%) and 315% effectiveness to other targets (was 225%)."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Warlock",
+          "specialization": "Demonology",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Entwicklerkommentar: Wir erhöhen den Durchsatz des 2-Setbonus von Venomous Abyss für Demonology, sodass seine Leistung näher an den Klassensetboni anderer Spezialisierungen liegt.",
+            "Der 2-Setbonus von Venomous Abyss wurde aktualisiert – Wild Imps hat jetzt Implode mit 350% Effektivität gegen das Hauptziel (vorher 250%) und 315% Effektivität gegen andere Ziele (vorher 225%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "koKR": {
+          "name": "Warlock",
+          "specialization": "Demonology",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "개발자의 말: Demonology의 Venomous Abyss 2세트 효과 효율을 증가시켜 다른 전문화 티어 세트 효과와 성능이 더 비슷해지도록 합니다.",
+            "Venomous Abyss 2 세트 효과가 업데이트되었습니다. 이제 Wild Imps이(가) 주 대상에게 350%의 효과로 Implode(기존 250%)하고, 다른 대상들에게는 315%의 효과로 작용합니다(기존 225%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "ptBR": {
+          "name": "Warlock",
+          "specialization": "Demonology",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Notas dos desenvolvedores: Estamos aumentando a eficácia do bônus de conjunto de 2 peças de Venomous Abyss para Demonology para que seu desempenho fique mais próximo dos bônus de conjunto de classe de outras especializações.",
+            "O bônus de conjunto de 2 peças de Venomous Abyss foi atualizado – Wild Imps agora Implode com 350% de eficácia para o alvo principal (antes era 250%) e 315% de eficácia para outros alvos (antes era 225%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "ruRU": {
+          "name": "Warlock",
+          "specialization": "Demonology",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Примечание разработчиков: мы увеличиваем эффективность бонуса от 2-предметов комплекта «Venomous Abyss» для Demonology, чтобы его показатели были ближе к бонусам комплектов других специализаций.",
+            "Бонус от 2-предметов комплекта Venomous Abyss был обновлен: Wild Imps теперь Implode с эффективностью 350% для основной цели (ранее — 250%) и эффективностью 315% для остальных целей (ранее — 225%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "zhCN": {
+          "name": "Warlock",
+          "specialization": "Demonology",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "开发团队说明：我们正在提高Demonology的Venomous Abyss 2件套奖励的数值，使其表现更接近其他专精的套装奖励。",
+            "Venomous Abyss 2件套奖励已更新——Wild Imps现在对主目标产生350%的有效性（原为250%），对其他目标产生315%的有效性（原为225%），并触发Implode。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        }
+      },
+      "retrievedAt": "2026-08-17T19:44:14.388737+00:00"
+    },
+    {
+      "id": "change-5c7dae3bc7333411",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-08-18",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Warrior",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "Developers’ notes: Fury’s 4pc set bonus is currently overperforming, but Fury is in a good place overall and we don’t want to disrupt that, so we’re moving some of the value out of the 4pc bonus and into Fury’s baseline. Additionally, Slayer has been overperforming for both specs due to a bug causing Executioner to provide double value which was recently hotfixed. This fix has brought overall Arms performance down into our intended range, but we’re happy with where Fury has been, so their baseline damage has been increased below to compensate for this fix as well as the set bonus change."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Warrior",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Entwicklerkommentar: Der 4-Setbonus von Fury’s überperformt derzeit, aber Fury befindet sich insgesamt in einer guten Position und wir möchten das nicht stören. Deshalb verschieben wir etwas Wert vom 4-Setbonus in den Basiswert von Fury’s. Darüber hinaus hat Slayer für beide Spezialisierungen überperformt, da ein Bug dazu führte, dass Executioner den doppelten Wert lieferte, was kürzlich mit einem Hotfix behoben wurde. Durch diesen Fix wurde die Gesamtleistung von Arms in unseren beabsichtigten Bereich gebracht, aber wir sind mit der bisherigen Leistung von Fury zufrieden, weshalb ihr Basisschaden unten erhöht wurde, um sowohl diesen Fix als auch die Änderung des Setbonus auszugleichen."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "koKR": {
+          "name": "Warrior",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "개발자의 말: Fury’s 4피스 세트 효과가 현재 과도한 성능을 내고 있지만, Fury은 전체적으로 양호한 상태이므로 이를 방해하고 싶지 않습니다. 따라서 4피스 효과의 수치 일부를 Fury’s의 기본 능력치로 이전합니다. 또한, Executioner이 두 배의 효과를 내게 하던 버그로 인해 최근 긴급 수정이 적용되면서 Slayer가 양쪽 전문화 모두에서 과도한 성능을 보여왔습니다. 이 수정으로 전체적인 Arms 성능이 의도한 범위 내로 내려왔지만, Fury의 현재 상태에는 만족하므로 이 수정과 세트 효과 변경을 보완하기 위해 기본 피해량을 아래와 같이 상향 조정했습니다."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "ptBR": {
+          "name": "Warrior",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Notas dos desenvolvedores: O bônus de conjunto de 4 pc de Fury’s está com desempenho atualmente superior ao esperado, mas Fury está em um bom lugar no geral e não queremos atrapalhar isso, então estamos movendo parte do valor do bônus de 4 pc para a base de Fury’s. Além disso, Slayer tem apresentado desempenho excessivo para ambas as especializações devido a um bug que fazia com que Executioner fornecesse o dobro de valor, o qual foi corrigido recentemente por correção rápida (hotfix). Esta correção reduziu o desempenho geral de Arms para a faixa pretendida, mas estamos satisfeitos com o estado de Fury, portanto, o dano base deles foi aumentado abaixo para compensar esta correção, bem como a mudança no bônus de conjunto."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "ruRU": {
+          "name": "Warrior",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Примечание разработчиков: бонус от 4-предметов комплекта Fury’s в настоящее время излишне силен, однако Fury находится в хорошем состоянии, и мы не хотим это нарушать. Поэтому мы переносим часть ценности из бонуса 4 предметов в базовые показатели Fury’s. Кроме того, Slayer демонстрировал избыточную эффективность для обеих специализаций из-за ошибки, из-за которой Executioner давал двойной эффект, что было недавно исправлено хотфиксом. Это исправление вернуло общую эффективность Arms в рамки наших планов, но мы довольны положением Fury, поэтому его базовый урон был увеличен ниже, чтобы компенсировать как это исправление, так и изменение бонуса комплекта."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "zhCN": {
+          "name": "Warrior",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "开发团队说明：Fury’s 4件套奖励目前的表现过高，但Fury整体处于一个良好的状态，我们不希望打破这一点，因此我们将部分强度从4件套奖励中移出，并转移到Fury’s的基础数值中。此外，由于最近的一次热修修复了一个导致Executioner提供双倍价值的错误，Slayer此前在两个专精上的表现都过高。该修复将整体的Arms表现拉回了我们的预期范围，但我们对Fury目前的位置感到满意，因此其基础伤害在下方得到了提高，以补偿该项修复以及套装奖励的改动。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        }
+      },
+      "retrievedAt": "2026-08-17T19:44:14.388737+00:00"
+    },
+    {
+      "id": "change-ab72fa5ae39158cb",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-08-18",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Warrior",
+          "specialization": "Fury",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "All damage increased by 6%.",
+            "The Venomous Abyss 4-set bonus has been updated – Bloodthirst damage increased by 10%. During Recklessness Bloodthirst increases the critical strike bonus of Recklessness by 3%, up to 6%. (was 5%, up to 10%)."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Warrior",
+          "specialization": "Fury",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Der gesamte Schaden wurde um 6% erhöht.",
+            "Der 4-Setbonus von Venomous Abyss wurde aktualisiert – Schaden von Bloodthirst um 10% erhöht. During Recklessness Bloodthirst erhöht den Bonus für kritische Treffer von Recklessness um 3%, bis zu maximal 6% (vorher 5%, bis zu maximal 10%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "koKR": {
+          "name": "Warrior",
+          "specialization": "Fury",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "모든 피해가 6%만큼 증가합니다.",
+            "Venomous Abyss 4세트 효과가 변경되었습니다 – Bloodthirst 피해량이 10%만큼 증가합니다. During Recklessness Bloodthirst(이)가 Recklessness의 치명타 및 극대화 효과 보너스를 3%만큼, 최대 6%까지 증가시킵니다. (기존 5%, 최대 10%)"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "ptBR": {
+          "name": "Warrior",
+          "specialization": "Fury",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Todo o dano foi aumentado em 6%.",
+            "O bônus de conjunto de 4 peças de Venomous Abyss foi atualizado – O dano de Bloodthirst foi aumentado em 10%. During Recklessness Bloodthirst aumenta o bônus de acerto crítico de Recklessness em 3%, até um máximo de 6%. (antes era 5%, até 10%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "ruRU": {
+          "name": "Warrior",
+          "specialization": "Fury",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Весь урон увеличен на 6%.",
+            "Бонус от 4-предметов комплекта Venomous Abyss был обновлен: урон Bloodthirst увеличен на 10%. During Recklessness Bloodthirst увеличивает бонус к критическому удару Recklessness на 3%, вплоть до 6% (ранее — 5%, вплоть до 10%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        },
+        "zhCN": {
+          "name": "Warrior",
+          "specialization": "Fury",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "所有伤害提高 6%。",
+            "Venomous Abyss 4件套奖励已更新——Bloodthirst伤害提高10%。During Recklessness Bloodthirst使Recklessness的致命一击奖励提高3%，最高可达6%。（原为5%，最高可达10%）。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-18/2336820/1"
+          ]
+        }
+      },
+      "retrievedAt": "2026-08-17T19:44:14.388737+00:00"
+    },
     {
       "id": "change-d62dd685d92bb14d",
       "channel": "live",

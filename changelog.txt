@@ -1,3 +1,9 @@
+Version 0.2.18 - 2026-08-17
+- Data: Live 12.1.0; PTR None
+- Added or updated: 15 upcoming Live class-tuning records effective August 18
+- Removed: None
+- Locales: Validated deDE, koKR, ptBR, ruRU, and zhCN; English fallbacks for esES, esMX, frFR, itIT, and zhTW after semantic validation failures; preserved English WoW terminology warnings remain where official localized terms are unavailable
+
 Version 0.2.17 - 2026-08-17
 - Data: Live 12.1.0; PTR None
 - Added or updated: 124 validated localizations across 62 records
