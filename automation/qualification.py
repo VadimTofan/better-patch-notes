@@ -106,8 +106,6 @@ def qualify(
         reason = ""
         if change.category not in SUPPORTED_CATEGORIES:
             reason = "unsupported category"
-        elif change.effective_date > as_of_date:
-            reason = "effective date is in the future"
         elif change.effective_date < cutoff:
             reason = "outside rolling 14-day window"
         else:

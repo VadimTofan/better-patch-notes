@@ -100,10 +100,11 @@ the addon UI.
 
 Search from 14 days before the newest stored `date` for each channel. This
 overlap catches edited and late-published notes, but it does not extend stored
-history. Apply 14-day rolling retention after every refresh: keep only records
-whose effective date is within the 14 calendar dates ending on the refresh
-date, inclusive. On a channel's first run, inspect the current official patch
-or PTR cycle plus posts published during the previous 30 days.
+history. Apply 14-day rolling historical retention after every refresh: remove
+records whose effective date is more than 13 days before the refresh date, but
+retain verified upcoming Retail changes with their announced effective date.
+On a channel's first run, inspect the current official patch or PTR cycle plus
+posts published during the previous 30 days.
 
 Use the effective or hotfix date for `date`, not merely the article publication
 date. Recheck secondary entries during the overlap window for newer Blizzard
@@ -223,8 +224,8 @@ to the categories and channels this skill covers.
 
 ## Maintenance
 
-Updated: 2026-08-13
-Last reviewed: 2026-08-13
+Updated: 2026-08-17
+Last reviewed: 2026-08-17
 Canonical sources:
 
 - https://worldofwarcraft.blizzard.com/en-us/content-update-notes

@@ -17,6 +17,7 @@ from automation.models import (
 )
 from automation.runner import (
     SUPPORTED_TRANSLATION_LOCALES,
+    _qualify_documents,
     _run,
     _translator,
     _validator,
@@ -50,6 +51,40 @@ class _FixtureClient:
 
 # Describe: end-to-end collection from allowlisted Blizzard responses
 class AutomationRunnerTests(unittest.TestCase):
+    def test_collects_announced_changes_before_their_effective_date(self) -> None:
+        # Given Blizzard announces a Live class change for the next day
+        document = SourceDocument(
+            url="https://us.forums.blizzard.com/en/wow/t/topic/1",
+            channel="live",
+            patch="current",
+            title="Class Tuning Incoming – August 18",
+            published_at=datetime(2026, 8, 15, tzinfo=timezone.utc),
+            updated_at=None,
+            author="Linxy",
+            author_is_blue=True,
+            body=(
+                b"<h1><strong>CLASS CHANGES</strong></h1>"
+                b"<ul><li><h3><strong>MAGE</strong></h3><ul>"
+                b"<li><strong>Arcane</strong><ul>"
+                b"<li>All ability damage increased by 3%.</li>"
+                b"</ul></li></ul></li></ul>"
+            ),
+            mime_type="text/html",
+            locale="en",
+            content_hash="future-live-fixture",
+        )
+
+        # When collection qualifies the note before August 18
+        result = _qualify_documents(
+            (document,),
+            "12.1.0",
+            date(2026, 8, 17),
+        )
+
+        # Then the upcoming change is available with its effective date
+        self.assertEqual(1, len(result.accepted))
+        self.assertEqual(date(2026, 8, 18), result.accepted[0].effective_date)
+
     def test_missing_official_article_locale_is_left_for_agent_translation(
         self,
     ) -> None:

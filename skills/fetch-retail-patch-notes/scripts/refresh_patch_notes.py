@@ -100,7 +100,7 @@ def retain_relevant_changes(
         ) or (
             channel == "ptr" and patch > current_patch
         )
-        if is_relevant and cutoff_date <= change_date <= retention_date:
+        if is_relevant and cutoff_date <= change_date:
             retained_changes.append(raw_change)
 
     retained_document = dict(document)

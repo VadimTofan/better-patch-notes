@@ -69,12 +69,13 @@ class SkillContractTests(unittest.TestCase):
             ".build.info",
             "--game-version",
             "removed",
-            "14-day rolling retention",
+            "14-day rolling historical retention",
+            "retain verified upcoming Retail changes",
             "direct source URL",
             "untrusted content",
             "future database",
-            "Updated: 2026-08-13",
-            "Last reviewed: 2026-08-13",
+            "Updated: 2026-08-17",
+            "Last reviewed: 2026-08-17",
         )
         forbidden_phrases = (
             "openpyxl",

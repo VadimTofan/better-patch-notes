@@ -173,9 +173,10 @@ phase and never release data that has not been manually reviewed.
    dungeon, and raid records, and run the skill's refresh command. Treat
    `data/retail-patch-notes.json` as canonical; never edit
    `PatchNotesData.lua` manually.
-8. Retain only effective dates inside the rolling 14-day window. In schema
-   version 5, every localized `change` value must be a non-empty array of
-   strings, including a one-item change.
+8. Remove effective dates older than the rolling 14-day historical window,
+   but retain verified upcoming Retail changes with their announced effective
+   date. In schema version 5, every localized `change` value must be a
+   non-empty array of strings, including a one-item change.
 9. Confirm the command published synchronized JSON and Lua. Review its
    `added`, `skipped`, `promoted`, `localized`, `ambiguous`, and `removed`
    counts. Review the translation report's official and agent translation

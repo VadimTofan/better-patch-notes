@@ -234,6 +234,32 @@ class PatchNoteRefreshTests(unittest.TestCase):
             [change["id"] for change in retained_document["changes"]],
         )
 
+    def test_keeps_announced_future_live_changes(self) -> None:
+        # Given a current-patch Live change with a future effective date
+        module = _load_refresh_module()
+        upcoming = {
+            "id": "upcoming-live",
+            "channel": "live",
+            "patch": "12.0.7",
+            "date": "2026-08-18",
+        }
+        document = {
+            "schemaVersion": 5,
+            "updatedAt": "2026-08-17T12:00:00+02:00",
+            "changes": [upcoming],
+        }
+
+        # When retention runs before the effective date
+        retained_document, removed = module.retain_relevant_changes(
+            document,
+            "12.0.7",
+            "2026-08-17",
+        )
+
+        # Then the announced change and its effective date remain intact
+        self.assertEqual(0, removed)
+        self.assertEqual([upcoming], retained_document["changes"])
+
     def test_refresh_removes_records_from_the_previous_live_build(self) -> None:
         with TemporaryDirectory() as temporary_directory:
             # Given patch notes published for the previous installed build

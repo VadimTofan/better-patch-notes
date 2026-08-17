@@ -82,11 +82,24 @@ class QualificationTests(unittest.TestCase):
         # Then
         self.assertEqual(result.accepted, (candidate,))
 
-    def test_rejects_out_of_window_future_and_unsupported_changes(self) -> None:
+    def test_accepts_announced_future_live_changes(self) -> None:
+        # Given a verified Retail change announced before its effective date
+        candidate = _change(effective_date=date(2026, 8, 18))
+
+        # When qualification runs on the announcement date
+        result = qualify((candidate,), "12.0.7", date(2026, 8, 17))
+
+        # Then the upcoming change is retained with its effective date
+        self.assertEqual(
+            (replace(candidate, patch="12.0.7"),),
+            result.accepted,
+        )
+        self.assertEqual((), result.rejected)
+
+    def test_rejects_out_of_window_and_unsupported_changes(self) -> None:
         # Given
         candidates = (
             _change(effective_date=date(2026, 7, 22)),
-            _change(effective_date=date(2026, 8, 6)),
             _change(category="Item"),
         )
 
@@ -99,7 +112,6 @@ class QualificationTests(unittest.TestCase):
             [rejection.reason for rejection in result.rejected],
             [
                 "outside rolling 14-day window",
-                "effective date is in the future",
                 "unsupported category",
             ],
         )

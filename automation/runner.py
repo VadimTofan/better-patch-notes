@@ -265,7 +265,6 @@ def _qualify_documents(
                 extract_changes(
                     document,
                     earliest_date=as_of_date - timedelta(days=13),
-                    latest_date=as_of_date,
                 )
             )
         except AmbiguousPatchNote as error:
