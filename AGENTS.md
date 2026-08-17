@@ -1,5 +1,3 @@
-codex resume 019fbd62-2363-74e0-84b2-37ae3e27a799
-
 # BetterPatchNotes Agent Guidance
 
 ## Class Browser Behavior
@@ -170,6 +168,7 @@ phase and never release data that has not been manually reviewed.
    Exactly one result column must apply per locale. The agent must not complete
    the refresh until every locale is classified and each English fallback has
    a documented fallback reason.
+
 7. Preserve the pre-refresh JSON and Lua contents, collect qualifying class,
    dungeon, and raid records, and run the skill's refresh command. Treat
    `data/retail-patch-notes.json` as canonical; never edit
