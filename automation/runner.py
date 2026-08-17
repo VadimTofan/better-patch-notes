@@ -319,7 +319,8 @@ def add_official_localizations(
         article_changes = tuple(
             change
             for change in changes
-            if _article_id(change.source_url) == article_id
+            if "/article/" in change.source_url
+            and _article_id(change.source_url) == article_id
         )
         if not article_changes:
             continue

@@ -51,6 +51,61 @@ class _FixtureClient:
 
 # Describe: end-to-end collection from allowlisted Blizzard responses
 class AutomationRunnerTests(unittest.TestCase):
+    def test_official_article_matching_ignores_forum_changes(self) -> None:
+        # Given a news article and a forum tuning note are collected together
+        article_url = (
+            "https://news.blizzard.com/en-us/article/24296142/"
+            "hotfixes-august-13-2026"
+        )
+        article = SourceDocument(
+            url=article_url,
+            channel="live",
+            patch="12.1.0",
+            title="Hotfixes: August 13, 2026",
+            published_at=datetime(2026, 8, 14, tzinfo=timezone.utc),
+            updated_at=None,
+            author="Blizzard Entertainment",
+            author_is_blue=True,
+            body=b"<p>English</p>",
+            mime_type="text/html",
+            locale="en",
+            content_hash="article-fixture",
+        )
+        article_change = ExtractedChange(
+            channel="live",
+            category="Class",
+            effective_date=date(2026, 8, 13),
+            patch="12.1.0",
+            name="Warlock",
+            specialization="All",
+            change=("Example change.",),
+            source_url=article_url,
+        )
+        forum_change = ExtractedChange(
+            channel="live",
+            category="Class",
+            effective_date=date(2026, 8, 18),
+            patch="12.1.0",
+            name="Mage",
+            specialization="Arcane",
+            change=("All ability damage increased by 3%.",),
+            source_url=(
+                "https://us.forums.blizzard.com/en/wow/t/"
+                "class-tuning-incoming-august-18/2336820/1"
+            ),
+        )
+        document = {"changes": []}
+
+        # When official news localizations are matched
+        add_official_localizations(
+            document,
+            (article_change, forum_change),
+            (article,),
+        )
+
+        # Then the unrelated forum URL is left for agent translation
+        self.assertEqual([], document["changes"])
+
     def test_collects_announced_changes_before_their_effective_date(self) -> None:
         # Given Blizzard announces a Live class change for the next day
         document = SourceDocument(
