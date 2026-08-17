@@ -147,12 +147,6 @@ CAPITALIZED_TERM_PATTERN = re.compile(
 NUMERIC_LITERAL_PATTERN = re.compile(
     r"(?<![A-Za-z0-9_])\d+(?:[.,]\d+)?(?:\s*%)?"
 )
-NUMERIC_WORD_PATTERN = re.compile(
-    r"\b(?:zero|one|two|three|four|five|six|seven|eight|nine|ten|"
-    r"first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|"
-    r"tenth)\b",
-    re.IGNORECASE,
-)
 PLACEHOLDER_PATTERN = re.compile(r"(__BPN\d{4}__)")
 PLACEHOLDER_INSENSITIVE_PATTERN = re.compile(
     r"__BPN\d{4}__",
@@ -1447,18 +1441,6 @@ def _protect_text(
         protected_terms.add(term)
 
     placeholder_index = len(replacements)
-
-    def replace_numeric_word(match: re.Match[str]) -> str:
-        nonlocal placeholder_index
-        placeholder = f"__BPN{placeholder_index:04d}__"
-        placeholder_index += 1
-        replacements.append((placeholder, match.group(0)))
-        return placeholder
-
-    protected_text = NUMERIC_WORD_PATTERN.sub(
-        replace_numeric_word,
-        protected_text,
-    )
 
     def replace_number(match: re.Match[str]) -> str:
         nonlocal placeholder_index

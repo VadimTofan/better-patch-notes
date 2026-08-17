@@ -2047,6 +2047,41 @@ class TranslationGenerationTests(unittest.TestCase):
         self.assertNotIn("primary", translated)
         self.assertNotIn("secondary", translated)
 
+    def test_translates_second_as_a_time_unit(self) -> None:
+        # Given a spelled-out time unit follows a protected literal number
+        def german_translator(segment: str, _language: str) -> str:
+            self.assertIn("second", segment)
+            return segment.replace("second", "Sekunde")
+
+        # When guarded translation runs
+        translated, _uncertain_terms = self.generator.translate_guarded_text(
+            "Cooldown reduced by 1 second.",
+            "de",
+            german_translator,
+        )
+
+        # Then the number stays exact while the time unit is translated
+        self.assertEqual("Cooldown reduced by 1 Sekunde.", translated)
+
+    def test_translates_second_as_an_ordinal(self) -> None:
+        # Given an ordinal describes a target rather than a numeric literal
+        def german_translator(segment: str, _language: str) -> str:
+            self.assertIn("second target", segment)
+            return segment.replace("second target", "zweite Ziel")
+
+        # When guarded translation runs
+        translated, _uncertain_terms = self.generator.translate_guarded_text(
+            "Damage to the second target reduced to 50%.",
+            "de",
+            german_translator,
+        )
+
+        # Then the ordinal is translated while the percentage stays exact
+        self.assertEqual(
+            "Damage to the zweite Ziel reduced to 50%.",
+            translated,
+        )
+
     def test_records_semantic_approval_from_two_independent_keys(self) -> None:
         # Given a valid Russian synonym is absent from the phrase-list validator
         self.assertIsNotNone(self.generator)
