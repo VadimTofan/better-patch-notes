@@ -733,7 +733,8 @@ class TranslationGenerationTests(unittest.TestCase):
             "However, it remains useful. For this update, It remains active. "
             "Summon an ally. Rank 1 grants power. Casting Moonfire helps. "
             "These changes replace Previous behavior. Instead, Not affected. "
-            "Generates charges. Radius increased."
+            "Generates charges. Radius increased. Finally, We've finished. "
+            "Several talents changed. Healing increased. Its effect triggers."
         )
 
         # When possible protected terms are identified
@@ -743,22 +744,27 @@ class TranslationGenerationTests(unittest.TestCase):
         generic_words = {
             "Casting",
             "Deals",
+            "Finally",
             "For",
             "Generates",
             "However",
             "Increases",
             "Instead",
             "It",
+            "Its",
             "No",
             "Not",
             "Players",
             "Previous",
             "Radius",
             "Rank",
+            "Several",
             "Summon",
             "These",
             "While",
             "With",
+            "We've",
+            "Healing",
         }
         self.assertTrue(generic_words.isdisjoint(terms))
 
