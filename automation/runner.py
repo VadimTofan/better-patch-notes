@@ -458,6 +458,8 @@ def _translator(
                     "--terminology",
                     str(terminology_path),
                     "--checkpoint",
+                    str(PROJECT_ROOT / "data" / "retail-patch-notes.json"),
+                    "--checkpoint",
                     str(WORK_DIRECTORY / "translation-checkpoint.json"),
                 ],
                 1500,

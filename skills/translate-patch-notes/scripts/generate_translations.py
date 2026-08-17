@@ -1542,6 +1542,8 @@ def reuse_validated_checkpoint(
         for locale, localization in cached_localizations.items():
             if locale == "en" or not isinstance(localization, dict):
                 continue
+            if locale in localizations:
+                continue
             candidate = deepcopy(change)
             candidate["localizations"] = {
                 "en": localizations["en"],
@@ -1552,6 +1554,24 @@ def reuse_validated_checkpoint(
             except ValueError:
                 continue
             localizations[locale] = deepcopy(localization)
+
+    return reused
+
+
+def reuse_validated_checkpoints(
+    document: dict[str, object],
+    checkpoints: tuple[dict[str, object], ...],
+    terminology: dict[str, object],
+    validate: Callable[[object, object], object],
+) -> dict[str, object]:
+    reused = document
+    for checkpoint in checkpoints:
+        reused = reuse_validated_checkpoint(
+            reused,
+            checkpoint,
+            terminology,
+            validate,
+        )
 
     return reused
 
@@ -1681,23 +1701,28 @@ def main() -> int:
     parser.add_argument("--input", required=True, type=Path)
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--terminology", required=True, type=Path)
-    parser.add_argument("--checkpoint", type=Path)
+    parser.add_argument("--checkpoint", action="append", type=Path, default=[])
     parser.add_argument("--workers", default=8, type=int)
     arguments = parser.parse_args()
 
     document = json.loads(arguments.input.read_text(encoding="utf-8"))
     terminology = json.loads(arguments.terminology.read_text(encoding="utf-8"))
-    if arguments.checkpoint and arguments.checkpoint.exists():
+    checkpoint_documents: list[dict[str, object]] = []
+    for checkpoint_path in arguments.checkpoint:
+        if not checkpoint_path.exists():
+            continue
+        checkpoint = load_checkpoint(checkpoint_path)
+        if checkpoint is not None:
+            checkpoint_documents.append(checkpoint)
+    if checkpoint_documents:
         from validate_translations import validate_translation_batch
 
-        checkpoint = load_checkpoint(arguments.checkpoint)
-        if checkpoint is not None:
-            document = reuse_validated_checkpoint(
-                document,
-                checkpoint,
-                terminology,
-                validate_translation_batch,
-            )
+        document = reuse_validated_checkpoints(
+            document,
+            tuple(checkpoint_documents),
+            terminology,
+            validate_translation_batch,
+        )
     api_keys = load_gemini_api_keys(PROJECT_ROOT / ".env")
     agent_locale_languages = missing_agent_locale_languages(document)
     verified_terms = _verified_english_terms(

@@ -129,6 +129,40 @@ class TranslationGenerationTests(unittest.TestCase):
         localizations = reused["changes"][0]["localizations"]
         self.assertEqual({"en"}, set(localizations))
 
+    def test_keeps_canonical_translation_when_retry_checkpoint_differs(
+        self,
+    ) -> None:
+        # Given canonical and retry checkpoints have different valid German
+        document = _checkpoint_document()
+        terminology = _checkpoint_terminology()
+        canonical = self.generator.build_translation_batch(
+            document,
+            {"deDE": "de"},
+            lambda text, _language: f"canonical: {text}",
+            terminology,
+        )
+        retry = self.generator.build_translation_batch(
+            document,
+            {"deDE": "de"},
+            lambda text, _language: f"retry: {text}",
+            terminology,
+        )
+
+        # When trusted canonical data is applied before the retry cache
+        reused = self.generator.reuse_validated_checkpoints(
+            document,
+            (canonical, retry),
+            terminology,
+            lambda _record, _terminology: None,
+        )
+
+        # Then the validated canonical translation remains available
+        german = reused["changes"][0]["localizations"]["deDE"]
+        self.assertEqual(
+            "canonical: Damage increased by 5%.",
+            german["change"][0],
+        )
+
     def test_treats_an_empty_checkpoint_as_absent(self) -> None:
         # Given an optional checkpoint file with no content
         with tempfile.TemporaryDirectory() as temporary_directory:

@@ -148,11 +148,13 @@ class AutomationRunnerTests(unittest.TestCase):
                 "retrievedAt": "2026-08-06T04:07:00+02:00",
                 "changes": [{"category": "Dungeon"}],
             }
+            observed_command: list[str] = []
 
             def write_translation(
                 command: list[str],
                 _timeout_seconds: int | None = None,
             ) -> str:
+                observed_command.extend(command)
                 output_index = command.index("--output") + 1
                 output_path = Path(command[output_index])
                 output_path.write_text(
@@ -180,6 +182,21 @@ class AutomationRunnerTests(unittest.TestCase):
             self.assertEqual(
                 expected_batch,
                 json.loads(audit_path.read_text(encoding="utf-8")),
+            )
+            checkpoint_paths = [
+                observed_command[index + 1]
+                for index, argument in enumerate(observed_command)
+                if argument == "--checkpoint"
+            ]
+            self.assertEqual(2, len(checkpoint_paths))
+            self.assertTrue(
+                checkpoint_paths[0].endswith(
+                    "data/retail-patch-notes.json",
+                )
+            )
+            self.assertEqual(
+                str(root / "translation-checkpoint.json"),
+                checkpoint_paths[1],
             )
 
     def test_translation_process_has_a_twenty_five_minute_budget(self) -> None:
