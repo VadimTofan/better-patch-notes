@@ -725,6 +725,60 @@ class TranslationGenerationTests(unittest.TestCase):
         russian = batch["changes"][0]["localizations"]["ruRU"]
         self.assertNotIn("Chronomancer", russian["protectedTerms"])
 
+    def test_does_not_protect_generic_audit_sentence_starts(self) -> None:
+        # Given prose words that the failed refresh mistook for WoW terms
+        text = (
+            "No longer consumes charges. While active, Players deal damage. "
+            "Increases damage. Deals reduced damage. With these changes, "
+            "However, it remains useful. For this update, It remains active. "
+            "Summon an ally. Rank 1 grants power. Casting Moonfire helps. "
+            "These changes replace Previous behavior. Instead, Not affected. "
+            "Generates charges. Radius increased."
+        )
+
+        # When possible protected terms are identified
+        terms = self.generator._candidate_terms(text)
+
+        # Then ordinary sentence grammar remains available for translation
+        generic_words = {
+            "Casting",
+            "Deals",
+            "For",
+            "Generates",
+            "However",
+            "Increases",
+            "Instead",
+            "It",
+            "No",
+            "Not",
+            "Players",
+            "Previous",
+            "Radius",
+            "Rank",
+            "Summon",
+            "These",
+            "While",
+            "With",
+        }
+        self.assertTrue(generic_words.isdisjoint(terms))
+
+    def test_keeps_unknown_wow_names_after_filtering_generic_prose(self) -> None:
+        # Given likely WoW names appear beside ordinary sentence grammar
+        text = (
+            "No longer causes Moonfire to trigger. "
+            "While active, Dark Transformation grants Haste."
+        )
+
+        # When possible protected terms are identified
+        terms = self.generator._candidate_terms(text)
+
+        # Then the names remain protected while the grammar does not
+        self.assertIn("Moonfire", terms)
+        self.assertIn("Dark Transformation", terms)
+        self.assertIn("Haste", terms)
+        self.assertNotIn("No", terms)
+        self.assertNotIn("While", terms)
+
     def test_translates_each_bullet_as_one_grammatical_request(self) -> None:
         # Given a sentence containing protected game terminology and a number
         self.assertIsNotNone(self.generator)

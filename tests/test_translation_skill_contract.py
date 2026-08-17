@@ -104,8 +104,8 @@ class TranslationSkillContractTests(unittest.TestCase):
             "5 translation request starts per rolling minute",
             "authorization key",
             "September 2026",
-            "Updated: 2026-08-14",
-            "Last reviewed: 2026-08-14",
+            "Updated: 2026-08-17",
+            "Last reviewed: 2026-08-17",
         )
 
         # When the repository-local translation skill is inspected

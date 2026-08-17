@@ -42,8 +42,9 @@ the authoritative comparison baseline, not the preferred player-facing result.
    For a complete batch, run `scripts/generate_translations.py` with the
    canonical JSON, terminology registry, and a temporary output path. The
    generator uses the Gemini API to translate complete bullets while replacing
-   WoW names, literal numbers, number words, and ordinals with protected
-   placeholders. It prefers whole-bullet requests through Gemini's asynchronous
+   suspected WoW names and literal numbers with protected placeholders.
+   Ordinary sentence grammar, number words, and ordinals remain available for
+   translation. It prefers whole-bullet requests through Gemini's asynchronous
    Batch API, which has separate Tier 1 high-volume quota. When Google returns
    `400 FAILED_PRECONDITION` because Batch is unavailable to a working free-tier
    key, or when an accepted Batch job does not finish within 10 minutes, the
@@ -185,8 +186,8 @@ and semantic increase/reduction direction.
 
 ## Maintenance
 
-Updated: 2026-08-14
-Last reviewed: 2026-08-14
+Updated: 2026-08-17
+Last reviewed: 2026-08-17
 Canonical sources:
 
 - https://worldofwarcraft.blizzard.com/en-us/game/classes
