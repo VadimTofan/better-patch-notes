@@ -26,7 +26,7 @@ NUMBER_PATTERN = re.compile(
     r"(?<![A-Za-z0-9_])(\d+(?:[.,]\d+)?)(?:\s*(%))?"
 )
 BLIZZARD_URL_PATTERN = re.compile(
-    r"^https://(?:news|worldofwarcraft)\.blizzard\.com/"
+    r"^https://(?:news|worldofwarcraft|us\.forums)\.blizzard\.com/"
 )
 ENGLISH_INCREASE_PATTERN = re.compile(
     r"\b(?:increase|increased|increases|raised)\b",

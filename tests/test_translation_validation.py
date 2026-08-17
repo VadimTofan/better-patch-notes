@@ -668,6 +668,27 @@ class TranslationValidationTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "terminologySourceUrls"):
             self.validator.validate_translation_batch(batch, self.terminology)
 
+    def test_accepts_official_blizzard_forum_provenance(self) -> None:
+        # Given an agent translation cites its reviewed Blizzard forum source
+        batch = _translation_batch()
+        russian = batch["changes"][0]["localizations"]["ruRU"]
+        russian["sourceUrl"] = (
+            "https://us.forums.blizzard.com/en/wow/t/notes/2336820/1"
+        )
+        russian["terminologySourceUrls"] = [russian["sourceUrl"]]
+        batch["changes"][0]["localizations"]["en"]["sourceUrl"] = (
+            russian["sourceUrl"]
+        )
+
+        # When provenance is validated
+        report = self.validator.validate_translation_batch(
+            batch,
+            self.terminology,
+        )
+
+        # Then the direct official Blizzard forum URL is accepted
+        self.assertEqual(("ruRU",), report.validated_locales)
+
 
 if __name__ == "__main__":
     unittest.main()
