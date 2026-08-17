@@ -129,10 +129,10 @@ class TranslationGenerationTests(unittest.TestCase):
         localizations = reused["changes"][0]["localizations"]
         self.assertEqual({"en"}, set(localizations))
 
-    def test_keeps_canonical_translation_when_retry_checkpoint_differs(
+    def test_reuses_trusted_canonical_translation_without_revalidation(
         self,
     ) -> None:
-        # Given canonical and retry checkpoints have different valid German
+        # Given a packaged canonical translation was already release-validated
         document = _checkpoint_document()
         terminology = _checkpoint_terminology()
         canonical = self.generator.build_translation_batch(
@@ -141,19 +141,10 @@ class TranslationGenerationTests(unittest.TestCase):
             lambda text, _language: f"canonical: {text}",
             terminology,
         )
-        retry = self.generator.build_translation_batch(
+        # When trusted canonical data is applied without a new semantic audit
+        reused = self.generator.reuse_trusted_checkpoint(
             document,
-            {"deDE": "de"},
-            lambda text, _language: f"retry: {text}",
-            terminology,
-        )
-
-        # When trusted canonical data is applied before the retry cache
-        reused = self.generator.reuse_validated_checkpoints(
-            document,
-            (canonical, retry),
-            terminology,
-            lambda _record, _terminology: None,
+            canonical,
         )
 
         # Then the validated canonical translation remains available

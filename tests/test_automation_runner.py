@@ -188,15 +188,18 @@ class AutomationRunnerTests(unittest.TestCase):
                 for index, argument in enumerate(observed_command)
                 if argument == "--checkpoint"
             ]
-            self.assertEqual(2, len(checkpoint_paths))
+            self.assertEqual(1, len(checkpoint_paths))
+            trusted_checkpoint_index = observed_command.index(
+                "--trusted-checkpoint",
+            )
             self.assertTrue(
-                checkpoint_paths[0].endswith(
+                observed_command[trusted_checkpoint_index + 1].endswith(
                     "data/retail-patch-notes.json",
                 )
             )
             self.assertEqual(
                 str(root / "translation-checkpoint.json"),
-                checkpoint_paths[1],
+                checkpoint_paths[0],
             )
 
     def test_translation_process_has_a_twenty_five_minute_budget(self) -> None:

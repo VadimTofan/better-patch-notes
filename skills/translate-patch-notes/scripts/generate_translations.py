@@ -1558,22 +1558,16 @@ def reuse_validated_checkpoint(
     return reused
 
 
-def reuse_validated_checkpoints(
+def reuse_trusted_checkpoint(
     document: dict[str, object],
-    checkpoints: tuple[dict[str, object], ...],
-    terminology: dict[str, object],
-    validate: Callable[[object, object], object],
+    checkpoint: dict[str, object],
 ) -> dict[str, object]:
-    reused = document
-    for checkpoint in checkpoints:
-        reused = reuse_validated_checkpoint(
-            reused,
-            checkpoint,
-            terminology,
-            validate,
-        )
-
-    return reused
+    return reuse_validated_checkpoint(
+        document,
+        checkpoint,
+        {},
+        lambda _record, _terminology: None,
+    )
 
 
 def generate_language_translations(
@@ -1701,28 +1695,34 @@ def main() -> int:
     parser.add_argument("--input", required=True, type=Path)
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--terminology", required=True, type=Path)
-    parser.add_argument("--checkpoint", action="append", type=Path, default=[])
+    parser.add_argument("--trusted-checkpoint", type=Path)
+    parser.add_argument("--checkpoint", type=Path)
     parser.add_argument("--workers", default=8, type=int)
     arguments = parser.parse_args()
 
     document = json.loads(arguments.input.read_text(encoding="utf-8"))
     terminology = json.loads(arguments.terminology.read_text(encoding="utf-8"))
-    checkpoint_documents: list[dict[str, object]] = []
-    for checkpoint_path in arguments.checkpoint:
-        if not checkpoint_path.exists():
-            continue
-        checkpoint = load_checkpoint(checkpoint_path)
-        if checkpoint is not None:
-            checkpoint_documents.append(checkpoint)
-    if checkpoint_documents:
+    if (
+        arguments.trusted_checkpoint
+        and arguments.trusted_checkpoint.exists()
+    ):
+        trusted_checkpoint = load_checkpoint(arguments.trusted_checkpoint)
+        if trusted_checkpoint is not None:
+            document = reuse_trusted_checkpoint(
+                document,
+                trusted_checkpoint,
+            )
+    if arguments.checkpoint and arguments.checkpoint.exists():
         from validate_translations import validate_translation_batch
 
-        document = reuse_validated_checkpoints(
-            document,
-            tuple(checkpoint_documents),
-            terminology,
-            validate_translation_batch,
-        )
+        checkpoint = load_checkpoint(arguments.checkpoint)
+        if checkpoint is not None:
+            document = reuse_validated_checkpoint(
+                document,
+                checkpoint,
+                terminology,
+                validate_translation_batch,
+            )
     api_keys = load_gemini_api_keys(PROJECT_ROOT / ".env")
     agent_locale_languages = missing_agent_locale_languages(document)
     verified_terms = _verified_english_terms(
