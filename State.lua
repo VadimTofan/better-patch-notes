@@ -5,6 +5,7 @@ local function newDatabase()
         schemaVersion = 2,
         seen = {},
         sharedSeen = {},
+        lastShownAddonVersion = "",
         window = {
             point = "CENTER",
             x = 0,
@@ -60,9 +61,20 @@ function addon.InitializeState()
     if type(BetterPatchNotesDB.sharedSeen) ~= "table" then
         BetterPatchNotesDB.sharedSeen = {}
     end
+    if type(BetterPatchNotesDB.lastShownAddonVersion) ~= "string" then
+        BetterPatchNotesDB.lastShownAddonVersion = ""
+    end
     sanitizeWindow(BetterPatchNotesDB)
     sanitizeMinimap(BetterPatchNotesDB)
     addon.db = BetterPatchNotesDB
+end
+
+function addon.HasUnseenAddonVersion()
+    return addon.db.lastShownAddonVersion ~= addon.version
+end
+
+function addon.MarkAddonVersionShown()
+    addon.db.lastShownAddonVersion = addon.version
 end
 
 local function classSeen(classToken)

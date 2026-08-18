@@ -9,11 +9,12 @@ local function showForPlayer()
         return
     end
 
+    local hasNewVersion = addon.HasUnseenAddonVersion()
     local hasLive = addon.HasUnseen(classToken, "live")
         or addon.HasUnseenShared("live")
     local hasPtr = addon.HasUnseen(classToken, "ptr")
         or addon.HasUnseenShared("ptr")
-    if not hasLive and not hasPtr then
+    if not hasNewVersion and not hasLive and not hasPtr then
         return
     end
 
@@ -24,6 +25,9 @@ local function showForPlayer()
 
     pendingAutomaticDisplay = false
     addon.ShowWindow(addon.SelectInitialChannel(classToken))
+    if hasNewVersion then
+        addon.MarkAddonVersionShown()
+    end
 end
 
 eventFrame:RegisterEvent("ADDON_LOADED")

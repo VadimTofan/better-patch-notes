@@ -196,6 +196,7 @@ class DataAndStateContractTests(unittest.TestCase):
             "schemaVersion = 2",
             "seen = {}",
             "sharedSeen = {}",
+            'lastShownAddonVersion = ""',
             'point = "CENTER"',
             "minimap = {",
             "hidden = false",
@@ -206,6 +207,11 @@ class DataAndStateContractTests(unittest.TestCase):
             "function addon.HasUnseenShared",
             "sharedChannelVersions[channel]",
             "function addon.MarkChannelSeen",
+            "function addon.HasUnseenAddonVersion",
+            "function addon.MarkAddonVersionShown",
+            "addon.db.lastShownAddonVersion ~= addon.version",
+            "addon.db.lastShownAddonVersion = addon.version",
+            'type(BetterPatchNotesDB.lastShownAddonVersion) ~= "string"',
             "function addon.SelectInitialChannel",
             "local function latestDate",
             "if sharedDate > classDate then",
@@ -321,6 +327,11 @@ class WindowAndCoreContractTests(unittest.TestCase):
             "InCombatLockdown()",
             "addon.HasUnseen",
             "addon.HasUnseenShared",
+            "addon.HasUnseenAddonVersion",
+            "addon.MarkAddonVersionShown",
+            "local hasNewVersion = addon.HasUnseenAddonVersion()",
+            "if not hasNewVersion and not hasLive and not hasPtr then",
+            "if hasNewVersion then",
             "addon.SelectInitialChannel",
             "addon.ShowWindow",
             'SLASH_BETTERPATCHNOTES1 = "/bpn"',
@@ -332,6 +343,11 @@ class WindowAndCoreContractTests(unittest.TestCase):
         for phrase in required_contract:
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, core_text)
+
+        self.assertLess(
+            core_text.index("addon.ShowWindow"),
+            core_text.index("addon.MarkAddonVersionShown"),
+        )
 
     def test_minimap_button_opens_hides_toggles_and_remembers_position(
         self,

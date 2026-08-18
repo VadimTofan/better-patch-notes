@@ -1,3 +1,6 @@
+Version 0.2.19 - 2026-08-18
+- Fixed: Open patch notes once per addon version for every WoW account, regardless of the player's class
+
 Version 0.2.18 - 2026-08-17
 - Data: Live 12.1.0; PTR None
 - Added or updated: 15 upcoming Live class-tuning records effective August 18
