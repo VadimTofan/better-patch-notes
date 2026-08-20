@@ -33,11 +33,15 @@ client codes to `en`, then select the exact client locale when that
 localization exists. Otherwise, display the canonical English fallback and its
 fallback indicator.
 
-Keep regional variants independent. `esES` and `esMX` remain separate; do not
-copy one regional Spanish localization into the other. `zhCN` and `zhTW`
-remain separate; do not copy them, merge them, or use automatic character
-conversion as a substitute for a verified localization. Regional vocabulary
-and official WoW terminology must be verified for the exact locale.
+Require `esES` as the canonical Spanish patch-note localization. Keep `esMX`
+as an optional regional override: use an exact verified `esMX` localization
+when present, otherwise an `esMX` client displays the stored `esES` text before
+falling back to English. Do not store a duplicate `esES` localization under an
+`esMX` key or describe shared `esES` text as independently validated Mexican
+Spanish. `zhCN` and `zhTW` remain separate; do not copy them, merge them, or
+use automatic character conversion as a substitute for a verified
+localization. Regional vocabulary and official WoW terminology must be
+verified for the exact locale when a regional override is published.
 
 Interface labels and patch-note content are separate localization layers. The
 presence of translated buttons, tabs, headings, or class names does not mean
@@ -277,8 +281,10 @@ Wowhead, MMO-Champion, search results, videos, and other secondary sources are
 never eligible for an automatic release.
 
 The automated release is all-or-nothing. English is collected as the factual
-baseline, Gemini may translate it, and all locales must pass terminology and
-translation validation. An English fallback, missing locale, unverified class
+baseline, Gemini may translate it, and all required locales must pass
+terminology and translation validation. Optional `esMX` does not block a
+release when verified `esES` is present. An English fallback, missing required
+locale, unverified class
 or specialization terminology, unknown Blizzard author, unknown document
 structure, unsafe redirect, mismatched build, or ambiguous category blocks
 publication. Unknown ability, boss, NPC, encounter, dungeon, or raid names may

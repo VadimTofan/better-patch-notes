@@ -8,7 +8,10 @@ import json
 from pathlib import Path
 from tempfile import TemporaryDirectory
 
-from automation.coordinator import SUPPORTED_TRANSLATION_LOCALES
+from automation.coordinator import (
+    REQUIRED_TRANSLATION_LOCALES,
+    SUPPORTED_TRANSLATION_LOCALES,
+)
 
 
 def _require_dict(value: object, name: str) -> dict[str, object]:
@@ -27,7 +30,7 @@ def aggregate_locale_artifacts(
     english_document: dict[str, object],
     locale_documents: tuple[dict[str, object], ...],
 ) -> dict[str, object]:
-    """Return one batch only when every supported locale passed."""
+    """Return one batch when required and supplied optional locales passed."""
     documents_by_locale: dict[str, dict[str, object]] = {}
     for document in locale_documents:
         locale = document.get("locale")
@@ -37,10 +40,10 @@ def aggregate_locale_artifacts(
             raise ValueError(f"duplicate locale artifact: {locale}")
         documents_by_locale[locale] = document
 
-    expected_locales = set(SUPPORTED_TRANSLATION_LOCALES)
+    required_locales = set(REQUIRED_TRANSLATION_LOCALES)
     actual_locales = set(documents_by_locale)
-    missing_locales = expected_locales - actual_locales
-    unexpected_locales = actual_locales - expected_locales
+    missing_locales = required_locales - actual_locales
+    unexpected_locales = actual_locales - SUPPORTED_TRANSLATION_LOCALES
     if missing_locales:
         raise ValueError(
             "missing locale artifacts: " + ", ".join(sorted(missing_locales))
@@ -59,7 +62,7 @@ def aggregate_locale_artifacts(
         combined_change["replacesSourceUrl"] = ""
     semantic_approvals: list[object] = []
 
-    for locale in sorted(expected_locales):
+    for locale in sorted(actual_locales):
         artifact = documents_by_locale[locale]
         if artifact.get("status") != "PASS":
             reason = str(artifact.get("reason", "locale translation failed"))

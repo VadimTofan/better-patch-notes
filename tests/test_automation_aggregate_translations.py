@@ -8,7 +8,7 @@ from automation.aggregate_translations import (
     aggregate_locale_artifacts,
     run_aggregation,
 )
-from automation.coordinator import SUPPORTED_TRANSLATION_LOCALES
+from automation.coordinator import REQUIRED_TRANSLATION_LOCALES
 
 
 def _english_document() -> dict[str, object]:
@@ -64,6 +64,15 @@ def _locale_artifact(locale: str) -> dict[str, object]:
 
 # Describe: fail-closed translation artifact aggregation
 class AggregateTranslationsTests(unittest.TestCase):
+    def test_requires_nine_automatic_locales_without_mexican_spanish(self) -> None:
+        # Given / When the unattended locale contract is inspected
+        required_locales = set(REQUIRED_TRANSLATION_LOCALES)
+
+        # Then esES is required while esMX remains an optional manual locale
+        self.assertEqual(9, len(required_locales))
+        self.assertIn("esES", required_locales)
+        self.assertNotIn("esMX", required_locales)
+
     def test_malformed_acquisition_writes_a_blocked_audit(self) -> None:
         with TemporaryDirectory() as temporary_directory:
             # Given the acquisition artifact contains malformed JSON
@@ -93,11 +102,11 @@ class AggregateTranslationsTests(unittest.TestCase):
             self.assertIn("Expecting property name", result["reason"])
 
     def test_merges_exactly_one_passing_artifact_for_every_locale(self) -> None:
-        # Given all ten locale workers passed against the same English data
+        # Given all required locale workers passed against the same English data
         english = _english_document()
         artifacts = tuple(
             _locale_artifact(locale)
-            for locale in sorted(SUPPORTED_TRANSLATION_LOCALES)
+            for locale in sorted(REQUIRED_TRANSLATION_LOCALES)
         )
 
         # When locale artifacts are aggregated
@@ -106,16 +115,36 @@ class AggregateTranslationsTests(unittest.TestCase):
         # Then every locale and English appear in the one atomic batch
         localizations = combined["changes"][0]["localizations"]
         self.assertEqual(
-            {"en", *SUPPORTED_TRANSLATION_LOCALES},
+            {"en", *REQUIRED_TRANSLATION_LOCALES},
             set(localizations),
         )
         self.assertEqual("", combined["changes"][0]["replacesSourceUrl"])
         self.assertNotIn("uncertainTerms", combined)
 
+    def test_merges_an_optional_mexican_spanish_artifact_when_present(self) -> None:
+        # Given all required locales and a validated optional esMX artifact
+        english = _english_document()
+        locales = {*REQUIRED_TRANSLATION_LOCALES, "esMX"}
+        artifacts = tuple(
+            _locale_artifact(locale)
+            for locale in sorted(locales)
+        )
+
+        # When locale artifacts are aggregated
+        combined = aggregate_locale_artifacts(english, artifacts)
+
+        # Then the optional regional override is included in release data
+        localizations = combined["changes"][0]["localizations"]
+        self.assertEqual({"en", *locales}, set(localizations))
+        self.assertEqual(
+            ["esMX translation"],
+            localizations["esMX"]["change"],
+        )
+
     def test_rejects_a_missing_locale_artifact(self) -> None:
         # Given one required locale has no artifact
         english = _english_document()
-        locales = sorted(SUPPORTED_TRANSLATION_LOCALES)[:-1]
+        locales = sorted(REQUIRED_TRANSLATION_LOCALES)[:-1]
         artifacts = tuple(_locale_artifact(locale) for locale in locales)
 
         # When / Then aggregation fails closed
@@ -127,7 +156,7 @@ class AggregateTranslationsTests(unittest.TestCase):
         english = _english_document()
         artifacts = [
             _locale_artifact(locale)
-            for locale in sorted(SUPPORTED_TRANSLATION_LOCALES)
+            for locale in sorted(REQUIRED_TRANSLATION_LOCALES)
         ]
         artifacts[0]["status"] = "FAILED"
         artifacts[0]["reason"] = "Gemini timed out"

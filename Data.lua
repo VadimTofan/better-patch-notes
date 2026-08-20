@@ -20,6 +20,10 @@ function addon.GetLocalizedChange(change)
     end
 
     local localized = change.localizations[locale]
+    if localized == nil and locale == "esMX" then
+        localized = change.localizations.esES
+    end
+
     local english = change.localizations.en
     local usedFallback = localized == nil
 

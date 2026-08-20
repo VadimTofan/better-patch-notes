@@ -148,19 +148,24 @@ def translate_locale(
         raise ValueError(f"unsupported translation locale: {locale}")
 
     document = json.loads(english_path.read_text(encoding="utf-8"))
+    batch: dict[str, object] | None = None
     try:
         prepare_official(document, locale)
         batch = generate(document, locale, terminology_path)
         uncertain_terms = validate(batch, locale, terminology_path)
     except (OSError, RuntimeError, ValueError, json.JSONDecodeError) as error:
+        failed_result: dict[str, object] = {
+            "locale": locale,
+            "status": "FAILED",
+            "reason": redact_secrets(str(error)),
+            "uncertainTerms": [],
+        }
+        if batch is not None:
+            failed_result["batch"] = batch
+
         _write_json(
             output_path,
-            {
-                "locale": locale,
-                "status": "FAILED",
-                "reason": redact_secrets(str(error)),
-                "uncertainTerms": [],
-            },
+            failed_result,
         )
         return 1
 

@@ -105,7 +105,11 @@ class TranslationSkillContractTests(unittest.TestCase):
             "authorization key",
             "September 2026",
             "Updated: 2026-08-17",
-            "Last reviewed: 2026-08-17",
+            "Last reviewed: 2026-08-20",
+            "required locales `deDE`, `esES`",
+            "`esMX` as an optional regional override",
+            "stored `esES` localization before falling back to English",
+            "Do not store a duplicate `esES` localization under `esMX`",
         )
 
         # When the repository-local translation skill is inspected

@@ -21,7 +21,7 @@ class ScheduledRefreshWorkflowTests(unittest.TestCase):
             "needs.acquire.outputs.outcome == 'DATA_CHANGED'",
             "fail-fast: false",
             "max-parallel: 1",
-            "locale: [deDE, esES, esMX, frFR, itIT, koKR, ptBR, ruRU, zhCN, zhTW]",
+            "locale: [deDE, esES, frFR, itIT, koKR, ptBR, ruRU, zhCN, zhTW]",
             "python -m automation.acquisition",
             "python -m automation.translate_locale",
             "python -m automation.aggregate_translations",

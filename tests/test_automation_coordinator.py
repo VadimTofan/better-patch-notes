@@ -7,7 +7,8 @@ import unittest
 
 
 from automation.coordinator import (
-    SUPPORTED_TRANSLATION_LOCALES,
+    REQUIRED_TRANSLATION_LOCALES,
+    _prepare_locale_outcomes,
     build_english_document,
     coordinate_release,
 )
@@ -98,7 +99,7 @@ def _translated_batch(document: dict[str, object]) -> dict[str, object]:
     }
     for change in batch["changes"]:
         english = change["localizations"]["en"]
-        for locale in SUPPORTED_TRANSLATION_LOCALES:
+        for locale in REQUIRED_TRANSLATION_LOCALES:
             change["localizations"][locale] = {
                 **english,
                 "translationType": "agent",
@@ -113,12 +114,35 @@ def _translated_batch(document: dict[str, object]) -> dict[str, object]:
 
 def _validator(batch: dict[str, object]) -> _TranslationReport:
     return _TranslationReport(
-        validated_locales=tuple(sorted(SUPPORTED_TRANSLATION_LOCALES))
+        validated_locales=tuple(sorted(REQUIRED_TRANSLATION_LOCALES))
     )
 
 
 # Describe: safe automatic refresh coordination
 class AutomationCoordinatorTests(unittest.TestCase):
+    def test_accepts_a_validated_optional_mexican_spanish_outcome(self) -> None:
+        # Given all required locales and an optional esMX localization
+        document = _english_document()
+        batch = _translated_batch(document)
+        english = batch["changes"][0]["localizations"]["en"]
+        batch["changes"][0]["localizations"]["esMX"] = {
+            **english,
+            "translationType": "agent",
+            "translatedFrom": "en",
+            "terminologySourceUrls": [],
+        }
+        validated_locales = {*REQUIRED_TRANSLATION_LOCALES, "esMX"}
+        report = _TranslationReport(
+            validated_locales=tuple(sorted(validated_locales)),
+        )
+
+        # When locale outcomes are prepared for release
+        _prepare_locale_outcomes(batch, report)
+
+        # Then the optional localization remains in the validated batch
+        localizations = batch["changes"][0]["localizations"]
+        self.assertIn("esMX", localizations)
+
     def test_builds_schema_compatible_english_input(self) -> None:
         # Given / When
         document = _english_document()
@@ -171,7 +195,7 @@ class AutomationCoordinatorTests(unittest.TestCase):
             def failed_validator(batch: dict[str, object]) -> _TranslationReport:
                 return _TranslationReport(
                     validated_locales=tuple(
-                        sorted(SUPPORTED_TRANSLATION_LOCALES - {"ruRU"})
+                        sorted(REQUIRED_TRANSLATION_LOCALES - {"ruRU"})
                     ),
                     fallback_locales=("ruRU",),
                     fallback_reasons={
@@ -255,7 +279,7 @@ class AutomationCoordinatorTests(unittest.TestCase):
             ) -> _TranslationReport:
                 return _TranslationReport(
                     validated_locales=tuple(
-                        sorted(SUPPORTED_TRANSLATION_LOCALES)
+                        sorted(REQUIRED_TRANSLATION_LOCALES)
                     ),
                     uncertain_terms=warnings,
                 )

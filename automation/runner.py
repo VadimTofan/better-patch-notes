@@ -16,7 +16,7 @@ from typing import Protocol
 from urllib.parse import urlsplit
 
 from automation.coordinator import (
-    SUPPORTED_TRANSLATION_LOCALES,
+    REQUIRED_TRANSLATION_LOCALES,
     build_english_document,
     coordinate_release,
 )
@@ -471,7 +471,7 @@ def _translator(
                 "retrievedAt": document["updatedAt"],
                 "fallbackReasons": {
                     locale: translation_error
-                    for locale in sorted(SUPPORTED_TRANSLATION_LOCALES)
+                    for locale in sorted(REQUIRED_TRANSLATION_LOCALES)
                 },
                 "translationGenerationError": translation_error,
                 "changes": deepcopy(document["changes"]),

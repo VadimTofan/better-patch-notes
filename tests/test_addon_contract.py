@@ -139,6 +139,20 @@ class LocalizationContractTests(unittest.TestCase):
 
 # Describe: patch-note selection and account-wide seen state
 class DataAndStateContractTests(unittest.TestCase):
+    def test_mexican_spanish_uses_spain_spanish_before_english(self) -> None:
+        # Given an esMX client and optional exact regional patch-note text
+        data_text = (PROJECT_ROOT / "Data.lua").read_text("utf-8-sig")
+
+        # When the runtime localization selection is inspected
+        exact_position = data_text.index("change.localizations[locale]")
+        spanish_position = data_text.index("change.localizations.esES")
+        english_position = data_text.index("change.localizations.en")
+
+        # Then exact esMX wins, followed by esES and finally English
+        self.assertLess(exact_position, spanish_position)
+        self.assertLess(spanish_position, english_position)
+        self.assertIn('locale == "esMX"', data_text)
+
     def test_data_module_exposes_locale_and_section_selection(self) -> None:
         # Given generated changes tagged with class and specialization IDs
         data_text = (PROJECT_ROOT / "Data.lua").read_text("utf-8-sig")

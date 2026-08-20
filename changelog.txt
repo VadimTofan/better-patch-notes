@@ -1,3 +1,7 @@
+Version 0.2.21 - 2026-08-20
+- Fixed: Mexican Spanish clients now use verified Spain Spanish patch notes when an exact Mexican Spanish localization is unavailable
+- Locales: Spain Spanish is required for automatic releases; Mexican Spanish remains available as an optional validated regional override
+
 Version 0.2.20 - 2026-08-20
 - Data: Live 12.1.0; PTR None
 - Added or updated: 33 final Blizzard hotfix class, dungeon, and raid records

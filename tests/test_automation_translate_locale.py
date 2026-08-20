@@ -104,6 +104,37 @@ class TranslateLocaleTests(unittest.TestCase):
             self.assertEqual("PASS", result["status"])
             self.assertEqual(translated, result["batch"])
 
+    def test_allows_an_explicit_mexican_spanish_translation(self) -> None:
+        with TemporaryDirectory() as temporary_directory:
+            # Given Mexican Spanish is optional for unattended releases
+            root = Path(temporary_directory)
+            english_path = root / "english.json"
+            terminology_path = root / "terminology.json"
+            output_path = root / "result.json"
+            document = {
+                "updatedAt": "2026-08-20T04:07:00+00:00",
+                "changes": [],
+            }
+            english_path.write_text(json.dumps(document), encoding="utf-8")
+            terminology_path.write_text("{}", encoding="utf-8")
+
+            # When Mexican Spanish is explicitly requested
+            exit_code = translate_locale(
+                locale="esMX",
+                english_path=english_path,
+                terminology_path=terminology_path,
+                output_path=output_path,
+                prepare_official=lambda _document, _locale: None,
+                generate=lambda current, _locale, _terminology: current,
+                validate=lambda _batch, _locale, _terminology: (),
+            )
+
+            # Then the translation tooling accepts the optional locale
+            self.assertEqual(0, exit_code)
+            result = json.loads(output_path.read_text(encoding="utf-8"))
+            self.assertEqual("esMX", result["locale"])
+            self.assertEqual("PASS", result["status"])
+
     def test_writes_a_failed_artifact_when_generation_times_out(self) -> None:
         with TemporaryDirectory() as temporary_directory:
             # Given generation exceeds its isolated process budget
@@ -137,6 +168,44 @@ class TranslateLocaleTests(unittest.TestCase):
             self.assertEqual("FAILED", result["status"])
             self.assertIn("exceeded 1500 seconds", result["reason"])
             self.assertNotIn("batch", result)
+
+    def test_preserves_generated_batch_when_validation_fails(self) -> None:
+        with TemporaryDirectory() as temporary_directory:
+            # Given generation succeeds but validation rejects the translation
+            root = Path(temporary_directory)
+            english_path = root / "english.json"
+            terminology_path = root / "terminology.json"
+            output_path = root / "result.json"
+            document = {
+                "updatedAt": "2026-08-20T04:07:00+00:00",
+                "changes": [],
+            }
+            english_path.write_text(json.dumps(document), encoding="utf-8")
+            terminology_path.write_text("{}", encoding="utf-8")
+            translated = {
+                "retrievedAt": document["updatedAt"],
+                "changes": [],
+            }
+
+            def reject(_batch, _locale, _terminology):
+                raise ValueError("bullet 1 loses condition")
+
+            # When the worker records the validation failure
+            exit_code = translate_locale(
+                locale="esES",
+                english_path=english_path,
+                terminology_path=terminology_path,
+                output_path=output_path,
+                prepare_official=lambda _document, _locale: None,
+                generate=lambda _document, _locale, _terminology: translated,
+                validate=reject,
+            )
+
+            # Then it remains failed but retains the candidate for manual repair
+            self.assertEqual(1, exit_code)
+            result = json.loads(output_path.read_text(encoding="utf-8"))
+            self.assertEqual("FAILED", result["status"])
+            self.assertEqual(translated, result["batch"])
 
 
 if __name__ == "__main__":

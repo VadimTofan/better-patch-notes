@@ -16,7 +16,7 @@ from automation.models import (
     SourceRegistry,
 )
 from automation.runner import (
-    SUPPORTED_TRANSLATION_LOCALES,
+    REQUIRED_TRANSLATION_LOCALES,
     _qualify_documents,
     _run,
     _translator,
@@ -354,7 +354,7 @@ class AutomationRunnerTests(unittest.TestCase):
             self.assertEqual(
                 {
                     locale: error_reason
-                    for locale in sorted(SUPPORTED_TRANSLATION_LOCALES)
+                    for locale in sorted(REQUIRED_TRANSLATION_LOCALES)
                 },
                 batch["fallbackReasons"],
             )

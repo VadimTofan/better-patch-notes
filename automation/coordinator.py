@@ -37,6 +37,8 @@ SUPPORTED_TRANSLATION_LOCALES = {
     "zhTW",
 }
 
+REQUIRED_TRANSLATION_LOCALES = SUPPORTED_TRANSLATION_LOCALES - {"esMX"}
+
 
 class TranslationReport(Protocol):
     validated_locales: tuple[str, ...]
@@ -97,7 +99,7 @@ def _prepare_locale_outcomes(
     validated = set(report.validated_locales)
     fallback = set(report.fallback_locales)
     classified = validated | fallback
-    missing_report_locales = SUPPORTED_TRANSLATION_LOCALES - classified
+    missing_report_locales = REQUIRED_TRANSLATION_LOCALES - classified
     unexpected_locales = classified - SUPPORTED_TRANSLATION_LOCALES
     if missing_report_locales or unexpected_locales or validated & fallback:
         raise ValueError(

@@ -159,11 +159,15 @@ documented fallback reason.
 
 ## Locale Rules
 
-Translate `deDE`, `esES`, `esMX`, `frFR`, `itIT`, `koKR`, `ptBR`, `ruRU`,
-`zhCN`, and `zhTW` separately. Do not copy regional Spanish or Chinese text
-between locales. The English fallback remains authoritative when validation
-fails. Any unverified protected terminology blocks publication for that
-locale.
+Translate the required locales `deDE`, `esES`, `frFR`, `itIT`, `koKR`, `ptBR`,
+`ruRU`, `zhCN`, and `zhTW` separately. Keep `esMX` as an optional regional
+override. When an exact verified `esMX` localization is absent, an `esMX`
+client displays the stored `esES` localization before falling back to English.
+Do not store a duplicate `esES` localization under `esMX` or claim shared text
+was independently validated for Mexican Spanish. Do not copy Chinese text
+between `zhCN` and `zhTW`. The English fallback remains authoritative when
+validation fails. Any unverified protected terminology blocks publication for
+that locale.
 
 An official Blizzard localization always replaces an agent translation. An
 agent translation must never replace official localized text.
@@ -187,7 +191,7 @@ and semantic increase/reduction direction.
 ## Maintenance
 
 Updated: 2026-08-17
-Last reviewed: 2026-08-17
+Last reviewed: 2026-08-20
 Canonical sources:
 
 - https://worldofwarcraft.blizzard.com/en-us/game/classes
