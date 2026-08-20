@@ -1,3 +1,9 @@
+Version 0.2.20 - 2026-08-20
+- Data: Live 12.1.0; PTR None
+- Added or updated: 33 final Blizzard hotfix class, dungeon, and raid records
+- Removed: 52 expired records and 15 superseded August 18 preliminary forum records
+- Locales: Validated agent translations for all 10 target locales; no English fallbacks; 175 preserved English WoW terminology warnings per locale
+
 Version 0.2.19 - 2026-08-18
 - Fixed: Open patch notes once per addon version for every WoW account, regardless of the player's class
 
