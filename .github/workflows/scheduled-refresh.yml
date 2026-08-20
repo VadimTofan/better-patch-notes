@@ -22,146 +22,200 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  refresh:
+  acquire:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 10
     outputs:
       outcome: ${{ steps.result.outputs.outcome }}
-      commit_sha: ${{ steps.commit.outputs.commit_sha }}
       artifact_name: ${{ steps.metadata.outputs.artifact_name }}
       dry_run: ${{ steps.metadata.outputs.dry_run }}
-
     steps:
       - name: Check out main
         uses: actions/checkout@v6
         with:
           ref: main
           fetch-depth: 0
-
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
           python-version: '3.12'
           cache: pip
           cache-dependency-path: requirements-dev.txt
-
-      - name: Set up Node
-        uses: actions/setup-node@v6
-        with:
-          node-version-file: web-app/.nvmrc
-          cache: npm
-          cache-dependency-path: web-app/package-lock.json
-
       - name: Install validation dependencies
-        run: |
-          python -m pip install --requirement requirements-dev.txt
-          npm ci --prefix web-app
-
-      - name: Restore translation checkpoint
-        id: translation-checkpoint
-        uses: actions/cache/restore@v4
-        with:
-          path: .bpn-work/translation-checkpoint.json
-          key: translation-checkpoint-v1-${{ github.run_id }}
-          restore-keys: translation-checkpoint-v1-
-
-      - name: Seed checkpoint from the latest refresh audit
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          if [ -s .bpn-work/translation-checkpoint.json ]; then
-            exit 0
-          fi
-          artifact_ids="$(gh api "repos/$GITHUB_REPOSITORY/actions/artifacts?per_page=100" \
-            --jq '[.artifacts[] | select(.expired == false) | select(.name | startswith("refresh-audit-"))] | sort_by(.created_at) | reverse | .[].id')"
-          if [ -z "$artifact_ids" ]; then
-            exit 0
-          fi
-          mkdir -p .bpn-work
-          for artifact_id in $artifact_ids; do
-            gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/$artifact_id/zip" \
-              > /tmp/translation-checkpoint.zip
-            if unzip -Z1 /tmp/translation-checkpoint.zip \
-              | grep -Fxq "translation-batch.json"; then
-              unzip -p /tmp/translation-checkpoint.zip translation-batch.json \
-                > .bpn-work/translation-checkpoint.json
-              exit 0
-            fi
-          done
-
-      - name: Prepare run metadata
+        run: python -m pip install --requirement requirements-dev.txt
+      - name: Prepare acquisition metadata
         id: metadata
         env:
           REQUESTED_DRY_RUN: ${{ inputs.dry_run || 'false' }}
         run: |
-          echo "artifact_name=refresh-audit-${GITHUB_RUN_ID}" >> "$GITHUB_OUTPUT"
+          echo "artifact_name=english-acquisition-${GITHUB_RUN_ID}" >> "$GITHUB_OUTPUT"
           echo "dry_run=$REQUESTED_DRY_RUN" >> "$GITHUB_OUTPUT"
-
-      - name: Require publishing secrets
-        id: secrets
-        env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+      - name: Acquire and compare English data
+        continue-on-error: true
+        run: python -m automation.acquisition --output .bpn-work/acquisition
+      - name: Read acquisition result
+        id: result
+        if: always()
         run: |
-          mkdir -p .bpn-work
-          missing=()
-          [ -n "$GEMINI_API_KEY" ] || missing+=(GEMINI_API_KEY)
-          [ -n "$CF_API_TOKEN" ] || missing+=(CF_API_TOKEN)
-          if [ "${#missing[@]}" -gt 0 ]; then
-            reason="Missing required repository secrets: ${missing[*]}"
-            python - "$reason" <<'PY'
+          result=.bpn-work/acquisition/acquisition-result.json
+          test -f "$result"
+          outcome="$(python -c "import json; print(json.load(open('$result', encoding='utf-8'))['status'])")"
+          case "$outcome" in
+            NO_CHANGE|DATA_CHANGED|BLOCKED) ;;
+            *) echo "Unknown acquisition outcome: $outcome"; exit 1 ;;
+          esac
+          echo "outcome=$outcome" >> "$GITHUB_OUTPUT"
+      - name: Write acquisition summary
+        if: always()
+        run: |
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
           import json
           from pathlib import Path
-          import sys
 
-          Path(".bpn-work/automation-result.json").write_text(
-              json.dumps(
-                  {
-                      "status": "BLOCKED",
-                      "reason": sys.argv[1],
-                      "sourceUrls": [],
-                      "terminologyWarningCount": 0,
-                      "terminologyWarningsByLocale": {},
-                  },
-                  indent=2,
-              ) + "\n",
-              encoding="utf-8",
+          result = json.loads(
+              Path(".bpn-work/acquisition/acquisition-result.json").read_text(
+                  encoding="utf-8"
+              )
           )
+          print("## Better Patch Notes acquisition")
+          print(f"- Outcome: {result.get('status', 'UNKNOWN')}")
+          print(f"- Accepted English records: {result.get('accepted', 0)}")
           PY
-            echo "ready=false" >> "$GITHUB_OUTPUT"
-          else
-            echo "ready=true" >> "$GITHUB_OUTPUT"
-          fi
+      - name: Upload English acquisition artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.metadata.outputs.artifact_name }}
+          path: .bpn-work/acquisition/
+          if-no-files-found: error
+          retention-days: 30
 
-      - name: Collect, translate, and coordinate release
-        if: steps.secrets.outputs.ready == 'true'
+  translate:
+    needs: acquire
+    if: needs.acquire.outputs.outcome == 'DATA_CHANGED'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      matrix:
+        locale: [deDE, esES, esMX, frFR, itIT, koKR, ptBR, ruRU, zhCN, zhTW]
+    steps:
+      - name: Check out translation code
+        uses: actions/checkout@v6
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements-dev.txt
+      - name: Install validation dependencies
+        run: python -m pip install --requirement requirements-dev.txt
+      - name: Download English acquisition artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ needs.acquire.outputs.artifact_name }}
+          path: .bpn-work/acquisition
+      - name: Translate and validate ${{ matrix.locale }}
         continue-on-error: true
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_API_KEY2: ${{ secrets.GEMINI_API_KEY2 }}
           GEMINI_API_KEY3: ${{ secrets.GEMINI_API_KEY3 }}
         run: |
+          mkdir -p ".bpn-work/translation-${{ matrix.locale }}"
+          python -m automation.translate_locale \
+            --locale "${{ matrix.locale }}" \
+            --english .bpn-work/acquisition/english-document.json \
+            --terminology .bpn-work/acquisition/runtime-terminology.json \
+            --output ".bpn-work/translation-${{ matrix.locale }}/locale-result.json"
+      - name: Upload translation-${{ matrix.locale }} artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: translation-${{ matrix.locale }}-${{ github.run_id }}
+          path: .bpn-work/translation-${{ matrix.locale }}/
+          if-no-files-found: error
+          retention-days: 30
+      - name: Enforce locale result
+        if: always()
+        run: |
+          result=".bpn-work/translation-${{ matrix.locale }}/locale-result.json"
+          test -f "$result"
+          test "$(python -c "import json; print(json.load(open('$result', encoding='utf-8'))['status'])")" = PASS
+
+  aggregate:
+    needs: [acquire, translate]
+    if: always() && needs.acquire.outputs.outcome == 'DATA_CHANGED'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    outputs:
+      outcome: ${{ steps.result.outputs.outcome }}
+      commit_sha: ${{ steps.commit.outputs.commit_sha }}
+      artifact_name: ${{ steps.metadata.outputs.artifact_name }}
+      dry_run: ${{ needs.acquire.outputs.dry_run }}
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements-dev.txt
+      - name: Set up Node
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: web-app/.nvmrc
+          cache: npm
+          cache-dependency-path: web-app/package-lock.json
+      - name: Install validation dependencies
+        run: |
+          python -m pip install --requirement requirements-dev.txt
+          npm ci --prefix web-app
+      - name: Prepare aggregation metadata
+        id: metadata
+        run: echo "artifact_name=refresh-audit-${GITHUB_RUN_ID}" >> "$GITHUB_OUTPUT"
+      - name: Download English acquisition artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ needs.acquire.outputs.artifact_name }}
+          path: .bpn-work/acquisition
+      - name: Download locale translation artifacts
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          pattern: translation-*-${{ github.run_id }}
+          path: .bpn-work/translations
+      - name: Aggregate and coordinate release
+        if: always()
+        continue-on-error: true
+        run: |
           dry_run_argument=()
-          if [ "${{ steps.metadata.outputs.dry_run }}" = "true" ]; then
+          if [ "${{ needs.acquire.outputs.dry_run }}" = "true" ]; then
             dry_run_argument=(--dry-run)
           fi
-          python -m automation.coordinator "${dry_run_argument[@]}"
-
+          python -m automation.aggregate_translations \
+            --acquisition .bpn-work/acquisition \
+            --translations .bpn-work/translations \
+            --result .bpn-work/automation-result.json \
+            "${dry_run_argument[@]}"
       - name: Read coordinator result
         id: result
         if: always()
         run: |
-          if [ ! -f .bpn-work/automation-result.json ]; then
-            echo "Coordinator did not produce automation-result.json"
-            exit 1
-          fi
-          outcome="$(python -c "import json; print(json.load(open('.bpn-work/automation-result.json', encoding='utf-8'))['status'])")"
+          result=.bpn-work/automation-result.json
+          test -f "$result"
+          outcome="$(python -c "import json; print(json.load(open('$result', encoding='utf-8'))['status'])")"
           case "$outcome" in
             NO_CHANGE|BLOCKED|RELEASE_READY) ;;
             *) echo "Unknown coordinator outcome: $outcome"; exit 1 ;;
           esac
           echo "outcome=$outcome" >> "$GITHUB_OUTPUT"
-
+          test "$outcome" != BLOCKED
       - name: Write refresh summary
         if: always()
         run: |
@@ -171,65 +225,51 @@ jobs:
 
           result = json.loads(
               Path(".bpn-work/automation-result.json").read_text(
-                  encoding="utf-8",
+                  encoding="utf-8"
               )
           )
           print("## Better Patch Notes refresh")
           print(f"- Outcome: {result.get('status', 'UNKNOWN')}")
-          print(f"- Retail patch: {result.get('currentPatch', 'Unknown')}")
           print(
               "- Preserved English terminology warnings: "
               f"{result.get('terminologyWarningCount', 0)}"
           )
           warning_counts = result.get("terminologyWarningsByLocale", {})
           if warning_counts:
-              breakdown = ", ".join(
-                  f"{locale}: {count}"
-                  for locale, count in sorted(warning_counts.items())
+              print(
+                  "- Warning counts by locale: "
+                  + ", ".join(
+                      f"{locale}: {count}"
+                      for locale, count in sorted(warning_counts.items())
+                  )
               )
-              print(f"- Warning counts by locale: {breakdown}")
           PY
-
       - name: Run complete Python suite
-        if: >-
-          steps.result.outputs.outcome == 'RELEASE_READY' &&
-          steps.metadata.outputs.dry_run != 'true'
+        if: steps.result.outputs.outcome == 'RELEASE_READY' && needs.acquire.outputs.dry_run != 'true'
         run: python -m unittest discover -s tests -v
-
       - name: Test and build public website
-        if: >-
-          steps.result.outputs.outcome == 'RELEASE_READY' &&
-          steps.metadata.outputs.dry_run != 'true'
+        if: steps.result.outputs.outcome == 'RELEASE_READY' && needs.acquire.outputs.dry_run != 'true'
         working-directory: web-app
         run: |
           npm run prepare:data
           npm test
           npm run build
-
       - name: Validate exact release diff
-        if: >-
-          steps.result.outputs.outcome == 'RELEASE_READY' &&
-          steps.metadata.outputs.dry_run != 'true'
+        if: steps.result.outputs.outcome == 'RELEASE_READY' && needs.acquire.outputs.dry_run != 'true'
         run: |
           git diff --check
           allowed='^(Addon.lua|BetterPatchNotes.toc|PatchNotesData.lua|README.md|changelog.txt|data/retail-patch-notes.json)$'
           changed_files="$(git status --short | sed -E 's/^...//')"
-          if [ -z "$changed_files" ]; then
-            echo "RELEASE_READY produced no changed files"
-            exit 1
-          fi
+          test -n "$changed_files"
           while IFS= read -r changed_file; do
             if ! grep -Eq "$allowed" <<< "$changed_file"; then
               echo "Refresh produced an unauthorized file change: $changed_file"
               exit 1
             fi
           done <<< "$changed_files"
-
       - name: Commit verified data release
         id: commit
-        if: >-
-          steps.result.outputs.outcome == 'RELEASE_READY' &&
-          steps.metadata.outputs.dry_run != 'true'
+        if: steps.result.outputs.outcome == 'RELEASE_READY' && needs.acquire.outputs.dry_run != 'true'
         run: |
           release_date="$(python -c "import json; print(json.load(open('.bpn-work/automation-result.json', encoding='utf-8'))['asOfDate'])")"
           git config user.name "github-actions[bot]"
@@ -241,7 +281,6 @@ jobs:
           commit_sha="$(git rev-parse HEAD)"
           git push origin HEAD:main
           echo "commit_sha=$commit_sha" >> "$GITHUB_OUTPUT"
-
       - name: Upload refresh audit
         if: always()
         uses: actions/upload-artifact@v4
@@ -252,52 +291,81 @@ jobs:
           if-no-files-found: error
           retention-days: 30
 
-      - name: Save translation checkpoint
-        if: always() && hashFiles('.bpn-work/translation-checkpoint.json') != ''
-        uses: actions/cache/save@v4
-        with:
-          path: .bpn-work/translation-checkpoint.json
-          key: translation-checkpoint-v1-${{ github.run_id }}
-
   release:
-    needs: refresh
+    needs: aggregate
     if: >-
-      needs.refresh.result == 'success' &&
-      needs.refresh.outputs.outcome == 'RELEASE_READY' &&
-      needs.refresh.outputs.dry_run != 'true'
+      needs.aggregate.result == 'success' &&
+      needs.aggregate.outputs.outcome == 'RELEASE_READY' &&
+      needs.aggregate.outputs.dry_run != 'true'
     uses: ./.github/workflows/release.yml
     with:
-      commit_sha: ${{ needs.refresh.outputs.commit_sha }}
+      commit_sha: ${{ needs.aggregate.outputs.commit_sha }}
     secrets:
       CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
 
   report:
-    needs: [refresh, release]
+    needs: [acquire, translate, aggregate, release]
     if: always()
     runs-on: ubuntu-latest
     steps:
       - name: Check out reporting code
         uses: actions/checkout@v6
-
       - name: Download refresh audit
+        if: needs.aggregate.outputs.artifact_name != ''
         uses: actions/download-artifact@v4
         with:
-          name: ${{ needs.refresh.outputs.artifact_name }}
+          name: ${{ needs.aggregate.outputs.artifact_name }}
           path: .bpn-work
+      - name: Download blocked acquisition audit
+        if: needs.aggregate.outputs.artifact_name == '' && needs.acquire.outputs.outcome == 'BLOCKED'
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ needs.acquire.outputs.artifact_name }}
+          path: .bpn-work/acquisition
+      - name: Prepare blocked acquisition result
+        if: needs.aggregate.outputs.artifact_name == '' && needs.acquire.outputs.outcome == 'BLOCKED'
+        run: cp .bpn-work/acquisition/acquisition-result.json .bpn-work/automation-result.json
+      - name: Prepare unexpected failure result
+        if: >-
+          always() &&
+          hashFiles('.bpn-work/automation-result.json') == '' &&
+          (needs.acquire.result == 'failure' ||
+          needs.aggregate.result == 'failure')
+        run: |
+          mkdir -p .bpn-work
+          python - <<'PY'
+          import json
+          from pathlib import Path
 
+          Path(".bpn-work/automation-result.json").write_text(
+              json.dumps(
+                  {
+                      "status": "BLOCKED",
+                      "reason": "workflow job failed before producing an audit result",
+                      "sourceUrls": [],
+                  },
+                  indent=2,
+              ) + "\n",
+              encoding="utf-8",
+          )
+          PY
       - name: Create or update a blocked-refresh issue
         if: >-
-          needs.refresh.result == 'failure' ||
-          needs.refresh.outputs.outcome == 'BLOCKED' ||
-          needs.release.result == 'failure'
+          always() &&
+          (needs.acquire.result == 'failure' ||
+          needs.acquire.outputs.outcome == 'BLOCKED' ||
+          needs.translate.result == 'failure' ||
+          needs.aggregate.result == 'failure' ||
+          needs.aggregate.outputs.outcome == 'BLOCKED' ||
+          needs.release.result == 'failure')
         env:
           GH_TOKEN: ${{ github.token }}
           WORKFLOW_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-          ARTIFACT_NAME: ${{ needs.refresh.outputs.artifact_name }}
+          ARTIFACT_NAME: ${{ needs.aggregate.outputs.artifact_name || needs.acquire.outputs.artifact_name }}
           RELEASE_RESULT: ${{ needs.release.result }}
         run: |
-          stage=refresh
-          if [ "$RELEASE_RESULT" = "failure" ]; then
+          stage=translation
+          if [ "$RELEASE_RESULT" = failure ]; then
             stage=curseforge-release
           fi
           python -m automation.reporting \
@@ -318,12 +386,10 @@ jobs:
             gh issue create --title "$title" --body-file .bpn-work/issue-body.md
           fi
           exit 1
-
       - name: Close the previous blocked-refresh issue
         if: >-
-          needs.refresh.result == 'success' &&
-          needs.refresh.outputs.outcome == 'RELEASE_READY' &&
-          needs.refresh.outputs.dry_run != 'true' &&
+          needs.aggregate.outputs.outcome == 'RELEASE_READY' &&
+          needs.aggregate.outputs.dry_run != 'true' &&
           needs.release.result == 'success'
         env:
           GH_TOKEN: ${{ github.token }}

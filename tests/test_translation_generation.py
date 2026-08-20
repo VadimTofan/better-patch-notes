@@ -74,6 +74,34 @@ def _checkpoint_terminology() -> dict[str, object]:
 
 # Describe: safe generation of unofficial patch-note localizations
 class TranslationGenerationTests(unittest.TestCase):
+    def test_limits_missing_translation_languages_to_requested_locale(self) -> None:
+        # Given an English-only document and one requested locale
+        module = _load_generator_module()
+        document = _checkpoint_document()
+
+        # When missing locale languages are selected
+        languages = module.missing_agent_locale_languages(
+            document,
+            target_locale="deDE",
+        )
+
+        # Then only that locale is eligible for generation
+        self.assertEqual({"deDE": "de"}, languages)
+
+    def test_removes_unrequested_checkpoint_localizations(self) -> None:
+        # Given a checkpoint-populated document contains two locale results
+        module = _load_generator_module()
+        document = _checkpoint_document()
+        localizations = document["changes"][0]["localizations"]
+        localizations["deDE"] = {"change": ["Deutsch"]}
+        localizations["ruRU"] = {"change": ["Russian"]}
+
+        # When the German worker isolates its input
+        module.retain_target_locale(document, "deDE")
+
+        # Then only English and German remain in that worker's batch
+        self.assertEqual({"en", "deDE"}, set(localizations))
+
     def test_reuses_only_checkpoint_localizations_that_validate(self) -> None:
         # Given one exact cached record with valid German and invalid Russian
         document = _checkpoint_document()

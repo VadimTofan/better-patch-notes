@@ -79,6 +79,24 @@ def _translation_batch() -> dict[str, object]:
 
 # Describe: deterministic validation of grounded patch-note translations
 class TranslationValidationTests(unittest.TestCase):
+    def test_classifies_only_the_requested_locale(self) -> None:
+        # Given a valid Russian localization and no other locales
+        module = _load_validator_module()
+        batch = _translation_batch()
+        terminology = json.loads(TERMINOLOGY_PATH.read_text(encoding="utf-8"))
+
+        # When classification targets Russian only
+        report = module.classify_translation_batch(
+            batch,
+            terminology,
+            target_locale="ruRU",
+        )
+
+        # Then unrelated locales are not reported as fallbacks
+        self.assertEqual(("ruRU",), report.validated_locales)
+        self.assertEqual((), report.fallback_locales)
+        self.assertEqual({}, report.fallback_reasons)
+
     def setUp(self) -> None:
         self.validator = _load_validator_module()
         self.terminology = json.loads(

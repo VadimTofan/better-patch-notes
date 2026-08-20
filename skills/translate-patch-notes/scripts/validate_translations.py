@@ -565,6 +565,7 @@ def validate_translation_batch(
 def classify_translation_batch(
     batch: object,
     terminology: object,
+    target_locale: str | None = None,
 ) -> TranslationReport:
     document = _require_dict(batch, "translation batch")
     changes = _require_list(document.get("changes"), "changes")
@@ -580,7 +581,21 @@ def classify_translation_batch(
         "semanticApprovals",
     )
 
-    for locale in sorted(SUPPORTED_TRANSLATION_LOCALES):
+    selected_locales = (
+        {target_locale}
+        if target_locale is not None
+        else set(SUPPORTED_TRANSLATION_LOCALES)
+    )
+    unexpected_locales = selected_locales - set(
+        SUPPORTED_TRANSLATION_LOCALES
+    )
+    if unexpected_locales:
+        raise ValueError(
+            "unsupported translation locale: "
+            + ", ".join(sorted(unexpected_locales))
+        )
+
+    for locale in sorted(selected_locales):
         locale_is_complete = all(
             locale
             in _require_dict(
@@ -639,13 +654,21 @@ def main() -> int:
     )
     parser.add_argument("--input", required=True, type=Path)
     parser.add_argument("--terminology", required=True, type=Path)
+    parser.add_argument(
+        "--locale",
+        choices=sorted(SUPPORTED_TRANSLATION_LOCALES),
+    )
     arguments = parser.parse_args()
 
     batch = json.loads(arguments.input.read_text(encoding="utf-8"))
     terminology = json.loads(
         arguments.terminology.read_text(encoding="utf-8")
     )
-    report = classify_translation_batch(batch, terminology)
+    report = classify_translation_batch(
+        batch,
+        terminology,
+        target_locale=arguments.locale,
+    )
     print(json.dumps(asdict(report), ensure_ascii=False, sort_keys=True))
 
     return 0

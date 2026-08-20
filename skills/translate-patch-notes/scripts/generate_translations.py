@@ -76,17 +76,35 @@ TARGET_LANGUAGE_CODES = {
 
 def missing_agent_locale_languages(
     document: Mapping[str, object],
+    target_locale: str | None = None,
 ) -> dict[str, str]:
     changes = document["changes"]
+    selected_locales = (
+        (target_locale,)
+        if target_locale is not None
+        else tuple(TARGET_LANGUAGE_CODES)
+    )
 
     return {
-        locale: language
-        for locale, language in TARGET_LANGUAGE_CODES.items()
+        locale: TARGET_LANGUAGE_CODES[locale]
+        for locale in selected_locales
         if any(
             locale not in change["localizations"]
             for change in changes
         )
     }
+
+
+def retain_target_locale(
+    document: Mapping[str, object],
+    target_locale: str,
+) -> None:
+    retained_locales = {"en", target_locale}
+    for change in document["changes"]:
+        localizations = change["localizations"]
+        for locale in tuple(localizations):
+            if locale not in retained_locales:
+                del localizations[locale]
 
 
 GENERIC_SENTENCE_STARTS = {
@@ -1706,6 +1724,10 @@ def main() -> int:
     parser.add_argument("--trusted-checkpoint", type=Path)
     parser.add_argument("--checkpoint", type=Path)
     parser.add_argument("--workers", default=8, type=int)
+    parser.add_argument(
+        "--locale",
+        choices=sorted(TARGET_LANGUAGE_CODES),
+    )
     arguments = parser.parse_args()
 
     document = json.loads(arguments.input.read_text(encoding="utf-8"))
@@ -1732,7 +1754,12 @@ def main() -> int:
                 validate_translation_batch,
             )
     api_keys = load_gemini_api_keys(PROJECT_ROOT / ".env")
-    agent_locale_languages = missing_agent_locale_languages(document)
+    if arguments.locale is not None:
+        retain_target_locale(document, arguments.locale)
+    agent_locale_languages = missing_agent_locale_languages(
+        document,
+        target_locale=arguments.locale,
+    )
     verified_terms = _verified_english_terms(
         terminology,
         tuple(agent_locale_languages),

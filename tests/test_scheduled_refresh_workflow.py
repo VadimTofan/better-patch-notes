@@ -8,6 +8,31 @@ WORKFLOW_PATH = PROJECT_ROOT / ".github" / "workflows" / "scheduled-refresh.yml"
 
 # Describe: unattended Blizzard-only refresh orchestration
 class ScheduledRefreshWorkflowTests(unittest.TestCase):
+    def test_gates_sequential_locale_jobs_behind_english_acquisition(self) -> None:
+        # Given / When
+        workflow = WORKFLOW_PATH.read_text(encoding="utf-8")
+
+        # Then
+        expected = (
+            "acquire:",
+            "translate:",
+            "aggregate:",
+            "needs: acquire",
+            "needs.acquire.outputs.outcome == 'DATA_CHANGED'",
+            "fail-fast: false",
+            "max-parallel: 1",
+            "locale: [deDE, esES, esMX, frFR, itIT, koKR, ptBR, ruRU, zhCN, zhTW]",
+            "python -m automation.acquisition",
+            "python -m automation.translate_locale",
+            "python -m automation.aggregate_translations",
+            "english-document.json",
+            "translation-${{ matrix.locale }}",
+            "needs.acquire.outputs.outcome == 'BLOCKED'",
+        )
+        for phrase in expected:
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, workflow)
+
     def test_declares_the_schedule_concurrency_and_minimum_permissions(self) -> None:
         # Given / When
         workflow = WORKFLOW_PATH.read_text(encoding="utf-8")
@@ -37,7 +62,7 @@ class ScheduledRefreshWorkflowTests(unittest.TestCase):
             "node-version-file: web-app/.nvmrc",
             "GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}",
             "GEMINI_API_KEY2: ${{ secrets.GEMINI_API_KEY2 }}",
-            "python -m automation.coordinator",
+            "python -m automation.aggregate_translations",
             "python -m unittest discover -s tests -v",
             "npm test",
             "npm run build",
@@ -47,7 +72,7 @@ class ScheduledRefreshWorkflowTests(unittest.TestCase):
             "git add -- BetterPatchNotes.toc Addon.lua README.md",
             "data: refresh retail patch notes for",
             "git push origin HEAD:main",
-            "commit_sha: ${{ needs.refresh.outputs.commit_sha }}",
+            "commit_sha: ${{ needs.aggregate.outputs.commit_sha }}",
             "uses: ./.github/workflows/release.yml",
             "CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}",
         )
@@ -86,23 +111,60 @@ class ScheduledRefreshWorkflowTests(unittest.TestCase):
             "GITHUB_STEP_SUMMARY",
             "terminologyWarningCount",
             "terminologyWarningsByLocale",
-            "needs.refresh.outputs.dry_run != 'true'",
-            "needs.refresh.outputs.outcome == 'RELEASE_READY'",
+            "needs.aggregate.outputs.dry_run != 'true'",
+            "needs.aggregate.outputs.outcome == 'RELEASE_READY'",
             "needs.release.result == 'success'",
-            "actions/cache/restore@v4",
-            "Seed checkpoint from the latest refresh audit",
-            'if [ -s .bpn-work/translation-checkpoint.json ]; then',
-            "sort_by(.created_at) | reverse",
-            'for artifact_id in $artifact_ids; do',
-            "unzip -Z1 /tmp/translation-checkpoint.zip",
-            'grep -Fxq "translation-batch.json"',
-            "translation-checkpoint.json",
-            "actions/cache/save@v4",
             "timeout-minutes: 30",
         )
         for phrase in expected:
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, workflow)
+
+    def test_aggregation_runs_after_translation_artifact_download_failure(
+        self,
+    ) -> None:
+        # Given / When
+        workflow = WORKFLOW_PATH.read_text(encoding="utf-8")
+        download_start = workflow.index(
+            "- name: Download locale translation artifacts"
+        )
+        aggregate_start = workflow.index(
+            "- name: Aggregate and coordinate release"
+        )
+        aggregate_end = workflow.index(
+            "- name: Read coordinator result"
+        )
+        download_step = workflow[download_start:aggregate_start]
+        aggregate_step = workflow[aggregate_start:aggregate_end]
+
+        # Then download failure is tolerated and aggregation writes BLOCKED audit
+        self.assertIn("continue-on-error: true", download_step)
+        self.assertIn("if: always()", aggregate_step)
+
+    def test_reports_unexpected_acquisition_and_aggregation_failures(self) -> None:
+        # Given / When
+        workflow = WORKFLOW_PATH.read_text(encoding="utf-8")
+        report_start = workflow.index(
+            "- name: Create or update a blocked-refresh issue"
+        )
+        report_end = workflow.index(
+            "- name: Close the previous blocked-refresh issue"
+        )
+        report_step = workflow[report_start:report_end]
+
+        # Then unexpected job failures still enter the reporting path
+        self.assertIn("Prepare unexpected failure result", workflow)
+        self.assertIn("hashFiles('.bpn-work/automation-result.json') == ''", workflow)
+        unexpected_start = workflow.index("- name: Prepare unexpected failure result")
+        unexpected_end = workflow.index(
+            "- name: Create or update a blocked-refresh issue"
+        )
+        unexpected_step = workflow[unexpected_start:unexpected_end]
+        self.assertNotIn("terminologyWarningCount", unexpected_step)
+        self.assertNotIn("terminologyWarningsByLocale", unexpected_step)
+        self.assertIn("always() &&", report_step)
+        self.assertIn("needs.acquire.result == 'failure'", report_step)
+        self.assertIn("needs.aggregate.result == 'failure'", report_step)
 
 
 if __name__ == "__main__":
