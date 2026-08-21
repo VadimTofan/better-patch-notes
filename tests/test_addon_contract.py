@@ -325,31 +325,31 @@ class WindowAndCoreContractTests(unittest.TestCase):
             window_text,
         )
 
-    def test_core_handles_login_combat_deferral_and_slash_reopen(self) -> None:
-        # Given automatic first-login display and manual reopen behavior
+    def test_core_checks_version_after_entering_world_and_by_command(self) -> None:
+        # Given delayed account-version checks and manual reopen behavior
         core_text = (PROJECT_ROOT / "Core.lua").read_text("utf-8-sig")
 
         # When the lifecycle module is inspected
-        # Then it initializes safely, defers combat, and registers both commands
+        # Then it checks after world entry and exposes the version command
         required_contract = (
             'RegisterEvent("ADDON_LOADED")',
-            'RegisterEvent("PLAYER_LOGIN")',
             'RegisterEvent("PLAYER_ENTERING_WORLD")',
-            'UnregisterEvent("PLAYER_ENTERING_WORLD")',
             'RegisterEvent("PLAYER_SPECIALIZATION_CHANGED")',
             'RegisterEvent("PLAYER_REGEN_ENABLED")',
             "addon.InitializeState()",
             "addon.InitializeMinimapButton()",
             "InCombatLockdown()",
-            "addon.HasUnseen",
-            "addon.HasUnseenShared",
             "addon.HasUnseenAddonVersion",
             "addon.MarkAddonVersionShown",
             "local hasNewVersion = addon.HasUnseenAddonVersion()",
-            "if not hasNewVersion and not hasLive and not hasPtr then",
-            "if hasNewVersion then",
+            "if not hasNewVersion then",
+            "if addon.window:IsShown() then",
             "addon.SelectInitialChannel",
             "addon.ShowWindow",
+            "C_Timer.After(1, showForNewVersion)",
+            'message == "version"',
+            "addon.version",
+            "addon.db.lastShownAddonVersion",
             'SLASH_BETTERPATCHNOTES1 = "/bpn"',
             'SLASH_BETTERPATCHNOTES2 = "/betterpatchnotes"',
             "SlashCmdList.BETTERPATCHNOTES",
@@ -360,14 +360,8 @@ class WindowAndCoreContractTests(unittest.TestCase):
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, core_text)
 
-        self.assertIn(
-            'event == "PLAYER_LOGIN" or event == "PLAYER_ENTERING_WORLD"',
-            core_text,
-        )
-        self.assertLess(
-            core_text.index('event == "PLAYER_ENTERING_WORLD"'),
-            core_text.index('UnregisterEvent("PLAYER_ENTERING_WORLD")'),
-        )
+        self.assertNotIn('RegisterEvent("PLAYER_LOGIN")', core_text)
+        self.assertNotIn('UnregisterEvent("PLAYER_ENTERING_WORLD")', core_text)
 
         self.assertLess(
             core_text.index("addon.ShowWindow"),

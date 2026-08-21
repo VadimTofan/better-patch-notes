@@ -1,7 +1,7 @@
 local _, addon = ...
 
 addon.name = "BetterPatchNotes"
-addon.version = "0.2.22"
+addon.version = "0.2.23"
 
 function addon.GetPlayerContext()
     local _, classToken = UnitClass("player")
