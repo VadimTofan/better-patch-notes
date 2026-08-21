@@ -1,3 +1,9 @@
+Version 0.2.22 - 2026-08-21
+- Data: Live 12.1.0; PTR None
+- Added or updated: 20 added; 0 updated
+- Removed: None
+- Locales: Validated deDE, esES, frFR, itIT, koKR, ptBR, ruRU, zhCN, zhTW; English fallbacks: None; 2268 preserved English terminology warnings (deDE: 252; esES: 252; frFR: 252; itIT: 252; koKR: 252; ptBR: 252; ruRU: 252; zhCN: 252; zhTW: 252)
+
 Version 0.2.21 - 2026-08-20
 - Fixed: Mexican Spanish clients now use verified Spain Spanish patch notes when an exact Mexican Spanish localization is unavailable
 - Locales: Spain Spanish is required for automatic releases; Mexican Spanish remains available as an optional validated regional override

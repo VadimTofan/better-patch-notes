@@ -32,13 +32,18 @@ end
 
 eventFrame:RegisterEvent("ADDON_LOADED")
 eventFrame:RegisterEvent("PLAYER_LOGIN")
+eventFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
 eventFrame:RegisterEvent("PLAYER_SPECIALIZATION_CHANGED")
 eventFrame:RegisterEvent("PLAYER_REGEN_ENABLED")
 eventFrame:SetScript("OnEvent", function(_, event, argument)
     if event == "ADDON_LOADED" and argument == addon.name then
         addon.InitializeState()
         addon.InitializeMinimapButton()
-    elseif event == "PLAYER_LOGIN" then
+    elseif event == "PLAYER_LOGIN" or event == "PLAYER_ENTERING_WORLD" then
+        if event == "PLAYER_ENTERING_WORLD" then
+            eventFrame:UnregisterEvent("PLAYER_ENTERING_WORLD")
+        end
+
         showForPlayer()
     elseif event == "PLAYER_SPECIALIZATION_CHANGED"
         and argument == "player"

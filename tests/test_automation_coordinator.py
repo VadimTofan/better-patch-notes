@@ -233,6 +233,45 @@ class AutomationCoordinatorTests(unittest.TestCase):
                 before,
             )
 
+    def test_optional_mexican_spanish_fallback_does_not_block_release(self) -> None:
+        with TemporaryDirectory() as temporary_directory:
+            # Given every required locale passes and only optional esMX falls back
+            files = _release_files(Path(temporary_directory))
+
+            def optional_fallback_validator(
+                batch: dict[str, object],
+            ) -> _TranslationReport:
+                return _TranslationReport(
+                    validated_locales=tuple(
+                        sorted(REQUIRED_TRANSLATION_LOCALES)
+                    ),
+                    fallback_locales=("esMX",),
+                    fallback_reasons={
+                        "esMX": "localization unavailable",
+                    },
+                )
+
+            def refresh(batch_path: Path, data: Path, lua: Path, patch: str):
+                current = json.loads(data.read_text(encoding="utf-8"))
+                current["changes"] = [{"id": "new-data"}]
+                data.write_text(json.dumps(current), encoding="utf-8")
+                lua.write_text("new lua data", encoding="utf-8")
+                return _RefreshResult()
+
+            # When the release is coordinated
+            outcome = coordinate_release(
+                files=files,
+                english_document=_english_document(),
+                current_patch="12.0.7",
+                release_date=date(2026, 8, 5),
+                translate=_translated_batch,
+                validate=optional_fallback_validator,
+                refresh=refresh,
+            )
+
+            # Then optional esMX does not prevent a release-ready result
+            self.assertEqual(outcome.status, RefreshStatus.RELEASE_READY)
+
     def test_meaningful_change_prepares_one_synchronized_release(self) -> None:
         with TemporaryDirectory() as temporary_directory:
             # Given

@@ -334,6 +334,8 @@ class WindowAndCoreContractTests(unittest.TestCase):
         required_contract = (
             'RegisterEvent("ADDON_LOADED")',
             'RegisterEvent("PLAYER_LOGIN")',
+            'RegisterEvent("PLAYER_ENTERING_WORLD")',
+            'UnregisterEvent("PLAYER_ENTERING_WORLD")',
             'RegisterEvent("PLAYER_SPECIALIZATION_CHANGED")',
             'RegisterEvent("PLAYER_REGEN_ENABLED")',
             "addon.InitializeState()",
@@ -357,6 +359,15 @@ class WindowAndCoreContractTests(unittest.TestCase):
         for phrase in required_contract:
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, core_text)
+
+        self.assertIn(
+            'event == "PLAYER_LOGIN" or event == "PLAYER_ENTERING_WORLD"',
+            core_text,
+        )
+        self.assertLess(
+            core_text.index('event == "PLAYER_ENTERING_WORLD"'),
+            core_text.index('UnregisterEvent("PLAYER_ENTERING_WORLD")'),
+        )
 
         self.assertLess(
             core_text.index("addon.ShowWindow"),

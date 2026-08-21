@@ -174,7 +174,11 @@ def coordinate_release(
             _prepare_locale_outcomes(batch, report)
             terminology_warnings = report.uncertain_terms
             validated_locales = report.validated_locales
-            fallback_reasons = report.fallback_reasons
+            fallback_reasons = {
+                locale: reason
+                for locale, reason in report.fallback_reasons.items()
+                if locale in REQUIRED_TRANSLATION_LOCALES
+            }
             if fallback_reasons:
                 restore_snapshot(snapshot)
                 return RefreshOutcome(
