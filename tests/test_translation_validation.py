@@ -486,6 +486,75 @@ class TranslationValidationTests(unittest.TestCase):
                     )
                 )
 
+    def test_accepts_reviewed_semantics_from_the_august_22_run(self) -> None:
+        # Given valid localized semantics rejected by the August 22 dry run
+        examples = (
+            (
+                "deDE",
+                "Applied after casting while silenced.",
+                "Nach dem Wirken im zum Schweigen gebrachten Zustand aktiv.",
+            ),
+            (
+                "esES",
+                "Reduce damage while increasing area damage.",
+                "Reduce el daño a la vez que aumenta el daño de área.",
+            ),
+            (
+                "esES",
+                "Applied after casting while silenced.",
+                "Se aplicó tras lanzar bajo los efectos de silencio.",
+            ),
+            (
+                "frFR",
+                "Cast while talented into Unload.",
+                "Lancé tout en ayant choisi le talent Unload.",
+            ),
+            (
+                "itIT",
+                "The buff was not consumed when casting an ability.",
+                "Il buff non veniva consumato lanciando un'abilità.",
+            ),
+            (
+                "koKR",
+                "The radius decreases as the raid size increases.",
+                "공격대 규모가 커질수록 반경이 점차 줄어듭니다.",
+            ),
+            (
+                "zhCN",
+                "Damage was not properly reduced by reduction effects.",
+                "伤害未被减伤效果正确减免。",
+            ),
+            (
+                "zhTW",
+                "Baseline damage has been increased.",
+                "基礎傷害已調高。",
+            ),
+            (
+                "zhTW",
+                "Cast time reduced to 13 seconds (was 15 seconds).",
+                "施法時間縮短至13秒（原為15秒）。",
+            ),
+            (
+                "zhTW",
+                "The radius decreases as the group size increases.",
+                "半徑隨著團隊規模增加而逐漸縮小。",
+            ),
+        )
+
+        # When each aligned bullet is checked
+        for locale, english, localized in examples:
+            with self.subTest(locale=locale):
+                try:
+                    self.validator._validate_semantic_structure(
+                        locale,
+                        1,
+                        english,
+                        localized,
+                    )
+                except ValueError as error:
+                    # Then natural equivalent wording must remain publishable
+                    self.fail(f"valid {locale} semantics rejected: {error}")
+
     def test_does_not_treat_an_ability_name_as_an_after_condition(self) -> None:
         # Given After the Wildfire is an ability name, not conditional prose
         english = "After the Wildfire healing increased by 25%."

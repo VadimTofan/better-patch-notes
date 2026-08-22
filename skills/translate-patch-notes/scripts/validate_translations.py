@@ -47,11 +47,11 @@ INCREASE_MARKERS = {
     "esMX": ("aument", "increment", "más"),
     "frFR": ("augment", "accru", "plus"),
     "itIT": ("aument", "increment", "più"),
-    "koKR": ("증가", "상향", "늘어"),
+    "koKR": ("증가", "상향", "늘어", "커질"),
     "ptBR": ("aument", "maior", "mais"),
     "ruRU": ("увелич", "повыш", "возраст"),
     "zhCN": ("提高", "增加", "上调", "提升", "延长"),
-    "zhTW": ("提高", "增加", "上調", "提升", "延長"),
+    "zhTW": ("提高", "增加", "上調", "提升", "延長", "調高"),
 }
 
 DECREASE_MARKERS = {
@@ -63,24 +63,26 @@ DECREASE_MARKERS = {
     "koKR": ("감소", "하향", "줄어"),
     "ptBR": ("reduz", "diminu", "menor", "menos"),
     "ruRU": ("уменьш", "сниж", "сократ"),
-    "zhCN": ("降低", "减少", "下调", "削弱"),
-    "zhTW": ("降低", "減少", "下調", "削弱"),
+    "zhCN": ("降低", "减少", "下调", "削弱", "减免"),
+    "zhTW": ("降低", "減少", "下調", "削弱", "縮短", "縮小"),
 }
 
 CONDITION_MARKERS = {
     "deDE": (
         "wenn", "während", "solange", "falls", "sofern", "nachdem",
         "bevor", "bei der verwendung", "beherrscht ihr", "ohne", "beim",
+        "nach dem",
     ),
     "esES": (" si ", "cuando", "mientras", "siempre que", "después", "antes"),
     "esMX": (" si ", "cuando", "mientras", "siempre que", "después", "antes"),
     "frFR": (
         " si ", "lorsque", "quand", "pendant", "tant que", "après",
         "avant", "lors de", "à l’utilisation", "à l'utilisation",
+        "tout en",
     ),
     "itIT": (
         " se ", "quando", "mentre", "finché", "dopo", "prima",
-        "all'utilizzo", "sovracur",
+        "all'utilizzo", "sovracur", "lanciando",
     ),
     "koKR": ("경우", "때", "동안", "중", "후", "전", " 시 "),
     "ptBR": (
@@ -102,10 +104,12 @@ SPANISH_CONDITION_MARKERS = {
     "while": (
         "mientras",
         "durante",
+        "a la vez que",
         "con el talento",
         "con la facultad",
         "con los talentos",
         "con las facultades",
+        "bajo los efectos",
     ),
     "unless": ("a menos que", "salvo que"),
     "after": ("después", "tras"),
