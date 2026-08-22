@@ -1,3 +1,9 @@
+Version 0.2.24 - 2026-08-22
+- Data: Live 12.1.0; PTR None
+- Added or updated: 2 added; 0 updated
+- Removed: None
+- Locales: Validated deDE, esES, frFR, itIT, koKR, ptBR, ruRU, zhCN, zhTW; English fallbacks: None; 2466 preserved English terminology warnings (deDE: 274; esES: 274; frFR: 274; itIT: 274; koKR: 274; ptBR: 274; ruRU: 274; zhCN: 274; zhTW: 274)
+
 Version 0.2.23 - 2026-08-21
 - Fixed the update window so it checks the account-wide last-shown addon version after entering the world and opens once for each newly installed version.
 - Added /bpn version to display the installed and last-shown versions and run the same update check manually.
