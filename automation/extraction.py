@@ -50,6 +50,10 @@ RAIDS = {
 INSTANCE_NAMES = {
     name.casefold(): name for name in DUNGEONS | RAIDS
 }
+ENCOUNTER_INSTANCES = {
+    "ula'tek": "The Venomous Abyss",
+    "ula’tek": "The Venomous Abyss",
+}
 SECTION_NAMES = {
     "classes": "Class",
     "class changes": "Class",
@@ -64,6 +68,7 @@ SECTION_NAMES = {
 }
 NON_PATCH_SECTION_HEADINGS = {
     "delves",
+    "housing",
     "items",
     "lairs",
     "player versus player",
@@ -382,13 +387,19 @@ def extract_changes(
                 and path[0].rstrip().endswith((".", "!", "?"))
             ):
                 continue
-            elif section == "Instance" and not context_name:
+            elif section == "Instance":
                 embedded_names = _embedded_instance_names(path)
+                if not embedded_names:
+                    embedded_names = {
+                        ENCOUNTER_INSTANCES[_structural_key(value)]
+                        for value in path
+                        if _structural_key(value) in ENCOUNTER_INSTANCES
+                    }
                 if len(embedded_names) != 1:
                     raise AmbiguousPatchNote("instance bullet has no name")
                 context_name = embedded_names.pop()
                 context_anchor = section_anchor
-            elif not context_name or section == "Instance":
+            elif not context_name:
                 raise AmbiguousPatchNote("instance bullet has no name")
             if not path:
                 continue

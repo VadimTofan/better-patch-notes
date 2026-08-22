@@ -328,6 +328,30 @@ class PatchNoteExtractionTests(unittest.TestCase):
             changes[0].change,
         )
 
+    def test_maps_the_orphaned_ulatek_encounter_to_its_raid(self) -> None:
+        # Given Blizzard omits the raid heading above the Ula'tek encounter
+        document = _document(
+            "live-hotfix-august-21-2026.html",
+            channel="live",
+        )
+
+        # When the reviewed August 21 article shape is extracted
+        changes = extract_changes(document)
+
+        # Then both bullets remain unchanged under The Venomous Abyss
+        self.assertEqual(1, len(changes))
+        self.assertEqual("Raid", changes[0].category)
+        self.assertEqual("The Venomous Abyss", changes[0].name)
+        self.assertEqual(
+            (
+                "Ula’tek: Adjusted the Caustic Waves from the Gore Rattler "
+                "so they remain above the floor of the main platform.",
+                "Ula’tek: The tooltip for Ula'tek's Volatile Purge no "
+                "longer contains an error.",
+            ),
+            changes[0].change,
+        )
+
     def test_unsupported_sections_do_not_leak_into_a_class(self) -> None:
         # Given an unsupported section follows a named class
         document = replace(
