@@ -495,6 +495,11 @@ class TranslationValidationTests(unittest.TestCase):
                 "Nach dem Wirken im zum Schweigen gebrachten Zustand aktiv.",
             ),
             (
+                "deDE",
+                "Applied when used in tandem with Soul of the Forest.",
+                "In Kombination mit Soul of the Forest angewendet.",
+            ),
+            (
                 "esES",
                 "Reduce damage while increasing area damage.",
                 "Reduce el daño a la vez que aumenta el daño de área.",
@@ -503,6 +508,11 @@ class TranslationValidationTests(unittest.TestCase):
                 "esES",
                 "Applied after casting while silenced.",
                 "Se aplicó tras lanzar bajo los efectos de silencio.",
+            ),
+            (
+                "esES",
+                "Reduce damage while increasing area damage.",
+                "Reduce el daño al tiempo que aumenta el daño de área.",
             ),
             (
                 "frFR",
@@ -520,9 +530,19 @@ class TranslationValidationTests(unittest.TestCase):
                 "공격대 규모가 커질수록 반경이 점차 줄어듭니다.",
             ),
             (
+                "koKR",
+                "Activation rate increased by 33%.",
+                "활성화 주기가 33%만큼 빨라졌습니다.",
+            ),
+            (
                 "zhCN",
                 "Damage was not properly reduced by reduction effects.",
                 "伤害未被减伤效果正确减免。",
+            ),
+            (
+                "zhCN",
+                "The radius decreases as the raid size increases.",
+                "半径随着团队规模的增加而逐渐减小。",
             ),
             (
                 "zhTW",

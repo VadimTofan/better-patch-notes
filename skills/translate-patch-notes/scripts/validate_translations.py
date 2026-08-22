@@ -47,7 +47,7 @@ INCREASE_MARKERS = {
     "esMX": ("aument", "increment", "más"),
     "frFR": ("augment", "accru", "plus"),
     "itIT": ("aument", "increment", "più"),
-    "koKR": ("증가", "상향", "늘어", "커질"),
+    "koKR": ("증가", "상향", "늘어", "커질", "빨라"),
     "ptBR": ("aument", "maior", "mais"),
     "ruRU": ("увелич", "повыш", "возраст"),
     "zhCN": ("提高", "增加", "上调", "提升", "延长"),
@@ -63,7 +63,7 @@ DECREASE_MARKERS = {
     "koKR": ("감소", "하향", "줄어"),
     "ptBR": ("reduz", "diminu", "menor", "menos"),
     "ruRU": ("уменьш", "сниж", "сократ"),
-    "zhCN": ("降低", "减少", "下调", "削弱", "减免"),
+    "zhCN": ("降低", "减少", "下调", "削弱", "减免", "减小"),
     "zhTW": ("降低", "減少", "下調", "削弱", "縮短", "縮小"),
 }
 
@@ -71,7 +71,7 @@ CONDITION_MARKERS = {
     "deDE": (
         "wenn", "während", "solange", "falls", "sofern", "nachdem",
         "bevor", "bei der verwendung", "beherrscht ihr", "ohne", "beim",
-        "nach dem",
+        "nach dem", "in kombination mit",
     ),
     "esES": (" si ", "cuando", "mientras", "siempre que", "después", "antes"),
     "esMX": (" si ", "cuando", "mientras", "siempre que", "después", "antes"),
@@ -105,6 +105,7 @@ SPANISH_CONDITION_MARKERS = {
         "mientras",
         "durante",
         "a la vez que",
+        "al tiempo que",
         "con el talento",
         "con la facultad",
         "con los talentos",
