@@ -82,11 +82,13 @@ CONDITION_MARKERS = {
     "frFR": (
         " si ", "lorsque", "quand", "pendant", "tant que", "après",
         "avant", "lors de", "à l’utilisation", "à l'utilisation",
-        "tout en", "lorsqu", "lors d'", "alors qu", "à l'intérieur",
+        "tout en", "lorsqu", "lors d'", "lors du", "alors qu",
+        "à l'intérieur", "au début",
     ),
     "itIT": (
         " se ", "quando", "mentre", "finché", "dopo", "prima",
-        "all'utilizzo", "sovracur", "lanciando",
+        "all'utilizzo", "sovracur", "lanciando", "al contempo",
+        "all'interno",
     ),
     "koKR": ("경우", "때", "동안", "중", "후", "전", " 시 "),
     "ptBR": (

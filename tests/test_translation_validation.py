@@ -585,9 +585,29 @@ class TranslationValidationTests(unittest.TestCase):
                 "Utiliser Harpoon à l'intérieur de la cavité causait une chute.",
             ),
             (
+                "frFR",
+                "Cancels when swapping talents.",
+                "S'annule lors du changement de talents.",
+            ),
+            (
+                "frFR",
+                "Cancels when a raid encounter starts.",
+                "S'annule au début d'une rencontre de raid.",
+            ),
+            (
                 "itIT",
                 "The buff was not consumed when casting an ability.",
                 "Il buff non veniva consumato lanciando un'abilità.",
+            ),
+            (
+                "itIT",
+                "Reduce damage while increasing area damage.",
+                "Riduce i danni aumentando al contempo i danni ad area.",
+            ),
+            (
+                "itIT",
+                "Using Harpoon while inside the cavity caused a fall.",
+                "Usare Harpoon all'interno della cavità causava una caduta.",
             ),
             (
                 "koKR",
