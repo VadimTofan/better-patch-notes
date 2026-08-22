@@ -525,6 +525,21 @@ class TranslationValidationTests(unittest.TestCase):
                 "Der Radius nimmt mit steigender Schlachtzugsgröße ab.",
             ),
             (
+                "deDE",
+                "Wither did not count toward the damage increase.",
+                "Wither zählte nicht zum Schadensbonus.",
+            ),
+            (
+                "deDE",
+                "Cast time reduced to 13 seconds (was 15 seconds).",
+                "Die Zauberzeit wurde auf 13 Sekunden verkürzt (vorher 15 Sekunden).",
+            ),
+            (
+                "deDE",
+                "The radius decreases as the raid size increases.",
+                "Der Radius verringert sich, je größer der Schlachtzug wird.",
+            ),
+            (
                 "esES",
                 "Reduce damage while increasing area damage.",
                 "Reduce el daño a la vez que aumenta el daño de área.",

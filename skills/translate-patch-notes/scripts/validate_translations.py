@@ -42,7 +42,7 @@ ENGLISH_CONDITION_PATTERN = re.compile(
 )
 
 INCREASE_MARKERS = {
-    "deDE": ("erhöh", "steiger", "steig", "mehr"),
+    "deDE": ("erhöh", "steiger", "steig", "mehr", "bonus", "größer"),
     "esES": ("aument", "increment", "más"),
     "esMX": ("aument", "increment", "más"),
     "frFR": ("augment", "accru", "plus"),
@@ -57,6 +57,7 @@ INCREASE_MARKERS = {
 DECREASE_MARKERS = {
     "deDE": (
         "verringer", "reduzier", "weniger", "gesenkt", "nimmt mit",
+        "verkürzt",
     ),
     "esES": ("reduc", "reduj", "disminu", "menos"),
     "esMX": ("reduc", "reduj", "disminu", "menos"),
