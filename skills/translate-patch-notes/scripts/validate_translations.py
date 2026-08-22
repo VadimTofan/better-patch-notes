@@ -42,7 +42,7 @@ ENGLISH_CONDITION_PATTERN = re.compile(
 )
 
 INCREASE_MARKERS = {
-    "deDE": ("erhöh", "steiger", "mehr"),
+    "deDE": ("erhöh", "steiger", "steig", "mehr"),
     "esES": ("aument", "increment", "más"),
     "esMX": ("aument", "increment", "más"),
     "frFR": ("augment", "accru", "plus"),
@@ -55,7 +55,9 @@ INCREASE_MARKERS = {
 }
 
 DECREASE_MARKERS = {
-    "deDE": ("verringer", "reduzier", "weniger", "gesenkt"),
+    "deDE": (
+        "verringer", "reduzier", "weniger", "gesenkt", "nimmt mit",
+    ),
     "esES": ("reduc", "reduj", "disminu", "menos"),
     "esMX": ("reduc", "reduj", "disminu", "menos"),
     "frFR": ("rédu", "diminu", "moins"),
@@ -71,14 +73,15 @@ CONDITION_MARKERS = {
     "deDE": (
         "wenn", "während", "solange", "falls", "sofern", "nachdem",
         "bevor", "bei der verwendung", "beherrscht ihr", "ohne", "beim",
-        "nach dem", "in kombination mit",
+        "nach dem", "in kombination mit", "gleichzeitig", " vor ",
+        " nach ", "bei dem", " als ",
     ),
     "esES": (" si ", "cuando", "mientras", "siempre que", "después", "antes"),
     "esMX": (" si ", "cuando", "mientras", "siempre que", "después", "antes"),
     "frFR": (
         " si ", "lorsque", "quand", "pendant", "tant que", "après",
         "avant", "lors de", "à l’utilisation", "à l'utilisation",
-        "tout en",
+        "tout en", "lorsqu", "lors d'", "alors qu", "à l'intérieur",
     ),
     "itIT": (
         " se ", "quando", "mentre", "finché", "dopo", "prima",
@@ -106,6 +109,7 @@ SPANISH_CONDITION_MARKERS = {
         "durante",
         "a la vez que",
         "al tiempo que",
+        "estando",
         "con el talento",
         "con la facultad",
         "con los talentos",

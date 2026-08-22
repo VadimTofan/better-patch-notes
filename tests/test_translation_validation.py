@@ -500,6 +500,31 @@ class TranslationValidationTests(unittest.TestCase):
                 "In Kombination mit Soul of the Forest angewendet.",
             ),
             (
+                "deDE",
+                "Reduce damage while increasing area damage.",
+                "Verringert Schaden und erhöht gleichzeitig Flächenschaden.",
+            ),
+            (
+                "deDE",
+                "Removed the creature pack before the encounter.",
+                "Die Kreaturengruppe vor der Begegnung wurde entfernt.",
+            ),
+            (
+                "deDE",
+                "She casts after landing for the final phase.",
+                "Sie wirkt nach der Landung für die finale Phase.",
+            ),
+            (
+                "deDE",
+                "Fixed an issue where the bar reached 100% when health was 99%.",
+                "Ein Problem, bei dem der Balken 100% erreichte, als die Gesundheit 99% betrug, wurde behoben.",
+            ),
+            (
+                "deDE",
+                "The radius decreases as the raid size increases.",
+                "Der Radius nimmt mit steigender Schlachtzugsgröße ab.",
+            ),
+            (
                 "esES",
                 "Reduce damage while increasing area damage.",
                 "Reduce el daño a la vez que aumenta el daño de área.",
@@ -515,9 +540,34 @@ class TranslationValidationTests(unittest.TestCase):
                 "Reduce el daño al tiempo que aumenta el daño de área.",
             ),
             (
+                "esES",
+                "Applied after casting while silenced.",
+                "Se aplicó tras lanzar estando silenciado.",
+            ),
+            (
                 "frFR",
                 "Cast while talented into Unload.",
                 "Lancé tout en ayant choisi le talent Unload.",
+            ),
+            (
+                "frFR",
+                "Applied when used in tandem with Soul of the Forest.",
+                "Appliqué lorsqu'il est utilisé avec Soul of the Forest.",
+            ),
+            (
+                "frFR",
+                "Cancels when swapping talents.",
+                "S'annule lors d'un changement de talents.",
+            ),
+            (
+                "frFR",
+                "Defeating her while she channels can block the door.",
+                "La vaincre alors qu'elle canalise peut bloquer la porte.",
+            ),
+            (
+                "frFR",
+                "Using Harpoon while inside the cavity caused a fall.",
+                "Utiliser Harpoon à l'intérieur de la cavité causait une chute.",
             ),
             (
                 "itIT",
