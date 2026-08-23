@@ -100,24 +100,18 @@ class SourceRegistryTests(unittest.TestCase):
             {source.channel for source in registry.sources},
         )
 
-    def test_project_registry_includes_august_18_class_tuning(self) -> None:
-        # Given the reviewed official live class-tuning forum topic
+    def test_project_registry_excludes_superseded_august_18_topic(self) -> None:
+        # Given Blizzard incorporated the forum changes into its hotfix article
         registry_path = PROJECT_ROOT / "automation" / "sources.json"
 
         # When the configured sources are loaded
         registry = load_registry(registry_path)
 
-        # Then the exact Blizzard topic is eligible for live discovery
-        source = next(
-            source
-            for source in registry.sources
-            if "2336820" in source.url
+        # Then the superseded topic is no longer polled as a separate source
+        self.assertNotIn(
+            "2336820",
+            "\n".join(source.url for source in registry.sources),
         )
-        self.assertEqual("forum_topic", source.kind)
-        self.assertEqual("live", source.channel)
-        self.assertEqual("current", source.patch)
-        self.assertEqual("en", source.locale)
-        self.assertIn("Class Tuning Incoming", source.title_patterns)
 
     def test_rejects_unknown_registry_properties(self) -> None:
         with TemporaryDirectory() as temporary_directory:
