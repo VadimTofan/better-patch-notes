@@ -42,7 +42,9 @@ ENGLISH_CONDITION_PATTERN = re.compile(
 )
 
 INCREASE_MARKERS = {
-    "deDE": ("erhöh", "steiger", "steig", "mehr", "bonus", "größer"),
+    "deDE": (
+        "erhöh", "steiger", "steig", "mehr", "bonus", "größer", "wachs",
+    ),
     "esES": ("aument", "increment", "más"),
     "esMX": ("aument", "increment", "más"),
     "frFR": ("augment", "accru", "plus"),
@@ -66,7 +68,10 @@ DECREASE_MARKERS = {
     "koKR": ("감소", "하향", "줄어"),
     "ptBR": ("reduz", "diminu", "menor", "menos"),
     "ruRU": ("уменьш", "сниж", "сократ"),
-    "zhCN": ("降低", "减少", "下调", "削弱", "减免", "减小"),
+    "zhCN": (
+        "降低", "减少", "下调", "削弱", "减免", "减小", "缩减", "缩小",
+        "缩短",
+    ),
     "zhTW": ("降低", "減少", "下調", "削弱", "縮短", "縮小"),
 }
 
@@ -118,6 +123,7 @@ SPANISH_CONDITION_MARKERS = {
         "con los talentos",
         "con las facultades",
         "bajo los efectos",
+        "bajo ",
     ),
     "unless": ("a menos que", "salvo que"),
     "after": ("después", "tras"),

@@ -354,6 +354,71 @@ class TranslationValidationTests(unittest.TestCase):
             # Then the valid increase wording must not be rejected
             self.fail(f"valid Chinese extension was rejected: {error}")
 
+    def test_accepts_german_growth_as_an_increase(self) -> None:
+        # Given German expresses an increasing raid size as "wachsender"
+        english = (
+            "The radius decreases as raid size increases."
+        )
+        localized = (
+            "Der Radius nimmt mit wachsender Raid-Größe ab."
+        )
+
+        # When the aligned directions are checked
+        try:
+            self.validator._validate_semantic_structure(
+                "deDE",
+                1,
+                english,
+                localized,
+            )
+        except ValueError as error:
+            # Then both valid directions must be accepted
+            self.fail(f"valid German directions were rejected: {error}")
+
+    def test_accepts_spanish_bajo_for_a_while_condition(self) -> None:
+        # Given Spanish expresses "while silenced" as "bajo silencio"
+        english = "The effect applies after casting while silenced."
+        localized = (
+            "El efecto se aplica tras lanzar bajo silencio."
+        )
+
+        # When the aligned conditions are checked
+        try:
+            self.validator._validate_semantic_structure(
+                "esES",
+                1,
+                english,
+                localized,
+            )
+        except ValueError as error:
+            # Then both conditions must be accepted
+            self.fail(f"valid Spanish conditions were rejected: {error}")
+
+    def test_accepts_simplified_chinese_size_reduction_verbs(self) -> None:
+        # Given natural Simplified Chinese uses three valid reduction verbs
+        examples = (
+            ("Size reduced.", "体型缩减。"),
+            ("Size reduced.", "尺寸缩小。"),
+            ("Cast time reduced.", "施法时间缩短。"),
+        )
+
+        # When each aligned direction is checked
+        for english, localized in examples:
+            with self.subTest(localized=localized):
+                try:
+                    self.validator._validate_semantic_structure(
+                        "zhCN",
+                        1,
+                        english,
+                        localized,
+                    )
+                except ValueError as error:
+                    # Then every valid reduction must be accepted
+                    self.fail(
+                        "valid Simplified Chinese reduction was rejected: "
+                        f"{error}"
+                    )
+
     def test_accepts_majority_approved_semantic_synonym(self) -> None:
         # Given two independent judges approved a valid unlisted Russian synonym
         batch = _translation_batch()
