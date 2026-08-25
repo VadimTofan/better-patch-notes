@@ -1,7 +1,8 @@
 ## Interface: 120100
 ## Title: Better Patch Notes
 ## Notes: Shows relevant live and PTR patch notes on login.
-## Version: 0.2.24
+## Version: 0.2.25
+## IconTexture: Interface\AddOns\BetterPatchNotes\Media\AddonIcon
 ## X-Curse-Project-ID: 1635519
 ## SavedVariables: BetterPatchNotesDB
 

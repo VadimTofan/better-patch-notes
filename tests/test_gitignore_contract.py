@@ -39,6 +39,7 @@ class GitIgnoreContractTests(unittest.TestCase):
             "LICENSE",
             "requirements-dev.txt",
             "BetterPatchNotes.toc",
+            "Media/AddonIcon.tga",
             "Addon.lua",
             "Localization.lua",
             "PatchNotesData.lua",

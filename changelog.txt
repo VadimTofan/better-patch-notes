@@ -1,3 +1,7 @@
+Version 0.2.25 - 2026-08-25
+- Added an icon for Better Patch Notes in World of Warcraft's addon list.
+- Fixed automatic discovery of official Blizzard forum class and raid tuning announcements.
+
 Version 0.2.24 - 2026-08-22
 - Data: Live 12.1.0; PTR None
 - Added or updated: 2 added; 0 updated

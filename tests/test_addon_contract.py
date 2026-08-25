@@ -1,9 +1,11 @@
 from pathlib import Path
+import struct
 import unittest
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 TOC_PATH = PROJECT_ROOT / "BetterPatchNotes.toc"
+ICON_PATH = PROJECT_ROOT / "Media" / "AddonIcon.tga"
 
 
 def _toc_files() -> list[str]:
@@ -59,6 +61,23 @@ class AddonManifestTests(unittest.TestCase):
         for name, text in module_text.items():
             with self.subTest(module=name):
                 self.assertIn("local _, addon = ...", text)
+
+    def test_manifest_declares_a_64_pixel_addon_icon(self) -> None:
+        # Given the icon shown beside the addon in Blizzard's addon list
+        expected_metadata = (
+            "## IconTexture: "
+            "Interface\\AddOns\\BetterPatchNotes\\Media\\AddonIcon"
+        )
+
+        # When the manifest and TGA header are inspected
+        toc_text = TOC_PATH.read_text(encoding="utf-8-sig")
+
+        # Then the packaged icon is declared at the supported compact size
+        self.assertIn(expected_metadata, toc_text)
+        self.assertTrue(ICON_PATH.exists())
+        header = ICON_PATH.read_bytes()[:18]
+        width, height = struct.unpack("<HH", header[12:16])
+        self.assertEqual((64, 64), (width, height))
 
 
 # Describe: localized addon interface labels

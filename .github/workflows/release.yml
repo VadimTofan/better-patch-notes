@@ -21,6 +21,7 @@ on:
     branches: [main]
     paths:
       - BetterPatchNotes.toc
+      - Media/AddonIcon.tga
       - Addon.lua
       - Localization.lua
       - PatchNotesData.lua
@@ -149,10 +150,10 @@ jobs:
             "Core.lua"
             "changelog.txt"
           )
-
           rm -rf "$release_dir"
-          mkdir -p "$package_dir"
+          mkdir -p "$package_dir/Media"
           cp "${runtime_files[@]}" "$package_dir/"
+          cp "Media/AddonIcon.tga" "$package_dir/Media/"
           (cd "$release_dir" && zip -q -r "$archive" BetterPatchNotes)
           echo "archive=$archive" >> "$GITHUB_OUTPUT"
 

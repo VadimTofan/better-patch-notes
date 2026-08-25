@@ -13,6 +13,18 @@ NETLIFY_IGNORE_PATH = (
 
 # Describe: automatic CurseForge releases
 class ReleaseWorkflowTests(unittest.TestCase):
+    def test_addon_icon_changes_trigger_a_release(self) -> None:
+        # Given the addon icon is a packaged runtime asset
+        workflow = WORKFLOW_PATH.read_text(encoding="utf-8")
+        push_start = workflow.find("  push:")
+        dispatch_start = workflow.find("  workflow_dispatch:")
+
+        # When the push path filters are inspected
+        push_configuration = workflow[push_start:dispatch_start]
+
+        # Then changing the icon launches the release workflow
+        self.assertIn("- Media/AddonIcon.tga", push_configuration)
+
     def test_release_can_run_for_an_exact_reusable_commit(self) -> None:
         # Given a scheduled refresh that creates a release commit with GITHUB_TOKEN
         expected_phrases = (
@@ -213,6 +225,7 @@ class ReleaseWorkflowTests(unittest.TestCase):
         # Given the exact set of files loaded by the addon at runtime
         runtime_files = (
             "BetterPatchNotes.toc",
+            "Media/AddonIcon.tga",
             "Addon.lua",
             "Localization.lua",
             "PatchNotesData.lua",

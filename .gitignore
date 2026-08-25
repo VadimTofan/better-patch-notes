@@ -55,6 +55,9 @@ __pycache__/
 
 # Runtime addon package.
 !/BetterPatchNotes.toc
+!/Media/
+/Media/*
+!/Media/AddonIcon.tga
 !/Addon.lua
 !/Localization.lua
 !/PatchNotesData.lua
