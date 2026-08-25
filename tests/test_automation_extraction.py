@@ -279,6 +279,47 @@ class PatchNoteExtractionTests(unittest.TestCase):
         self.assertEqual("Arcane", changes[0].specialization)
         self.assertEqual(date(2026, 8, 18), changes[0].effective_date)
 
+    def test_extracts_a_named_raid_encounter_tuning_topic(self) -> None:
+        # Given Blizzard publishes a raid hotfix without a Raid heading
+        document = replace(
+            _document("class-notes.html", channel="live"),
+            title="Nymrissa Wavecaller Tuning Changes",
+            published_at=datetime(
+                2026,
+                8,
+                23,
+                1,
+                22,
+                tzinfo=timezone.utc,
+            ),
+            body=(
+                b"<p>We just sent a hotfix with the following changes to "
+                b"Nymrissa Wavecaller on Mythic difficulty:</p>"
+                b"<ul>"
+                b"<li>Abyssal Rain's initial damage reduced by 12.5% on "
+                b"Mythic difficulty</li>"
+                b"<li>Frost Burst damage reduced by 40%</li>"
+                b"</ul>"
+            ),
+        )
+
+        # When the reviewed encounter-specific forum shape is extracted
+        changes = extract_changes(document)
+
+        # Then its bullets are retained as one raid record
+        self.assertEqual(1, len(changes))
+        self.assertEqual("Raid", changes[0].category)
+        self.assertEqual("The Venomous Abyss", changes[0].name)
+        self.assertEqual(date(2026, 8, 23), changes[0].effective_date)
+        self.assertEqual(
+            (
+                "Abyssal Rain's initial damage reduced by 12.5% on Mythic "
+                "difficulty",
+                "Frost Burst damage reduced by 40%",
+            ),
+            changes[0].change,
+        )
+
     def test_skips_unscoped_dungeon_prose_in_the_august_hotfix_shape(self) -> None:
         # Given Blizzard places a general sentence before a named dungeon
         document = _document(

@@ -113,6 +113,49 @@ class SourceRegistryTests(unittest.TestCase):
             "\n".join(source.url for source in registry.sources),
         )
 
+    def test_project_registry_discovers_live_tuning_forum_categories(self) -> None:
+        # Given the reviewed project registry for unattended Live discovery
+        registry_path = PROJECT_ROOT / "automation" / "sources.json"
+
+        # When the configured sources are loaded
+        registry = load_registry(registry_path)
+
+        # Then both official Live forum categories are monitored narrowly
+        forum_sources = {
+            source.url: source
+            for source in registry.sources
+            if source.kind == "forum_category"
+        }
+        self.assertEqual(
+            set(forum_sources),
+            {
+                "https://us.forums.blizzard.com/en/wow/c/171.json",
+                "https://us.forums.blizzard.com/en/wow/c/40.json",
+            },
+        )
+        self.assertEqual(
+            forum_sources[
+                "https://us.forums.blizzard.com/en/wow/c/171.json"
+            ].title_patterns,
+            ("class tuning incoming",),
+        )
+        self.assertEqual(
+            forum_sources[
+                "https://us.forums.blizzard.com/en/wow/c/40.json"
+            ].title_patterns,
+            ("tuning changes", "adjustments"),
+        )
+
+    def test_project_registry_accepts_verified_nymrissa_blue_author(self) -> None:
+        # Given the reviewed project registry for official forum authors
+        registry_path = PROJECT_ROOT / "automation" / "sources.json"
+
+        # When the configured registry is loaded
+        registry = load_registry(registry_path)
+
+        # Then the verified Blizzard developer can publish eligible notes
+        self.assertIn("Limestone-1964469", registry.blue_authors)
+
     def test_rejects_unknown_registry_properties(self) -> None:
         with TemporaryDirectory() as temporary_directory:
             # Given

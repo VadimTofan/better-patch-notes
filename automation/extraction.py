@@ -51,6 +51,7 @@ INSTANCE_NAMES = {
     name.casefold(): name for name in DUNGEONS | RAIDS
 }
 ENCOUNTER_INSTANCES = {
+    "nymrissa wavecaller": "The Venomous Abyss",
     "ula'tek": "The Venomous Abyss",
     "ula’tek": "The Venomous Abyss",
 }
@@ -239,6 +240,15 @@ def _announced_tuning_date(document: SourceDocument) -> date | None:
     return _effective_date(value)
 
 
+def _announced_instance(document: SourceDocument) -> str:
+    normalized_title = document.title.casefold()
+    for encounter_name, instance_name in ENCOUNTER_INSTANCES.items():
+        if encounter_name in normalized_title:
+            return instance_name
+
+    return ""
+
+
 def extract_changes(
     document: SourceDocument,
     *,
@@ -257,9 +267,10 @@ def extract_changes(
 
     blocks = parser.blocks
     grouped: dict[tuple[str, str, str, str, date], list[str]] = {}
-    section: str | None = None
+    announced_instance = _announced_instance(document)
+    section: str | None = "Raid" if announced_instance else None
     section_anchor = ""
-    context_name = ""
+    context_name = announced_instance
     context_anchor = ""
     announced_date = _announced_tuning_date(document)
     current_date = announced_date or document.published_at.date()

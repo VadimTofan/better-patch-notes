@@ -11,6 +11,7 @@
   "blueAuthors": [
     "Bornakk",
     "Kaivax",
+    "Limestone-1964469",
     "Linxy",
     "Nethaera",
     "SpeedyRogue-2168761"
@@ -27,6 +28,27 @@
       "titlePatterns": [
         "hotfixes",
         "content update notes"
+      ]
+    },
+    {
+      "url": "https://us.forums.blizzard.com/en/wow/c/171.json",
+      "kind": "forum_category",
+      "channel": "live",
+      "patch": "current",
+      "locale": "en",
+      "titlePatterns": [
+        "class tuning incoming"
+      ]
+    },
+    {
+      "url": "https://us.forums.blizzard.com/en/wow/c/40.json",
+      "kind": "forum_category",
+      "channel": "live",
+      "patch": "current",
+      "locale": "en",
+      "titlePatterns": [
+        "tuning changes",
+        "adjustments"
       ]
     },
     {
