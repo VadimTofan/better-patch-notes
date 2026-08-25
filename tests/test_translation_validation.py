@@ -419,6 +419,29 @@ class TranslationValidationTests(unittest.TestCase):
                         f"{error}"
                     )
 
+    def test_accepts_russian_bolshe_as_an_increase(self) -> None:
+        # Given natural Russian expresses increased damage as "more damage"
+        english = (
+            "Wild Thrash now deals 300% increased damage when striking "
+            "more than 2 targets (was 200%)."
+        )
+        localized = (
+            "Теперь Wild Thrash наносит на 300% больше урона при поражении "
+            "более чем 2 целей (ранее — 200%)."
+        )
+
+        # When the aligned change direction is checked
+        try:
+            self.validator._validate_semantic_structure(
+                "ruRU",
+                2,
+                english,
+                localized,
+            )
+        except ValueError as error:
+            # Then the valid Russian comparative must be accepted
+            self.fail(f"valid Russian increase was rejected: {error}")
+
     def test_accepts_majority_approved_semantic_synonym(self) -> None:
         # Given two independent judges approved a valid unlisted Russian synonym
         batch = _translation_batch()
