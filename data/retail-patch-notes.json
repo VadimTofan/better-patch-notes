@@ -1,7 +1,2873 @@
 {
   "schemaVersion": 5,
-  "updatedAt": "2026-08-22T08:46:58.586434+00:00",
+  "updatedAt": "2026-08-25T07:14:53.210687+00:00",
   "changes": [
+    {
+      "id": "change-269ee6818e0ee114",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-08-25",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Death Knight",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "Developers’ notes: Frost Death Knight has performed under our expectations at the beginning of Curse of Ula’tek, especially in the Venomous Abyss raid."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Death Knight",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Entwicklerhinweise: Frost Death Knight hat zu Beginn von Curse of Ula’tek – insbesondere im Venomous Abyss-Schlachtzug – unter unseren Erwartungen abgeschnitten."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "esES": {
+          "name": "Death Knight",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Notas de los desarrolladores: Frost Death Knight ha rendido por debajo de nuestras expectativas al principio de Curse of Ula’tek, especialmente en la banda de Venomous Abyss."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "frFR": {
+          "name": "Death Knight",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Notes des développeurs : Frost Death Knight a obtenu des résultats inférieurs à nos attentes au début de Curse of Ula’tek, en particulier dans le raid de Venomous Abyss."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "itIT": {
+          "name": "Death Knight",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Note degli sviluppatori: Frost Death Knight ha performato al di sotto delle nostre aspettative all'inizio di Curse of Ula’tek, specialmente nell'incursione di Venomous Abyss."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "koKR": {
+          "name": "Death Knight",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "개발자 노트: Frost Death Knight은(는) Curse of Ula’tek의 시작 시점, 특히 Venomous Abyss 공격대에서 기대에 못 미치는 성능을 보였습니다."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "ptBR": {
+          "name": "Death Knight",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Notas dos desenvolvedores: Frost Death Knight teve um desempenho abaixo das nossas expectativas no início de Curse of Ula’tek, especialmente na raide Venomous Abyss."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "ruRU": {
+          "name": "Death Knight",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Заметки разработчиков: эффективность Frost Death Knight оказалась ниже наших ожиданий в начале Curse of Ula’tek, особенно в рейде Venomous Abyss."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "zhCN": {
+          "name": "Death Knight",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "开发人员说明：在 Curse of Ula’tek 初期，尤其是在 Venomous Abyss 团队副本中，Frost Death Knight 的表现低于我们的预期。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "zhTW": {
+          "name": "Death Knight",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "開發者備註：Frost Death Knight 在 Curse of Ula’tek 開始時的表現低於我們的預期，特別是在 Venomous Abyss 團隊副本中。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        }
+      },
+      "retrievedAt": "2026-08-25T07:14:53.210687+00:00"
+    },
+    {
+      "id": "change-538b945ed28ab52f",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-08-25",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Death Knight",
+          "specialization": "Frost",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "All ability damage and melee damage increased by 6%.",
+            "Obliterate damage increased by 15%."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Death Knight",
+          "specialization": "Frost",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Sämtlicher Fähigkeiten- und Nahkampfschaden um 6% erhöht.",
+            "Schaden von Obliterate um 15% erhöht."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "esES": {
+          "name": "Death Knight",
+          "specialization": "Frost",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "El daño de todas las facultades y el daño cuerpo a cuerpo han aumentado un 6%.",
+            "El daño de Obliterate ha aumentado un 15%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "frFR": {
+          "name": "Death Knight",
+          "specialization": "Frost",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Tous les dégâts des aptitudes et les dégâts de mêlée sont augmentés de 6%.",
+            "Dégâts de Obliterate augmentés de 15%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "itIT": {
+          "name": "Death Knight",
+          "specialization": "Frost",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Tutti i danni delle abilità e i danni in mischia sono aumentati del 6%.",
+            "Danni di Obliterate aumentati del 15%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "koKR": {
+          "name": "Death Knight",
+          "specialization": "Frost",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "모든 능력 피해량 및 근접 피해량이 6%만큼 증가했습니다.",
+            "Obliterate 피해가 15% 만큼 증가했습니다."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "ptBR": {
+          "name": "Death Knight",
+          "specialization": "Frost",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Todo o dano de habilidades e dano corpo a corpo foi aumentado em 6%.",
+            "O dano de Obliterate foi aumentado em 15%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "ruRU": {
+          "name": "Death Knight",
+          "specialization": "Frost",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Урон от всех способностей и урон в ближнем бою увеличены на 6%.",
+            "Урон от Obliterate увеличен на 15%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "zhCN": {
+          "name": "Death Knight",
+          "specialization": "Frost",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "所有技能伤害和近战伤害提高 6%。",
+            "Obliterate 伤害提高 15%。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "zhTW": {
+          "name": "Death Knight",
+          "specialization": "Frost",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "所有技能傷害與近戰傷害提高 6%。",
+            "Obliterate 傷害提高 15%。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        }
+      },
+      "retrievedAt": "2026-08-25T07:14:53.210687+00:00"
+    },
+    {
+      "id": "change-d0d92d6df870366b",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-08-25",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Demon Hunter",
+          "specialization": "Havoc",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "All damage increased by 3%."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Demon Hunter",
+          "specialization": "Havoc",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Sämtlicher Schaden um 3% erhöht."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "esES": {
+          "name": "Demon Hunter",
+          "specialization": "Havoc",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Todo el daño ha aumentado un 3%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "frFR": {
+          "name": "Demon Hunter",
+          "specialization": "Havoc",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Tous les dégâts sont augmentés de 3%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "itIT": {
+          "name": "Demon Hunter",
+          "specialization": "Havoc",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Tutti i danni sono aumentati del 3%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "koKR": {
+          "name": "Demon Hunter",
+          "specialization": "Havoc",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "모든 피해량이 3%만큼 증가했습니다."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "ptBR": {
+          "name": "Demon Hunter",
+          "specialization": "Havoc",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Todo o dano foi aumentado em 3%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "ruRU": {
+          "name": "Demon Hunter",
+          "specialization": "Havoc",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Весь урон увеличен на 3%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "zhCN": {
+          "name": "Demon Hunter",
+          "specialization": "Havoc",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "所有伤害提高 3%。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "zhTW": {
+          "name": "Demon Hunter",
+          "specialization": "Havoc",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "所有傷害提高 3%。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        }
+      },
+      "retrievedAt": "2026-08-25T07:14:53.210687+00:00"
+    },
+    {
+      "id": "change-7f592fa043e58da5",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-08-25",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Demon Hunter",
+          "specialization": "Vengeance",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "Mastery: Fel Blood effectiveness increased by 24%."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Demon Hunter",
+          "specialization": "Vengeance",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Mastery: Effektivität von Fel Blood um 24% erhöht."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "esES": {
+          "name": "Demon Hunter",
+          "specialization": "Vengeance",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Mastery: La eficacia de Fel Blood ha aumentado un 24%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "frFR": {
+          "name": "Demon Hunter",
+          "specialization": "Vengeance",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Mastery : L'efficacité de Fel Blood a été augmentée de 24%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "itIT": {
+          "name": "Demon Hunter",
+          "specialization": "Vengeance",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Mastery: Efficacia di Fel Blood aumentata del 24%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "koKR": {
+          "name": "Demon Hunter",
+          "specialization": "Vengeance",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Mastery: Fel Blood의 효과가 24%만큼 증가했습니다."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "ptBR": {
+          "name": "Demon Hunter",
+          "specialization": "Vengeance",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Mastery: Eficácia de Fel Blood aumentada em 24%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "ruRU": {
+          "name": "Demon Hunter",
+          "specialization": "Vengeance",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Mastery: эффективность Fel Blood увеличена на 24%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "zhCN": {
+          "name": "Demon Hunter",
+          "specialization": "Vengeance",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Mastery：Fel Blood 的效果提高了 24%。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "zhTW": {
+          "name": "Demon Hunter",
+          "specialization": "Vengeance",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Mastery：Fel Blood 的效益提高了 24%。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        }
+      },
+      "retrievedAt": "2026-08-25T07:14:53.210687+00:00"
+    },
+    {
+      "id": "change-9e7efc14ad77972f",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-08-25",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Druid",
+          "specialization": "Restoration",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "Developers’ notes: These changes are intended to address Rejuvenation and Wild Growth feeling weak in season 2, particularly in dungeons. We’re also increasing the power of the 4-piece class set to make sure it’s an impactful and noticeable set bonus. These changes are accompanied by slight nerfs to their raid healing to keep them around the same power in raid while increasing their power in dungeons.",
+            "4-piece class set bonus increases Genesis duration by 8 seconds (was 4 seconds).",
+            "Rejuvenation and Germination healing increased by 15%. Does not apply to PvP combat.",
+            "Wild Growth healing increased by 10%.",
+            "Nature’s Bounty replicates 10% of Regrowth’s healing (was 20%).",
+            "Everbloom heals 5 targets (was 6 targets).",
+            "Everbloom heals for 48% of Lifebloom’s final heal (was 40%). Does not apply to PvP combat."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Druid",
+          "specialization": "Restoration",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Entwicklerhinweise: Diese Änderungen sollen dem Umstand entgegenwirken, dass Rejuvenation and Wild Growth in Saison 2 – insbesondere in Dungeons – sich schwach anfühlt. Wir erhöhen zudem die Macht des 4-Teile-Klassensets, um sicherzustellen, dass es ein wirkungsvoller und spürbarer Setbonus ist. Begleitet werden diese Änderungen von leichten Abschwächungen ihrer Schlachtzugsheilung, um ihre Macht im Schlachtzug auf einem ähnlichen Niveau zu halten und gleichzeitig ihre Macht in Dungeons zu erhöhen.",
+            "4-teiliger Klassensetbonus erhöht die Dauer von Genesis um 8 Sekunden (vorher 4 Sekunden).",
+            "Heilung von Rejuvenation and Germination um 15% erhöht. Gilt nicht im Kampf gegen PvP.",
+            "Heilung von Wild Growth um 10% erhöht.",
+            "Nature’s Bounty repliziert 10% der Heilung von Regrowth’s (vorher 20%).",
+            "Everbloom heilt 5 Ziele (vorher 6 Ziele).",
+            "Everbloom heilt für 48% der finalen Heilung von Lifebloom’s (vorher 40%). Gilt nicht für PvP-Kämpfe."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "esES": {
+          "name": "Druid",
+          "specialization": "Restoration",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Notas de los desarrolladores: Estos cambios están destinados a solucionar que Rejuvenation and Wild Growth se sienta débil en la temporada 2, particularmente en las mazmorras. También vamos a aumentar el poder del conjunto de clase de 4 piezas para asegurarnos de que sea un bonus de conjunto impactante y notable. Estos cambios vienen acompañados de ligeras reducciones en su sanación en banda para mantenerlos en un nivel de poder similar en banda mientras aumenta su poder en las mazmorras.",
+            "El bonus de conjunto de clase de 4 piezas aumenta la duración de Genesis en 8 segundos (antes 4 segundos).",
+            "Sanación de Rejuvenation and Germination aumentada un 15%. No se aplica en el combate de PvP.",
+            "La sanación de Wild Growth ha aumentado un 10%.",
+            "Nature’s Bounty replica un 10% de la sanación de Regrowth’s (antes 20%).",
+            "Everbloom sana a 5 objetivos (antes 6 objetivos).",
+            "Everbloom sana un 48% de la sanación final de Lifebloom’s (antes 40%). No se aplica en combate de PvP."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "frFR": {
+          "name": "Druid",
+          "specialization": "Restoration",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Notes des développeurs : Ces changements visent à remédier au fait que Rejuvenation and Wild Growth semble faible à la saison 2, en particulier dans les donjons. Nous augmentons également la puissance du set de classe à 4 pièces pour nous assurer qu'il s'agit d'un bonus de set percutant et remarquable. Ces modifications s'accompagnent de légers affaiblissements de leurs soins en raid afin de maintenir leur puissance à un niveau similaire en raid tout en l'augmentant dans les donjons.",
+            "Le bonus de set de classe à 4 pièces augmente la durée de Genesis de 8 secondes (au lieu de 4 secondes).",
+            "Soins de Rejuvenation and Germination augmentés de 15%. Ne s'applique pas au combat PvP.",
+            "Soins prodigués par Wild Growth augmentés de 10%.",
+            "Nature’s Bounty réplique 10% des soins de Regrowth’s (au lieu de 20%).",
+            "Everbloom soigne 5 cibles (au lieu de 6 cibles).",
+            "Everbloom soigne à hauteur de 48% du soin final de Lifebloom’s (au lieu de 40%). Ne s'applique pas au combat PvP."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "itIT": {
+          "name": "Druid",
+          "specialization": "Restoration",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Note degli sviluppatori: Questi cambiamenti hanno lo scopo di risolvere la sensazione di debolezza di Rejuvenation and Wild Growth nella stagione 2, in particolare nei dungeon. Aumentiamo anche la potenza del set di classe da 4 pezzi per assicurarci che sia un bonus di set incisivo e rilevante. Questi cambiamenti sono accompagnati da leggeri nerf alle loro cure in incursione per mantenerne la potenza simile in incursione aumentandone al contempo l'efficacia nei dungeon.",
+            "Il bonus di classe del set da 4 pezzi aumenta la durata di Genesis di 8 secondi (era 4 secondi).",
+            "Cura di Rejuvenation and Germination aumentata di 15%. Non si applica al combattimento in PvP.",
+            "Cure di Wild Growth aumentate del 10%.",
+            "Nature’s Bounty replica 10% della cura di Regrowth’s (era 20%).",
+            "Everbloom cura 5 bersagli (erano 6 bersagli).",
+            "Everbloom cura per il 48% della cura finale di Lifebloom’s (era 40%). Non si applica al combattimento in PvP."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "koKR": {
+          "name": "Druid",
+          "specialization": "Restoration",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "개발자 노트: 이번 변경 사항은 시즌 2에서 Rejuvenation and Wild Growth(이)가 특히 던전에서 약하게 느껴지는 문제를 해결하기 위한 것입니다. 또한 던전에서의 성능을 높이면서 공격대 내 성능은 기존과 비슷하게 유지할 수 있도록 4세트 클래스 세트의 위력을 강화하고, 공격대 치유량은 소폭 하향 조정합니다.",
+            "4세트 직업 전문화 효과가 Genesis의 지속시간을 8초만큼 증가시킵니다 (기존에는 4초).",
+            "Rejuvenation and Germination의 치유량이 15%(으)로 증가했습니다. PvP 전투에는 적용되지 않습니다.",
+            "Wild Growth 치유량이 10% 만큼 증가했습니다.",
+            "Nature’s Bounty이(가) Regrowth’s 치유량의 10%를 복제합니다(기존 20%).",
+            "Everbloom이(가) 5명의 대상을 치유합니다(기존 6명).",
+            "Everbloom이(가) Lifebloom’s 최종 치유량의 48%만큼 치유합니다 (기존 40%). PvP 전투에는 적용되지 않습니다."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "ptBR": {
+          "name": "Druid",
+          "specialization": "Restoration",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Notas dos desenvolvedores: Estas alterações visam resolver a sensação de fraqueza de Rejuvenation and Wild Growth na temporada 2, particularmente em masmorras. Também estamos aumentando o poder do conjunto de classe de 4 peças para garantir que seja um bônus de conjunto impactante e perceptível. Essas alterações vêm acompanhadas de pequenos enfraquecimentos na cura em raide para mantê-los com um poder semelhante em raides, enquanto aumentamos seu poder em masmorras.",
+            "O bônus de conjunto de classe de 4 peças aumenta a duração de Genesis em 8 segundos (era 4 segundos).",
+            "Cura de Rejuvenation and Germination aumentada em 15%. Não se aplica a combate de PvP.",
+            "A cura de Wild Growth foi aumentada em 10%.",
+            "Nature’s Bounty replica 10% da cura de Regrowth’s (antes era 20%).",
+            "Everbloom cura 5 alvos (antes eram 6 alvos).",
+            "Everbloom cura 48% da cura final de Lifebloom’s (era 40%). Não se aplica a combate em PvP."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "ruRU": {
+          "name": "Druid",
+          "specialization": "Restoration",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Заметки разработчиков: эти изменения призваны исправить ощущение слабости Rejuvenation and Wild Growth в сезоне 2, особенно в подземельях. Мы также повышаем силу классового комплекта из 4 предметов, чтобы этот бонус комплекта был ощутимым и эффективным. Эти изменения сопровождаются небольшим ослаблением их исцеления в рейдах, чтобы сохранить их эффективность в рейдах на прежнем уровне при одновременном повышении силы в подземельях.",
+            "Бонус от 4 предметов классового комплекта увеличивает длительность действия Genesis на 8 сек. (было — на 4 сек.).",
+            "Эффект Rejuvenation and Germination увеличивает исцеление на 15%. Не применяется в бою с PvP.",
+            "Эффективность исцеления Wild Growth увеличена на 10%.",
+            "Nature’s Bounty воссоздает 10% исцеления заклинания Regrowth’s (ранее — 20%).",
+            "Заклинание Everbloom исцеляет 5 целей (ранее — 6 целей).",
+            "Everbloom восполняет здоровье в объеме 48% от финального исцеления Lifebloom’s (было — 40%). Не применяется в боях против PvP."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "zhCN": {
+          "name": "Druid",
+          "specialization": "Restoration",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "开发人员说明：这些改动旨在解决 Rejuvenation and Wild Growth 在第 2 赛季中表现疲软的问题，尤其是在地下城中。我们还提高了 4 件套职业套装的强度，以确保它是一个具有影响力且显眼的套装奖励。伴随着这些改动，我们对其团队治疗能力进行了轻微削弱，以使其在团队副本中保持大致相同的强度，同时提升其在地下城中的强度。",
+            "4件职业套装奖励使Genesis持续时间延长8秒（原为4秒）。",
+            "Rejuvenation and Germination 治疗量提高了 15%。不适用于 PvP 战斗。",
+            "Wild Growth 治疗量提高 10%。",
+            "Nature’s Bounty 复制 Regrowth’s 的 10% 治疗量（原为 20%）。",
+            "Everbloom 现在治疗 5 个目标（原为 6 个目标）。",
+            "Everbloom 治疗量为Lifebloom’s最终治疗量的48%（原为40%）。不适用于PvP战斗。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "zhTW": {
+          "name": "Druid",
+          "specialization": "Restoration",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "開發者備註：這些變更旨在解決 Rejuvenation and Wild Growth 在 2 賽季中（特別是在地城中）感覺偏弱的問題。我們同時也提高了 4 職業套裝的威力，以確保它是一個有影響力且顯著的套裝加成。伴隨這些變更的是對其團隊治療的微幅削弱，以使其在團隊中的威力保持在相同水準，同時提升他們在地城中的威力。",
+            "4件職業套裝加成使Genesis持續時間延長8秒（原為4秒）。",
+            "Rejuvenation and Germination 的治療量提高了 15%。不適用於 PvP 戰鬥。",
+            "Wild Growth 治療量提高 10%。",
+            "Nature’s Bounty 會複製 Regrowth’s 治療量的 10%（原為 20%）。",
+            "Everbloom 現在治療 5 個目標（原為 6 個目標）。",
+            "Everbloom治療量為Lifebloom’s最終治療量的48%（原為40%）。不適用於PvP戰鬥。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        }
+      },
+      "retrievedAt": "2026-08-25T07:14:53.210687+00:00"
+    },
+    {
+      "id": "change-abdb57ff0f3d8c47",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-08-25",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Evoker",
+          "specialization": "Preservation",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "Developers’ notes: We’re further increasing some of the Preservation triage heals to help them keep up with other healers in dungeons.",
+            "Verdant Embrace healing increased by 25%. Does not apply to PvP combat.",
+            "Living Flame healing increased by 20%. Does not apply to PvP combat.",
+            "Dream Simulacrum increases healing of Verdant Embrace by 40% (was 30%)."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Evoker",
+          "specialization": "Preservation",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Entwicklerhinweise: Wir erhöhen einige der Preservation-Zielheilungen weiter, damit sie in Dungeons mit anderen Heilern Schritt halten können.",
+            "Heilung von Verdant Embrace um 25% erhöht. Gilt nicht im Kampf gegen PvP.",
+            "Heilung von Living Flame um 20% erhöht. Gilt nicht im Kampf gegen PvP.",
+            "Dream Simulacrum erhöht die Heilung von Verdant Embrace um 40% (vorher 30%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "esES": {
+          "name": "Evoker",
+          "specialization": "Preservation",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Notas de los desarrolladores: Vamos a seguir aumentando algunas de las sanaciones de auxilio de Preservation para ayudarles a mantenerse al día con otros sanadores en las mazmorras.",
+            "Sanación de Verdant Embrace aumentada un 25%. No se aplica en el combate de PvP.",
+            "Sanación de Living Flame aumentada un 20%. No se aplica en el combate de PvP.",
+            "Dream Simulacrum aumenta la sanación de Verdant Embrace un 40% (antes 30%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "frFR": {
+          "name": "Evoker",
+          "specialization": "Preservation",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Notes des développeurs : Nous continuons d'augmenter certains soins de triage de Preservation pour les aider à rivaliser avec les autres soigneurs dans les donjons.",
+            "Soins de Verdant Embrace augmentés de 25%. Ne s'applique pas au combat PvP.",
+            "Soins de Living Flame augmentés de 20%. Ne s'applique pas au combat PvP.",
+            "Dream Simulacrum augmente les soins de Verdant Embrace de 40% (au lieu de 30%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "itIT": {
+          "name": "Evoker",
+          "specialization": "Preservation",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Note degli sviluppatori: Stiamo ulteriormente aumentando alcune delle cure di emergenza di Preservation per aiutarle a tenere il passo con gli altri healer nei dungeon.",
+            "Cura di Verdant Embrace aumentata di 25%. Non si applica al combattimento in PvP.",
+            "Cura di Living Flame aumentata di 20%. Non si applica al combattimento in PvP.",
+            "Dream Simulacrum aumenta la cura di Verdant Embrace di 40% (era 30%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "koKR": {
+          "name": "Evoker",
+          "specialization": "Preservation",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "개발자 노트: 던전에서 다른 치유 담당 역할을 더 잘 따라갈 수 있도록 일부 Preservation 긴급 치유량을 추가로 증가시킵니다.",
+            "Verdant Embrace의 치유량이 25%(으)로 증가했습니다. PvP 전투에는 적용되지 않습니다.",
+            "Living Flame의 치유량이 20%(으)로 증가했습니다. PvP 전투에는 적용되지 않습니다.",
+            "Dream Simulacrum이(가) Verdant Embrace의 치유량을 40% 만큼 증가시킵니다(기존 30%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "ptBR": {
+          "name": "Evoker",
+          "specialization": "Preservation",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Notas dos desenvolvedores: Estamos aumentando ainda mais algumas das curas de triagem de Preservation para ajudá-las a acompanhar outros curadores em masmorras.",
+            "Cura de Verdant Embrace aumentada em 25%. Não se aplica a combate de PvP.",
+            "Cura de Living Flame aumentada em 20%. Não se aplica a combate de PvP.",
+            "Dream Simulacrum aumenta a cura de Verdant Embrace em 40% (antes era 30%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "ruRU": {
+          "name": "Evoker",
+          "specialization": "Preservation",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Заметки разработчиков: мы продолжаем увеличивать некоторые целебные заклинания Preservation, чтобы помочь им не отставать от других целителей в подземельях.",
+            "Эффект Verdant Embrace увеличивает исцеление на 25%. Не применяется в бою с PvP.",
+            "Эффект Living Flame увеличивает исцеление на 20%. Не применяется в бою с PvP.",
+            "Dream Simulacrum увеличивает эффективность исцеления заклинания Verdant Embrace на 40% (ранее — 30%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "zhCN": {
+          "name": "Evoker",
+          "specialization": "Preservation",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "开发人员说明：我们正在进一步提高 Preservation 的部分急救治疗量，以帮助他们在地下城中跟上其他治疗者的步伐。",
+            "Verdant Embrace 治疗量提高了 25%。不适用于 PvP 战斗。",
+            "Living Flame 治疗量提高了 20%。不适用于 PvP 战斗。",
+            "Dream Simulacrum 使 Verdant Embrace 的治疗量提高 40%（原为 30%）。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "zhTW": {
+          "name": "Evoker",
+          "specialization": "Preservation",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "開發者備註：我們將進一步提高部分 Preservation 救急治療的效果，以幫助他們在地城中跟上其他治療者的腳步。",
+            "Verdant Embrace 的治療量提高了 25%。不適用於 PvP 戰鬥。",
+            "Living Flame 的治療量提高了 20%。不適用於 PvP 戰鬥。",
+            "Dream Simulacrum 使 Verdant Embrace 的治療量提高 40%（原為 30%）。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        }
+      },
+      "retrievedAt": "2026-08-25T07:14:53.210687+00:00"
+    },
+    {
+      "id": "change-c2dca1e131f118ef",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-08-25",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Hunter",
+          "specialization": "Beast Mastery",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "Developers’ notes: We’re looking to increase Beast Mastery area damage and cleave capabilities.",
+            "Wild Thrash now deals 300% increased damage when striking more than 2 targets (was 200%).",
+            "Beast Cleave now causes your pets to strike nearby enemies for 70% of the damage dealt (was 55%)."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Hunter",
+          "specialization": "Beast Mastery",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Entwicklerhinweise: Wir möchten den Flächenschaden und die Cleave-Fähigkeiten von Beast Mastery erhöhen.",
+            "Wild Thrash verursacht jetzt 300% erhöhten Schaden, wenn mehr als 2 Ziele getroffen werden (vorher 200%).",
+            "Beast Cleave bewirkt jetzt, dass Eure Begleiter nahe Ziele für 70% des verursachten Schadens treffen (vorher 55%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "esES": {
+          "name": "Hunter",
+          "specialization": "Beast Mastery",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Notas de los desarrolladores: Queremos aumentar la capacidad de daño de área y de ataque envolvente de Beast Mastery.",
+            "Wild Thrash ahora inflige un 300% más de daño al golpear a más de 2 objetivos (antes 200%).",
+            "Beast Cleave ahora hace que tus mascotas golpeen a los enemigos cercanos infligiendo un 70% del daño infligido (antes 55%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "frFR": {
+          "name": "Hunter",
+          "specialization": "Beast Mastery",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Notes des développeurs : Nous cherchons à augmenter les dégâts de zone et les capacités d'effet de zone de Beast Mastery.",
+            "Wild Thrash inflige désormais 300% de dégâts supplémentaires lorsqu'il touche plus de 2 cibles (au lieu de 200%).",
+            "Beast Cleave fait désormais frapper les ennemis proches par vos familiers pour 70% des dégâts infligés (au lieu de 55%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "itIT": {
+          "name": "Hunter",
+          "specialization": "Beast Mastery",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Note degli sviluppatori: Vogliamo aumentare i danni ad area e le capacità di colpo adiacente (cleave) di Beast Mastery.",
+            "Wild Thrash ora infligge 300% danni aumentati quando colpisce più di 2 bersagli (erano 200%).",
+            "Beast Cleave ora fa sì che i tuoi pet colpiscano i nemici vicini per 70% del danno inflitto (era 55%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "koKR": {
+          "name": "Hunter",
+          "specialization": "Beast Mastery",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "개발자 노트: Beast Mastery의 광역 피해 및 횡베기 능력을 강화하고자 합니다.",
+            "Wild Thrash이(가) 이제 300%명 초과의 대상을 공격할 때 피해량이 2 증가합니다(기존 200%).",
+            "Beast Cleave이(가) 이제 소환수로 하여금 준 피해의 70%만큼 주위 적들을 공격하게 합니다(기존 55%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "ptBR": {
+          "name": "Hunter",
+          "specialization": "Beast Mastery",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Notas dos desenvolvedores: Queremos aumentar a capacidade de dano em área e dano em cadeia (cleave) de Beast Mastery.",
+            "Wild Thrash agora causa 300% de dano aumentado ao atingir mais de 2 alvos (antes era 200%).",
+            "Beast Cleave agora faz com que seus lacaios atinjam inimigos próximos causando 70% do dano causado (antes era 55%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "ruRU": {
+          "name": "Hunter",
+          "specialization": "Beast Mastery",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Заметки разработчиков: мы хотим увеличить урон по площади и возможности поражения нескольких целей для Beast Mastery.",
+            "Теперь Wild Thrash наносит на 300% больше урона при поражении более чем 2 целей (ранее — 200%).",
+            "Теперь Beast Cleave заставляет ваших питомцев наносить ближайшим противникам урон в размере 70% от нанесенного урона (ранее — 55%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "zhCN": {
+          "name": "Hunter",
+          "specialization": "Beast Mastery",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "开发人员说明：我们期望提高 Beast Mastery 的范围伤害和顺劈能力。",
+            "Wild Thrash 现在当击中超过 2 个目标时，造成的伤害提高 300%（原为 200%）。",
+            "Beast Cleave 现在使你的宠物对附近的敌人造成相当于所造成伤害 70% 的打击（原为 55%）。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "zhTW": {
+          "name": "Hunter",
+          "specialization": "Beast Mastery",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "開發者備註：我們希望提高 Beast Mastery 的範圍傷害與順劈能力。",
+            "Wild Thrash 現在當攻擊超過 2 個目標時，會造成 300% 的額外傷害（原為 200%）。",
+            "Beast Cleave 現在會使你的寵物攻擊附近的敵人，造成相當於所造成傷害 70% 的傷害（原為 55%）。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        }
+      },
+      "retrievedAt": "2026-08-25T07:14:53.210687+00:00"
+    },
+    {
+      "id": "change-0c6042ad406c32e2",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-08-25",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Hunter",
+          "specialization": "Survival",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "All damage dealt by you and your pets increased by 4%."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Hunter",
+          "specialization": "Survival",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Sämtlicher von Euch und euren Begleitern verursachte Schaden um 4% erhöht."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "esES": {
+          "name": "Hunter",
+          "specialization": "Survival",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Todo el daño infligido por ti y tus mascotas ha aumentado un 4%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "frFR": {
+          "name": "Hunter",
+          "specialization": "Survival",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Tous les dégâts infligés par vous et vos sujets sont augmentés de 4%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "itIT": {
+          "name": "Hunter",
+          "specialization": "Survival",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Tutti i danni inflitti da te e dai tuoi pet sono aumentati del 4%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "koKR": {
+          "name": "Hunter",
+          "specialization": "Survival",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "플레이어와 소환수가 입히는 모든 피해량이 4%만큼 증가했습니다."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "ptBR": {
+          "name": "Hunter",
+          "specialization": "Survival",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Todo o dano causado por você e seus mascotes foi aumentado em 4%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "ruRU": {
+          "name": "Hunter",
+          "specialization": "Survival",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Весь урон, наносимый вами и вашими питомцами, увеличен на 4%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "zhCN": {
+          "name": "Hunter",
+          "specialization": "Survival",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "你和你的宠物造成的 所有伤害提高 4%。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "zhTW": {
+          "name": "Hunter",
+          "specialization": "Survival",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "你和你的寵物造成的的所有傷害提高 4%。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        }
+      },
+      "retrievedAt": "2026-08-25T07:14:53.210687+00:00"
+    },
+    {
+      "id": "change-32e55daac6aa56b3",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-08-25",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Mage",
+          "specialization": "Frost",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "Developers’ notes: We’re primarily focused on Frost’s performance in Mythic Keystone dungeons. The recent removal of the health increase from Improved Ice Barrier had a greater effect on Frost’s overall survivability than intended. We like the symmetry of the three Improved Barrier talents having one additional effect, and Frost has historically had a slightly larger absorb than Arcane and Fire, so we’re baking it into the baseline absorb amount rather than re-attaching it to Improved Ice Barrier. We’re also making some targeted increases to Frost’s area of effect damage.",
+            "Ice Barrier absorb amount increased to 35% of maximum health (was 30%). Does not apply to PvP combat.",
+            "Blizzard damage increased by 10%.",
+            "Frostbite Talent: Shatter damage to nearby enemies increased by 10%.",
+            "Frostfire: Isothermic Core - Meteor damage increased by 25%."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Mage",
+          "specialization": "Frost",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Entwicklerhinweise: Wir konzentrieren uns primär auf die Leistung von Frost’s in Mythic Keystone-Dungeons. Die kürzliche Entfernung der Gesundheitserhöhung von Improved Ice Barrier hatte einen größeren Effekt auf die Gesamtüberlebensfähigkeit von Frost’s als beabsichtigt. Uns gefällt die Symmetrie, dass die drei Improved Barrier-Talente einen zusätzlichen Effekt haben, und Frost hatte historisch gesehen einen etwas größeren Schild als Arcane and Fire, weshalb wir ihn in den Basis-Absorptionswert einbauen, anstatt ihn wieder an Improved Ice Barrier zu knüpfen. Wir nehmen außerdem einige gezielte Erhöhungen am Flächenschaden von Frost’s vor.",
+            "Absorbierter Betrag von Ice Barrier auf 35% der maximalen Gesundheit erhöht (war 30%). Gilt nicht für PvP-Gefechte.",
+            "Schaden von Blizzard um 10% erhöht.",
+            "Frostbite Talent: Schaden von Shatter an nahen Feinden um 10% erhöht.",
+            "Frostfire: Schaden von Isothermic Core - Meteor um 25% erhöht."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "esES": {
+          "name": "Mage",
+          "specialization": "Frost",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Notas de los desarrolladores: Nos centramos principalmente en el rendimiento de Frost’s en las mazmorras de Mythic Keystone. La reciente eliminación del aumento de salud de Improved Ice Barrier tuvo un efecto mayor de lo previsto en la Supervivencia general de Frost’s. Nos gusta la simetría de que los tres talentos de Improved Barrier tengan un efecto adicional, y Frost históricamente ha tenido una absorción ligeramente mayor que Arcane and Fire, por lo que vamos a integrarlo directamente en la cantidad de absorción base en lugar de volver a asociarlo a Improved Ice Barrier. También vamos a realizar algunos aumentos específicos en el daño de área de efecto de Frost’s.",
+            "La cantidad de absorción de Ice Barrier ha aumentado al 35% de la salud máxima (antes 30%). No se aplica al combate contra PvP.",
+            "El daño de Blizzard ha aumentado un 10%.",
+            "Frostbite Talent: El daño de Shatter a los enemigos cercanos ha aumentado un 10%.",
+            "Frostfire: El daño de Isothermic Core - Meteor ha aumentado un 25%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "frFR": {
+          "name": "Mage",
+          "specialization": "Frost",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Notes des développeurs : Nous nous concentrons principalement sur les performances de Frost’s dans les donjons de Mythic Keystone. La récente suppression de l'augmentation de points de vie de Improved Ice Barrier a eu un effet sur la survivabilité globale de Frost’s supérieur à celui prévu. Nous aimons la symétrie des trois talents de Improved Barrier ayant un effet supplémentaire, et Frost a historiquement eu une absorption légèrement plus grande que Arcane and Fire, nous l'intégrons donc au montant d'absorption de base plutôt que de le rattacher à Improved Ice Barrier. Nous procédons également à des augmentations ciblées des dégâts de zone de Frost’s.",
+            "Montant d'absorption de Ice Barrier augmenté à 35% du maximum de points de vie (au lieu de 30%). Ne s'applique pas au combat PvP.",
+            "Dégâts de Blizzard augmentés de 10%.",
+            "Frostbite Talent : Les dégâts de Shatter infligés aux ennemis proches ont été augmentés de 10%.",
+            "Frostfire : Les dégâts de Isothermic Core - Meteor ont été augmentés de 25%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "itIT": {
+          "name": "Mage",
+          "specialization": "Frost",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Note degli sviluppatori: Ci stiamo concentrando principalmente sulle prestazioni di Frost’s nei dungeon di Mythic Keystone. La recente rimozione dell'aumento di salute da Improved Ice Barrier ha avuto un effetto sulla sopravvivenza complessiva di Frost’s maggiore del previsto. Ci piace la simmetria dei tre talenti di Improved Barrier che hanno un effetto aggiuntivo ciascuno, e Frost ha storicamente avuto un assorbimento leggermente superiore rispetto a Arcane and Fire, quindi lo integriamo nell'importo di assorbimento di base anziché riassociarlo a Improved Ice Barrier. Stiamo anche apportando alcuni aumenti mirati ai danni ad area di effetto di Frost’s.",
+            "Quantità di assorbimento di Ice Barrier aumentata al 35% della salute massima (in precedenza 30%). Non si applica al combattimento in PvP.",
+            "Danni di Blizzard aumentati del 10%.",
+            "Frostbite Talent: danno di Shatter ai nemici vicini aumentato del 10%.",
+            "Frostfire: Danni di Isothermic Core - Meteor aumentati del 25%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "koKR": {
+          "name": "Mage",
+          "specialization": "Frost",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "개발자 노트: Mythic Keystone 던전에서의 Frost’s 성능에 주로 초점을 맞추고 있습니다. 최근 Improved Ice Barrier(으)로부터의 생명력 증가 효과가 제거되면서 Frost’s의 전반적인 생존력에 의도치 않게 큰 영향이 있었습니다. 세 가지 Improved Barrier 특성이 각각 하나의 추가 효과를 가지는 대칭성을 선호하며, Frost은(는) 역사적으로 Arcane and Fire보다 흡수량이 약간 더 컸으므로, 이를 Improved Ice Barrier(으)로 다시 연결하는 대신 기본 흡수량에 내재시키고자 합니다. 또한 Frost’s의 광역 피해량을 대상에 맞춰 증가시킵니다.",
+            "Ice Barrier 흡수량이 최대 생명력의 35%(으)로 증가했습니다 (기존: 30%). PvP 전투에는 적용되지 않습니다.",
+            "Blizzard 피해가 10% 만큼 증가했습니다.",
+            "Frostbite Talent: 근처 적에게 주는 Shatter 피해가 10%만큼 증가했습니다.",
+            "Frostfire: Isothermic Core - Meteor 피해량이 25%만큼 증가했습니다."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "ptBR": {
+          "name": "Mage",
+          "specialization": "Frost",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Notas dos desenvolvedores: Estamos focados principalmente no desempenho de Frost’s em masmorras de Mythic Keystone. A recente remoção do aumento de vida de Improved Ice Barrier teve um efeito maior na sobrevivência geral de Frost’s do que o pretendido. Gostamos da simetria dos três talentos de Improved Barrier terem um efeito adicional, e Frost historicamente teve uma absorção ligeiramente maior do que Arcane and Fire; portanto, estamos incorporando isso na quantidade de absorção básica em vez de reassociá-lo a Improved Ice Barrier. Também estamos fazendo alguns aumentos direcionados no dano em área de efeito de Frost’s.",
+            "A quantidade de absorção de Ice Barrier foi aumentada para 35% da saúde máxima (era 30%). Não se aplica a combate de PvP.",
+            "O dano de Blizzard foi aumentado em 10%.",
+            "Frostbite Talent: dano de Shatter a inimigos próximos aumentado em 10%.",
+            "Frostfire: Dano de Isothermic Core - Meteor aumentado em 25%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "ruRU": {
+          "name": "Mage",
+          "specialization": "Frost",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Заметки разработчиков: мы в первую очередь сосредоточены на эффективности Frost’s в подземельях Mythic Keystone. Недавнее удаление прибавки к здоровью от Improved Ice Barrier оказало большее влияние на общую выживаемость Frost’s, чем предполагалось. Нам нравится симметрия трех талантов Improved Barrier, имеющих один дополнительный эффект, а Frost исторически имел чуть больший объем поглощения, чем Arcane and Fire, поэтому мы встраиваем его в базовое значение поглощения, а не привязываем обратно к Improved Ice Barrier. Мы также делаем точечные увеличения урона Frost’s по области.",
+            "Объем поглощения Ice Barrier увеличен до 35% от максимального запаса здоровья (было — 30%). Не применяется в боях против PvP.",
+            "Урон от Blizzard увеличен на 10%.",
+            "Frostbite Talent: урон от Shatter по находящимся рядом противникам увеличен на 10%.",
+            "Frostfire: урон Isothermic Core - Meteor увеличен на 25%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "zhCN": {
+          "name": "Mage",
+          "specialization": "Frost",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "开发人员说明：我们主要关注 Frost’s 在 Mythic Keystone 地下城中的表现。最近移除 Improved Ice Barrier 生命值加成的改动对 Frost’s 整体生存能力产生的影响超出了预期。我们很喜欢三个 Improved Barrier 天赋各自拥有一个额外效果的对称性，而且历史经验表明 Frost 的吸收量略大于 Arcane and Fire，因此我们将其直接融入基础吸收量中，而不是重新将其附加到 Improved Ice Barrier 上。我们还针对 Frost’s 的范围伤害进行了定向提升。",
+            "Ice Barrier 吸收量提高至最大生命值的 35%（原为 30%）。该改动不适用于 PvP 战斗。",
+            "Blizzard 伤害提高 10%。",
+            "Frostbite Talent：Shatter对附近敌人的伤害提高了10%。",
+            "Frostfire：Isothermic Core - Meteor 造成的伤害提高了 25%。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "zhTW": {
+          "name": "Mage",
+          "specialization": "Frost",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "開發者備註：我們主要專注於 Frost’s 在 Mythic Keystone 地城中的表現。最近從 Improved Ice Barrier 中移除生命值提高效果，對 Frost’s 整體存活率產生的影響大於預期。我們喜歡這三個 Improved Barrier 天賦各自擁有一個額外效果的對稱性，且 Frost 過往的吸收量比 Arcane and Fire 稍微大一些，因此我們將其直接融入基礎吸收量中，而不是重新附加到 Improved Ice Barrier 上。我們同時也對 Frost’s 的範圍傷害進行了一些針對性的提高。",
+            "Ice Barrier 吸收量提高至最大生命值的 35%（原為 30%）。不適用於 PvP 戰鬥。",
+            "Blizzard 傷害提高 10%。",
+            "Frostbite Talent：Shatter對附近敵人的傷害提高10%。",
+            "Frostfire：Isothermic Core - Meteor 傷害提高了 25%。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        }
+      },
+      "retrievedAt": "2026-08-25T07:14:53.210687+00:00"
+    },
+    {
+      "id": "change-478f0820dd4e2961",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-08-25",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Monk",
+          "specialization": "Brewmaster",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "Developers’ note: We’re adjusting the absorption of Celestial Brew and Celestial Infusion to improve its impact as a defensive option and to help address pain points players are experiencing in some encounters.",
+            "All damage increased by 3%.",
+            "Celestial Brew and Celestial Infusion absorb value increased by 20%."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Monk",
+          "specialization": "Brewmaster",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Entwicklerhinweis: Wir passen die Absorption von Celestial Brew and Celestial Infusion an, um ihre Wirkung als defensive Option zu verbessern und Frustpunkte von Spielern bei einigen Begegnungen zu lindern.",
+            "Sämtlicher Schaden um 3% erhöht.",
+            "Absorptionswert von Celestial Brew and Celestial Infusion um 20% erhöht."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "esES": {
+          "name": "Monk",
+          "specialization": "Brewmaster",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Nota de los desarrolladores: Vamos a ajustar la absorción de Celestial Brew and Celestial Infusion para mejorar su impacto como opción defensiva y ayudar a solucionar los inconvenientes que experimentan los jugadores en algunos encuentros.",
+            "Todo el daño ha aumentado un 3%.",
+            "El valor de absorción de Celestial Brew and Celestial Infusion ha aumentado un 20%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "frFR": {
+          "name": "Monk",
+          "specialization": "Brewmaster",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Note des développeurs : nous ajustons l'absorption de Celestial Brew and Celestial Infusion pour améliorer son impact en tant qu'option défensive et pour aider à résoudre les difficultés rencontrées par les joueurs dans certaines rencontres.",
+            "Tous les dégâts sont augmentés de 3%.",
+            "Valeur d'absorption de Celestial Brew and Celestial Infusion augmentée de 20%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "itIT": {
+          "name": "Monk",
+          "specialization": "Brewmaster",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Nota degli sviluppatori: Stiamo regolando l'assorbimento di Celestial Brew and Celestial Infusion per migliorarne l'efficacia come opzione difensiva e per contribuire a risolvere le criticità riscontrate dai giocatori in alcuni scontri.",
+            "Tutti i danni sono aumentati del 3%.",
+            "Valore di assorbimento di Celestial Brew and Celestial Infusion aumentato del 20%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "koKR": {
+          "name": "Monk",
+          "specialization": "Brewmaster",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "개발자 노트: 방어 수단으로서의 효과를 높이고 일부 우두머리전에서 플레이어가 겪는 어려움을 완화하기 위해 Celestial Brew and Celestial Infusion의 흡수량을 조정합니다.",
+            "모든 피해량이 3%만큼 증가했습니다.",
+            "Celestial Brew and Celestial Infusion 흡수량이 20% 만큼 증가했습니다."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "ptBR": {
+          "name": "Monk",
+          "specialization": "Brewmaster",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Nota dos desenvolvedores: Estamos ajustando a absorção de Celestial Brew and Celestial Infusion para melhorar seu impacto como uma opção defensiva e ajudar a resolver pontos problemáticos enfrentados pelos jogadores em alguns encontros.",
+            "Todo o dano foi aumentado em 3%.",
+            "O valor de absorção de Celestial Brew and Celestial Infusion foi aumentado em 20%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "ruRU": {
+          "name": "Monk",
+          "specialization": "Brewmaster",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Заметка разработчиков: мы корректируем объем поглощения заклинания Celestial Brew and Celestial Infusion, чтобы повысить его эффективность в качестве защитного средства и сгладить трудности, с которыми игроки сталкиваются в некоторых сражениях.",
+            "Весь урон увеличен на 3%.",
+            "Эффект поглощения Celestial Brew and Celestial Infusion увеличен на 20%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "zhCN": {
+          "name": "Monk",
+          "specialization": "Brewmaster",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "开发人员说明：我们正在调整 Celestial Brew and Celestial Infusion 的吸收量，以提升其作为防御选择的效果，并帮助解决玩家在某些首领战中遇到的痛点。",
+            "所有伤害提高 3%。",
+            "Celestial Brew and Celestial Infusion 吸收数值提高 20%。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "zhTW": {
+          "name": "Monk",
+          "specialization": "Brewmaster",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "開發者備註：我們正在調整 Celestial Brew and Celestial Infusion 的吸收量，以提升其作為防禦選項的表現，並協助解決玩家在某些遭遇戰中面臨的痛點。",
+            "所有傷害提高 3%。",
+            "Celestial Brew and Celestial Infusion 吸收值提高 20%。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        }
+      },
+      "retrievedAt": "2026-08-25T07:14:53.210687+00:00"
+    },
+    {
+      "id": "change-f81c4d9579dc9b8c",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-08-25",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Paladin",
+          "specialization": "Retribution",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "Developers’ notes: We’re increasing the damage of the Curse of Ula’tek 4-piece set bonus Divine Arbiter significantly, to make sure its rotational ask is worth executing.",
+            "Class Set 4-piece Divine Arbiter main target damage increased by 150%.",
+            "Class Set 4-piece Divine Arbiter secondary target damage increased by 75%."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Paladin",
+          "specialization": "Retribution",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Entwicklerhinweise: Wir erhöhen den Schaden des Curse of Ula’tek-4-Setbonus Divine Arbiter deutlich, um sicherzustellen, dass sich der Aufwand in der Rotation lohnt.",
+            "Class Set 4-Teile-Set Divine Arbiter Schaden gegen das Hauptziel erhöht um 150%.",
+            "Class Set 4-Teile-Set Divine Arbiter Schaden gegen Sekundärziele erhöht um 75%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "esES": {
+          "name": "Paladin",
+          "specialization": "Retribution",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Notas de los desarrolladores: Vamos a aumentar significativamente el daño del bonus de conjunto de 4 piezas Divine Arbiter de Curse of Ula’tek para asegurarnos de que su exigencia rotacional valga la pena.",
+            "El daño al objetivo principal del bonus de 4 piezas de Class Set Divine Arbiter ha aumentado un 150%.",
+            "El daño al objetivo secundario del bonus de 4 piezas de Class Set Divine Arbiter ha aumentado un 75%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "frFR": {
+          "name": "Paladin",
+          "specialization": "Retribution",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Notes des développeurs : Nous augmentons considérablement les dégâts du bonus de set à 4 pièces de Curse of Ula’tek (Divine Arbiter), afin de garantir que son exigence de rotation en vaut la chandelle.",
+            "Class Set (bonus de 4 pièces Divine Arbiter) : Les dégâts sur la cible principale ont été augmentés de 150%.",
+            "Class Set (bonus de 4 pièces Divine Arbiter) : Les dégâts sur la cible secondaire ont été augmentés de 75%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "itIT": {
+          "name": "Paladin",
+          "specialization": "Retribution",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Note degli sviluppatori: Stiamo aumentando significativamente i danni del bonus del set da 4 pezzi di Curse of Ula’tek Divine Arbiter, per assicurarci che la richiesta rotazionale valga la pena di essere eseguita.",
+            "Danno sul bersaglio principale del set da 4 pezzi di Class Set Divine Arbiter aumentato del 150%.",
+            "Danno sul bersaglio secondario del set da 4 pezzi di Class Set Divine Arbiter aumentato del 75%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "koKR": {
+          "name": "Paladin",
+          "specialization": "Retribution",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "개발자 노트: 순환 구조에서 요구되는 노력이 결실을 맺을 수 있도록 Curse of Ula’tek 4세트 효과 Divine Arbiter의 피해량을 대폭 증가시킵니다.",
+            "Class Set 4세트 효과: Divine Arbiter 주 대상 피해가 150%만큼 증가했습니다.",
+            "Class Set 4세트 효과: Divine Arbiter 부차적 대상 피해가 75%만큼 증가했습니다."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "ptBR": {
+          "name": "Paladin",
+          "specialization": "Retribution",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Notas dos desenvolvedores: Estamos aumentando significativamente o dano do bônus de conjunto de 4 peças de Curse of Ula’tek (Divine Arbiter) para garantir que sua exigência rotacional valha a pena.",
+            "Class Set de 4 peças de Divine Arbiter – dano ao alvo principal aumentado em 150%.",
+            "Class Set de 4 peças de Divine Arbiter – dano ao alvo secundário aumentado em 75%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "ruRU": {
+          "name": "Paladin",
+          "specialization": "Retribution",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Заметки разработчиков: мы значительно увеличиваем урон бонуса комплекта (4 предмета) Curse of Ula’tek Divine Arbiter, чтобы оправдать усилия по его использованию в ротации.",
+            "Урон по основной цели от 4 предметов комплекта класса «Class Set» (Divine Arbiter) увеличен на 150%.",
+            "Урон по второстепенным целям от 4 предметов комплекта класса «Class Set» (Divine Arbiter) увеличен на 75%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "zhCN": {
+          "name": "Paladin",
+          "specialization": "Retribution",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "开发人员说明：我们大幅提高了 Curse of Ula’tek 4 件套套装奖励 Divine Arbiter 的伤害，以确保其循环投入是值得的。",
+            "Class Set 4件套Divine Arbiter主目标伤害提高了150%。",
+            "Class Set 4件套Divine Arbiter次要目标伤害提高了75%。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "zhTW": {
+          "name": "Paladin",
+          "specialization": "Retribution",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "開發者備註：我們大幅提高了 Curse of Ula’tek 4 件套裝加成 Divine Arbiter 的傷害，以確保其循環需求值得執行。",
+            "Class Set 4件套裝Divine Arbiter主要目標傷害提高150%。",
+            "Class Set 4件套裝Divine Arbiter次要目標傷害提高75%。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        }
+      },
+      "retrievedAt": "2026-08-25T07:14:53.210687+00:00"
+    },
+    {
+      "id": "change-138289655159a9f5",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-08-25",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Warlock",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "Developers’ notes: We’re increasing the throughput of Affliction and Demonology by primarily focusing on their single-target tools with a secondary focus on their multi-target kit. Additionally, we’re considerably increasing the damage of Warlock demons so that they have a larger contribution to overall throughput. This should also help a bit more with aggro concerns during solo play.",
+            "Imp, Voidwalker, Sayaad, and Felhunter damage increased by 350%."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Warlock",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Entwicklerhinweise: Wir erhöhen den Durchsatz von Affliction and Demonology, indem wir uns primär auf ihre Einzelziel-Werkzeuge und sekundär auf ihr Mehrziel-Arsenal konzentrieren. Zusätzlich erhöhen wir den Schaden von Warlock-Dämonen erheblich, damit sie einen größeren Beitrag zum Gesamtdurchsatz leisten. Dies sollte auch ein wenig bei Aggro-Problemen im Solospiel helfen.",
+            "Imp, Voidwalker, Sayaad und Felhunter verursachen jetzt 350% mehr Schaden."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "esES": {
+          "name": "Warlock",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Notas de los desarrolladores: Vamos a aumentar el rendimiento de Affliction and Demonology centrándonos principalmente en sus herramientas para un solo objetivo y, de forma secundaria, en su repertorio para varios objetivos. Además, vamos a aumentar considerablemente el daño de los demonios de Warlock para que tengan una mayor contribución al rendimiento general. Esto también debería ayudar un poco más con los problemas de amenaza durante el juego en solitario.",
+            "El daño de Imp, Voidwalker, Sayaad y Felhunter ha aumentado un 350%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "frFR": {
+          "name": "Warlock",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Notes des développeurs : Nous augmentons l'efficacité de Affliction and Demonology en nous concentrant principalement sur leurs outils à cible unique et, dans un second temps, sur leur kit multi-cible. De plus, nous augmentons considérablement les dégâts des démons de Warlock afin qu'ils contribuent davantage à l'efficacité globale. Cela devrait également aider un peu plus face aux problèmes d'aggro en solo.",
+            "Imp, Voidwalker, Sayaad et Felhunter : dégâts augmentés de 350%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "itIT": {
+          "name": "Warlock",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Note degli sviluppatori: Stiamo aumentando la resa di Affliction and Demonology concentrandoci principalmente sui loro strumenti a bersaglio singolo con un focus secondario sul loro kit multi-bersaglio. Inoltre, stiamo aumentando considerevolmente i danni dei demoni di Warlock in modo che diano un contributo maggiore alla resa complessiva. Questo dovrebbe anche aiutare leggermente con i problemi di minaccia durante il gioco in solitaria.",
+            "Imp, Voidwalker, Sayaad e Felhunter aumentano i danni del 350%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "koKR": {
+          "name": "Warlock",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "개발자 노트: 단일 대상 전투 도구를 우선적으로 강화하고 광역 대상 전투 도구를 부차적으로 다루어 Affliction and Demonology의 효율을 증가시킵니다. 또한 Warlock 악마들의 피해량을 대폭 증가시켜 전체 효율에 더 크게 기여할 수 있도록 합니다. 이는 솔로 플레이 중 위협 수준(어그로) 관리 문제에도 다소 도움이 될 것입니다.",
+            "Imp, Voidwalker, Sayaad, Felhunter 피해량이 350%만큼 증가했습니다."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "ptBR": {
+          "name": "Warlock",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Notas dos desenvolvedores: Estamos aumentando a eficácia de Affliction and Demonology com foco principal em suas ferramentas de alvo único e foco secundário em seu kit de múltiplos alvos. Além disso, estamos aumentando consideravelmente o dano dos demônios de Warlock para que eles tenham uma contribuição maior para a eficácia geral. Isso também deve ajudar um pouco mais com preocupações de aggro durante o jogo solo.",
+            "Imp, Voidwalker, Sayaad e Felhunter tiveram o dano aumentado em 350%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "ruRU": {
+          "name": "Warlock",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Заметки разработчиков: мы повышаем эффективность Affliction and Demonology, уделяя основное внимание инструментам для одной цели и второстепенное — набору навыков для нескольких целей. Кроме того, мы значительно увеличиваем урон демонов Warlock, чтобы они вносили больший вклад в общую эффективность. Это также должно немного облегчить проблему с удержанием угрозы (агро) во время одиночной игры.",
+            "Imp, Voidwalker, Sayaad и Felhunter: урон увеличен на 350%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "zhCN": {
+          "name": "Warlock",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "开发人员说明：我们通过主要关注其单体工具、次要关注其多目标工具来提高 Affliction and Demonology 的综合效能。此外，我们大幅提高了 Warlock 恶魔的伤害，使它们对整体综合效能有更大的贡献。这也应该能在单人游戏时对仇恨问题有所帮助。",
+            "Imp、Voidwalker、Sayaad 和 Felhunter 造成的伤害提高了 350%。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "zhTW": {
+          "name": "Warlock",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "開發者備註：我們正在透過主要專注於單體目標工具、次要專注於多目標組合，來提高 Affliction and Demonology 的總體產出。此外，我們大幅提高了 Warlock 惡魔的傷害，使其對整體總體產出的貢獻更大。這也應該能在單人遊玩時對仇恨問題提供更多幫助。",
+            "Imp、Voidwalker、Sayaad 和 Felhunter 的傷害提高了 350%。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        }
+      },
+      "retrievedAt": "2026-08-25T07:14:53.210687+00:00"
+    },
+    {
+      "id": "change-238d6cfed5eab3b6",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-08-25",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Warlock",
+          "specialization": "Affliction",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "Unstable Affliction damage increased by 15%. Does not apply to PvP combat.",
+            "Hellcaller – Blackened Soul damage increased by 20%. Does not apply to PvP combat.",
+            "Wrath of Nathreza damage increased by 35%. Does not apply to PvP combat.",
+            "Shadow of Nathreza damage increased by 25%. Does not apply to PvP combat.",
+            "Agony damage increased by 20%. Does not apply to PvP combat.",
+            "Corruption damage increased by 15%. Does not apply to PvP combat.",
+            "Hellcaller – Wither damage increased by 10%. Does not apply to PvP combat."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Warlock",
+          "specialization": "Affliction",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Schaden von Unstable Affliction um 15% erhöht. Gilt nicht für PvP-Gefechte.",
+            "Hellcaller – Schaden von Blackened Soul erhöht um 20%. Gilt nicht für PvP-Kämpfe.",
+            "Schaden von Wrath of Nathreza um 35% erhöht. Gilt nicht für PvP-Gefechte.",
+            "Schaden von Shadow of Nathreza um 25% erhöht. Gilt nicht für PvP-Gefechte.",
+            "Schaden von Agony um 20% erhöht. Gilt nicht für PvP-Gefechte.",
+            "Schaden von Corruption um 15% erhöht. Gilt nicht für PvP-Gefechte.",
+            "Hellcaller – Schaden von Wither um 10% erhöht. Gilt nicht im Kampf gegen PvP."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "esES": {
+          "name": "Warlock",
+          "specialization": "Affliction",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "El daño de Unstable Affliction ha aumentado un 15%. No se aplica al combate contra PvP.",
+            "Hellcaller – El daño de Blackened Soul ha aumentado un 20%. No se aplica en combate de PvP.",
+            "El daño de Wrath of Nathreza ha aumentado un 35%. No se aplica al combate contra PvP.",
+            "El daño de Shadow of Nathreza ha aumentado un 25%. No se aplica al combate contra PvP.",
+            "El daño de Agony ha aumentado un 20%. No se aplica al combate contra PvP.",
+            "El daño de Corruption ha aumentado un 15%. No se aplica al combate contra PvP.",
+            "Hellcaller – Daño de Wither aumentado un 10%. No se aplica en el combate de PvP."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "frFR": {
+          "name": "Warlock",
+          "specialization": "Affliction",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Dégâts de Unstable Affliction augmentés de 15%. Ne s'applique pas au combat PvP.",
+            "Hellcaller – Les dégâts de Blackened Soul ont été augmentés de 20%. Ne s'applique pas au combat PvP.",
+            "Dégâts de Wrath of Nathreza augmentés de 35%. Ne s'applique pas au combat PvP.",
+            "Dégâts de Shadow of Nathreza augmentés de 25%. Ne s'applique pas au combat PvP.",
+            "Dégâts de Agony augmentés de 20%. Ne s'applique pas au combat PvP.",
+            "Dégâts de Corruption augmentés de 15%. Ne s'applique pas au combat PvP.",
+            "Dégâts de Hellcaller – Wither augmentés de 10%. Ne s'applique pas au combat PvP."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "itIT": {
+          "name": "Warlock",
+          "specialization": "Affliction",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Danni di Unstable Affliction aumentati del 15%. Non si applica al combattimento in PvP.",
+            "Hellcaller – Danno di Blackened Soul aumentato del 20%. Non si applica al combattimento in PvP.",
+            "Danni di Wrath of Nathreza aumentati del 35%. Non si applica al combattimento in PvP.",
+            "Danni di Shadow of Nathreza aumentati del 25%. Non si applica al combattimento in PvP.",
+            "Danni di Agony aumentati del 20%. Non si applica al combattimento in PvP.",
+            "Danni di Corruption aumentati del 15%. Non si applica al combattimento in PvP.",
+            "Danno di Hellcaller – Wither aumentato di 10%. Non si applica al combattimento in PvP."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "koKR": {
+          "name": "Warlock",
+          "specialization": "Affliction",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Unstable Affliction 피해가 15% 만큼 증가했습니다. PvP 전투에는 적용되지 않습니다.",
+            "Hellcaller – Blackened Soul 피해가 20%만큼 증가했습니다. PvP 전투에는 적용되지 않습니다.",
+            "Wrath of Nathreza 피해가 35% 만큼 증가했습니다. PvP 전투에는 적용되지 않습니다.",
+            "Shadow of Nathreza 피해가 25% 만큼 증가했습니다. PvP 전투에는 적용되지 않습니다.",
+            "Agony 피해가 20% 만큼 증가했습니다. PvP 전투에는 적용되지 않습니다.",
+            "Corruption 피해가 15% 만큼 증가했습니다. PvP 전투에는 적용되지 않습니다.",
+            "Hellcaller – Wither 피해량이 10% 만큼 증가했습니다. PvP 전투에는 적용되지 않습니다."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "ptBR": {
+          "name": "Warlock",
+          "specialization": "Affliction",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "O dano de Unstable Affliction foi aumentado em 15%. Não se aplica a combate de PvP.",
+            "Hellcaller – dano de Blackened Soul aumentado em 20%. Não se aplica a combate em PvP.",
+            "O dano de Wrath of Nathreza foi aumentado em 35%. Não se aplica a combate de PvP.",
+            "O dano de Shadow of Nathreza foi aumentado em 25%. Não se aplica a combate de PvP.",
+            "O dano de Agony foi aumentado em 20%. Não se aplica a combate de PvP.",
+            "O dano de Corruption foi aumentado em 15%. Não se aplica a combate de PvP.",
+            "Hellcaller – Dano de Wither aumentado em 10%. Não se aplica a combate de PvP."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "ruRU": {
+          "name": "Warlock",
+          "specialization": "Affliction",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Урон от Unstable Affliction увеличен на 15%. Не применяется в боях против PvP.",
+            "Hellcaller – урон от Blackened Soul увеличен на 20%. Не применяется в боях против PvP.",
+            "Урон от Wrath of Nathreza увеличен на 35%. Не применяется в боях против PvP.",
+            "Урон от Shadow of Nathreza увеличен на 25%. Не применяется в боях против PvP.",
+            "Урон от Agony увеличен на 20%. Не применяется в боях против PvP.",
+            "Урон от Corruption увеличен на 15%. Не применяется в боях против PvP.",
+            "Урон от Hellcaller — Wither увеличен на 10%. Не применяется в бою с PvP."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "zhCN": {
+          "name": "Warlock",
+          "specialization": "Affliction",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Unstable Affliction 伤害提高 15%。该改动不适用于 PvP 战斗。",
+            "Hellcaller – Blackened Soul伤害提高了20%。不适用于PvP战斗。",
+            "Wrath of Nathreza 伤害提高 35%。该改动不适用于 PvP 战斗。",
+            "Shadow of Nathreza 伤害提高 25%。该改动不适用于 PvP 战斗。",
+            "Agony 伤害提高 20%。该改动不适用于 PvP 战斗。",
+            "Corruption 伤害提高 15%。该改动不适用于 PvP 战斗。",
+            "Hellcaller – Wither 的伤害提高 10%。不适用于 PvP 战斗。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "zhTW": {
+          "name": "Warlock",
+          "specialization": "Affliction",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Unstable Affliction 傷害提高 15%。不適用於 PvP 戰鬥。",
+            "Hellcaller – Blackened Soul傷害提高20%。不適用於PvP戰鬥。",
+            "Wrath of Nathreza 傷害提高 35%。不適用於 PvP 戰鬥。",
+            "Shadow of Nathreza 傷害提高 25%。不適用於 PvP 戰鬥。",
+            "Agony 傷害提高 20%。不適用於 PvP 戰鬥。",
+            "Corruption 傷害提高 15%。不適用於 PvP 戰鬥。",
+            "Hellcaller – Wither 的傷害提高了 10%。不適用於 PvP 戰鬥。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        }
+      },
+      "retrievedAt": "2026-08-25T07:14:53.210687+00:00"
+    },
+    {
+      "id": "change-6d4cc5c5b74e49de",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-08-25",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Warlock",
+          "specialization": "Demonology",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "Shadow Bolt damage increased by 35%. Does not apply to PvP combat.",
+            "Demonbolt damage increased by 30%.",
+            "Wild Imp damage increased by 20%.",
+            "Summon Felguard damage increased by 20%.",
+            "Demons summoned by Dominion of Argus damage increased by 20%. Does not apply to PvP combat.",
+            "Call Dreadstalkers damage increased by 30%."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Warlock",
+          "specialization": "Demonology",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Schaden von Shadow Bolt um 35% erhöht. Gilt nicht für PvP-Gefechte.",
+            "Schaden von Demonbolt um 30% erhöht.",
+            "Schaden von Wild Imp um 20% erhöht.",
+            "Schaden von Herbeirufen von Felguard um 20% erhöht.",
+            "Demons, beschworen von Dominion of Argus, verursacht 20% mehr Schaden. Gilt nicht für PvP-Kämpfe.",
+            "Schaden von Call Dreadstalkers um 30% erhöht."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "esES": {
+          "name": "Warlock",
+          "specialization": "Demonology",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "El daño de Shadow Bolt ha aumentado un 35%. No se aplica al combate contra PvP.",
+            "El daño de Demonbolt ha aumentado un 30%.",
+            "El daño de Wild Imp ha aumentado un 20%.",
+            "El daño de Invocar a Felguard ha aumentado un 20%.",
+            "El daño de Demons invocado por Dominion of Argus ha aumentado un 20%. No se aplica en combate de PvP.",
+            "El daño de Call Dreadstalkers ha aumentado un 30%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "frFR": {
+          "name": "Warlock",
+          "specialization": "Demonology",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Dégâts de Shadow Bolt augmentés de 35%. Ne s'applique pas au combat PvP.",
+            "Dégâts de Demonbolt augmentés de 30%.",
+            "Dégâts de Wild Imp augmentés de 20%.",
+            "Dégâts de l'invocation de Felguard augmentés de 20%.",
+            "Demons invoqué par Dominion of Argus : les dégâts ont été augmentés de 20%. Ne s'applique pas au combat PvP.",
+            "Dégâts de Call Dreadstalkers augmentés de 30%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "itIT": {
+          "name": "Warlock",
+          "specialization": "Demonology",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Danni di Shadow Bolt aumentati del 35%. Non si applica al combattimento in PvP.",
+            "Danni di Demonbolt aumentati del 30%.",
+            "Danni di Wild Imp aumentati del 20%.",
+            "Danni da Evoca Felguard aumentati del 20%.",
+            "Danno di Demons evocato da Dominion of Argus aumentato del 20%. Non si applica al combattimento in PvP.",
+            "Danni di Call Dreadstalkers aumentati del 30%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "koKR": {
+          "name": "Warlock",
+          "specialization": "Demonology",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Shadow Bolt 피해가 35% 만큼 증가했습니다. PvP 전투에는 적용되지 않습니다.",
+            "Demonbolt 피해가 30% 만큼 증가했습니다.",
+            "Wild Imp 피해가 20% 만큼 증가했습니다.",
+            "소환수 Felguard 피해가 20% 만큼 증가했습니다.",
+            "Demons이(가) Dominion of Argus에 의해 소환될 때 주는 피해가 20%만큼 증가했습니다. PvP 전투에는 적용되지 않습니다.",
+            "Call Dreadstalkers 피해가 30% 만큼 증가했습니다."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "ptBR": {
+          "name": "Warlock",
+          "specialization": "Demonology",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "O dano de Shadow Bolt foi aumentado em 35%. Não se aplica a combate de PvP.",
+            "O dano de Demonbolt foi aumentado em 30%.",
+            "O dano de Wild Imp foi aumentado em 20%.",
+            "O dano de Invocar Felguard foi aumentado em 20%.",
+            "O dano de Demons invocado por Dominion of Argus foi aumentado em 20%. Não se aplica a combate em PvP.",
+            "O dano de Call Dreadstalkers foi aumentado em 30%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "ruRU": {
+          "name": "Warlock",
+          "specialization": "Demonology",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Урон от Shadow Bolt увеличен на 35%. Не применяется в боях против PvP.",
+            "Урон от Demonbolt увеличен на 30%.",
+            "Урон от Wild Imp увеличен на 20%.",
+            "Урон от призыва Felguard увеличен на 20%.",
+            "Урон существ (Demons), призванных заклинанием Dominion of Argus, увеличен на 20%. Не применяется в боях против PvP.",
+            "Урон от Call Dreadstalkers увеличен на 30%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "zhCN": {
+          "name": "Warlock",
+          "specialization": "Demonology",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Shadow Bolt 伤害提高 35%。该改动不适用于 PvP 战斗。",
+            "Demonbolt 伤害提高 30%。",
+            "Wild Imp 伤害提高 20%。",
+            "召唤 Felguard 伤害提高 20%。",
+            "Demons由Dominion of Argus召唤的伤害提高了20%。不适用于PvP战斗。",
+            "Call Dreadstalkers 伤害提高 30%。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "zhTW": {
+          "name": "Warlock",
+          "specialization": "Demonology",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Shadow Bolt 傷害提高 35%。不適用於 PvP 戰鬥。",
+            "Demonbolt 傷害提高 30%。",
+            "Wild Imp 傷害提高 20%。",
+            "召喚 Felguard 傷害提高 20%。",
+            "Demons由Dominion of Argus召喚的傷害提高20%。不適用於PvP戰鬥。",
+            "Call Dreadstalkers 傷害提高 30%。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        }
+      },
+      "retrievedAt": "2026-08-25T07:14:53.210687+00:00"
+    },
+    {
+      "id": "change-ff38de41d1e6c974",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-08-25",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Warlock",
+          "specialization": "Destruction",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "Rain of Fire damage increased by 30%."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Warlock",
+          "specialization": "Destruction",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Schaden von Rain of Fire um 30% erhöht."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "esES": {
+          "name": "Warlock",
+          "specialization": "Destruction",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "El daño de Rain of Fire ha aumentado un 30%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "frFR": {
+          "name": "Warlock",
+          "specialization": "Destruction",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Dégâts de Rain of Fire augmentés de 30%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "itIT": {
+          "name": "Warlock",
+          "specialization": "Destruction",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Danni di Rain of Fire aumentati del 30%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "koKR": {
+          "name": "Warlock",
+          "specialization": "Destruction",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Rain of Fire 피해가 30% 만큼 증가했습니다."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "ptBR": {
+          "name": "Warlock",
+          "specialization": "Destruction",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "O dano de Rain of Fire foi aumentado em 30%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "ruRU": {
+          "name": "Warlock",
+          "specialization": "Destruction",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Урон от Rain of Fire увеличен на 30%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "zhCN": {
+          "name": "Warlock",
+          "specialization": "Destruction",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Rain of Fire 伤害提高 30%。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "zhTW": {
+          "name": "Warlock",
+          "specialization": "Destruction",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Rain of Fire 傷害提高 30%。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        }
+      },
+      "retrievedAt": "2026-08-25T07:14:53.210687+00:00"
+    },
+    {
+      "id": "change-da22d70b2c58ce77",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-08-25",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Warrior",
+          "specialization": "Protection",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "Fight Through the Flames reduces Magic damage by 8% (was 6%)."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Warrior",
+          "specialization": "Protection",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Fight Through the Flames verringert den Schaden von Magic um 8% (vorher 6%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "esES": {
+          "name": "Warrior",
+          "specialization": "Protection",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Fight Through the Flames reduce el daño de Magic un 8% (antes 6%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "frFR": {
+          "name": "Warrior",
+          "specialization": "Protection",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Fight Through the Flames réduit les dégâts de Magic de 8% (au lieu de 6%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "itIT": {
+          "name": "Warrior",
+          "specialization": "Protection",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Fight Through the Flames riduce il danno di Magic di 8% (era 6%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "koKR": {
+          "name": "Warrior",
+          "specialization": "Protection",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Fight Through the Flames이(가) Magic 피해를 8% 만큼 감소시킵니다(기존 6%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "ptBR": {
+          "name": "Warrior",
+          "specialization": "Protection",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Fight Through the Flames reduz o dano de Magic em 8% (antes era 6%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "ruRU": {
+          "name": "Warrior",
+          "specialization": "Protection",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Fight Through the Flames уменьшает урон Magic на 8% (ранее — 6%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "zhCN": {
+          "name": "Warrior",
+          "specialization": "Protection",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Fight Through the Flames 使 Magic 的伤害降低 8%（原为 6%）。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        },
+        "zhTW": {
+          "name": "Warrior",
+          "specialization": "Protection",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Fight Through the Flames 使 Magic 的傷害降低 8%（原為 6%）。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-%E2%80%93-august-25/2339812/1"
+          ]
+        }
+      },
+      "retrievedAt": "2026-08-25T07:14:53.210687+00:00"
+    },
+    {
+      "id": "change-35ec17ef4811701c",
+      "channel": "live",
+      "category": "Raid",
+      "date": "2026-08-23",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "The Venomous Abyss",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/nymrissa-wavecaller-tuning-changes/2340109/1",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "Abyssal Rain’s initial damage reduced by 12.5% on Mythic difficulty",
+            "Abyssal Rain’s periodic damage reduced by 20% on Mythic difficulty",
+            "Reduced Abyssal Rain’s damage scaling based on group size for larger groups",
+            "Frost Burst damage reduced by 40%"
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "The Venomous Abyss",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/nymrissa-wavecaller-tuning-changes/2340109/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Initialer Schaden von Abyssal Rain’s auf Schwierigkeitsgrad Mythic um 12.5% verringert",
+            "Periodischer Schaden von Abyssal Rain’s auf Schwierigkeitsgrad Mythic um 20% verringert",
+            "Die Schadenskalibrierung von Abyssal Rain’s basierend auf der Gruppengröße wurde für größere Gruppen verringert.",
+            "Schaden von Frost Burst um 40% reduziert."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/nymrissa-wavecaller-tuning-changes/2340109/1"
+          ]
+        },
+        "esES": {
+          "name": "The Venomous Abyss",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/nymrissa-wavecaller-tuning-changes/2340109/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Daño inicial de Abyssal Rain’s reducido un 12.5% en dificultad Mythic",
+            "Daño periódico de Abyssal Rain’s reducido un 20% en dificultad Mythic",
+            "Se ha reducido el escalado de daño de Abyssal Rain’s según el tamaño del grupo para grupos más grandes.",
+            "El daño de Frost Burst se ha reducido un 40%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/nymrissa-wavecaller-tuning-changes/2340109/1"
+          ]
+        },
+        "frFR": {
+          "name": "The Venomous Abyss",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/nymrissa-wavecaller-tuning-changes/2340109/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Dégâts initiaux de Abyssal Rain’s réduits de 12.5% en difficulté Mythic",
+            "Dégâts périodiques de Abyssal Rain’s réduits de 20% en difficulté Mythic",
+            "Réduction de la mise à l'échelle des dégâts de Abyssal Rain’s en fonction de la taille du groupe pour les groupes plus importants.",
+            "Dégâts de Frost Burst réduits de 40%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/nymrissa-wavecaller-tuning-changes/2340109/1"
+          ]
+        },
+        "itIT": {
+          "name": "The Venomous Abyss",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/nymrissa-wavecaller-tuning-changes/2340109/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Danno iniziale di Abyssal Rain’s ridotto di 12.5% alla difficoltà Mythic",
+            "Danno periodico di Abyssal Rain’s ridotto di 20% alla difficoltà Mythic",
+            "Ridotta la scalabilità dei danni di Abyssal Rain’s in base alle dimensioni del gruppo per i gruppi più grandi",
+            "Danni di Frost Burst ridotti del 40%"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/nymrissa-wavecaller-tuning-changes/2340109/1"
+          ]
+        },
+        "koKR": {
+          "name": "The Venomous Abyss",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/nymrissa-wavecaller-tuning-changes/2340109/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Abyssal Rain’s의 Mythic 난이도 초기 피해량이 12.5% 만큼 감소했습니다.",
+            "Abyssal Rain’s의 Mythic 난이도 주기적인 피해량이 20% 만큼 감소했습니다.",
+            "더 큰 공격대에 대한 공격대 규모별 Abyssal Rain’s 피해 조정치가 감소했습니다.",
+            "Frost Burst 피해가 40% 만큼 감소했습니다."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/nymrissa-wavecaller-tuning-changes/2340109/1"
+          ]
+        },
+        "ptBR": {
+          "name": "The Venomous Abyss",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/nymrissa-wavecaller-tuning-changes/2340109/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Dano inicial de Abyssal Rain’s reduzido em 12.5% na dificuldade Mythic.",
+            "Dano periódico de Abyssal Rain’s reduzido em 20% na dificuldade Mythic.",
+            "Reduzido o dimensionamento de dano de Abyssal Rain’s com base no tamanho do grupo para grupos maiores",
+            "O dano de Frost Burst foi reduzido em 40%"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/nymrissa-wavecaller-tuning-changes/2340109/1"
+          ]
+        },
+        "ruRU": {
+          "name": "The Venomous Abyss",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/nymrissa-wavecaller-tuning-changes/2340109/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Начальный урон Abyssal Rain’s уменьшен на 12.5% на сложности «Mythic»",
+            "Периодический урон Abyssal Rain’s уменьшен на 20% на сложности «Mythic»",
+            "Уменьшено масштабирование урона Abyssal Rain’s в зависимости от размера группы для крупных групп.",
+            "Урон от Frost Burst уменьшен на 40%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/nymrissa-wavecaller-tuning-changes/2340109/1"
+          ]
+        },
+        "zhCN": {
+          "name": "The Venomous Abyss",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/nymrissa-wavecaller-tuning-changes/2340109/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "在 Mythic 难度下，Abyssal Rain’s 的初始伤害降低了 12.5%",
+            "在 Mythic 难度下，Abyssal Rain’s 的周期性伤害降低了 20%",
+            "降低了大型团队中 Abyssal Rain’s 基于团队规模的伤害缩放",
+            "Frost Burst 伤害降低 40%"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/nymrissa-wavecaller-tuning-changes/2340109/1"
+          ]
+        },
+        "zhTW": {
+          "name": "The Venomous Abyss",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/nymrissa-wavecaller-tuning-changes/2340109/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Abyssal Rain’s 在 Mythic 難度下的初始傷害降低了 12.5%",
+            "Abyssal Rain’s 在 Mythic 難度下的週期性傷害降低了 20%",
+            "降低了大型隊伍中 Abyssal Rain’s 根據隊伍規模進行的傷害縮放",
+            "Frost Burst 傷害降低 40%"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/nymrissa-wavecaller-tuning-changes/2340109/1"
+          ]
+        }
+      },
+      "retrievedAt": "2026-08-25T07:14:53.210687+00:00"
+    },
     {
       "id": "change-00d33febc9b0aca6",
       "channel": "live",

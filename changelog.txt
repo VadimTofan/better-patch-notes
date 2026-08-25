@@ -1,3 +1,9 @@
+Version 0.2.26 - 2026-08-25
+- Data: Live 12.1.0; PTR None
+- Added or updated: 17 added; 0 updated
+- Removed: None
+- Locales: Validated deDE, esES, frFR, itIT, koKR, ptBR, ruRU, zhCN, zhTW; English fallbacks: None; 2736 preserved English terminology warnings (deDE: 304; esES: 304; frFR: 304; itIT: 304; koKR: 304; ptBR: 304; ruRU: 304; zhCN: 304; zhTW: 304)
+
 Version 0.2.25 - 2026-08-25
 - Added an icon for Better Patch Notes in World of Warcraft's addon list.
 - Fixed automatic discovery of official Blizzard forum class and raid tuning announcements.
