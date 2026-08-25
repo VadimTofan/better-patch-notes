@@ -62,7 +62,7 @@ class AddonManifestTests(unittest.TestCase):
             with self.subTest(module=name):
                 self.assertIn("local _, addon = ...", text)
 
-    def test_manifest_declares_a_64_pixel_addon_icon(self) -> None:
+    def test_manifest_declares_a_32_pixel_addon_icon(self) -> None:
         # Given the icon shown beside the addon in Blizzard's addon list
         expected_metadata = (
             "## IconTexture: "
@@ -77,7 +77,7 @@ class AddonManifestTests(unittest.TestCase):
         self.assertTrue(ICON_PATH.exists())
         header = ICON_PATH.read_bytes()[:18]
         width, height = struct.unpack("<HH", header[12:16])
-        self.assertEqual((64, 64), (width, height))
+        self.assertEqual((32, 32), (width, height))
 
 
 # Describe: localized addon interface labels
