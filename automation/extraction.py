@@ -39,6 +39,7 @@ DUNGEONS = {
     "Ruby Life Pools",
     "Temple of Sethraliss",
     "The Blinding Vale",
+    "The Tidebound Grotto",
     "Voidscar Arena",
 }
 RAIDS = {

@@ -338,6 +338,29 @@ class PatchNoteExtractionTests(unittest.TestCase):
             changes[0].change,
         )
 
+    def test_extracts_the_tidebound_grotto_from_august_hotfixes(self) -> None:
+        # Given Blizzard publishes the new dungeon in the combined section
+        document = _document(
+            "live-hotfix-august-25-2026.html",
+            channel="live",
+        )
+
+        # When the reviewed current article shape is extracted
+        changes = extract_changes(document)
+
+        # Then the dungeon owns its complete ordered change list
+        self.assertEqual(1, len(changes))
+        self.assertEqual("Dungeon", changes[0].category)
+        self.assertEqual("The Tidebound Grotto", changes[0].name)
+        self.assertEqual(
+            (
+                "Health of Nymrissa Wavecaller reduced by 5% on Heroic "
+                "difficulty and 10% on Mythic difficulty.",
+                "Frost Burst damage reduced by 40%.",
+            ),
+            changes[0].change,
+        )
+
     def test_extracts_a_registered_raid_embedded_in_combined_section_prose(
         self,
     ) -> None:
