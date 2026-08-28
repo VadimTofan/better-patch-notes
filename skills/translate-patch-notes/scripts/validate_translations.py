@@ -53,7 +53,9 @@ INCREASE_MARKERS = {
     "ptBR": ("aument", "maior", "mais"),
     "ruRU": ("увелич", "повыш", "возраст", "больше"),
     "zhCN": ("提高", "增加", "上调", "提升", "延长"),
-    "zhTW": ("提高", "增加", "上調", "提升", "延長", "調高"),
+    "zhTW": (
+        "提高", "增加", "上調", "提升", "延長", "調高", "額外", "增強",
+    ),
 }
 
 DECREASE_MARKERS = {
@@ -88,14 +90,18 @@ CONDITION_MARKERS = {
         " si ", "lorsque", "quand", "pendant", "tant que", "après",
         "avant", "lors de", "à l’utilisation", "à l'utilisation",
         "tout en", "lorsqu", "lors d'", "lors du", "alors qu",
-        "à l'intérieur", "au début",
+        "à l'intérieur", "au début", "au moment où", "en touchant",
+        "à la fin",
     ),
     "itIT": (
         " se ", "quando", "mentre", "finché", "dopo", "prima",
         "all'utilizzo", "sovracur", "lanciando", "al contempo",
-        "all'interno",
+        "all'interno", "aumentando", "nell'aumentare", "al termine",
     ),
-    "koKR": ("경우", "때", "동안", "중", "후", "전", " 시 "),
+    "koKR": (
+        "경우", "때", "동안", "중", "후", "전", " 시 ", "상태에서",
+        "하면", "오면", "해도", "내부에서",
+    ),
     "ptBR": (
         " se ", "quando", "enquanto", "sempre que", "após", "antes",
         "ao ser", " ao ",
@@ -124,9 +130,11 @@ SPANISH_CONDITION_MARKERS = {
         "con las facultades",
         "bajo los efectos",
         "bajo ",
+        "se tenía el talento",
+        " al ",
     ),
     "unless": ("a menos que", "salvo que"),
-    "after": ("después", "tras"),
+    "after": ("después", "tras", "al cabo de"),
     "before": ("antes"),
 }
 
@@ -197,11 +205,35 @@ def _preserves_conditions(
     condition_types = []
     for match in ENGLISH_CONDITION_PATTERN.finditer(english_text):
         trailing_text = english_text[match.end():]
+        preceding_text = english_text[:match.start()]
         is_after_title = (
             match.group(0).casefold() == "after"
             and re.match(r"\s+the\s+[A-Z]", trailing_text) is not None
         )
-        if not is_after_title:
+        is_previous_state_comparison = (
+            match.group(0).casefold() == "before"
+            and re.search(r"\bsame as\s+$", preceding_text) is not None
+        )
+        is_locative_after = (
+            match.group(0).casefold() == "after"
+            and re.search(
+                r"\bin the area\s+$",
+                preceding_text,
+                re.IGNORECASE,
+            )
+            is not None
+        )
+        is_locative_before = (
+            match.group(0).casefold() == "before"
+            and english_text.casefold().startswith("removed ")
+            and re.match(r"\s+[A-Z]", trailing_text) is not None
+        )
+        if (
+            not is_after_title
+            and not is_previous_state_comparison
+            and not is_locative_after
+            and not is_locative_before
+        ):
             condition_types.append(match.group(0).casefold())
     if not condition_types:
         return True

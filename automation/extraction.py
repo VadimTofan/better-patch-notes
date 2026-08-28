@@ -51,6 +51,7 @@ RAIDS = {
 INSTANCE_NAMES = {
     name.casefold(): name for name in DUNGEONS | RAIDS
 }
+INSTANCE_NAMES["the venemous abyss"] = "The Venomous Abyss"
 ENCOUNTER_INSTANCES = {
     "nymrissa wavecaller": "The Venomous Abyss",
     "ula'tek": "The Venomous Abyss",
@@ -72,6 +73,7 @@ NON_PATCH_SECTION_HEADINGS = {
     "delves",
     "housing",
     "items",
+    "items and rewards",
     "lairs",
     "player versus player",
     "professions",

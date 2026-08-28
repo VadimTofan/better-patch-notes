@@ -361,6 +361,28 @@ class PatchNoteExtractionTests(unittest.TestCase):
             changes[0].change,
         )
 
+    def test_canonicalizes_blizzards_venemous_abyss_typo(self) -> None:
+        # Given Blizzard misspells the raid heading in the August 27 article
+        document = _document(
+            "live-hotfix-august-27-2026.html",
+            channel="live",
+        )
+
+        # When the reviewed current article shape is extracted
+        changes = extract_changes(document)
+
+        # Then the typo resolves to the canonical raid name
+        self.assertEqual(1, len(changes))
+        self.assertEqual("Raid", changes[0].category)
+        self.assertEqual("The Venomous Abyss", changes[0].name)
+        self.assertEqual(
+            (
+                "Story Mode: Dungeon followers will now properly lead "
+                "players when Dungeon Assistance is toggled on.",
+            ),
+            changes[0].change,
+        )
+
     def test_extracts_a_registered_raid_embedded_in_combined_section_prose(
         self,
     ) -> None:

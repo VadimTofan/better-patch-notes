@@ -561,6 +561,91 @@ class TranslationValidationTests(unittest.TestCase):
                 "If its healing would overheal, transfer the excess.",
                 "Le sovracure si trasferiscono a un alleato.",
             ),
+            (
+                "esES",
+                "Strike when channeling finishes while talented into Unload.",
+                "Golpea justo cuando termina la canalización y se tenía "
+                "el talento Unload.",
+            ),
+            (
+                "frFR",
+                "Strike when channeling finishes while talented into Unload.",
+                "Frappe au moment où la canalisation se termine avec le "
+                "talent Unload.",
+            ),
+            (
+                "itIT",
+                "Reduce damage while increasing area damage.",
+                "Riduci i danni aumentando i danni ad area.",
+            ),
+            (
+                "frFR",
+                "Rapid Fire fired fewer shots when hitting a second target.",
+                "Rapid Fire décochait moins de tirs en touchant une "
+                "deuxième cible.",
+            ),
+            (
+                "itIT",
+                "Wither was ignored when increasing damage.",
+                "Wither non veniva considerato nell'aumentare i danni.",
+            ),
+            (
+                "esES",
+                "Removed one enemy in the area after Rav'i.",
+                "Se eliminó un enemigo en la zona posterior a Rav'i.",
+            ),
+            (
+                "esES",
+                "Shatter now occurs after 40 seconds.",
+                "Shatter ahora ocurre al cabo de 40 segundos.",
+            ),
+            (
+                "frFR",
+                "Hoji stops casting when the encounter ends.",
+                "Hoji cesse d'incanter à la fin de la rencontre.",
+            ),
+            (
+                "itIT",
+                "Hoji stops casting when the encounter ends.",
+                "Hoji smette di lanciare incantesimi al termine dello "
+                "scontro.",
+            ),
+            (
+                "esES",
+                "Players are protected while crossing the venom pools.",
+                "Los jugadores están protegidos al cruzar las charcas.",
+            ),
+            (
+                "koKR",
+                "The effect can fail while Divine Resonance is active.",
+                "Divine Resonance이 활성화된 상태에서 효과가 "
+                "실패할 수 있습니다.",
+            ),
+            (
+                "koKR",
+                "Lingering Darkness cancels when swapping talents.",
+                "Lingering Darkness는 특성을 교체하면 취소됩니다.",
+            ),
+            (
+                "koKR",
+                "A warning appears when Rav'i comes close enough.",
+                "Rav'i가 가까이 오면 경고가 표시됩니다.",
+            ),
+            (
+                "koKR",
+                "Removed one enemy before Xathuux the Annihilator.",
+                "Xathuux the Annihilator 앞의 적 하나가 제거되었습니다.",
+            ),
+            (
+                "koKR",
+                "Eggs finish hatching even if the Matriarch is dead.",
+                "Matriarch이 사망해도 알이 부화를 완료합니다.",
+            ),
+            (
+                "koKR",
+                "Players use Harpoon while inside the Malignant Cavity.",
+                "플레이어가 Malignant Cavity 내부에서 Harpoon을 사용합니다.",
+            ),
         )
 
         # When / Then each condition remains detectable
@@ -729,8 +814,18 @@ class TranslationValidationTests(unittest.TestCase):
             ),
             (
                 "zhTW",
+                "We are targeting increases to its casted healing.",
+                "我們針對其施法治療進行增強。",
+            ),
+            (
+                "zhTW",
                 "The radius decreases as the group size increases.",
                 "半徑隨著團隊規模增加而逐漸縮小。",
+            ),
+            (
+                "zhTW",
+                "Wild Thrash now deals 300% increased damage.",
+                "Wild Thrash 現在會造成 300% 額外傷害。",
             ),
         )
 
@@ -754,6 +849,20 @@ class TranslationValidationTests(unittest.TestCase):
         localized = "Die Heilung von 'Nach dem Lauffeuer' wurde erhöht."
 
         # When / Then the title does not create a condition requirement
+        self.assertTrue(
+            self.validator._preserves_conditions(
+                "deDE",
+                english,
+                localized,
+            )
+        )
+
+    def test_does_not_treat_same_as_before_as_a_condition(self) -> None:
+        # Given "same as before" compares routing with its previous state
+        english = "Adjusted enemy forces to keep routing the same as before."
+        localized = "Feindliche StreitkrÃ¤fte fÃ¼r dieselbe Route angepasst."
+
+        # When / Then the comparison does not require conditional wording
         self.assertTrue(
             self.validator._preserves_conditions(
                 "deDE",

@@ -190,8 +190,8 @@ and semantic increase/reduction direction.
 
 ## Maintenance
 
-Updated: 2026-08-17
-Last reviewed: 2026-08-25
+Updated: 2026-08-28
+Last reviewed: 2026-08-28
 Canonical sources:
 
 - https://worldofwarcraft.blizzard.com/en-us/game/classes

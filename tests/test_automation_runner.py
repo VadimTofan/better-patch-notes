@@ -282,10 +282,11 @@ class AutomationRunnerTests(unittest.TestCase):
             trusted_checkpoint_index = observed_command.index(
                 "--trusted-checkpoint",
             )
-            self.assertTrue(
-                observed_command[trusted_checkpoint_index + 1].endswith(
-                    "data/retail-patch-notes.json",
-                )
+            self.assertEqual(
+                Path(__file__).parents[1]
+                / "data"
+                / "retail-patch-notes.json",
+                Path(observed_command[trusted_checkpoint_index + 1]),
             )
             self.assertEqual(
                 str(root / "translation-checkpoint.json"),
