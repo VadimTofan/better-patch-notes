@@ -1,3 +1,9 @@
+Version 0.2.27 - 2026-08-28
+- Data: Live 12.1.0; PTR None
+- Added or updated: 25 added; 0 updated
+- Removed: 10 stale records
+- Locales: Agent translations: deDE, esES, frFR, itIT, koKR, ptBR; English fallbacks: ruRU (invalid incomplete output), zhCN (untranslated prose), zhTW (malformed mixed-language prose); preserved English terminology warnings: 144 per translated locale
+
 Version 0.2.26 - 2026-08-25
 - Data: Live 12.1.0; PTR None
 - Added or updated: 17 added; 0 updated
