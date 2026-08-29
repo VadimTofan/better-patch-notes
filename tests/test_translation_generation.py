@@ -1157,10 +1157,10 @@ class TranslationGenerationTests(unittest.TestCase):
             segment_requests,
         )
 
-    def test_repairs_each_prose_segment_when_bulk_segment_output_is_invalid(
+    def test_splits_an_invalid_prose_segment_batch_before_isolating_segments(
         self,
     ) -> None:
-        # Given whole-bullet and bulk-segment responses are malformed
+        # Given a four-segment response is malformed but smaller batches work
         segment_requests: list[dict[str, object]] = []
 
         def batch_translator(_text: str, _language: str) -> str:
@@ -1172,21 +1172,25 @@ class TranslationGenerationTests(unittest.TestCase):
         def segment_translator(text: str, _language: str) -> str:
             payload = json.loads(text)
             segment_requests.append(payload)
-            if len(payload["segments"]) > 1:
+            if len(payload["segments"]) > 2:
                 return "invalid bulk response"
 
-            return json.dumps([
-                {
+            translations = {
                     " starts ": " beginnt ",
                     " deals ": " verursacht ",
-                    " damage": " Schaden",
-                }[payload["segments"][0]]
+                    " damage and ": " Schaden und ",
+                    " healing": " Heilung",
+            }
+            return json.dumps([
+                translations[segment]
+                for segment in payload["segments"]
             ])
 
-        # When placeholder recovery falls back to isolated prose segments
+        # When placeholder recovery falls back to smaller segment batches
         translated = self.generator.translate_text_batch(
             (
-                " starts __BPN0000__ deals __BPN0001__ damage",
+                " starts __BPN0000__ deals __BPN0001__ damage and "
+                "__BPN0002__ healing",
             ),
             "de",
             batch_translator,
@@ -1197,17 +1201,44 @@ class TranslationGenerationTests(unittest.TestCase):
         # Then code reconstructs immutable placeholders in their original order
         self.assertEqual(
             (
-                " beginnt __BPN0000__ verursacht __BPN0001__ Schaden",
+                " beginnt __BPN0000__ verursacht __BPN0001__ Schaden und "
+                "__BPN0002__ Heilung",
             ),
             translated,
         )
-        self.assertEqual(4, len(segment_requests))
-        self.assertEqual(3, len(segment_requests[0]["segments"]))
-        self.assertTrue(
-            all(
-                len(request["segments"]) == 1
-                for request in segment_requests[1:]
+        self.assertEqual(
+            [4, 2, 2],
+            [len(request["segments"]) for request in segment_requests],
+        )
+
+    def test_attempts_bounded_segment_recovery_once(self) -> None:
+        # Given every contextual segment response is malformed
+        segment_requests: list[dict[str, object]] = []
+
+        def batch_translator(_text: str, _language: str) -> str:
+            return json.dumps(["markers missing"])
+
+        def repair_translator(_text: str, _language: str) -> str:
+            return "markers still missing"
+
+        def segment_translator(text: str, _language: str) -> str:
+            segment_requests.append(json.loads(text))
+            return "invalid segment response"
+
+        # When segment recovery cannot produce a valid translation
+        with self.assertRaisesRegex(RuntimeError, r"locale de, item 1"):
+            self.generator.translate_text_batch(
+                (" starts __BPN0000__ damage",),
+                "de",
+                batch_translator,
+                repair_translator=repair_translator,
+                segment_repair_translator=segment_translator,
             )
+
+        # Then one bounded split attempt fails fast instead of repeating
+        self.assertEqual(
+            [2, 1],
+            [len(request["segments"]) for request in segment_requests],
         )
 
     def test_builds_and_parses_keyed_batch_api_requests(self) -> None:

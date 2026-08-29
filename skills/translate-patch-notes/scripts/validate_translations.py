@@ -48,9 +48,9 @@ INCREASE_MARKERS = {
     ),
     "esES": ("aument", "increment", "más"),
     "esMX": ("aument", "increment", "más"),
-    "frFR": ("augment", "accru", "plus"),
+    "frFR": ("augment", "accru", "plus", "amélior"),
     "itIT": ("aument", "increment", "più"),
-    "koKR": ("증가", "상향", "늘어", "커질", "빨라"),
+    "koKR": ("증가", "상향", "늘어", "커질", "커짐", "높이", "빨라"),
     "ptBR": ("aument", "maior", "mais"),
     "ruRU": (
         "увелич", "повыш", "возраст", "больше", "дополнительн", "усилен",
@@ -72,7 +72,7 @@ DECREASE_MARKERS = {
     "esMX": ("reduc", "reduj", "disminu", "menos"),
     "frFR": ("rédu", "diminu", "moins"),
     "itIT": ("ridott", "dimin", "meno"),
-    "koKR": ("감소", "하향", "줄어"),
+    "koKR": ("감소", "하향", "줄어", "낮추"),
     "ptBR": ("reduz", "diminu", "menor", "menos"),
     "ruRU": ("уменьш", "сниж", "сократ"),
     "zhCN": (
@@ -105,7 +105,7 @@ CONDITION_MARKERS = {
     ),
     "koKR": (
         "경우", "때", "동안", "중", "후", "전", " 시 ", "상태에서",
-        "하면", "오면", "해도", "내부에서",
+        "하면", "오면", "해도", "내부에서", "면서",
     ),
     "ptBR": (
         " se ", "quando", "enquanto", "sempre que", "após", "antes",

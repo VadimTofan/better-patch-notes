@@ -602,21 +602,19 @@ def translate_text_batch(
                     if normalized is not None:
                         break
             if normalized is None and segment_repair_translator is not None:
-                for _attempt in range(repair_attempts):
-                    try:
-                        repaired = _translate_prose_segments(
-                            source_text,
-                            language,
-                            segment_repair_translator,
-                        )
-                    except InvalidTranslationBatchError:
-                        continue
+                try:
+                    repaired = _translate_prose_segments(
+                        source_text,
+                        language,
+                        segment_repair_translator,
+                    )
+                except InvalidTranslationBatchError:
+                    pass
+                else:
                     normalized = _normalize_translation_placeholders(
                         source_text,
                         repaired,
                     )
-                    if normalized is not None:
-                        break
             if normalized is None:
                 raise RuntimeError(
                     "Gemini changed protected translation placeholders "
@@ -640,27 +638,12 @@ def _translate_prose_segments(
         if re.search(r"[A-Za-z]", parts[index])
     ]
     segments = [parts[index] for index in segment_indexes]
-    payload = json.dumps(
-        {"source": source_text, "segments": segments},
-        ensure_ascii=False,
+    translated_segments = _translate_segment_batch(
+        source_text,
+        segments,
+        language,
+        translator,
     )
-    raw_translation = translator(payload, language)
-    try:
-        translated_segments = _parse_translation_segments(
-            raw_translation,
-            len(segments),
-        )
-    except InvalidTranslationBatchError:
-        translated_segments = []
-        for segment in segments:
-            segment_payload = json.dumps(
-                {"source": source_text, "segments": [segment]},
-                ensure_ascii=False,
-            )
-            segment_translation = translator(segment_payload, language)
-            translated_segments.extend(
-                _parse_translation_segments(segment_translation, 1)
-            )
 
     translated_by_index = dict(zip(
         segment_indexes,
@@ -674,6 +657,43 @@ def _translate_prose_segments(
         for index, part in enumerate(parts)
     ]
     return "".join(reconstructed_parts)
+
+
+def _translate_segment_batch(
+    source_text: str,
+    segments: list[str],
+    language: str,
+    translator: Translator,
+) -> list[str]:
+    payload = json.dumps(
+        {"source": source_text, "segments": segments},
+        ensure_ascii=False,
+    )
+    raw_translation = translator(payload, language)
+    try:
+        return _parse_translation_segments(
+            raw_translation,
+            len(segments),
+        )
+    except InvalidTranslationBatchError:
+        if len(segments) == 1:
+            raise
+
+    midpoint = len(segments) // 2
+    return [
+        *_translate_segment_batch(
+            source_text,
+            segments[:midpoint],
+            language,
+            translator,
+        ),
+        *_translate_segment_batch(
+            source_text,
+            segments[midpoint:],
+            language,
+            translator,
+        ),
+    ]
 
 
 def _parse_translation_array(

@@ -907,6 +907,60 @@ class TranslationValidationTests(unittest.TestCase):
                     # Then natural equivalent wording must remain publishable
                     self.fail(f"valid {locale} semantics rejected: {error}")
 
+    def test_accepts_semantics_from_the_second_august_29_run(self) -> None:
+        # Given valid French and Korean semantics rejected by the rerun
+        examples = (
+            (
+                "frFR",
+                "We’re looking to increase area damage.",
+                "Nous souhaitons améliorer les dégâts de zone.",
+            ),
+            (
+                "frFR",
+                "Increased the buff to 5% (was 3%).",
+                "Amélioration du bonus à 5% (au lieu de 3%).",
+            ),
+            (
+                "koKR",
+                "Reduced the size after they have been tamed.",
+                "길들여진 후 크기가 감소했습니다.",
+            ),
+            (
+                "koKR",
+                "Reduced scaling to be less punishing for larger groups.",
+                "규모 조정률을 낮추어 큰 공격대에서 덜 가혹하게 했습니다.",
+            ),
+            (
+                "koKR",
+                "The radius gradually decreases as raid size increases.",
+                "공격대 규모가 커짐에 따라 반경이 점차 감소합니다.",
+            ),
+            (
+                "koKR",
+                "We’re aiming to increase single-target performance.",
+                "단일 대상 성능을 높이는 것을 목표로 합니다.",
+            ),
+            (
+                "koKR",
+                "Healing increases while increasing the set bonus value.",
+                "세트 효과 가치를 높이면서 치유 능력을 상향합니다.",
+            ),
+        )
+
+        # When each aligned bullet is checked
+        for locale, english, localized in examples:
+            with self.subTest(locale=locale, english=english):
+                try:
+                    self.validator._validate_semantic_structure(
+                        locale,
+                        1,
+                        english,
+                        localized,
+                    )
+                except ValueError as error:
+                    # Then natural equivalent wording must remain publishable
+                    self.fail(f"valid {locale} semantics rejected: {error}")
+
     def test_does_not_treat_an_ability_name_as_an_after_condition(self) -> None:
         # Given After the Wildfire is an ability name, not conditional prose
         english = "After the Wildfire healing increased by 25%."
