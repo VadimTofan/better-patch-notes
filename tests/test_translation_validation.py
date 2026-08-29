@@ -843,6 +843,70 @@ class TranslationValidationTests(unittest.TestCase):
                     # Then natural equivalent wording must remain publishable
                     self.fail(f"valid {locale} semantics rejected: {error}")
 
+    def test_accepts_semantics_from_the_august_29_run(self) -> None:
+        # Given valid localized semantics rejected by the August 29 run
+        examples = (
+            (
+                "deDE",
+                "The radius decreases as the raid size increases.",
+                "Der Radius verringert sich mit zunehmender Schlachtzugsgröße.",
+            ),
+            (
+                "ruRU",
+                "Damage increased when striking more than 2 targets.",
+                "Наносит дополнительный урон при поражении более 2 целей.",
+            ),
+            (
+                "ruRU",
+                "The effect occurs after 40 seconds.",
+                "Эффект происходит через 40 секунд.",
+            ),
+            (
+                "ruRU",
+                "They wait briefly before attacking players.",
+                "Они немного ждут перед тем, как атаковать игроков.",
+            ),
+            (
+                "ruRU",
+                "Healing increases while the set bonus increases.",
+                "Исцеление увеличивается одновременно с усилением бонуса комплекта.",
+            ),
+            (
+                "ruRU",
+                "The radius decreases as the raid size increases.",
+                "Радиус уменьшается по мере роста размера рейда.",
+            ),
+            (
+                "zhTW",
+                "Wither counts toward the damage increase.",
+                "Wither 現在會計入傷害加成。",
+            ),
+            (
+                "zhTW",
+                "An overall damage buff is being applied.",
+                "將套用整體傷害增益效果。",
+            ),
+            (
+                "zhTW",
+                "The eggs hatch even if the Matriarch is dead.",
+                "即使 Matriarch 已死，蛋仍會孵化。",
+            ),
+        )
+
+        # When each aligned bullet is checked
+        for locale, english, localized in examples:
+            with self.subTest(locale=locale, english=english):
+                try:
+                    self.validator._validate_semantic_structure(
+                        locale,
+                        1,
+                        english,
+                        localized,
+                    )
+                except ValueError as error:
+                    # Then natural equivalent wording must remain publishable
+                    self.fail(f"valid {locale} semantics rejected: {error}")
+
     def test_does_not_treat_an_ability_name_as_an_after_condition(self) -> None:
         # Given After the Wildfire is an ability name, not conditional prose
         english = "After the Wildfire healing increased by 25%."

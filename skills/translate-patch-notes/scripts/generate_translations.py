@@ -108,6 +108,7 @@ def retain_target_locale(
 
 
 GENERIC_SENTENCE_STARTS = {
+    "An",
     "Added",
     "Addressed",
     "Additionally",
@@ -119,6 +120,7 @@ GENERIC_SENTENCE_STARTS = {
     "Casting",
     "Chance",
     "Cooldown",
+    "Corrected",
     "Current",
     "Damage",
     "Does",
@@ -128,6 +130,7 @@ GENERIC_SENTENCE_STARTS = {
     "Developers' notes",
     "Developers’ notes",
     "Duration",
+    "Effectiveness",
     "Finally",
     "Fixed",
     "For",
@@ -157,6 +160,7 @@ GENERIC_SENTENCE_STARTS = {
     "Rank",
     "Reduced",
     "Removed",
+    "Resolved",
     "Several",
     "Significantly",
     "Spell",
@@ -641,10 +645,22 @@ def _translate_prose_segments(
         ensure_ascii=False,
     )
     raw_translation = translator(payload, language)
-    translated_segments = _parse_translation_segments(
-        raw_translation,
-        len(segments),
-    )
+    try:
+        translated_segments = _parse_translation_segments(
+            raw_translation,
+            len(segments),
+        )
+    except InvalidTranslationBatchError:
+        translated_segments = []
+        for segment in segments:
+            segment_payload = json.dumps(
+                {"source": source_text, "segments": [segment]},
+                ensure_ascii=False,
+            )
+            segment_translation = translator(segment_payload, language)
+            translated_segments.extend(
+                _parse_translation_segments(segment_translation, 1)
+            )
 
     translated_by_index = dict(zip(
         segment_indexes,
@@ -973,9 +989,10 @@ def parse_inline_batch_results(
 
 
 ENGLISH_PROSE_REPAIR_WORDS = {
-    "been", "damage", "each", "first", "for", "has", "increased",
-    "one", "reduced", "taken", "the", "updated", "was", "when",
-    "while", "your",
+    "after", "been", "before", "could", "damage", "each", "first",
+    "fixed", "for", "has", "increased", "issue", "one", "reduced",
+    "resolved", "taken", "the", "updated", "was", "when", "where",
+    "while", "would", "your",
 }
 
 

@@ -1157,6 +1157,59 @@ class TranslationGenerationTests(unittest.TestCase):
             segment_requests,
         )
 
+    def test_repairs_each_prose_segment_when_bulk_segment_output_is_invalid(
+        self,
+    ) -> None:
+        # Given whole-bullet and bulk-segment responses are malformed
+        segment_requests: list[dict[str, object]] = []
+
+        def batch_translator(_text: str, _language: str) -> str:
+            return json.dumps(["markers missing"])
+
+        def repair_translator(_text: str, _language: str) -> str:
+            return "markers still missing"
+
+        def segment_translator(text: str, _language: str) -> str:
+            payload = json.loads(text)
+            segment_requests.append(payload)
+            if len(payload["segments"]) > 1:
+                return "invalid bulk response"
+
+            return json.dumps([
+                {
+                    " starts ": " beginnt ",
+                    " deals ": " verursacht ",
+                    " damage": " Schaden",
+                }[payload["segments"][0]]
+            ])
+
+        # When placeholder recovery falls back to isolated prose segments
+        translated = self.generator.translate_text_batch(
+            (
+                " starts __BPN0000__ deals __BPN0001__ damage",
+            ),
+            "de",
+            batch_translator,
+            repair_translator=repair_translator,
+            segment_repair_translator=segment_translator,
+        )
+
+        # Then code reconstructs immutable placeholders in their original order
+        self.assertEqual(
+            (
+                " beginnt __BPN0000__ verursacht __BPN0001__ Schaden",
+            ),
+            translated,
+        )
+        self.assertEqual(4, len(segment_requests))
+        self.assertEqual(3, len(segment_requests[0]["segments"]))
+        self.assertTrue(
+            all(
+                len(request["segments"]) == 1
+                for request in segment_requests[1:]
+            )
+        )
+
     def test_builds_and_parses_keyed_batch_api_requests(self) -> None:
         # Given two protected bullets for two target languages
         self.assertIsNotNone(self.generator)
@@ -1947,6 +2000,38 @@ class TranslationGenerationTests(unittest.TestCase):
         # Then ordinary sentence words remain translatable
         self.assertNotIn("If", terms)
         self.assertNotIn("Chance", terms)
+
+    def test_does_not_protect_an_as_a_wow_term(self) -> None:
+        # Given leaked English prose from failed zhTW and ruRU translations
+        text = (
+            "An overall buff is applied. Resolved an issue. "
+            "Corrected an issue. Effectiveness reduced."
+        )
+
+        # When candidate game terms are identified
+        _protected, _replacements, terms = self.generator._protect_text(text)
+
+        # Then ordinary English prose remains available to leakage validation
+        for prose_term in ("An", "Resolved", "Corrected", "Effectiveness"):
+            self.assertNotIn(prose_term, terms)
+
+    def test_repairs_a_fully_leaked_issue_resolution_sentence(self) -> None:
+        # Given a failed German result retains ordinary English issue prose
+        source = (
+            "__BPN0000__: Resolved an issue where __BPN0001__ could fail "
+            "to path across the bridge after __BPN0000__ were defeated."
+        )
+        localized = source
+
+        # When leakage detection compares the protected source and result
+        needs_repair = self.generator._needs_translation_repair(
+            source,
+            localized,
+            "de",
+        )
+
+        # Then the complete untranslated sentence receives a repair attempt
+        self.assertTrue(needs_repair)
 
     def test_does_not_protect_prose_in_russian_placeholder_failure(
         self,
