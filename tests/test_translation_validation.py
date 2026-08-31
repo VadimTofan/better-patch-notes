@@ -354,6 +354,51 @@ class TranslationValidationTests(unittest.TestCase):
             # Then the valid increase wording must not be rejected
             self.fail(f"valid Chinese extension was rejected: {error}")
 
+    def test_accepts_chinese_reduced_to_as_a_decrease(self) -> None:
+        # Given Chinese describes a reduction using the natural "reduced to"
+        english = (
+            "Venomous Abyss 4-piece set bonus updated – Cumulative Power "
+            "damage bonus per stack reduced to 3% (was 5%)."
+        )
+        localized = (
+            "Venomous Abyss 4件套套装奖励已更新——每层Cumulative Power"
+            "伤害加成降至3%（原为5%）。"
+        )
+
+        # When the aligned direction is checked
+        try:
+            self.validator._validate_semantic_structure(
+                "zhCN",
+                1,
+                english,
+                localized,
+            )
+        except ValueError as error:
+            # Then the valid Chinese reduction must be accepted
+            self.fail(f"valid Chinese reduction was rejected: {error}")
+
+    def test_accepts_chinese_damage_bonus_as_an_increase(self) -> None:
+        # Given Chinese describes a damage increase as a damage bonus
+        english = (
+            "Fixed an issue where Wither would not count toward "
+            "Darkglare Eye Beam damage increase."
+        )
+        localized = (
+            "修复了 Wither 无法计入 Darkglare Eye Beam 伤害加成的问题。"
+        )
+
+        # When the aligned direction is checked
+        try:
+            self.validator._validate_semantic_structure(
+                "zhCN",
+                1,
+                english,
+                localized,
+            )
+        except ValueError as error:
+            # Then the valid Chinese damage bonus must be accepted
+            self.fail(f"valid Chinese damage bonus was rejected: {error}")
+
     def test_accepts_german_growth_as_an_increase(self) -> None:
         # Given German expresses an increasing raid size as "wachsender"
         english = (
