@@ -153,6 +153,58 @@ class AcquisitionTests(unittest.TestCase):
             # Then it stops before translation
             self.assertEqual("NO_CHANGE", outcome.status)
 
+    def test_ambiguous_refresh_is_blocked_before_translation(self) -> None:
+        with TemporaryDirectory() as temporary_directory:
+            # Given English acquisition finds a similar cross-source record
+            root = Path(temporary_directory)
+            data_path = root / "retail-patch-notes.json"
+            lua_path = root / "PatchNotesData.lua"
+            output_directory = root / "artifacts"
+            canonical = {
+                "schemaVersion": 5,
+                "updatedAt": "2026-08-19T04:07:00+00:00",
+                "changes": [],
+            }
+            data_path.write_text(json.dumps(canonical), encoding="utf-8")
+            lua_path.write_text("return {}\n", encoding="utf-8")
+
+            def refresh(_input_path, staged_data, _staged_lua, _patch):
+                updated = dict(canonical)
+                updated["changes"] = [{"id": "ambiguous-change"}]
+                staged_data.write_text(json.dumps(updated), encoding="utf-8")
+                return SimpleNamespace(
+                    added=1,
+                    skipped=0,
+                    promoted=0,
+                    localized=0,
+                    ambiguous=4,
+                    removed=0,
+                )
+
+            # When acquisition evaluates the staged refresh
+            outcome = prepare_acquisition(
+                changes=(),
+                current_patch="12.1.0",
+                refreshed_at=datetime(2026, 8, 20, tzinfo=timezone.utc),
+                canonical_data_path=data_path,
+                canonical_lua_path=lua_path,
+                output_directory=output_directory,
+                refresh=refresh,
+            )
+
+            # Then translation is blocked with an explicit ambiguity result
+            self.assertEqual("BLOCKED", outcome.status)
+            result = json.loads(
+                (output_directory / "acquisition-result.json").read_text(
+                    encoding="utf-8"
+                )
+            )
+            self.assertEqual(4, result["ambiguous"])
+            self.assertEqual(
+                "English preflight produced 4 ambiguous records",
+                result["reason"],
+            )
+
 
 if __name__ == "__main__":
     unittest.main()

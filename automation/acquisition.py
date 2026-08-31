@@ -43,6 +43,8 @@ class AcquisitionOutcome:
     accepted: int
     added: int
     removed: int
+    ambiguous: int
+    reason: str
 
 
 def _write_json(path: Path, document: object) -> None:
@@ -98,17 +100,28 @@ def prepare_acquisition(
         )
         after = json.loads(staged_data_path.read_text(encoding="utf-8"))
 
-    status = (
-        "DATA_CHANGED"
-        if has_meaningful_change(before, after)
-        else "NO_CHANGE"
-    )
+    ambiguous = refresh_result.ambiguous
+    if ambiguous:
+        status = "BLOCKED"
+        reason = (
+            f"English preflight produced {ambiguous} ambiguous "
+            "records"
+        )
+    elif has_meaningful_change(before, after):
+        status = "DATA_CHANGED"
+        reason = ""
+    else:
+        status = "NO_CHANGE"
+        reason = ""
+
     outcome = AcquisitionOutcome(
         status=status,
         current_patch=current_patch,
         accepted=len(changes),
         added=refresh_result.added,
         removed=refresh_result.removed,
+        ambiguous=ambiguous,
+        reason=reason,
     )
     _write_json(output_directory / "acquisition-result.json", asdict(outcome))
 
