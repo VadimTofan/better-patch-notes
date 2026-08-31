@@ -354,6 +354,35 @@ class TranslationValidationTests(unittest.TestCase):
             # Then the valid increase wording must not be rejected
             self.fail(f"valid Chinese extension was rejected: {error}")
 
+    def test_accepts_russian_increase_wording(self) -> None:
+        # Given Russian naturally expresses increases with either verb form
+        examples = (
+            (
+                "We are looking to increase area damage.",
+                "Мы хотим повысить урон по области.",
+            ),
+            (
+                "We are targeting increases to its healing.",
+                "Мы целенаправленно усиливаем его исцеление.",
+            ),
+        )
+
+        # When each aligned direction is checked
+        for english, localized in examples:
+            with self.subTest(localized=localized):
+                try:
+                    self.validator._validate_semantic_structure(
+                        "ruRU",
+                        1,
+                        english,
+                        localized,
+                    )
+                except ValueError as error:
+                    # Then the valid increase wording must be accepted
+                    self.fail(
+                        f"valid Russian increase was rejected: {error}"
+                    )
+
     def test_accepts_chinese_reduced_to_as_a_decrease(self) -> None:
         # Given Chinese describes a reduction using the natural "reduced to"
         english = (
