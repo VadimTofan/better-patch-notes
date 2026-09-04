@@ -51,6 +51,7 @@ RAIDS = {
 INSTANCE_NAMES = {
     name.casefold(): name for name in DUNGEONS | RAIDS
 }
+INSTANCE_NAMES["tidebound grotto"] = "The Tidebound Grotto"
 INSTANCE_NAMES["the venemous abyss"] = "The Venomous Abyss"
 ENCOUNTER_INSTANCES = {
     "nymrissa wavecaller": "The Venomous Abyss",
@@ -75,9 +76,11 @@ NON_PATCH_SECTION_HEADINGS = {
     "items",
     "items and rewards",
     "lairs",
+    "omnium folio",
     "player versus player",
     "professions",
     "quests",
+    "user interface",
     "world",
 }
 BLOCK_TAGS = {"h1", "h2", "h3", "h4", "h5", "h6", "p", "li"}

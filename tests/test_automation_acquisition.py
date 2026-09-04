@@ -111,6 +111,137 @@ class AcquisitionTests(unittest.TestCase):
             self.assertEqual("DATA_CHANGED", result["status"])
             self.assertEqual(1, result["accepted"])
 
+    def test_translates_only_unpublished_blizzard_change_items(self) -> None:
+        with TemporaryDirectory() as temporary_directory:
+            # Given Blizzard republishes translated notes with one new bullet
+            root = Path(temporary_directory)
+            data_path = root / "retail-patch-notes.json"
+            lua_path = root / "PatchNotesData.lua"
+            output_directory = root / "artifacts"
+            canonical = {
+                "schemaVersion": 5,
+                "updatedAt": "2026-09-01T04:07:00+00:00",
+                "changes": [
+                    {
+                        "channel": "live",
+                        "category": "Class",
+                        "date": "2026-09-01",
+                        "patch": "12.1.0",
+                        "localizations": {
+                            "en": {
+                                "name": "Hunter",
+                                "specialization": "Beast Mastery",
+                                "source": "Blizzard",
+                                "change": [
+                                    "All damage dealt by you and your pets "
+                                    "increased by 7%."
+                                ],
+                            }
+                        },
+                    },
+                    {
+                        "channel": "live",
+                        "category": "Class",
+                        "date": "2026-09-01",
+                        "patch": "12.1.0",
+                        "localizations": {
+                            "en": {
+                                "name": "Monk",
+                                "specialization": "Mistweaver",
+                                "source": "Blizzard",
+                                "change": [
+                                    "The Venomous Abyss 4-piece set bonus "
+                                    "chance to activate has been increased "
+                                    "from 20% to 25%."
+                                ],
+                            }
+                        },
+                    },
+                ],
+            }
+            data_path.write_text(json.dumps(canonical), encoding="utf-8")
+            lua_path.write_text("return {}\n", encoding="utf-8")
+            changes = (
+                ExtractedChange(
+                    channel="live",
+                    category="Class",
+                    effective_date=date(2026, 9, 1),
+                    patch="12.1.0",
+                    name="Hunter",
+                    specialization="Beast Mastery",
+                    change=(
+                        "All damage dealt by you and your pets increased by "
+                        "7%.",
+                        "Resolved an issue causing Wild Thrash to not take "
+                        "target bounding radius into account.",
+                    ),
+                    source_url="https://news.blizzard.com/hotfixes",
+                ),
+                ExtractedChange(
+                    channel="live",
+                    category="Class",
+                    effective_date=date(2026, 9, 1),
+                    patch="12.1.0",
+                    name="Monk",
+                    specialization="Mistweaver",
+                    change=(
+                        "The Venomous Abyss 4-piece set bonus chance to "
+                        "activate has been increased to 25% (was 20%).",
+                    ),
+                    source_url="https://news.blizzard.com/hotfixes",
+                ),
+            )
+
+            def refresh(input_path, staged_data, _staged_lua, _patch):
+                refresh_input = json.loads(
+                    input_path.read_text(encoding="utf-8")
+                )
+                staged_data.write_text(
+                    json.dumps(
+                        {
+                            "schemaVersion": 5,
+                            "updatedAt": refresh_input["retrievedAt"],
+                            "changes": refresh_input["changes"],
+                        }
+                    ),
+                    encoding="utf-8",
+                )
+                return SimpleNamespace(
+                    added=1,
+                    skipped=0,
+                    promoted=0,
+                    localized=0,
+                    ambiguous=0,
+                    removed=0,
+                )
+
+            # When acquisition prepares the English translation artifact
+            outcome = prepare_acquisition(
+                changes=changes,
+                current_patch="12.1.0",
+                refreshed_at=datetime(2026, 9, 4, tzinfo=timezone.utc),
+                canonical_data_path=data_path,
+                canonical_lua_path=lua_path,
+                output_directory=output_directory,
+                refresh=refresh,
+            )
+
+            # Then only the unpublished bullet is sent to translation
+            self.assertEqual("DATA_CHANGED", outcome.status)
+            english = json.loads(
+                (output_directory / "english-document.json").read_text(
+                    encoding="utf-8"
+                )
+            )
+            self.assertEqual(1, len(english["changes"]))
+            self.assertEqual(
+                [
+                    "Resolved an issue causing Wild Thrash to not take target "
+                    "bounding radius into account."
+                ],
+                english["changes"][0]["localizations"]["en"]["change"],
+            )
+
     def test_timestamp_only_refresh_is_no_change(self) -> None:
         with TemporaryDirectory() as temporary_directory:
             # Given a refresher that changes only the top-level timestamp

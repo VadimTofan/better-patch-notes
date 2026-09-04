@@ -361,6 +361,32 @@ class PatchNoteExtractionTests(unittest.TestCase):
             changes[0].change,
         )
 
+    def test_extracts_the_reviewed_september_hotfix_shape(self) -> None:
+        # Given Blizzard omits "The" and follows with new non-target sections
+        document = _document(
+            "live-hotfix-september-3-2026.html",
+            channel="live",
+        )
+
+        # When the reviewed September article shape is extracted
+        changes = extract_changes(document)
+
+        # Then only the canonical dungeon record is published
+        self.assertEqual(1, len(changes))
+        self.assertEqual("Dungeon", changes[0].category)
+        self.assertEqual("The Tidebound Grotto", changes[0].name)
+        self.assertEqual(date(2026, 9, 1), changes[0].effective_date)
+        self.assertEqual(
+            (
+                "Nymrissa Wavecaller and her murlocs’ health reduced by up "
+                "to 10% for lower group sizes on Normal, Heroic, and Mythic "
+                "difficulties.",
+                "Frost Orb aura duration reduced to 12 seconds (was 16 "
+                "seconds).",
+            ),
+            changes[0].change,
+        )
+
     def test_canonicalizes_blizzards_venemous_abyss_typo(self) -> None:
         # Given Blizzard misspells the raid heading in the August 27 article
         document = _document(

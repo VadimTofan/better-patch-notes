@@ -26,6 +26,28 @@ class RefreshResult(Protocol):
 Refresher = Callable[[Path, Path, Path, str], RefreshResult]
 
 
+def _normalize_english_change(value: str) -> str:
+    punctuation = str.maketrans({"‘": "'", "’": "'"})
+
+    return " ".join(value.translate(punctuation).casefold().split())
+
+
+REVIEWED_EQUIVALENT_ENGLISH_CHANGES = {
+    frozenset(
+        {
+            _normalize_english_change(
+                "The Venomous Abyss 4-piece set bonus chance to activate "
+                "has been increased from 20% to 25%."
+            ),
+            _normalize_english_change(
+                "The Venomous Abyss 4-piece set bonus chance to activate "
+                "has been increased to 25% (was 20%)."
+            ),
+        }
+    )
+}
+
+
 def english_acquisition_sources(
     sources: tuple[RegisteredSource, ...],
 ) -> tuple[RegisteredSource, ...]:
@@ -54,6 +76,91 @@ def _write_json(path: Path, document: object) -> None:
     )
 
 
+def _english_context(
+    channel: str,
+    category: str,
+    effective_date: str,
+    patch: str,
+    name: str,
+    specialization: str,
+) -> tuple[str, ...]:
+    return tuple(
+        _normalize_english_change(str(value))
+        for value in (
+            channel,
+            category,
+            effective_date,
+            patch,
+            name,
+            specialization,
+        )
+    )
+
+
+def _is_published_change_item(
+    incoming_item: str,
+    published_items: list[str],
+) -> bool:
+    normalized_incoming = _normalize_english_change(incoming_item)
+    for published_item in published_items:
+        normalized_published = _normalize_english_change(published_item)
+        if normalized_incoming == normalized_published:
+            return True
+        if (
+            frozenset({normalized_incoming, normalized_published})
+            in REVIEWED_EQUIVALENT_ENGLISH_CHANGES
+        ):
+            return True
+
+    return False
+
+
+def _remove_published_blizzard_changes(
+    changes: tuple[ExtractedChange, ...],
+    canonical_document: dict[str, object],
+) -> tuple[ExtractedChange, ...]:
+    published_by_context: dict[tuple[str, ...], list[str]] = {}
+    for stored_change in canonical_document["changes"]:
+        stored_english = stored_change["localizations"]["en"]
+        if _normalize_english_change(stored_english["source"]) != "blizzard":
+            continue
+
+        context = _english_context(
+            stored_change["channel"],
+            stored_change["category"],
+            stored_change["date"],
+            stored_change["patch"],
+            stored_english["name"],
+            stored_english["specialization"],
+        )
+        published_by_context.setdefault(context, []).extend(
+            stored_english["change"]
+        )
+
+    unpublished_changes = []
+    for change in changes:
+        context = _english_context(
+            change.channel,
+            change.category,
+            change.effective_date.isoformat(),
+            change.patch,
+            change.name,
+            change.specialization,
+        )
+        published_items = published_by_context.get(context, [])
+        unpublished_items = tuple(
+            item
+            for item in change.change
+            if not _is_published_change_item(item, published_items)
+        )
+        if unpublished_items:
+            unpublished_changes.append(
+                replace(change, change=unpublished_items)
+            )
+
+    return tuple(unpublished_changes)
+
+
 def prepare_acquisition(
     *,
     changes: tuple[ExtractedChange, ...],
@@ -66,8 +173,13 @@ def prepare_acquisition(
 ) -> AcquisitionOutcome:
     """Prepare English-only artifacts without modifying release files."""
     output_directory.mkdir(parents=True, exist_ok=True)
-    english_document = build_english_document(
+    before = json.loads(canonical_data_path.read_text(encoding="utf-8"))
+    unpublished_changes = _remove_published_blizzard_changes(
         changes,
+        before,
+    )
+    english_document = build_english_document(
+        unpublished_changes,
         refreshed_at.isoformat(),
     )
     english_path = output_directory / "english-document.json"
@@ -85,7 +197,6 @@ def prepare_acquisition(
     refresh_input_path = output_directory / "english-refresh-input.json"
     _write_json(refresh_input_path, refresh_input)
 
-    before = json.loads(canonical_data_path.read_text(encoding="utf-8"))
     with TemporaryDirectory() as temporary_directory:
         temporary_root = Path(temporary_directory)
         staged_data_path = temporary_root / canonical_data_path.name
