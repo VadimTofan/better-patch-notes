@@ -428,6 +428,33 @@ class TranslationValidationTests(unittest.TestCase):
             # Then the valid Chinese damage bonus must be accepted
             self.fail(f"valid Chinese damage bonus was rejected: {error}")
 
+    def test_accepts_additional_chinese_increase_wording(self) -> None:
+        # Given reviewed Chinese translations use enhancement and buff wording
+        examples = (
+            ("zhCN", "Damage increased.", "伤害得到增强。"),
+            (
+                "zhTW",
+                "An overall damage increase is applied.",
+                "將套用整體傷害增益效果。",
+            ),
+        )
+
+        # When each aligned direction is checked
+        for locale, english, localized in examples:
+            with self.subTest(locale=locale):
+                try:
+                    self.validator._validate_semantic_structure(
+                        locale,
+                        1,
+                        english,
+                        localized,
+                    )
+                except ValueError as error:
+                    # Then the valid increase wording must be accepted
+                    self.fail(
+                        f"valid Chinese increase was rejected: {error}"
+                    )
+
     def test_accepts_german_growth_as_an_increase(self) -> None:
         # Given German expresses an increasing raid size as "wachsender"
         english = (
@@ -688,6 +715,36 @@ class TranslationValidationTests(unittest.TestCase):
                 "esES",
                 "Players are protected while crossing the venom pools.",
                 "Los jugadores están protegidos al cruzar las charcas.",
+            ),
+            (
+                "esES",
+                "The effect applies while talented into Unload.",
+                "El efecto se aplica tras seleccionar el talento Unload.",
+            ),
+            (
+                "esES",
+                "Removed the creature after Rav'i.",
+                "Se eliminó la criatura en la zona posterior a Rav'i.",
+            ),
+            (
+                "itIT",
+                "Casting stops when the encounter ends.",
+                "Il lancio termina alla fine dello scontro.",
+            ),
+            (
+                "zhCN",
+                "They wait before attacking.",
+                "他们会等待再攻击。",
+            ),
+            (
+                "zhCN",
+                "The eggs hatch even if the creature dies.",
+                "即使生物死亡，蛋也会孵化。",
+            ),
+            (
+                "zhTW",
+                "They wait before attacking.",
+                "他們會等待再發動攻擊。",
             ),
             (
                 "koKR",

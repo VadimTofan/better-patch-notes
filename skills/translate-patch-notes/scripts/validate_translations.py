@@ -56,10 +56,12 @@ INCREASE_MARKERS = {
         "увелич", "повыш", "повыс", "возраст", "больше", "дополнительн",
         "усил", "рост",
     ),
-    "zhCN": ("提高", "增加", "上调", "提升", "延长", "加成"),
+    "zhCN": (
+        "提高", "增加", "上调", "提升", "延长", "加成", "增强",
+    ),
     "zhTW": (
         "提高", "增加", "上調", "提升", "延長", "調高", "額外", "增強",
-        "加成",
+        "加成", "增益",
     ),
 }
 
@@ -102,6 +104,7 @@ CONDITION_MARKERS = {
         " se ", "quando", "mentre", "finché", "dopo", "prima",
         "all'utilizzo", "sovracur", "lanciando", "al contempo",
         "all'interno", "aumentando", "nell'aumentare", "al termine",
+        "alla fine",
     ),
     "koKR": (
         "경우", "때", "동안", "중", "후", "전", " 시 ", "상태에서",
@@ -116,8 +119,12 @@ CONDITION_MARKERS = {
         "после", "до того", "через", "перед тем", "одновременно",
         "по окончании", "внутри",
     ),
-    "zhCN": ("如果", "当", "时", "期间", "只要", "后", "前"),
-    "zhTW": ("如果", "當", "時", "期間", "只要", "後", "前", "即使"),
+    "zhCN": (
+        "如果", "当", "时", "期间", "只要", "后", "前", "再", "即使",
+    ),
+    "zhTW": (
+        "如果", "當", "時", "期間", "只要", "後", "前", "即使", "再",
+    ),
 }
 
 SPANISH_CONDITION_MARKERS = {
@@ -138,9 +145,10 @@ SPANISH_CONDITION_MARKERS = {
         "bajo ",
         "se tenía el talento",
         " al ",
+        "tras",
     ),
     "unless": ("a menos que", "salvo que"),
-    "after": ("después", "tras", "al cabo de"),
+    "after": ("después", "tras", "al cabo de", "posterior"),
     "before": ("antes"),
 }
 
