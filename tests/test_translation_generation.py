@@ -2032,6 +2032,29 @@ class TranslationGenerationTests(unittest.TestCase):
         self.assertNotIn("If", terms)
         self.assertNotIn("Chance", terms)
 
+    def test_does_not_protect_patch_note_verbs_as_wow_terms(self) -> None:
+        # Given sentence-leading verbs from the failed Traditional Chinese run
+        examples = (
+            (
+                "Killing a Blightscale Wretch no longer triggers it.",
+                "Killing",
+            ),
+            (
+                "Updated visuals now match the impact radius.",
+                "Updated",
+            ),
+        )
+
+        # When candidate terms are identified
+        for text, ordinary_word in examples:
+            with self.subTest(ordinary_word=ordinary_word):
+                _protected, _replacements, terms = (
+                    self.generator._protect_text(text)
+                )
+
+                # Then ordinary prose remains available for translation
+                self.assertNotIn(ordinary_word, terms)
+
     def test_does_not_protect_an_as_a_wow_term(self) -> None:
         # Given leaked English prose from failed zhTW and ruRU translations
         text = (

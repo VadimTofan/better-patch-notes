@@ -221,6 +221,47 @@ class TranslationValidationTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "English leakage"):
             self.validator.validate_translation_batch(batch, self.terminology)
 
+    def test_rejects_english_leakage_in_traditional_chinese(self) -> None:
+        # Given a Traditional Chinese bullet leaves ordinary English prose
+        batch = _translation_batch()
+        english = batch["changes"][0]["localizations"]["en"]
+        russian = batch["changes"][0]["localizations"].pop("ruRU")
+        english["change"] = [
+            "Moonfire damage increased by 12.5% for 8 seconds."
+        ]
+        chinese = dict(russian)
+        chinese["name"] = "德魯伊"
+        chinese["change"] = [
+            "Moonfire damage 傷害提高 12.5%，持續 8 秒。"
+        ]
+        chinese["uncertainTerms"] = ["Moonfire"]
+        batch["changes"][0]["localizations"]["zhTW"] = chinese
+
+        # When / Then untranslated prose remains a hard release blocker
+        with self.assertRaisesRegex(ValueError, "English leakage"):
+            self.validator.validate_translation_batch(batch, self.terminology)
+
+    def test_rejects_ordinary_prose_as_an_uncertain_term(self) -> None:
+        # Given the generator mislabels a sentence verb as WoW terminology
+        batch = _translation_batch()
+        english = batch["changes"][0]["localizations"]["en"]
+        russian = batch["changes"][0]["localizations"].pop("ruRU")
+        english["change"] = [
+            "Killing a Moonfire target increases damage by 12.5% for "
+            "8 seconds."
+        ]
+        chinese = dict(russian)
+        chinese["name"] = "德魯伊"
+        chinese["change"] = [
+            "Killing Moonfire 目標會使傷害提高 12.5%，持續 8 秒。"
+        ]
+        chinese["uncertainTerms"] = ["Killing", "Moonfire"]
+        batch["changes"][0]["localizations"]["zhTW"] = chinese
+
+        # When / Then metadata cannot exempt ordinary untranslated prose
+        with self.assertRaisesRegex(ValueError, "invalid uncertain term"):
+            self.validator.validate_translation_batch(batch, self.terminology)
+
     def test_accepts_verified_english_game_terms_in_translated_prose(self) -> None:
         # Given verified class and ability names intentionally remain English
         batch = _translation_batch()
@@ -658,6 +699,11 @@ class TranslationValidationTests(unittest.TestCase):
                 "Урон снижен на время действия Blood Shield.",
             ),
             (
+                "ruRU",
+                "Applications increase before the target dies.",
+                "Количество применений увеличивается до гибели цели.",
+            ),
+            (
                 "itIT",
                 "If its healing would overheal, transfer the excess.",
                 "Le sovracure si trasferiscono a un alleato.",
@@ -747,6 +793,11 @@ class TranslationValidationTests(unittest.TestCase):
                 "他們會等待再發動攻擊。",
             ),
             (
+                "zhTW",
+                "The effect applies while outside the area.",
+                "效果會在區域外面生效。",
+            ),
+            (
                 "koKR",
                 "The effect can fail while Divine Resonance is active.",
                 "Divine Resonance이 활성화된 상태에서 효과가 "
@@ -789,6 +840,21 @@ class TranslationValidationTests(unittest.TestCase):
                         localized,
                     )
                 )
+
+    def test_does_not_treat_no_longer_as_a_condition(self) -> None:
+        # Given Traditional Chinese omits "while" but contains "no longer"
+        english = "Killing it while outside no longer triggers the effect."
+        localized = "擊殺它不再觸發效果。"
+
+        # When the translation is checked for the missing condition
+        preserved = self.validator._preserves_conditions(
+            "zhTW",
+            english,
+            localized,
+        )
+
+        # Then the unrelated character in "no longer" cannot satisfy it
+        self.assertFalse(preserved)
 
     def test_accepts_reviewed_semantics_from_the_august_22_run(self) -> None:
         # Given valid localized semantics rejected by the August 22 dry run

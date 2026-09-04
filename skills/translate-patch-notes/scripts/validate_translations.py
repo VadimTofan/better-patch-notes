@@ -40,6 +40,10 @@ ENGLISH_CONDITION_PATTERN = re.compile(
     r"\b(?:if|when|whenever|while|unless|after|before)\b",
     re.IGNORECASE,
 )
+ORDINARY_ENGLISH_PROSE_TERMS = {
+    "Killing",
+    "Updated",
+}
 
 INCREASE_MARKERS = {
     "deDE": (
@@ -117,13 +121,14 @@ CONDITION_MARKERS = {
     "ruRU": (
         "если", "когда", "пока", "во время", "на время", " при ",
         "после", "до того", "через", "перед тем", "одновременно",
-        "по окончании", "внутри",
+        "по окончании", "внутри", " до ",
     ),
     "zhCN": (
-        "如果", "当", "时", "期间", "只要", "后", "前", "再", "即使",
+        "如果", "当", "时", "期间", "只要", "后", "前", "等待再", "即使",
     ),
     "zhTW": (
-        "如果", "當", "時", "期間", "只要", "後", "前", "即使", "再",
+        "如果", "當", "時", "期間", "只要", "後", "前", "即使",
+        "等待再", "外面",
     ),
 }
 
@@ -394,7 +399,7 @@ def _validate_agent_translation(
                 f"{locale} uses unverified terminology for {term}"
             )
 
-    allow_agent_terminology = locale in {"ruRU", "zhCN"}
+    requires_english_leakage_check = locale in {"ruRU", "zhCN", "zhTW"}
     _validate_term(
         locale,
         _require_string(english.get("name"), "en name"),
@@ -437,6 +442,7 @@ def _validate_agent_translation(
             or not term[0].isupper()
             or term not in english_content
             or term not in "\n".join(localized_changes)
+            or term in ORDINARY_ENGLISH_PROSE_TERMS
         ):
             raise ValueError(f"{locale} has an invalid uncertain term: {term}")
     prose_exempt_terms = protected_terms | preserved_uncertain_terms
@@ -449,7 +455,7 @@ def _validate_agent_translation(
             localized_change,
             f"{locale} change entry",
         )
-        if allow_agent_terminology and not trusted_canonical:
+        if requires_english_leakage_check and not trusted_canonical:
             heading_terms = {
                 _require_string(english.get("name"), "en name"),
                 _require_string(
