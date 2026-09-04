@@ -1,4 +1,5 @@
 import importlib.util
+from io import BytesIO
 import json
 from pathlib import Path
 import sys
@@ -6,6 +7,7 @@ import tempfile
 from threading import Event, Lock
 import unittest
 from unittest.mock import patch
+from urllib.error import HTTPError
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -522,6 +524,88 @@ class TranslationGenerationTests(unittest.TestCase):
             request_body["input"],
         )
         self.assertEqual(1, rate_limiter.wait_count)
+
+    def test_uses_generate_content_when_interactions_returns_500(self) -> None:
+        # Given Interactions fails but the supported GenerateContent API works
+        captured_requests = []
+
+        class FakeRateLimiter:
+            def __init__(self) -> None:
+                self.wait_count = 0
+
+            def wait(self) -> None:
+                self.wait_count += 1
+
+        rate_limiter = FakeRateLimiter()
+
+        class FakeResponse:
+            def __enter__(self):
+                return self
+
+            def __exit__(self, _exception_type, _exception, _traceback):
+                return False
+
+            def read(self) -> bytes:
+                return json.dumps({
+                    "candidates": [{
+                        "content": {
+                            "parts": [{"text": "Schaden erhöht"}],
+                        },
+                    }],
+                }).encode("utf-8")
+
+        def fake_urlopen(request, timeout):
+            captured_requests.append((request, timeout))
+            if len(captured_requests) == 1:
+                error_body = BytesIO(
+                    b'{"error":{"status":"INTERNAL"}}'
+                )
+                raise HTTPError(
+                    request.full_url,
+                    500,
+                    "Internal Server Error",
+                    {},
+                    error_body,
+                )
+            return FakeResponse()
+
+        # When a translation is requested
+        with (
+            patch.object(self.generator, "urlopen", fake_urlopen),
+            patch.object(
+                self.generator,
+                "GEMINI_REQUEST_LIMITER",
+                rate_limiter,
+            ),
+        ):
+            translated = self.generator.request_gemini_translation(
+                "test-api-key",
+                "damage increased",
+                "de",
+            )
+
+        # Then the same request falls back to GenerateContent once
+        self.assertEqual("Schaden erhöht", translated)
+        self.assertEqual(2, len(captured_requests))
+        fallback_request, fallback_timeout = captured_requests[1]
+        fallback_body = json.loads(fallback_request.data.decode("utf-8"))
+        fallback_prompt = fallback_body["contents"][0]["parts"][0]["text"]
+        thinking_config = fallback_body["generationConfig"][
+            "thinkingConfig"
+        ]
+
+        self.assertEqual(
+            "https://generativelanguage.googleapis.com/v1beta/models/"
+            "gemini-3.5-flash-lite:generateContent",
+            fallback_request.full_url,
+        )
+        self.assertEqual(30, fallback_timeout)
+        self.assertEqual(
+            "damage increased",
+            fallback_prompt.split("\n\n")[-1],
+        )
+        self.assertEqual("MINIMAL", thinking_config["thinkingLevel"])
+        self.assertEqual(2, rate_limiter.wait_count)
 
     def test_limits_translation_request_starts_to_five_per_minute(self) -> None:
         # Given a limiter configured for five request starts per minute

@@ -337,6 +337,80 @@ def _gemini_output_text(payload: object) -> str:
     raise RuntimeError("Gemini returned no translation text.")
 
 
+def _gemini_generate_content_text(payload: object) -> str:
+    if not isinstance(payload, dict):
+        raise RuntimeError("Gemini returned an invalid translation response.")
+
+    candidates = payload.get("candidates", [])
+    if not isinstance(candidates, list):
+        raise RuntimeError("Gemini returned an invalid translation response.")
+
+    for candidate in candidates:
+        if not isinstance(candidate, dict):
+            continue
+
+        content = candidate.get("content", {})
+        if not isinstance(content, dict):
+            continue
+
+        parts = content.get("parts", [])
+        if not isinstance(parts, list):
+            continue
+
+        translated = "".join(
+            part["text"]
+            for part in parts
+            if isinstance(part, dict) and isinstance(part.get("text"), str)
+        ).strip()
+        if translated:
+            return translated
+
+    raise RuntimeError("Gemini returned no translation text.")
+
+
+def _request_gemini_generate_content_output(
+    api_key: str,
+    prompt: str,
+    timeout: int,
+    model: str,
+) -> str:
+    endpoint = f"{GEMINI_API_BASE_URL}/models/{model}:generateContent"
+    request_body = {
+        "contents": [{"parts": [{"text": prompt}]}],
+        "generationConfig": {
+            "thinkingConfig": {
+                "thinkingLevel": (
+                    "MINIMAL" if model == GEMINI_BATCH_MODEL else "LOW"
+                ),
+            },
+        },
+    }
+    request = Request(
+        endpoint,
+        data=json.dumps(request_body).encode("utf-8"),
+        headers={
+            "Content-Type": "application/json",
+            "x-goog-api-key": api_key,
+        },
+        method="POST",
+    )
+
+    try:
+        GEMINI_REQUEST_LIMITER.wait()
+        with urlopen(request, timeout=timeout) as response:
+            payload = json.loads(response.read().decode("utf-8"))
+    except HTTPError as error:
+        raise GeminiApiError(error.code, _gemini_error_code(error)) from error
+    except (TimeoutError, URLError) as error:
+        raise GeminiApiError(503, "network_error") from error
+    except (json.JSONDecodeError, UnicodeDecodeError) as error:
+        raise RuntimeError(
+            "Gemini returned an invalid translation response."
+        ) from error
+
+    return _gemini_generate_content_text(payload)
+
+
 def _request_gemini_output(
     api_key: str,
     prompt: str,
@@ -367,7 +441,15 @@ def _request_gemini_output(
         with urlopen(request, timeout=timeout) as response:
             payload = json.loads(response.read().decode("utf-8"))
     except HTTPError as error:
-        raise GeminiApiError(error.code, _gemini_error_code(error)) from error
+        error_code = _gemini_error_code(error)
+        if error.code == 500:
+            return _request_gemini_generate_content_output(
+                api_key,
+                prompt,
+                timeout,
+                model,
+            )
+        raise GeminiApiError(error.code, error_code) from error
     except (TimeoutError, URLError) as error:
         raise GeminiApiError(503, "network_error") from error
     except (json.JSONDecodeError, UnicodeDecodeError) as error:
