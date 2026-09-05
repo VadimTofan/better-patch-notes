@@ -6,6 +6,466 @@ addon.PatchNotesData = {
         {
             category = "Class",
             channel = "live",
+            classToken = "DRUID",
+            date = "2026-09-04",
+            id = "change-7d9c7246d11c26e7",
+            localizations = {
+                deDE = {
+                    change = {
+                        "Stellar Amplification kann jetzt in der Abklingzeit-Manager verfolgt werden.",
+                        "Die Reichweite von Twin Moons' wird nun um die Kampfreichweite des Ziels erhöht, was bedeutet, dass es sich beim Angreifen großer Gegner auf weiter entfernte Ziele ausbreiten kann.",
+                    },
+                    name = "Druid",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    specialization = "Balance",
+                    terminologySourceUrls = {
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    },
+                    translatedFrom = "en",
+                    translationType = "agent",
+                },
+                en = {
+                    change = {
+                        "Stellar Amplification can now be tracked in the Cooldown Manager.",
+                        "Twin Moons' range is now increased by target combat reach, meaning it can spread to farther targets when attacking large enemies.",
+                    },
+                    name = "Druid",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    specialization = "Balance",
+                    terminologySourceUrls = {},
+                    translatedFrom = "",
+                    translationType = "official",
+                },
+                esES = {
+                    change = {
+                        "Ahora se puede realizar un seguimiento de Stellar Amplification en el Manager de tiempo de reutilización.",
+                        "El alcance de Twin Moons' ahora aumenta según el alcance de combate del objetivo, lo que significa que puede propagarse a objetivos más lejanos al atacar a enemigos grandes.",
+                    },
+                    name = "Druid",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    specialization = "Balance",
+                    terminologySourceUrls = {
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    },
+                    translatedFrom = "en",
+                    translationType = "agent",
+                },
+                frFR = {
+                    change = {
+                        "Stellar Amplification peut désormais être suivi dans le Manager de temps de recharge.",
+                        "La portée de Twin Moons' est désormais augmentée par l'allonge en combat de la cible, ce qui lui permet de se propager à des cibles plus éloignées lors d'attaques contre de grands ennemis.",
+                    },
+                    name = "Druid",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    specialization = "Balance",
+                    terminologySourceUrls = {
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    },
+                    translatedFrom = "en",
+                    translationType = "agent",
+                },
+                itIT = {
+                    change = {
+                        "Ora Stellar Amplification può essere monitorato nel Manager dei tempi di recupero.",
+                        "La gittata di Twin Moons' è ora aumentata dalla portata di combattimento del bersaglio, il che significa che può diffondersi a bersagli più lontani quando si attaccano nemici di grandi dimensioni.",
+                    },
+                    name = "Druid",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    specialization = "Balance",
+                    terminologySourceUrls = {
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    },
+                    translatedFrom = "en",
+                    translationType = "agent",
+                },
+                koKR = {
+                    change = {
+                        "Stellar Amplification을(를) 이제 재사용 대기시간 Manager에서 추적할 수 있습니다.",
+                        "Twin Moons'의 사거리가 이제 대상의 전투 도달 거리에 따라 증가하므로, 큰 적을 공격할 때 더 먼 대상에게 확산될 수 있습니다.",
+                    },
+                    name = "Druid",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    specialization = "Balance",
+                    terminologySourceUrls = {
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    },
+                    translatedFrom = "en",
+                    translationType = "agent",
+                },
+                ptBR = {
+                    change = {
+                        "Stellar Amplification agora pode ser rastreado no Manager de Tempo de Recarga.",
+                        "O alcance de Twin Moons' agora é aumentado pelo alcance de combate do alvo, o que significa que ele pode se espalhar para alvos mais distantes ao atacar inimigos grandes.",
+                    },
+                    name = "Druid",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    specialization = "Balance",
+                    terminologySourceUrls = {
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    },
+                    translatedFrom = "en",
+                    translationType = "agent",
+                },
+                ruRU = {
+                    change = {
+                        "Теперь время восстановления Stellar Amplification можно отслеживать в Manager.",
+                        "Дальность действия Twin Moons' теперь увеличивается в зависимости от радиуса боя цели, что позволяет способности распространяться на более отдаленные цели при атаке крупных противников.",
+                    },
+                    name = "Druid",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    specialization = "Balance",
+                    terminologySourceUrls = {
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    },
+                    translatedFrom = "en",
+                    translationType = "agent",
+                },
+                zhCN = {
+                    change = {
+                        "现在可以在冷却Manager中追踪Stellar Amplification。",
+                        "Twin Moons'的距离现在会根据目标的战斗触及距离增加，这意味着在攻击大型敌人时，它可以蔓延到更远的目标。",
+                    },
+                    name = "Druid",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    specialization = "Balance",
+                    terminologySourceUrls = {
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    },
+                    translatedFrom = "en",
+                    translationType = "agent",
+                },
+                zhTW = {
+                    change = {
+                        "現在可以在冷卻時間 Manager 中追蹤 Stellar Amplification。",
+                        "Twin Moons' 的距離現在會根據目標的戰鬥觸及範圍而增加，這意味著在攻擊大型敵人時，它能擴散到更遠的目標。",
+                    },
+                    name = "Druid",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    specialization = "Balance",
+                    terminologySourceUrls = {
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    },
+                    translatedFrom = "en",
+                    translationType = "agent",
+                },
+            },
+            patch = "12.1.0",
+            retrievedAt = "2026-09-05T06:54:11.641447+00:00",
+            specializationId = 102,
+        },
+        {
+            category = "Class",
+            channel = "live",
+            classToken = "SHAMAN",
+            date = "2026-09-04",
+            id = "change-a240ce402bbbd7ea",
+            localizations = {
+                deDE = {
+                    change = {
+                        "Das Venomous Abyss — Ula’tek: Es wurde ein Fehler behoben, bei dem Stapel von Ingested Venom auf einem Ziel angewendet werden konnten, das von Serpent's Bite betroffen war.",
+                    },
+                    name = "Shaman",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    specialization = "",
+                    terminologySourceUrls = {
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    },
+                    translatedFrom = "en",
+                    translationType = "agent",
+                },
+                en = {
+                    change = {
+                        "The Venomous Abyss — Ula’tek: Fixed an issue where applications of Ingested Venom could apply on a target affected by Serpent's Bite.",
+                    },
+                    name = "Shaman",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    specialization = "",
+                    terminologySourceUrls = {},
+                    translatedFrom = "",
+                    translationType = "official",
+                },
+                esES = {
+                    change = {
+                        "El Venomous Abyss — Ula’tek: Se ha corregido un problema por el cual las aplicaciones de Ingested Venom podían aplicarse en un objetivo afectado por Serpent's Bite.",
+                    },
+                    name = "Shaman",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    specialization = "",
+                    terminologySourceUrls = {
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    },
+                    translatedFrom = "en",
+                    translationType = "agent",
+                },
+                frFR = {
+                    change = {
+                        "Le Venomous Abyss — Ula’tek : correction d'un problème où les applications de Ingested Venom pouvaient s'appliquer sur une cible affectée par Serpent's Bite.",
+                    },
+                    name = "Shaman",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    specialization = "",
+                    terminologySourceUrls = {
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    },
+                    translatedFrom = "en",
+                    translationType = "agent",
+                },
+                itIT = {
+                    change = {
+                        "Il Venomous Abyss — Ula’tek: Risolto un problema per cui le applicazioni di Ingested Venom potevano applicarsi a un bersaglio influenzato da Serpent's Bite.",
+                    },
+                    name = "Shaman",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    specialization = "",
+                    terminologySourceUrls = {
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    },
+                    translatedFrom = "en",
+                    translationType = "agent",
+                },
+                koKR = {
+                    change = {
+                        "Venomous Abyss — Ula’tek: Ingested Venom 중첩이 Serpent's Bite의 영향을 받는 대상에게 적용되던 문제가 수정되었습니다.",
+                    },
+                    name = "Shaman",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    specialization = "",
+                    terminologySourceUrls = {
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    },
+                    translatedFrom = "en",
+                    translationType = "agent",
+                },
+                ptBR = {
+                    change = {
+                        "O Venomous Abyss — Ula’tek: Corrigido um problema em que aplicações de Ingested Venom podiam ser aplicadas em um alvo afetado por Serpent's Bite.",
+                    },
+                    name = "Shaman",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    specialization = "",
+                    terminologySourceUrls = {
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    },
+                    translatedFrom = "en",
+                    translationType = "agent",
+                },
+                ruRU = {
+                    change = {
+                        "Venomous Abyss — Ula’tek: исправлена неполадка, из-за которой эффекты Ingested Venom могли накладываться на цель, находящуюся под действием Serpent's Bite.",
+                    },
+                    name = "Shaman",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    specialization = "",
+                    terminologySourceUrls = {
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    },
+                    translatedFrom = "en",
+                    translationType = "agent",
+                },
+                zhCN = {
+                    change = {
+                        "Venomous Abyss — Ula’tek：修正了施加Ingested Venom时可能会作用于受到Serpent's Bite影响的目标的问题。",
+                    },
+                    name = "Shaman",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    specialization = "",
+                    terminologySourceUrls = {
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    },
+                    translatedFrom = "en",
+                    translationType = "agent",
+                },
+                zhTW = {
+                    change = {
+                        "Venomous Abyss — Ula’tek：修正了 Ingested Venom 的疊加效果可能會套用在受到 Serpent's Bite 影響之目標身上的問題。",
+                    },
+                    name = "Shaman",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    specialization = "",
+                    terminologySourceUrls = {
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    },
+                    translatedFrom = "en",
+                    translationType = "agent",
+                },
+            },
+            patch = "12.1.0",
+            retrievedAt = "2026-09-05T06:54:11.641447+00:00",
+            specializationId = 0,
+        },
+        {
+            category = "Class",
+            channel = "live",
+            classToken = "SHAMAN",
+            date = "2026-09-04",
+            id = "change-37216bdad6c493cf",
+            localizations = {
+                deDE = {
+                    change = {
+                        "Es wurde ein Fehler behoben, bei dem der Venomous Abyss 4-Setbonus den direkten Schaden von Crash Lightning nicht ordnungsgemäß erhöhte.",
+                    },
+                    name = "Shaman",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    specialization = "Enhancement",
+                    terminologySourceUrls = {
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    },
+                    translatedFrom = "en",
+                    translationType = "agent",
+                },
+                en = {
+                    change = {
+                        "Corrected an issue where the Venomous Abyss 4-set bonus was not properly increasing the upfront damage of Crash Lightning.",
+                    },
+                    name = "Shaman",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    specialization = "Enhancement",
+                    terminologySourceUrls = {},
+                    translatedFrom = "",
+                    translationType = "official",
+                },
+                esES = {
+                    change = {
+                        "Se ha corregido un problema por el cual la bonificación de conjunto de Venomous Abyss 4 no aumentaba correctamente el daño inicial de Crash Lightning.",
+                    },
+                    name = "Shaman",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    specialization = "Enhancement",
+                    terminologySourceUrls = {
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    },
+                    translatedFrom = "en",
+                    translationType = "agent",
+                },
+                frFR = {
+                    change = {
+                        "Correction d'un problème où le bonus de set Venomous Abyss 4 n'augmentait pas correctement les dégâts initiaux de Crash Lightning.",
+                    },
+                    name = "Shaman",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    specialization = "Enhancement",
+                    terminologySourceUrls = {
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    },
+                    translatedFrom = "en",
+                    translationType = "agent",
+                },
+                itIT = {
+                    change = {
+                        "Risolto un problema per cui il bonus da set Venomous Abyss 4 non aumentava correttamente i danni iniziali di Crash Lightning.",
+                    },
+                    name = "Shaman",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    specialization = "Enhancement",
+                    terminologySourceUrls = {
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    },
+                    translatedFrom = "en",
+                    translationType = "agent",
+                },
+                koKR = {
+                    change = {
+                        "Venomous Abyss 4 세트 효과가 Crash Lightning의 즉시 피해량을 정상적으로 증가시키지 않던 문제가 수정되었습니다.",
+                    },
+                    name = "Shaman",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    specialization = "Enhancement",
+                    terminologySourceUrls = {
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    },
+                    translatedFrom = "en",
+                    translationType = "agent",
+                },
+                ptBR = {
+                    change = {
+                        "Corrigido um problema em que o bônus de conjunto Venomous Abyss 4 não estava aumentando corretamente o dano inicial de Crash Lightning.",
+                    },
+                    name = "Shaman",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    specialization = "Enhancement",
+                    terminologySourceUrls = {
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    },
+                    translatedFrom = "en",
+                    translationType = "agent",
+                },
+                ruRU = {
+                    change = {
+                        "Исправлена неполадка, из-за которой бонус комплекта Venomous Abyss 4 некорректно увеличивал мгновенный урон способности Crash Lightning.",
+                    },
+                    name = "Shaman",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    specialization = "Enhancement",
+                    terminologySourceUrls = {
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    },
+                    translatedFrom = "en",
+                    translationType = "agent",
+                },
+                zhCN = {
+                    change = {
+                        "修正了Venomous Abyss 4套装奖励未能正确提高Crash Lightning初始伤害的问题。",
+                    },
+                    name = "Shaman",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    specialization = "Enhancement",
+                    terminologySourceUrls = {
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    },
+                    translatedFrom = "en",
+                    translationType = "agent",
+                },
+                zhTW = {
+                    change = {
+                        "修正了 Venomous Abyss 4 套裝加成無法正確提高 Crash Lightning 初始傷害的問題。",
+                    },
+                    name = "Shaman",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    specialization = "Enhancement",
+                    terminologySourceUrls = {
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
+                    },
+                    translatedFrom = "en",
+                    translationType = "agent",
+                },
+            },
+            patch = "12.1.0",
+            retrievedAt = "2026-09-05T06:54:11.641447+00:00",
+            specializationId = 263,
+        },
+        {
+            category = "Class",
+            channel = "live",
             classToken = "PRIEST",
             date = "2026-09-03",
             id = "change-f0f07c9dbe0590bd",
@@ -13495,7 +13955,7 @@ addon.PatchNotesData = {
         },
     },
     channelVersions = {
-        live = "355191134e84f966",
+        live = "7202ddc1e973a8cb",
         ptr = "4f53cda18c2baa0c",
     },
     classChannelVersions = {
@@ -13508,7 +13968,7 @@ addon.PatchNotesData = {
             ptr = "",
         },
         DRUID = {
-            live = "ff70823cbc6d7eb4",
+            live = "c8f13baf493f9a22",
             ptr = "",
         },
         EVOKER = {
@@ -13540,7 +14000,7 @@ addon.PatchNotesData = {
             ptr = "",
         },
         SHAMAN = {
-            live = "dc02b4208e0d044b",
+            live = "da8ae60a13bbed21",
             ptr = "",
         },
         WARLOCK = {
@@ -13562,7 +14022,7 @@ addon.PatchNotesData = {
             ptr = "",
         },
         DRUID = {
-            live = "2026-09-02",
+            live = "2026-09-04",
             ptr = "",
         },
         EVOKER = {
@@ -13594,7 +14054,7 @@ addon.PatchNotesData = {
             ptr = "",
         },
         SHAMAN = {
-            live = "2026-09-03",
+            live = "2026-09-04",
             ptr = "",
         },
         WARLOCK = {
@@ -13607,11 +14067,11 @@ addon.PatchNotesData = {
         },
     },
     latestDates = {
-        live = "2026-09-03",
+        live = "2026-09-04",
         ptr = "",
     },
     recordCounts = {
-        live = 80,
+        live = 83,
         ptr = 0,
     },
     schemaVersion = 5,
@@ -13623,5 +14083,5 @@ addon.PatchNotesData = {
         live = "2026-09-03",
         ptr = "",
     },
-    updatedAt = "2026-09-04T11:57:18.878471+00:00",
+    updatedAt = "2026-09-05T06:54:11.641447+00:00",
 }
