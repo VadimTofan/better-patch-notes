@@ -1,3 +1,9 @@
+Version 0.2.31 - 2026-09-06
+- Data: Live 12.1.0; PTR None
+- Added or updated: 0 added; 0 updated
+- Removed: 1 stale records
+- Locales: No new localized records; retained records unchanged
+
 Version 0.2.30 - 2026-09-05
 - Data: Live 12.1.0; PTR None
 - Added or updated: 3 added; 0 updated
