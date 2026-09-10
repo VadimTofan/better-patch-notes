@@ -1,7 +1,1409 @@
 {
   "schemaVersion": 5,
-  "updatedAt": "2026-09-09T07:20:11.258885+00:00",
+  "updatedAt": "2026-09-10T07:15:54.019983+00:00",
   "changes": [
+    {
+      "id": "change-e5f6c8e61f00f1f0",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-09-09",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Death Knight",
+          "specialization": "Blood",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "Resolved an issue causing Grip of the Dead from Death and Decay to permanently be active on targets."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Death Knight",
+          "specialization": "Blood",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Ein Fehler wurde behoben, der dazu führte, dass Grip of the Dead von Death and Decay permanent auf Zielen aktiv war."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "esES": {
+          "name": "Death Knight",
+          "specialization": "Blood",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Se ha resuelto un problema que provocaba que Grip of the Dead de Death and Decay estuviera activo permanentemente en los objetivos."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "frFR": {
+          "name": "Death Knight",
+          "specialization": "Blood",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Résolution d'un problème entraînant l'activité permanente de Grip of the Dead provenant de Death and Decay sur les cibles."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "itIT": {
+          "name": "Death Knight",
+          "specialization": "Blood",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Risolto un problema che faceva sì che Grip of the Dead da Death and Decay rimanesse permanentemente attivo sui bersagli."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "koKR": {
+          "name": "Death Knight",
+          "specialization": "Blood",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Death and Decay의 Grip of the Dead이(가) 대상에게 영구적으로 지속되던 문제가 해결되었습니다."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "ptBR": {
+          "name": "Death Knight",
+          "specialization": "Blood",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Resolução de um problema que fazia com que Grip of the Dead de Death and Decay ficasse permanentemente ativo(a) nos alvos."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "ruRU": {
+          "name": "Death Knight",
+          "specialization": "Blood",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Устранена неполадка, из-за которой эффект Grip of the Dead от Death and Decay оставался активным на целях постоянно."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "zhCN": {
+          "name": "Death Knight",
+          "specialization": "Blood",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "修复了 Death and Decay 的 Grip of the Dead 效果会在目标身上永久生效的问题。"
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "zhTW": {
+          "name": "Death Knight",
+          "specialization": "Blood",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "解決了來自Death and Decay的Grip of the Dead會在目標身上永久保持啟用的問題。"
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        }
+      },
+      "retrievedAt": "2026-09-10T07:15:54.019983+00:00"
+    },
+    {
+      "id": "change-ce5f5c5c91e41d6a",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-09-09",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Druid",
+          "specialization": "Guardian",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "Fixed an issue where Wild Guardian was incorrectly increasing Thrash and Mangle damage regardless of whether Rank 3 was selected."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Druid",
+          "specialization": "Guardian",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Ein Fehler wurde behoben, bei dem Wild Guardian den Schaden von Thrash and Mangle unkorrekt erhöhte, unabhängig davon, ob Rang 3 ausgewählt war."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "esES": {
+          "name": "Druid",
+          "specialization": "Guardian",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Se ha solucionado un problema por el cual Wild Guardian aumentaba incorrectamente el daño de Thrash and Mangle independientemente de si se había seleccionado el rango 3."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "frFR": {
+          "name": "Druid",
+          "specialization": "Guardian",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Correction d'un problème où Wild Guardian augmentait incorrectement les dégâts de Thrash and Mangle que le rang 3 soit sélectionné ou non."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "itIT": {
+          "name": "Druid",
+          "specialization": "Guardian",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Risolto un problema per cui Wild Guardian aumentava erroneamente i danni di Thrash and Mangle a prescindere dal fatto che il Grado 3 fosse selezionato."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "koKR": {
+          "name": "Druid",
+          "specialization": "Guardian",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Wild Guardian이(가) 등급 3 선택 여부와 관계없이 Thrash and Mangle 피해를 잘못 증가시키던 문제가 수정되었습니다."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "ptBR": {
+          "name": "Druid",
+          "specialization": "Guardian",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Correção de um problema em que Wild Guardian aumentava incorretamente o dano de Thrash and Mangle, independentemente de a Classificação 3 estar selecionada."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "ruRU": {
+          "name": "Druid",
+          "specialization": "Guardian",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Исправлена неполадка, из-за которой Wild Guardian некорректно увеличивал урон способности Thrash and Mangle независимо от того, был ли выбран ранг 3."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "zhCN": {
+          "name": "Druid",
+          "specialization": "Guardian",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "修复了无论是否选择等级 3，Wild Guardian 都会错误地提高 Thrash 和 Mangle 伤害的问题。"
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "zhTW": {
+          "name": "Druid",
+          "specialization": "Guardian",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "修正了無論是否選擇階級3，Wild Guardian都會錯誤地增加Thrash and Mangle傷害的問題。"
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        }
+      },
+      "retrievedAt": "2026-09-10T07:15:54.019983+00:00"
+    },
+    {
+      "id": "change-3931cbdf5f8fc33a",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-09-09",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Paladin",
+          "specialization": "Protection",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "Fixed an issue that caused Glory of the Vanguard to sometimes fail to deal damage to distant targets."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Paladin",
+          "specialization": "Protection",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Ein Fehler wurde behoben, der dazu führte, dass Glory of the Vanguard entfernten Zielen manchmal keinen Schaden zufügte."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "esES": {
+          "name": "Paladin",
+          "specialization": "Protection",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Se ha solucionado un problema que provocaba que Glory of the Vanguard a veces no infligiera daño a objetivos distantes."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "frFR": {
+          "name": "Paladin",
+          "specialization": "Protection",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Correction d'un problème qui faisait que Glory of the Vanguard échouait parfois à infliger des dégâts aux cibles éloignées."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "itIT": {
+          "name": "Paladin",
+          "specialization": "Protection",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Risolto un problema che causava a Glory of the Vanguard di non infliggere a volte danni ai bersagli distanti."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "koKR": {
+          "name": "Paladin",
+          "specialization": "Protection",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Glory of the Vanguard이(가) 간헐적으로 원거리 대상에게 피해를 주지 못하던 문제가 수정되었습니다."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "ptBR": {
+          "name": "Paladin",
+          "specialization": "Protection",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Correção de um problema que fazia com que Glory of the Vanguard às vezes falhasse ao causar dano a alvos distantes."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "ruRU": {
+          "name": "Paladin",
+          "specialization": "Protection",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Исправлена неполадка, из-за которой Glory of the Vanguard иногда не наносил урон удаленным целям."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "zhCN": {
+          "name": "Paladin",
+          "specialization": "Protection",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "修复了 Glory of the Vanguard 有时无法对远处目标造成伤害的问题。"
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "zhTW": {
+          "name": "Paladin",
+          "specialization": "Protection",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "修正了導致Glory of the Vanguard有時對遠距離目標無法造成傷害的問題。"
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        }
+      },
+      "retrievedAt": "2026-09-10T07:15:54.019983+00:00"
+    },
+    {
+      "id": "change-fac8e7c48b5600d6",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-09-09",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Priest",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "Fixed an issue where Flash Heal could not be tracked on the Cooldown Manager for Discipline and Shadow specializations."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Priest",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Ein Fehler wurde behoben, bei dem Flash Heal für Discipline and Shadow-Spezialisierungen nicht in der Abklingzeit-Manager verfolgt werden konnte."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "esES": {
+          "name": "Priest",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Se ha solucionado un problema por el cual Flash Heal no se podía rastrear en el Manager de tiempo de reutilización para las especializaciones de Discipline and Shadow."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "frFR": {
+          "name": "Priest",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Correction d'un problème où Flash Heal ne pouvait pas être suivi dans le Manager de recharge pour les spécialisations de Discipline and Shadow."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "itIT": {
+          "name": "Priest",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Risolto un problema per cui Flash Heal non poteva essere tracciato nel Manager di ricarica per le specializzazioni Discipline and Shadow."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "koKR": {
+          "name": "Priest",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Discipline and Shadow 전문화의 재사용 대기시간 Manager에서 Flash Heal을(를) 추적할 수 없던 문제가 수정되었습니다."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "ptBR": {
+          "name": "Priest",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Correção de um problema em que Flash Heal não podia ser rastreado(a) no(a) Manager de Recarga para as especializações de Discipline and Shadow."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "ruRU": {
+          "name": "Priest",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Исправлена неполадка, из-за которой Flash Heal нельзя было отслеживать в панели восстановления Manager для специализаций класса Discipline and Shadow."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "zhCN": {
+          "name": "Priest",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "修复了 Discipline 和 Shadow 专精无法在冷却管理器中追踪 Flash Heal 的问题。"
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "zhTW": {
+          "name": "Priest",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "修正了Flash Heal無法在Discipline and Shadow專精的冷卻時間Manager中追蹤的問題。"
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        }
+      },
+      "retrievedAt": "2026-09-10T07:15:54.019983+00:00"
+    },
+    {
+      "id": "change-bc287050437d731b",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-09-09",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Shaman",
+          "specialization": "Enhancement",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "Fixed an issue where damage from Doom Winds could interrupt channeled effects, such as the Font of Venomous Rage trinket.",
+            "Totemic: Fixed an issue where Crash Lightning could cause unintended targets to be hit by Windfury Weapon."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Shaman",
+          "specialization": "Enhancement",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Ein Fehler wurde behoben, bei dem Schaden von Doom Winds kanalisiert Effekte wie das Schmuckstück Font of Venomous Rage unterbrechen konnte.",
+            "Totemic: Ein Fehler wurde behoben, bei dem Crash Lightning dazu führen konnte, dass unbeabsichtigte Ziele von Windfury Weapon getroffen wurden."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "esES": {
+          "name": "Shaman",
+          "specialization": "Enhancement",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Se ha solucionado un problema por el cual el daño de Doom Winds podía interrumpir efectos canalizados, como el abalorio Font of Venomous Rage.",
+            "Totemic: Se ha solucionado un problema por el cual Crash Lightning podía provocar que objetivos no deseados fueran golpeados por Windfury Weapon."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "frFR": {
+          "name": "Shaman",
+          "specialization": "Enhancement",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Correction d'un problème où les dégâts de Doom Winds pouvaient interrompre les effets canalisés, tels que le trinket Font of Venomous Rage.",
+            "Totemic : correction d'un problème où Crash Lightning pouvait amener des cibles non intentionnelles à être touchées par Windfury Weapon."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "itIT": {
+          "name": "Shaman",
+          "specialization": "Enhancement",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Risolto un problema per cui i danni di Doom Winds potevano interrompere gli effetti canalizzati, come il ninnolo Font of Venomous Rage.",
+            "Totemic: Risolto un problema per cui Crash Lightning poteva fare in modo che bersagli non voluti venissero colpiti da Windfury Weapon."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "koKR": {
+          "name": "Shaman",
+          "specialization": "Enhancement",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Doom Winds의 피해로 인해 Font of Venomous Rage 장신구와 같은 정신 집중 효과가 방해받던 문제가 수정되었습니다.",
+            "Totemic: Crash Lightning으로 인해 의도하지 않은 대상이 Windfury Weapon(으)로부터 적중당하던 문제가 수정되었습니다."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "ptBR": {
+          "name": "Shaman",
+          "specialization": "Enhancement",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Correção de um problema em que o dano de Doom Winds podia interromper efeitos canalizados, como o trinket Font of Venomous Rage.",
+            "O/A Totemic: Correção de um problema em que Crash Lightning podia fazer com que alvos não intencionais fossem atingidos por Windfury Weapon."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "ruRU": {
+          "name": "Shaman",
+          "specialization": "Enhancement",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Исправлена неполадка, из-за которой урон от Doom Winds мог прерывать поддерживаемые эффекты, такие как аксессуар Font of Venomous Rage.",
+            "Totemic: исправлена неполадка, из-за которой Crash Lightning мог приводить к поражению непредназначенных целей способностью Windfury Weapon."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "zhCN": {
+          "name": "Shaman",
+          "specialization": "Enhancement",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "修复了 Doom Winds 的伤害可能打断引导效果的问题，例如 Font of Venomous Rage 饰品的引导效果。",
+            "Totemic：修复了 Crash Lightning 可能导致 Windfury Weapon 命中非预期目标的问题。"
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "zhTW": {
+          "name": "Shaman",
+          "specialization": "Enhancement",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "修正了來自Doom Winds的傷害可能會中斷引導效果（例如Font of Venomous Rage飾品）的問題。",
+            "Totemic：修正了Crash Lightning可能導致非預期目標被Windfury Weapon擊中的問題。"
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        }
+      },
+      "retrievedAt": "2026-09-10T07:15:54.019983+00:00"
+    },
+    {
+      "id": "change-ee799464bab7583d",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-09-09",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Warrior",
+          "specialization": "Arms",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "The Venomous Abyss 4-set Bonus – The Winding Up bonus Slam damage buff can now be tracked in the Cooldown Manager.",
+            "Rend is now able to be tracked in the Cooldown Manager."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Warrior",
+          "specialization": "Arms",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Das Venomous Abyss-4-Set-Bonus – Der Schadensbuff des Winding Up-Bonus-Slam kann nun in der Abklingzeit-Manager verfolgt werden.",
+            "Rend kann nun in der Abklingzeit-Manager verfolgt werden."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "esES": {
+          "name": "Warrior",
+          "specialization": "Arms",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Conjunto de 4 piezas de Venomous Abyss Bonus – La mejora de daño Slam del bonus de Winding Up ahora se puede rastrear en el Manager de tiempo de reutilización.",
+            "Rend ahora se puede rastrear en el Manager de tiempo de reutilización."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "frFR": {
+          "name": "Warrior",
+          "specialization": "Arms",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Le Venomous Abyss 4-set Bonus – Le bonus Winding Up du buff de dégâts Slam peut désormais être suivi dans le Manager des temps de recharge.",
+            "Rend peut désormais être suivi dans le Manager de recharge."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "itIT": {
+          "name": "Warrior",
+          "specialization": "Arms",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Il set da 4 pezzi del Venomous Abyss Bonus – Il buff ai danni bonus Slam de Il Winding Up ora può essere tracciato nel Manager di ricarica.",
+            "Rend ora può essere tracciato nel Manager di ricarica."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "koKR": {
+          "name": "Warrior",
+          "specialization": "Arms",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Venomous Abyss 4세트 Bonus – Winding Up 보너스 Slam 피해 공격력 증가 효과를 이제 재사용 대기시간 Manager에서 추적할 수 있습니다.",
+            "이제 Rend을(를) 재사용 대기시간 Manager에서 추적할 수 있습니다."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "ptBR": {
+          "name": "Warrior",
+          "specialization": "Arms",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "O bônus de Bonus de conjunto de 4 de O/A Venomous Abyss – O bônus de bônus de dano de Winding Up Slam agora pode ser rastreado no(a) Manager de Recarga.",
+            "Rend agora pode ser rastreado(a) no(a) Manager de Recarga."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "ruRU": {
+          "name": "Warrior",
+          "specialization": "Arms",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Бонус 4-сета Venomous Abyss Bonus — теперь усиление урона от бонуса Winding Up можно отслеживать в Manager перезарядок (Slam).",
+            "Rend теперь можно отслеживать в панели восстановления Manager."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "zhCN": {
+          "name": "Warrior",
+          "specialization": "Arms",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "The Venomous Abyss 4 件套效果——现在可以在冷却管理器中追踪 Winding Up 提供的 Slam 额外伤害增益。",
+            "现在可以在冷却管理器中追踪 Rend。"
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "zhTW": {
+          "name": "Warrior",
+          "specialization": "Arms",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Venomous Abyss 4 套裝 Bonus – 現在可以在冷卻時間 Manager 中追蹤 Winding Up 獎勵 Slam 傷害增益效果。",
+            "Rend現在可以在冷卻時間Manager中追蹤。"
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        }
+      },
+      "retrievedAt": "2026-09-10T07:15:54.019983+00:00"
+    },
+    {
+      "id": "change-4b055c80ef7bc235",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-09-09",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Warrior",
+          "specialization": "Protection",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "The Venomous Abyss 2-set Bonus – The \"Vengeful Shield\" bonus Shield Slam damage buff can now be tracked in the Cooldown Manager.",
+            "Rend is now able to be tracked in the Cooldown Manager."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Warrior",
+          "specialization": "Protection",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Das Venomous Abyss-2-Set-Bonus – Der Schadensbuff des „Vengeful Shield“-Bonus-Shield Slam kann nun in der Abklingzeit-Manager verfolgt werden.",
+            "Rend kann nun in der Abklingzeit-Manager verfolgt werden."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "esES": {
+          "name": "Warrior",
+          "specialization": "Protection",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Conjunto de 2 piezas de Venomous Abyss Bonus – La mejora de daño Shield Slam del bonus \"Vengeful Shield\" ahora se puede rastrear en el Manager de tiempo de reutilización.",
+            "Rend ahora se puede rastrear en el Manager de tiempo de reutilización."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "frFR": {
+          "name": "Warrior",
+          "specialization": "Protection",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Venomous Abyss : ensemble à 2 pièces Bonus – Le buff de dégâts Shield Slam du bonus « Vengeful Shield » peut désormais être suivi dans le Manager de recharge.",
+            "Rend peut désormais être suivi dans le Manager de recharge."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "itIT": {
+          "name": "Warrior",
+          "specialization": "Protection",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Il set da 2 pezzi de Il Venomous Abyss Bonus – Il buff ai danni bonus Shield Slam \"Vengeful Shield\" ora può essere tracciato nel Manager di ricarica.",
+            "Rend ora può essere tracciato nel Manager di ricarica."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "koKR": {
+          "name": "Warrior",
+          "specialization": "Protection",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Venomous Abyss 2세트 Bonus – \"Vengeful Shield\" 보너스 Shield Slam 피해 공격력 증가 효과를 이제 재사용 대기시간 Manager에서 추적할 수 있습니다.",
+            "이제 Rend을(를) 재사용 대기시간 Manager에서 추적할 수 있습니다."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "ptBR": {
+          "name": "Warrior",
+          "specialization": "Protection",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "O bônus de Bonus de conjunto de 2 de O/A Venomous Abyss – O bônus de bônus de dano de Shield Slam \"Vengeful Shield\" agora pode ser rastreado no(a) Manager de Recarga.",
+            "Rend agora pode ser rastreado(a) no(a) Manager de Recarga."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "ruRU": {
+          "name": "Warrior",
+          "specialization": "Protection",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Бонус Bonus комплекта «2» класса «Venomous Abyss»: бафф урона от эффекта «Vengeful Shield» теперь можно отслеживать в Manager восстановления (Shield Slam).",
+            "Rend теперь можно отслеживать в панели восстановления Manager."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "zhCN": {
+          "name": "Warrior",
+          "specialization": "Protection",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "The Venomous Abyss 2 件套效果——现在可以在冷却管理器中追踪“Vengeful Shield”提供的 Shield Slam 额外伤害增益。",
+            "现在可以在冷却管理器中追踪 Rend。"
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "zhTW": {
+          "name": "Warrior",
+          "specialization": "Protection",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Venomous Abyss 2 套裝 Bonus – 「Vengeful Shield」獎勵 Shield Slam 傷害增益效果現在可以在冷卻時間 Manager 中追蹤。",
+            "Rend現在可以在冷卻時間Manager中追蹤。"
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        }
+      },
+      "retrievedAt": "2026-09-10T07:15:54.019983+00:00"
+    },
+    {
+      "id": "change-fa6ebb62b972c501",
+      "channel": "live",
+      "category": "Dungeon",
+      "date": "2026-09-09",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Den of Nalorakk",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "Addressed an issue where player pets were unable to damage The Winter Squall."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Den of Nalorakk",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Ein Fehler wurde behoben, bei dem Spielerbegleiter dem Winter Squall keinen Schaden zufügen konnten."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "esES": {
+          "name": "Den of Nalorakk",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Se ha solucionado un problema por el cual las mascotas de los jugadores no podían infligir daño a El Winter Squall."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "frFR": {
+          "name": "Den of Nalorakk",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Correction d'un problème où les familiers des joueurs ne pouvaient pas infliger de dégâts à Winter Squall."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "itIT": {
+          "name": "Den of Nalorakk",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Risolto un problema per cui gli Jumpy dei giocatori non erano in grado di danneggiare Il Winter Squall."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "koKR": {
+          "name": "Den of Nalorakk",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "플레이어의 소환수가 Winter Squall에게 피해를 주지 못하던 문제가 수정되었습니다."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "ptBR": {
+          "name": "Den of Nalorakk",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Correção de um problema em que os ajudantes dos jogadores não conseguiam causar dano a O/A Winter Squall."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "ruRU": {
+          "name": "Den of Nalorakk",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Исправлена неполадка, из-за которой питомцы игроков не могли нанести урон персонажу по имени Winter Squall."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "zhCN": {
+          "name": "Den of Nalorakk",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "修复了玩家宠物无法对 The Winter Squall 造成伤害的问题。"
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "zhTW": {
+          "name": "Den of Nalorakk",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "修正了玩家寵物無法對Winter Squall造成傷害的問題。"
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        }
+      },
+      "retrievedAt": "2026-09-10T07:15:54.019983+00:00"
+    },
+    {
+      "id": "change-a489f322b5929255",
+      "channel": "live",
+      "category": "Raid",
+      "date": "2026-09-09",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "The Venomous Abyss",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "Entombed Sentinels: Toxic Droplets are no longer instantly stepped on if they land directly on top of a player.",
+            "Entombed Sentinels: Living Venom no longer pierces immunities.",
+            "The Lost Explorers: Fixed a visual effect issue that sometimes occurred when the tortollans were empowered.",
+            "The Lost Explorers: Hoji will now teleport back to the main platform if he falls from the bridge.",
+            "Ula’tek: Added in health backstops to ensure the boss transitions out of Rage of the Shackled when reaching specific health thresholds."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "The Venomous Abyss",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Entombed Sentinels: Toxic Droplets werden nicht mehr sofort zertreten, wenn sie direkt auf einem Spieler landen.",
+            "Entombed Sentinels: Living Venom durchdringt Immunitäten nicht mehr.",
+            "Der Lost Explorers: Ein Fehler mit visuellen Effekten wurde behoben, der manchmal auftrat, wenn die Tortollaner ermächtigt wurden.",
+            "Der Lost Explorers: Hoji teleportiert sich nun zur Hauptplattform zurück, wenn er von der Brücke fällt.",
+            "Ula’tek: Gesundheitssicherungen wurden hinzugefügt, um sicherzustellen, dass der Boss beim Erreichen bestimmter Gesundheitsschwellen aus Rage of the Shackled übergeht."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "esES": {
+          "name": "The Venomous Abyss",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Entombed Sentinels: Los Toxic Droplets ya no son pisoteados instantáneamente si aterrizan directamente encima de un jugador.",
+            "Entombed Sentinels: Living Venom ya no atraviesa las inmunidades.",
+            "Lost Explorers: Se ha solucionado un problema de efectos visuales que ocurría a veces cuando los tortolianos eran potenciados.",
+            "Lost Explorers: Hoji ahora se teletransportará de vuelta a la plataforma principal si cae del puente.",
+            "Ula’tek: Se han añadido límites de salud para garantizar que el jefe salga de Rage of the Shackled al alcanzar umbrales de salud específicos."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "frFR": {
+          "name": "The Venomous Abyss",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Entombed Sentinels : Toxic Droplets ne sont plus piétinés instantanément s'ils atterrissent directement sur un joueur.",
+            "Entombed Sentinels : Living Venom ne traverse plus les immunités.",
+            "Lost Explorers : correction d'un problème d'effet visuel qui se produisait parfois lorsque les tortillans étaient renforcés.",
+            "Lost Explorers : Hoji se téléportera désormais sur la plateforme principale s'il tombe du pont.",
+            "Ula’tek : ajout de seuils de points de vie de sécurité pour s'assurer que le boss sort de Rage of the Shackled lorsqu'il atteint des seuils de santé spécifiques."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "itIT": {
+          "name": "The Venomous Abyss",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Entombed Sentinels: I Toxic Droplets non vengono più calpestati istantaneamente se atterrano direttamente sopra un giocatore.",
+            "Entombed Sentinels: Living Venom non perfora più le immunità.",
+            "Il Lost Explorers: Risolto un problema di effetti visivi che si verificava a volte quando i tortollani venivano potenziati.",
+            "Il Lost Explorers: Hoji ora si teleporterà di nuovo sulla piattaforma principale se cade dal ponte.",
+            "Ula’tek: Aggiunti limiti di salute per garantire che il boss esca da Rage of the Shackled al raggiungimento di specifiche soglie di salute."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "koKR": {
+          "name": "The Venomous Abyss",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Entombed Sentinels: Toxic Droplets이(가) 플레이어 바로 위에 떨어지더라도 더는 즉시 밟히지 않습니다.",
+            "Entombed Sentinels: Living Venom이(가) 면역을 관통하지 않습니다.",
+            "Lost Explorers: 거북인이 강화될 때 간헐적으로 발생하던 시각효과 문제가 수정되었습니다.",
+            "Lost Explorers: Hoji이(가) 다리에서 떨어질 경우 이제 주 플랫폼으로 다시 순간이동합니다.",
+            "Ula’tek: 특정 생명력 임계점에 도달했을 때 우두머리가 Rage of the Shackled(으)로부터 확실하게 단계 전환을 하도록 생명력 안전장치가 추가되었습니다."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "ptBR": {
+          "name": "The Venomous Abyss",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "O/A Entombed Sentinels: Toxic Droplets não são mais pisoteados instantaneamente se caírem diretamente em cima de um jogador.",
+            "O/A Entombed Sentinels: Living Venom não perfura mais imunidades.",
+            "O/A Lost Explorers: Correção de um problema de efeito visual que às vezes ocorria quando os tortolanos eram fortalecidos.",
+            "O/A Lost Explorers: Hoji agora se teleportará de volta para a plataforma principal se cair da ponte.",
+            "O/A Ula’tek: Adição de limites de vida para garantir que o chefe faça a transição para fora de Rage of the Shackled ao atingir limites específicos de vida."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "ruRU": {
+          "name": "The Venomous Abyss",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Entombed Sentinels: Toxic Droplets больше не наступают мгновенно, если приземляются прямо на игрока.",
+            "Entombed Sentinels: Living Venom больше не пробивает иммунитет.",
+            "Lost Explorers: Исправлена неполадка с визуальным эффектом, которая иногда возникала при усилении тортолланов.",
+            "Lost Explorers: Hoji теперь телепортируется обратно на основную платформу, если падает с моста.",
+            "Ula’tek: добавлены ограничения по здоровью, гарантирующие, что босс перейдет из фазы Rage of the Shackled при достижении определенных порогов здоровья."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "zhCN": {
+          "name": "The Venomous Abyss",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Entombed Sentinels：如果 Toxic Droplets 直接落在玩家身上，不再会立即被踩踏。",
+            "Entombed Sentinels：Living Venom 不再穿透免疫效果。",
+            "The Lost Explorers：修复了龟人获得强化时有时会出现的视觉效果问题。",
+            "The Lost Explorers：如果 Hoji 从桥上掉落，现在会传送回主平台。",
+            "Ula’tek：添加了生命值保障机制，确保首领在达到特定生命值阈值时退出 Rage of the Shackled 阶段。"
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        },
+        "zhTW": {
+          "name": "The Venomous Abyss",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Entombed Sentinels：Toxic Droplets若直接落在玩家正上方，不再會被瞬間踩中。",
+            "Entombed Sentinels：Living Venom不再能穿透免疫效果。",
+            "Lost Explorers：修正了巨龜人獲得強化時有時會發生的視覺效果問題。",
+            "當Lost Explorers：Hoji從橋上掉落時，現在會傳送回主平台。",
+            "Ula’tek：新增了生命值底線，以確保首領在達到特定生命值門檻時能脫離Rage of the Shackled。"
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
+          ]
+        }
+      },
+      "retrievedAt": "2026-09-10T07:15:54.019983+00:00"
+    },
     {
       "id": "change-7d9c7246d11c26e7",
       "channel": "live",
@@ -6579,1250 +7981,6 @@
         }
       },
       "retrievedAt": "2026-09-04T11:57:18.878471+00:00"
-    },
-    {
-      "id": "change-c96385e3e369b465",
-      "channel": "live",
-      "category": "Class",
-      "date": "2026-08-27",
-      "patch": "12.1.0",
-      "localizations": {
-        "en": {
-          "name": "Demon Hunter",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "official",
-          "translatedFrom": "",
-          "change": [
-            "Fixed an issue that allowed Blur's recent PvP adjustments to affect PvE situations. Blur damage reduction outside of PvP is restored to previous intended values."
-          ],
-          "terminologySourceUrls": []
-        },
-        "deDE": {
-          "name": "Demon Hunter",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Ein Problem wurde behoben, das es erlaubte, dass jüngste PvP-Anpassungen von Blur's PvE-Situationen beeinflussten. Die Schadensverringerung von Blur außerhalb von PvP wurde auf die vorherigen beabsichtigten Werte zurückgesetzt."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "esES": {
-          "name": "Demon Hunter",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Se ha solucionado un problema que permitía que los ajustes recientes de PvP de Blur's afectaran a situaciones de PvE. Se restaura la reducción de daño de Blur fuera de PvP a los valores previstos anteriores."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "frFR": {
-          "name": "Demon Hunter",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Correction d'un problème qui permettait aux récents ajustements de PvP de Blur's d'affecter les situations de PvE. La réduction de dégâts de Blur en dehors de PvP est restaurée à ses valeurs prévues précédentes."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "itIT": {
-          "name": "Demon Hunter",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Risolto un problema che permetteva ai recenti aggiustamenti di PvP su Blur's di influenzare le situazioni di PvE. La riduzione del danno di Blur al di fuori di PvP viene ripristinata ai precedenti valori previsti."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "koKR": {
-          "name": "Demon Hunter",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Blur's과(와) 관련된 최근 PvP 조정이 PvE 상황에 영향을 미치던 문제가 수정되었습니다. PvP 외의 지역에서의 Blur 피해 감소량이 이전의 의도된 값으로 복구됩니다."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "ptBR": {
-          "name": "Demon Hunter",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Correção de um problema que permitia que os ajustes recentes de PvP em Blur's afetassem situações de PvE. A redução de dano de Blur fora de PvP foi restaurada para os valores pretendidos anteriores."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "ruRU": {
-          "name": "Demon Hunter",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Исправлена проблема, из-за которой недавние корректировки PvP для Blur's влияли на ситуации с PvE. Сокращение урона Blur вне PvP восстановлено до прежних запланированных значений."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "zhCN": {
-          "name": "Demon Hunter",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "修正了一个允许Blur's近期PvP调整影响PvE情况的问题。Blur在PvP之外的减伤效果已恢复至先前预期的数值。"
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "zhTW": {
-          "name": "Demon Hunter",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "修正了一個允許 Blur's 最近的 PvP 調整影響 PvE 狀況的問題。PvP 之外的 Blur 減傷已恢復為先前的預期數值。"
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        }
-      },
-      "retrievedAt": "2026-08-29T16:25:42.324138+00:00"
-    },
-    {
-      "id": "change-cbe1b2d3900872f2",
-      "channel": "live",
-      "category": "Class",
-      "date": "2026-08-27",
-      "patch": "12.1.0",
-      "localizations": {
-        "en": {
-          "name": "Evoker",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "official",
-          "translatedFrom": "",
-          "change": [
-            "Flameshaper: Fixed an issue where Lifecinders incorrectly stated that it required Renewing Blaze."
-          ],
-          "terminologySourceUrls": []
-        },
-        "deDE": {
-          "name": "Evoker",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Flameshaper: Ein Fehler wurde behoben, bei dem Lifecinders fälschlicherweise angab, dass Renewing Blaze erforderlich ist."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "esES": {
-          "name": "Evoker",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Flameshaper: Se ha corregido un problema por el cual Lifecinders indicaba incorrectamente que requería Renewing Blaze."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "frFR": {
-          "name": "Evoker",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Flameshaper : Correction d'un problème où Lifecinders indiquait incorrectement qu'il nécessitait Renewing Blaze."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "itIT": {
-          "name": "Evoker",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Flameshaper: Risolto un problema per cui Lifecinders indicava erroneamente che richiedeva Renewing Blaze."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "koKR": {
-          "name": "Evoker",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Flameshaper: Lifecinders에 Renewing Blaze이(가) 필요하다고 잘못 표시되던 문제가 해결되었습니다."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "ptBR": {
-          "name": "Evoker",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Flameshaper: Corrigido um problema em que Lifecinders afirmava incorretamente que exigia Renewing Blaze."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "ruRU": {
-          "name": "Evoker",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Flameshaper: исправлена неполадка, из-за которой в описании Lifecinders ошибочно указывалось требование Renewing Blaze."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "zhCN": {
-          "name": "Evoker",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Flameshaper：修正了 Lifecinders 错误地显示其需要 Renewing Blaze 的问题。"
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "zhTW": {
-          "name": "Evoker",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Flameshaper：修正了 Lifecinders 錯誤聲稱其需要 Renewing Blaze 的問題。"
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        }
-      },
-      "retrievedAt": "2026-08-29T16:25:42.324138+00:00"
-    },
-    {
-      "id": "change-92f46a76bc3b6155",
-      "channel": "live",
-      "category": "Class",
-      "date": "2026-08-27",
-      "patch": "12.1.0",
-      "localizations": {
-        "en": {
-          "name": "Evoker",
-          "specialization": "Preservation",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "official",
-          "translatedFrom": "",
-          "change": [
-            "Fixed an issue where Emerald Communion would loop its visual even after the effect had ended."
-          ],
-          "terminologySourceUrls": []
-        },
-        "deDE": {
-          "name": "Evoker",
-          "specialization": "Preservation",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Ein Problem wurde behoben, bei dem Emerald Communion seine visuelle Schleife auch nach dem Ende des Effekts fortsetzte."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "esES": {
-          "name": "Evoker",
-          "specialization": "Preservation",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Se ha solucionado un problema por el cual Emerald Communion repetía su efecto visual en bucle incluso después de que el efecto hubiera terminado."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "frFR": {
-          "name": "Evoker",
-          "specialization": "Preservation",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Correction d'un problème où Emerald Communion bouclait son effet visuel même après la fin de l'effet."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "itIT": {
-          "name": "Evoker",
-          "specialization": "Preservation",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Risolto un problema per cui Emerald Communion ripeteva in loop il suo effetto visivo anche dopo che l'effetto era terminato."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "koKR": {
-          "name": "Evoker",
-          "specialization": "Preservation",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Emerald Communion 효과가 끝난 후에도 시각 효과가 반복되던 문제가 수정되었습니다."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "ptBR": {
-          "name": "Evoker",
-          "specialization": "Preservation",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Correção de um problema em que Emerald Communion repetia seu visual em looping mesmo após o término do efeito."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "ruRU": {
-          "name": "Evoker",
-          "specialization": "Preservation",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Исправлена проблема, из-за которой визуальный эффект Emerald Communion зацикливался даже после окончания самого эффекта."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "zhCN": {
-          "name": "Evoker",
-          "specialization": "Preservation",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "修复了一个即使在效果结束后，Emerald Communion 仍会循环播放其视觉特效的问题。"
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "zhTW": {
-          "name": "Evoker",
-          "specialization": "Preservation",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "修正了即使在效果結束後，Emerald Communion 仍會循環播放其視覺效果的問題。"
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        }
-      },
-      "retrievedAt": "2026-08-29T16:25:42.324138+00:00"
-    },
-    {
-      "id": "change-acd59e9207deb002",
-      "channel": "live",
-      "category": "Class",
-      "date": "2026-08-27",
-      "patch": "12.1.0",
-      "localizations": {
-        "en": {
-          "name": "Paladin",
-          "specialization": "Protection",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "official",
-          "translatedFrom": "",
-          "change": [
-            "Fixed an issue where Blessed Hammer could not hit Ula'tek's Venomous Heart."
-          ],
-          "terminologySourceUrls": []
-        },
-        "deDE": {
-          "name": "Paladin",
-          "specialization": "Protection",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Ein Fehler wurde behoben, bei dem Blessed Hammer Ula'tek's Venomous Heart nicht treffen konnte."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "esES": {
-          "name": "Paladin",
-          "specialization": "Protection",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Se ha solucionado un problema en el que Blessed Hammer no podía golpear a Ula'tek's Venomous Heart."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "frFR": {
-          "name": "Paladin",
-          "specialization": "Protection",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Correction d'un problème où Blessed Hammer ne pouvait pas toucher Ula'tek's Venomous Heart."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "itIT": {
-          "name": "Paladin",
-          "specialization": "Protection",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Risolto un problema per cui Blessed Hammer non poteva colpire Ula'tek's Venomous Heart."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "koKR": {
-          "name": "Paladin",
-          "specialization": "Protection",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Blessed Hammer이(가) Ula'tek's Venomous Heart을(를) 적중시키지 못하던 문제가 수정되었습니다."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "ptBR": {
-          "name": "Paladin",
-          "specialization": "Protection",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Corrigido um problema em que Blessed Hammer não conseguia atingir Ula'tek's Venomous Heart."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "ruRU": {
-          "name": "Paladin",
-          "specialization": "Protection",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Исправлена проблема, из-за которой Blessed Hammer не мог поразить Ula’tek's Venomous Heart."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "zhCN": {
-          "name": "Paladin",
-          "specialization": "Protection",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "修复了一个 Blessed Hammer 无法命中 Ula’tek's Venomous Heart 的问题。"
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "zhTW": {
-          "name": "Paladin",
-          "specialization": "Protection",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "修正了 Blessed Hammer 無法擊中 Ula’tek's Venomous Heart 的問題。"
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        }
-      },
-      "retrievedAt": "2026-08-29T16:25:42.324138+00:00"
-    },
-    {
-      "id": "change-0ff944338de60e61",
-      "channel": "live",
-      "category": "Class",
-      "date": "2026-08-27",
-      "patch": "12.1.0",
-      "localizations": {
-        "en": {
-          "name": "Rogue",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "official",
-          "translatedFrom": "",
-          "change": [
-            "Deathstalker: Fixed an issue where Deathstalker's Mark would be removed when a target becomes unattackable. Darkest Night will now be granted when Deathstalker's Mark is removed from an unattackable target."
-          ],
-          "terminologySourceUrls": []
-        },
-        "deDE": {
-          "name": "Rogue",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Deathstalker: Ein Problem wurde behoben, bei dem Deathstalker's Mark entfernt wurde, wenn ein Ziel ungreifbar wurde. Darkest Night wird nun gewährt, wenn Deathstalker's Mark von einem ungreifbaren Ziel entfernt wird."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "esES": {
-          "name": "Rogue",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Deathstalker: Se ha solucionado un problema por el cual Deathstalker's Mark se eliminaba cuando un objetivo pasaba a ser inalcanzable. Ahora se otorgará Darkest Night cuando se elimine Deathstalker's Mark de un objetivo inalcanzable."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "frFR": {
-          "name": "Rogue",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Deathstalker : Correction d'un problème où Deathstalker's Mark était supprimé lorsqu'une cible devenait inattaquable. Darkest Night sera désormais accordé lorsque Deathstalker's Mark est retiré d'une cible inattaquable."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "itIT": {
-          "name": "Rogue",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Deathstalker: Risolto un problema per cui Deathstalker's Mark veniva rimosso quando un bersaglio diventava non attaccabile. Darkest Night verrà ora fornito quando Deathstalker's Mark viene rimosso da un bersaglio non attaccabile."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "koKR": {
-          "name": "Rogue",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Deathstalker: 대상이 공격 불가능한 상태가 될 때 Deathstalker's Mark이(가) 제거되던 문제를 해결했습니다. 이제 공격 불가능한 대상에게서 Deathstalker's Mark이(가) 제거될 때 Darkest Night이(가) 부여됩니다."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "ptBR": {
-          "name": "Rogue",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Deathstalker: Corrigido um problema em que Deathstalker's Mark era removido quando um alvo ficava inatacável. Darkest Night agora será concedido quando Deathstalker's Mark for removido de um alvo inatacável."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "ruRU": {
-          "name": "Rogue",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Deathstalker: Исправлена ошибка, из-за которой Deathstalker's Mark рассеивался, когда цель становивалась недоступной для атаки. Теперь Darkest Night будет восполняться при рассеивании Deathstalker's Mark с недоступной для атаки цели."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "zhCN": {
-          "name": "Rogue",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Deathstalker：修正了当目标变得无法攻击时会移除Deathstalker's Mark的问题。现在，当从无法攻击的目标身上移除Deathstalker's Mark时，将赋予Darkest Night。"
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "zhTW": {
-          "name": "Rogue",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Deathstalker：修正了當目標變得無法攻擊時，Deathstalker's Mark會被移除的問題。當從無法攻擊的目標身上移除Deathstalker's Mark時，現在將會賦予Darkest Night。"
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        }
-      },
-      "retrievedAt": "2026-08-29T16:25:42.324138+00:00"
-    },
-    {
-      "id": "change-ce1fa71b3de8f226",
-      "channel": "live",
-      "category": "Class",
-      "date": "2026-08-27",
-      "patch": "12.1.0",
-      "localizations": {
-        "en": {
-          "name": "Warlock",
-          "specialization": "Destruction",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "official",
-          "translatedFrom": "",
-          "change": [
-            "Fixed an issue where Mayhem would sometimes become untracked when refreshed while active."
-          ],
-          "terminologySourceUrls": []
-        },
-        "deDE": {
-          "name": "Warlock",
-          "specialization": "Destruction",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Ein Fehler wurde behoben, bei dem Mayhem manchmal nicht mehr verfolgt wurde, wenn es im aktiven Zustand erneuert wurde."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "esES": {
-          "name": "Warlock",
-          "specialization": "Destruction",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Se ha solucionado un problema en el que Mayhem a veces dejaba de rastrearse al renovarse mientras estaba activo."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "frFR": {
-          "name": "Warlock",
-          "specialization": "Destruction",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Correction d'un problème où Mayhem cessait parfois d'être suivi en cas de rafraîchissement alors qu'il était actif."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "itIT": {
-          "name": "Warlock",
-          "specialization": "Destruction",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Risolto un problema per cui Mayhem a volte smetteva di essere tracciato se veniva rinnovato mentre era attivo."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "koKR": {
-          "name": "Warlock",
-          "specialization": "Destruction",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Mayhem이(가) 활성화된 상태에서 갱신될 때 간헐적으로 추적되지 않던 문제가 수정되었습니다."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "ptBR": {
-          "name": "Warlock",
-          "specialization": "Destruction",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Corrigido um problema em que Mayhem às vezes deixava de ser rastreado ao ser renovado enquanto estava ativo."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "ruRU": {
-          "name": "Warlock",
-          "specialization": "Destruction",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Исправлена проблема, из-за которой Mayhem иногда переставал отслеживаться при обновлении во время активного действия."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "zhCN": {
-          "name": "Warlock",
-          "specialization": "Destruction",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "修复了一个在激活状态下刷新时，Mayhem 有时会变成未追踪状态的问题。"
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "zhTW": {
-          "name": "Warlock",
-          "specialization": "Destruction",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "修正了 Mayhem 在作用期間被重新整理時，有時會變成未追蹤狀態的問題。"
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        }
-      },
-      "retrievedAt": "2026-08-29T16:25:42.324138+00:00"
-    },
-    {
-      "id": "change-5fc6a3fce0c61aca",
-      "channel": "live",
-      "category": "Dungeon",
-      "date": "2026-08-27",
-      "patch": "12.1.0",
-      "localizations": {
-        "en": {
-          "name": "Temple of Sethraliss",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "official",
-          "translatedFrom": "",
-          "change": [
-            "Fixed an issue where the Voidbound Emisssary M+ affix creature could cause Galvazzt to despawn."
-          ],
-          "terminologySourceUrls": []
-        },
-        "deDE": {
-          "name": "Temple of Sethraliss",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Ein Fehler wurde behoben, bei dem das Kreatur-Affix von Voidbound Emisssary M dazu führen konnte, dass Galvazzt verschwand."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "esES": {
-          "name": "Temple of Sethraliss",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Se ha solucionado un problema en el que la criatura de afijo Voidbound Emisssary M+ podía hacer que Galvazzt desapareciera."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "frFR": {
-          "name": "Temple of Sethraliss",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Correction d'un problème où la créature de l'affixe Voidbound Emisssary M+ pouvait faire disparaître Galvazzt."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "itIT": {
-          "name": "Temple of Sethraliss",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Risolto un problema per cui la creatura con affisso Voidbound Emisssary M+ poteva causare la scomparsa di Galvazzt."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "koKR": {
-          "name": "Temple of Sethraliss",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Voidbound Emisssary M+ 속성 생명체로 인해 Galvazzt이(가) 사라지던 문제가 수정되었습니다."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "ptBR": {
-          "name": "Temple of Sethraliss",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Corrigido um problema em que a criatura do afixo Voidbound Emisssary M podia fazer com que Galvazzt desaparecesse."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "ruRU": {
-          "name": "Temple of Sethraliss",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Исправлена проблема, из-за которой существо с модификатором Voidbound Emisssary M могло заставить Galvazzt исчезнуть."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "zhCN": {
-          "name": "Temple of Sethraliss",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "修复了一个 Voidbound Emisssary M+ 词缀生物可能导致 Galvazzt 消失的问题。"
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "zhTW": {
-          "name": "Temple of Sethraliss",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "修正了 Voidbound Emisssary M+ 詞綴生物可能導致 Galvazzt 消失的問題。"
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        }
-      },
-      "retrievedAt": "2026-08-29T16:25:42.324138+00:00"
-    },
-    {
-      "id": "change-5bc3d54eb379b5e8",
-      "channel": "live",
-      "category": "Raid",
-      "date": "2026-08-27",
-      "patch": "12.1.0",
-      "localizations": {
-        "en": {
-          "name": "The Venomous Abyss",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "official",
-          "translatedFrom": "",
-          "change": [
-            "Vashnik the Malignant: Reduced the damage of Siphoning Infection by 33% on Raid Finder difficulty.",
-            "Vashnik the Malignant: Reduced the damage of Siphon Blood by 33% on Raid Finder difficulty.",
-            "Vashnik the Malignant: Reduced the healing reduction 80% (was 100%) on Raid Finder difficulty.",
-            "Vashnik the Malignant: Increased the healing of Siphoning Infection by 10% on Normal difficulty.",
-            "Vashnik the Malignant: Increased the healing of Siphoning Infection by 500% on Raid Finder difficulty.",
-            "The Twin Fangs: Resolved an issue that could cause Caustic Globule/Barbed Bulwark world indicators to clear prior to the missile impact.",
-            "The Coiled Altar: Fixed an issue where bringing Zul'jan to 1 health at the end of the intermission would prevent him from being killable during phase 3."
-          ],
-          "terminologySourceUrls": []
-        },
-        "deDE": {
-          "name": "The Venomous Abyss",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Vashnik the Malignant: Der Schaden von Siphoning Infection wurde auf dem Schwierigkeitsgrad Raid Finder um 33% verringert.",
-            "Vashnik the Malignant: Der Schaden von Siphon Blood wurde auf dem Schwierigkeitsgrad Raid Finder um 33% verringert.",
-            "Vashnik the Malignant: Die Heilungsverringerung von 80% wurde auf dem Schwierigkeitsgrad Raid Finder verringert (vorher 100%).",
-            "Vashnik the Malignant: Die Heilung von Siphoning Infection wurde auf dem Schwierigkeitsgrad Normal um 10% erhöht.",
-            "Vashnik the Malignant: Die Heilung von Siphoning Infection wurde auf dem Schwierigkeitsgrad Raid Finder um 500% erhöht.",
-            "Der Twin Fangs: Resolved ein Problem, das dazu führen konnte, dass Caustic Globule/Barbed Bulwark-Weltanzeigen vor dem Einschlag des Geschosses ausgeblendet wurden.",
-            "Coiled Altar: Ein Fehler wurde behoben, bei dem das Bringen von Zul'jan auf 1 Gesundheit am Ende des Zwischenspiels verhinderte, dass er während Phase 3 getötet werden konnte."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "esES": {
-          "name": "The Venomous Abyss",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Vashnik the Malignant: Se ha reducido el daño de Siphoning Infection un 33% en dificultad Raid Finder.",
-            "Vashnik the Malignant: Se ha reducido el daño de Siphon Blood un 33% en dificultad Raid Finder.",
-            "Vashnik the Malignant: Se ha reducido la reducción de sanación 80% (antes 100%) en dificultad Raid Finder.",
-            "Vashnik the Malignant: Se ha aumentado la sanación de Siphoning Infection un 10% en dificultad Normal.",
-            "Vashnik the Malignant: Se ha aumentado la sanación de Siphoning Infection un 500% en dificultad Raid Finder.",
-            "El/La Twin Fangs: Resolved un problema que podía hacer que los indicadores de mundo de Caustic Globule/Barbed Bulwark desaparecieran antes del impacto del misil.",
-            "El Coiled Altar: Se ha solucionado un problema en el que dejar a Zul'jan con 1 de salud al final del interludio impedía que pudiera ser derrotado durante la fase 3."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "frFR": {
-          "name": "The Venomous Abyss",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Vashnik the Malignant : Les dégâts de Siphoning Infection ont été réduits de 33% en difficulté Raid Finder.",
-            "Vashnik the Malignant : Les dégâts de Siphon Blood ont été réduits de 33% en difficulté Raid Finder.",
-            "Vashnik the Malignant : Réduction des soins de 80% (au lieu de 100%) en difficulté Raid Finder.",
-            "Vashnik the Malignant : Les soins prodigués par Siphoning Infection ont été augmentés de 10% en difficulté Normal.",
-            "Vashnik the Malignant : Les soins prodigués par Siphoning Infection ont été augmentés de 500% en difficulté Raid Finder.",
-            "Le Twin Fangs : Resolved un problème qui pouvait faire disparaître les indicateurs de monde Caustic Globule/Barbed Bulwark avant l'impact du projectile.",
-            "Le Coiled Altar : Correction d'un problème où amener Zul'jan à 1 points de vie à la fin de l'intermède l'empêchait d'être tuable pendant la phase 3."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "itIT": {
-          "name": "The Venomous Abyss",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Vashnik the Malignant: Ridotti i danni di Siphoning Infection del 33% a difficoltà Raid Finder.",
-            "Vashnik the Malignant: Ridotti i danni di Siphon Blood del 33% a difficoltà Raid Finder.",
-            "Vashnik the Malignant: Ridotta la riduzione delle cure 80% (era 100%) a difficoltà Raid Finder.",
-            "Vashnik the Malignant: Aumentata la cura di Siphoning Infection del 10% a difficoltà Normal.",
-            "Vashnik the Malignant: Aumentata la cura di Siphoning Infection del 500% a difficoltà Raid Finder.",
-            "Il Twin Fangs: Resolved un problema che poteva causare la cancellazione degli indicatori di mondo di Caustic Globule/Barbed Bulwark prima dell'impatto del missile.",
-            "Coiled Altar: Risolto un problema per cui portare Zul'jan alla salute 1 alla fine della fase intermedia impediva che potesse essere ucciso durante la fase 3."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "koKR": {
-          "name": "The Venomous Abyss",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Vashnik the Malignant: Raid Finder 난이도에서 Siphoning Infection의 피해량이 33%만큼 감소했습니다.",
-            "Vashnik the Malignant: Raid Finder 난이도에서 Siphon Blood의 피해량이 33%만큼 감소했습니다.",
-            "Vashnik the Malignant: Raid Finder 난이도에서 치유량 감소 효과가 80%(으)로 감소했습니다 (기존: 100%).",
-            "Vashnik the Malignant: Normal 난이도에서 Siphoning Infection의 치유량이 10%만큼 증가했습니다.",
-            "Vashnik the Malignant: Raid Finder 난이도에서 Siphoning Infection의 치유량이 500%만큼 증가했습니다.",
-            "Twin Fangs: 미사일 적중 전에 Caustic Globule/Barbed Bulwark 지역 표시기가 사라지게 만들 수 있는 문제가 Resolved.",
-            "Coiled Altar: 사이전투 종료 시 Zul'jan을(를) 1 생명력으로 만들면 3단계에서 처치할 수 없게 되던 문제가 수정되었습니다."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "ptBR": {
-          "name": "The Venomous Abyss",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Vashnik the Malignant: O dano de Siphoning Infection foi reduzido em 33% na dificuldade Raid Finder.",
-            "Vashnik the Malignant: O dano de Siphon Blood foi reduzido em 33% na dificuldade Raid Finder.",
-            "Vashnik the Malignant: A redução de cura de 80% foi reduzida (era 100%) na dificuldade Raid Finder.",
-            "Vashnik the Malignant: A cura de Siphoning Infection foi aumentada em 10% na dificuldade Normal.",
-            "Vashnik the Malignant: A cura de Siphoning Infection foi aumentada em 500% na dificuldade Raid Finder.",
-            "O Twin Fangs: Resolved um problema que podia fazer com que os indicadores de mundo de Caustic Globule/Barbed Bulwark sumissem antes do impacto do projétil.",
-            "O Coiled Altar: Corrigido um problema em que levar Zul'jan à vida 1 no final do interlúdio impedia que ele pudesse ser morto durante a fase 3."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "ruRU": {
-          "name": "The Venomous Abyss",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Vashnik the Malignant: Урон Siphoning Infection уменьшен на 33% на сложности Raid Finder.",
-            "Vashnik the Malignant: Урон Siphon Blood уменьшен на 33% на сложности Raid Finder.",
-            "Vashnik the Malignant: Уменьшено снижение исцеления 80% (было 100%) на сложности Raid Finder.",
-            "Vashnik the Malignant: эффективность исцеления заклинания Siphoning Infection увеличена на 10% в режиме сложности «Normal».",
-            "Vashnik the Malignant: эффективность исцеления заклинания Siphoning Infection увеличена на 500% в режиме сложности «Raid Finder».",
-            "Twin Fangs: исправлена неполадка, из-за которой индикаторы зоны Caustic Globule/Barbed Bulwark на земле могли исчезать до падения снаряда.",
-            "Coiled Altar: исправлена неполадка, из-за которой доведение Zul’jan до 1 здоровья в конце перерыва между фазами делало его бессмертным на фазе 3."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "zhCN": {
-          "name": "The Venomous Abyss",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Vashnik the Malignant：在 Raid Finder 难度下，Siphoning Infection 的伤害降低了 33%。",
-            "Vashnik the Malignant：在 Raid Finder 难度下，Siphon Blood 的伤害降低了 33%。",
-            "Vashnik the Malignant：在 Raid Finder 难度下，降低了治疗减免效果 80%（原为 100%）。",
-            "在 Normal 难度下，Vashnik the Malignant 的 Siphoning Infection 治疗效果提高了 10%。",
-            "在 Raid Finder 难度下，Vashnik the Malignant 的 Siphoning Infection 治疗效果提高了 500%。",
-            "Twin Fangs：修正了可能导致 Caustic Globule/Barbed Bulwark 世界指示器在飞弹命中前消失的问题。",
-            "Coiled Altar：修正了在转阶段结束时将 Zul’jan 的生命值打到 1 会导致其在第 3 阶段无法被击杀的问题。"
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        },
-        "zhTW": {
-          "name": "The Venomous Abyss",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Vashnik the Malignant：在 Raid Finder 難度下，降低了 Siphoning Infection 的傷害 33%。",
-            "Vashnik the Malignant：在 Raid Finder 難度下，降低了 Siphon Blood 的傷害 33%。",
-            "Vashnik the Malignant：在 Raid Finder 難度下，降低了治療降低效果 80%（原為 100%）。",
-            "Vashnik the Malignant：在 Normal 難度下，將 Siphoning Infection 的治療量提高了 10%。",
-            "Vashnik the Malignant：在 Raid Finder 難度下，將 Siphoning Infection 的治療量提高了 500%。",
-            "Twin Fangs：修正了一個可能導致 Caustic Globule/Barbed Bulwark 世界指示器在飛彈落地前消失的問題。",
-            "Coiled Altar：修正了在中場休息結束時將 Zul’jan 的生命力打到 1 會導致他在階段 3 中無法被擊殺的問題。"
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-august-27-2026"
-          ]
-        }
-      },
-      "retrievedAt": "2026-08-29T16:25:42.324138+00:00"
     }
   ]
 }
