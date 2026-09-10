@@ -108,7 +108,7 @@ CONDITION_MARKERS = {
         " se ", "quando", "mentre", "finché", "dopo", "prima",
         "all'utilizzo", "sovracur", "lanciando", "al contempo",
         "all'interno", "aumentando", "nell'aumentare", "al termine",
-        "alla fine",
+        "alla fine", "al raggiungimento",
     ),
     "koKR": (
         "경우", "때", "동안", "중", "후", "전", " 시 ", "상태에서",

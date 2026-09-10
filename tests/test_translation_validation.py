@@ -79,6 +79,35 @@ def _translation_batch() -> dict[str, object]:
 
 # Describe: deterministic validation of grounded patch-note translations
 class TranslationValidationTests(unittest.TestCase):
+    def test_accepts_italian_upon_reaching_health_thresholds(self) -> None:
+        # Given a boss transition conditional on reaching a health threshold
+        english = (
+            "Ula’tek: Added in health backstops to ensure the boss transitions "
+            "out of Rage of the Shackled when reaching specific health thresholds."
+        )
+        italian = (
+            "Ula’tek: Aggiunti limiti di salute per garantire che il boss esca "
+            "da Rage of the Shackled al raggiungimento di specifiche soglie "
+            "di salute."
+        )
+
+        # When the natural Italian condition is checked
+        preserved = self.validator._preserves_conditions("itIT", english, italian)
+
+        # Then the equivalent threshold condition is accepted
+        self.assertTrue(preserved)
+
+    def test_rejects_italian_with_health_threshold_condition_removed(self) -> None:
+        # Given the health threshold trigger was omitted from the translation
+        english = "The boss transitions when reaching specific health thresholds."
+        italian = "Il boss passa alla fase successiva."
+
+        # When the incomplete translation is checked
+        preserved = self.validator._preserves_conditions("itIT", english, italian)
+
+        # Then a genuinely missing condition is still rejected
+        self.assertFalse(preserved)
+
     def test_classifies_only_the_requested_locale(self) -> None:
         # Given a valid Russian localization and no other locales
         module = _load_validator_module()
