@@ -676,6 +676,17 @@ def _all_source_urls(change: dict[str, object]) -> set[str]:
 def _source_document_key(url: str) -> str:
     parsed_url = urlparse(url)
     host = parsed_url.hostname or ""
+    if host.casefold() == "news.blizzard.com":
+        article_match = re.match(
+            r"^/[^/]+/article/(?P<article_id>\d+)(?:/[^/]+)?/?$",
+            parsed_url.path,
+        )
+        if article_match is not None:
+            return (
+                f"{host.casefold()}/article/"
+                f"{article_match.group('article_id')}"
+            )
+
     if host.endswith("forums.blizzard.com"):
         topic_match = re.match(
             r"^/.*/t/[^/]+/(?P<topic_id>\d+)(?:/\d+)?/?$",
@@ -697,6 +708,20 @@ def _same_source_document(
     return any(
         _source_document_key(url) == incoming_key
         for url in _all_source_urls(existing)
+    )
+
+
+def _is_blizzard_news_revision(
+    existing: dict[str, object],
+    incoming: dict[str, object],
+) -> bool:
+    incoming_key = _source_document_key(
+        str(_english(incoming)["sourceUrl"]),
+    )
+
+    return (
+        incoming_key.startswith("news.blizzard.com/article/")
+        and _same_source_document(existing, incoming)
     )
 
 
@@ -807,6 +832,8 @@ def _save_atomically(
 def _merge_localizations(
     existing: dict[str, object],
     incoming: dict[str, object],
+    *,
+    replace_equal_rank: bool = False,
 ) -> tuple[int, int]:
     existing_localizations = dict(existing["localizations"])
     incoming_localizations = dict(incoming["localizations"])
@@ -837,6 +864,14 @@ def _merge_localizations(
         ):
             existing_localizations[locale] = dict(incoming_localization)
             promoted += 1
+        elif (
+            replace_equal_rank
+            and incoming_source_rank == existing_source_rank
+            and incoming_translation_rank == existing_translation_rank
+            and incoming_localization != existing_localization
+        ):
+            existing_localizations[locale] = dict(incoming_localization)
+            localized += 1
 
     existing["localizations"] = existing_localizations
 
@@ -899,6 +934,10 @@ def update_data(
             added_locales, promoted_locales = _merge_localizations(
                 existing,
                 incoming,
+                replace_equal_rank=_is_blizzard_news_revision(
+                    existing,
+                    incoming,
+                ),
             )
             localized += added_locales
             promoted += promoted_locales

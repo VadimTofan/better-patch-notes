@@ -182,6 +182,10 @@ preserves IDs during promotion, groups same-context bullets from the same
 source into one record, repairs previously split records, reports ambiguous
 cross-source entries, sorts deterministically, and keeps the JSON and generated
 Lua outputs synchronized.
+For Blizzard News, the numeric article ID identifies the source document even
+when Blizzard changes the dated URL slug. A near-equivalent revision may update
+an existing record only when its channel, category, effective date, patch,
+English name, specialization, article ID, and bullet count all still match.
 It reads the active Retail build from Blizzard's `.build.info` file and prunes
 records that do not satisfy the current-build retention rules.
 
@@ -224,8 +228,8 @@ to the categories and channels this skill covers.
 
 ## Maintenance
 
-Updated: 2026-08-17
-Last reviewed: 2026-08-17
+Updated: 2026-09-16
+Last reviewed: 2026-09-16
 Canonical sources:
 
 - https://worldofwarcraft.blizzard.com/en-us/content-update-notes

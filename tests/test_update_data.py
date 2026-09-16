@@ -900,6 +900,75 @@ class JsonDataMergeTests(unittest.TestCase):
             self.assertEqual(1, report["skipped"])
             self.assertEqual(1, len(_read_data(data_path)["changes"]))
 
+    def test_updates_revised_blizzard_news_record_in_place(self) -> None:
+        with TemporaryDirectory() as temporary_directory:
+            # Given Blizzard revises one bullet in its rolling hotfix article
+            temporary_path = Path(temporary_directory)
+            first_path = temporary_path / "first.json"
+            revised_path = temporary_path / "revised.json"
+            data_path = temporary_path / "retail-patch-notes.json"
+            old_url = (
+                "https://news.blizzard.com/en-us/article/24296142/"
+                "hotfixes-september-9-2026"
+            )
+            new_url = (
+                "https://news.blizzard.com/en-us/article/24296142/"
+                "hotfixes-september-15-2026"
+            )
+            old_changes = [
+                "Fixed an unrelated Doom Winds issue.",
+                "Totemic: Fixed an issue where Crash Lightning could hit "
+                "unintended targets.",
+            ]
+            revised_changes = [
+                "Fixed an unrelated Doom Winds issue.",
+                "Stormbringer: Fixed an issue where Crash Lightning could "
+                "hit unintended targets.",
+            ]
+            context = {
+                "name": "Shaman",
+                "specialization": "Enhancement",
+                "date": "2026-09-09",
+                "patch": "12.1.0",
+            }
+            _write_batch(
+                first_path,
+                [_change(**context, change=old_changes, sourceUrl=old_url)],
+            )
+            _write_batch(
+                revised_path,
+                [
+                    _change(
+                        **context,
+                        change=revised_changes,
+                        sourceUrl=new_url,
+                    )
+                ],
+            )
+            first_result = _run_updater(first_path, data_path)
+            self.assertEqual(0, first_result.returncode, first_result.stderr)
+            original_id = _read_data(data_path)["changes"][0]["id"]
+
+            # When the corrected article revision is processed
+            result = _run_updater(revised_path, data_path)
+
+            # Then it replaces stale text without ambiguity or a new record
+            self.assertEqual(0, result.returncode, result.stderr)
+            report = json.loads(result.stdout)
+            self.assertEqual(0, report["ambiguous"])
+            document = _read_data(data_path)
+            self.assertEqual(1, len(document["changes"]))
+            stored = document["changes"][0]
+            self.assertEqual(original_id, stored["id"])
+            self.assertEqual(
+                revised_changes,
+                stored["localizations"]["en"]["change"],
+            )
+            self.assertEqual(
+                new_url,
+                stored["localizations"]["en"]["sourceUrl"],
+            )
+
     def test_sorts_newest_changes_first_with_stable_tie_breakers(self) -> None:
         with TemporaryDirectory() as temporary_directory:
             # Given changes supplied in a non-deterministic order

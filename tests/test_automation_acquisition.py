@@ -242,6 +242,106 @@ class AcquisitionTests(unittest.TestCase):
                 english["changes"][0]["localizations"]["en"]["change"],
             )
 
+    def test_translates_complete_record_when_blizzard_revises_a_bullet(
+        self,
+    ) -> None:
+        with TemporaryDirectory() as temporary_directory:
+            # Given Blizzard revises one bullet in a previously stored record
+            root = Path(temporary_directory)
+            data_path = root / "retail-patch-notes.json"
+            lua_path = root / "PatchNotesData.lua"
+            output_directory = root / "artifacts"
+            canonical = {
+                "schemaVersion": 5,
+                "updatedAt": "2026-09-10T04:07:00+00:00",
+                "changes": [
+                    {
+                        "channel": "live",
+                        "category": "Class",
+                        "date": "2026-09-09",
+                        "patch": "12.1.0",
+                        "localizations": {
+                            "en": {
+                                "name": "Shaman",
+                                "specialization": "Enhancement",
+                                "source": "Blizzard",
+                                "change": [
+                                    "Fixed an unrelated Doom Winds issue.",
+                                    "Totemic: Fixed an issue where Crash "
+                                    "Lightning could hit unintended targets.",
+                                ],
+                            }
+                        },
+                    }
+                ],
+            }
+            data_path.write_text(json.dumps(canonical), encoding="utf-8")
+            lua_path.write_text("return {}\n", encoding="utf-8")
+            changes = (
+                ExtractedChange(
+                    channel="live",
+                    category="Class",
+                    effective_date=date(2026, 9, 9),
+                    patch="12.1.0",
+                    name="Shaman",
+                    specialization="Enhancement",
+                    change=(
+                        "Fixed an unrelated Doom Winds issue.",
+                        "Stormbringer: Fixed an issue where Crash Lightning "
+                        "could hit unintended targets.",
+                    ),
+                    source_url=(
+                        "https://news.blizzard.com/en-us/article/24296142/"
+                        "hotfixes-september-15-2026"
+                    ),
+                ),
+            )
+
+            def refresh(input_path, staged_data, _staged_lua, _patch):
+                refresh_input = json.loads(
+                    input_path.read_text(encoding="utf-8")
+                )
+                staged_data.write_text(
+                    json.dumps(
+                        {
+                            "schemaVersion": 5,
+                            "updatedAt": refresh_input["retrievedAt"],
+                            "changes": refresh_input["changes"],
+                        }
+                    ),
+                    encoding="utf-8",
+                )
+                return SimpleNamespace(
+                    added=0,
+                    skipped=0,
+                    promoted=0,
+                    localized=1,
+                    ambiguous=0,
+                    removed=0,
+                )
+
+            # When acquisition prepares the revised English record
+            prepare_acquisition(
+                changes=changes,
+                current_patch="12.1.0",
+                refreshed_at=datetime(2026, 9, 16, tzinfo=timezone.utc),
+                canonical_data_path=data_path,
+                canonical_lua_path=lua_path,
+                output_directory=output_directory,
+                refresh=refresh,
+            )
+
+            # Then the complete record is sent through translation again
+            english = json.loads(
+                (output_directory / "english-document.json").read_text(
+                    encoding="utf-8"
+                )
+            )
+            self.assertEqual(
+                list(changes[0].change),
+                english["changes"][0]["localizations"]["en"]["change"],
+            )
+
     def test_timestamp_only_refresh_is_no_change(self) -> None:
         with TemporaryDirectory() as temporary_directory:
             # Given a refresher that changes only the top-level timestamp

@@ -3,6 +3,7 @@ from __future__ import annotations
 from collections.abc import Callable
 from dataclasses import asdict, dataclass, replace
 from datetime import datetime, timezone
+from difflib import SequenceMatcher
 import json
 from pathlib import Path
 import shutil
@@ -115,6 +116,23 @@ def _is_published_change_item(
     return False
 
 
+def _is_revised_published_change_item(
+    incoming_item: str,
+    published_items: list[str],
+) -> bool:
+    normalized_incoming = _normalize_english_change(incoming_item)
+
+    return any(
+        SequenceMatcher(
+            None,
+            normalized_incoming,
+            _normalize_english_change(published_item),
+        ).ratio()
+        >= 0.9
+        for published_item in published_items
+    )
+
+
 def _remove_published_blizzard_changes(
     changes: tuple[ExtractedChange, ...],
     canonical_document: dict[str, object],
@@ -154,8 +172,14 @@ def _remove_published_blizzard_changes(
             if not _is_published_change_item(item, published_items)
         )
         if unpublished_items:
+            has_revision = any(
+                _is_revised_published_change_item(item, published_items)
+                for item in unpublished_items
+            )
             unpublished_changes.append(
-                replace(change, change=unpublished_items)
+                change
+                if has_revision
+                else replace(change, change=unpublished_items)
             )
 
     return tuple(unpublished_changes)
