@@ -141,6 +141,26 @@ class ScheduledRefreshWorkflowTests(unittest.TestCase):
         self.assertIn("continue-on-error: true", download_step)
         self.assertIn("if: always()", aggregate_step)
 
+    def test_retries_transient_locale_translation_failures(self) -> None:
+        # Given / When
+        workflow = WORKFLOW_PATH.read_text(encoding="utf-8")
+        translation_start = workflow.index(
+            "- name: Translate and validate ${{ matrix.locale }}"
+        )
+        translation_end = workflow.index(
+            "- name: Upload translation-${{ matrix.locale }} artifact"
+        )
+        translation_step = workflow[translation_start:translation_end]
+
+        # Then the locale command retries before the result is enforced
+        self.assertIn("for attempt in 1 2", translation_step)
+        self.assertIn(
+            'if python -m automation.translate_locale \\\n',
+            translation_step,
+        )
+        self.assertIn("sleep 10", translation_step)
+        self.assertIn('test "$attempt" -eq 2', translation_step)
+
     def test_reports_unexpected_acquisition_and_aggregation_failures(self) -> None:
         # Given / When
         workflow = WORKFLOW_PATH.read_text(encoding="utf-8")
