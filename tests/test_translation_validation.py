@@ -470,6 +470,23 @@ class TranslationValidationTests(unittest.TestCase):
             # Then valid Portuguese increase wording must be accepted
             self.fail(f"valid Portuguese increase was rejected: {error}")
 
+    def test_accepts_german_condition_expressed_with_indem(self) -> None:
+        # Given German naturally expresses "while" with "indem"
+        english = "Damage increases while the effect is active."
+        localized = "Der Schaden steigt, indem der Effekt aktiv ist."
+
+        # When the aligned condition is checked
+        try:
+            self.validator._validate_semantic_structure(
+                "deDE",
+                10,
+                english,
+                localized,
+            )
+        except ValueError as error:
+            # Then valid German condition wording must be accepted
+            self.fail(f"valid German condition was rejected: {error}")
+
     def test_accepts_chinese_reduced_to_as_a_decrease(self) -> None:
         # Given Chinese describes a reduction using the natural "reduced to"
         english = (

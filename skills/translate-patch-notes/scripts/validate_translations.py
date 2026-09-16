@@ -96,7 +96,7 @@ CONDITION_MARKERS = {
         "wenn", "während", "solange", "falls", "sofern", "nachdem",
         "bevor", "bei der verwendung", "beherrscht ihr", "ohne", "beim",
         "nach dem", "in kombination mit", "gleichzeitig", " vor ",
-        " nach ", "bei dem", " als ",
+        " nach ", "bei dem", " als ", "indem", "sobald",
     ),
     "esES": (" si ", "cuando", "mientras", "siempre que", "después", "antes"),
     "esMX": (" si ", "cuando", "mientras", "siempre que", "después", "antes"),
