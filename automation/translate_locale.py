@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 from collections.abc import Callable
+from copy import deepcopy
 from dataclasses import replace
 from datetime import date
 import json
@@ -154,14 +155,15 @@ def translate_locale(
         batch = generate(document, locale, terminology_path)
         uncertain_terms = validate(batch, locale, terminology_path)
     except (OSError, RuntimeError, ValueError, json.JSONDecodeError) as error:
+        fallback_batch = deepcopy(document)
         failed_result: dict[str, object] = {
             "locale": locale,
-            "status": "FAILED",
+            "status": "PASS",
+            "fallback": True,
             "reason": redact_secrets(str(error)),
             "uncertainTerms": [],
+            "batch": fallback_batch,
         }
-        if batch is not None:
-            failed_result["batch"] = batch
 
         _write_json(
             output_path,

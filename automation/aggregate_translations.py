@@ -68,6 +68,8 @@ def aggregate_locale_artifacts(
             reason = str(artifact.get("reason", "locale translation failed"))
             raise ValueError(f"{locale}: {reason}")
         batch = _require_dict(artifact.get("batch"), f"{locale} batch")
+        if artifact.get("fallback") is True:
+            continue
         locale_changes = _require_list(
             batch.get("changes"),
             f"{locale} changes",

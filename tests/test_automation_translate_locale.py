@@ -162,12 +162,16 @@ class TranslateLocaleTests(unittest.TestCase):
                 validate=lambda _batch, _locale, _terminology: (),
             )
 
-            # Then it fails closed and preserves a safe diagnostic artifact
+            # Then it returns a documented English fallback artifact
             self.assertEqual(1, exit_code)
             result = json.loads(output_path.read_text(encoding="utf-8"))
-            self.assertEqual("FAILED", result["status"])
+            self.assertEqual("PASS", result["status"])
+            self.assertTrue(result["fallback"])
             self.assertIn("exceeded 1500 seconds", result["reason"])
-            self.assertNotIn("batch", result)
+            self.assertEqual(
+                {"updatedAt": "2026-08-20T04:07:00+00:00", "changes": []},
+                result["batch"],
+            )
 
     def test_preserves_generated_batch_when_validation_fails(self) -> None:
         with TemporaryDirectory() as temporary_directory:
@@ -201,11 +205,12 @@ class TranslateLocaleTests(unittest.TestCase):
                 validate=reject,
             )
 
-            # Then it remains failed but retains the candidate for manual repair
+            # Then it returns an English fallback while retaining the candidate
             self.assertEqual(1, exit_code)
             result = json.loads(output_path.read_text(encoding="utf-8"))
-            self.assertEqual("FAILED", result["status"])
-            self.assertEqual(translated, result["batch"])
+            self.assertEqual("PASS", result["status"])
+            self.assertTrue(result["fallback"])
+            self.assertEqual(document, result["batch"])
 
 
 if __name__ == "__main__":

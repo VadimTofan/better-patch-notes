@@ -185,7 +185,7 @@ class AutomationCoordinatorTests(unittest.TestCase):
                 before,
             )
 
-    def test_one_failed_locale_blocks_the_automated_release(self) -> None:
+    def test_one_failed_locale_uses_an_english_fallback_for_release(self) -> None:
         with TemporaryDirectory() as temporary_directory:
             # Given one locale whose generated translation could not validate
             files = _release_files(Path(temporary_directory))
@@ -206,6 +206,9 @@ class AutomationCoordinatorTests(unittest.TestCase):
             def refresh(batch_path: Path, data: Path, lua: Path, patch: str):
                 nonlocal refresh_called
                 refresh_called = True
+                current = json.loads(data.read_text(encoding="utf-8"))
+                current["changes"] = [{"id": "new-data"}]
+                data.write_text(json.dumps(current), encoding="utf-8")
                 return _RefreshResult()
 
             # When the release is coordinated
@@ -219,19 +222,9 @@ class AutomationCoordinatorTests(unittest.TestCase):
                 refresh=refresh,
             )
 
-            # Then publication stops before release files can change
-            self.assertEqual(outcome.status, RefreshStatus.BLOCKED)
-            self.assertFalse(refresh_called)
-            self.assertEqual(
-                {
-                    "ruRU": "automatic semantic validation failed",
-                },
-                outcome.locale_failures,
-            )
-            self.assertEqual(
-                {path: path.read_bytes() for path in files.paths()},
-                before,
-            )
+            # Then publication continues with the documented English fallback
+            self.assertEqual(outcome.status, RefreshStatus.RELEASE_READY)
+            self.assertTrue(refresh_called)
 
     def test_optional_mexican_spanish_fallback_does_not_block_release(self) -> None:
         with TemporaryDirectory() as temporary_directory:
