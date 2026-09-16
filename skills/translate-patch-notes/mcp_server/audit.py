@@ -50,7 +50,10 @@ INCREASE_MARKERS = {
     "frFR": ("augment", "accru", "plus"),
     "itIT": ("aument", "increment", "più"),
     "koKR": ("증가", "상향"),
-    "ptBR": ("aument", "maior", "mais"),
+    "ptBR": (
+        "aument", "maior", "mais", "elev", "ampli", "fortalec",
+        "potencializ", "intensific",
+    ),
     "ruRU": ("увелич", "повыш"),
     "zhCN": ("提高", "增加", "上调"),
     "zhTW": ("提高", "增加", "上調"),

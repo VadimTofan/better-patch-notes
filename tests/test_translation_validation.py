@@ -453,6 +453,23 @@ class TranslationValidationTests(unittest.TestCase):
                         f"valid Russian increase was rejected: {error}"
                     )
 
+    def test_accepts_portuguese_increase_wording_with_elevar(self) -> None:
+        # Given Portuguese naturally expresses an increase with "elevar"
+        english = "Damage increased by 10%."
+        localized = "O dano foi elevado em 10%."
+
+        # When the aligned direction is checked
+        try:
+            self.validator._validate_semantic_structure(
+                "ptBR",
+                1,
+                english,
+                localized,
+            )
+        except ValueError as error:
+            # Then valid Portuguese increase wording must be accepted
+            self.fail(f"valid Portuguese increase was rejected: {error}")
+
     def test_accepts_chinese_reduced_to_as_a_decrease(self) -> None:
         # Given Chinese describes a reduction using the natural "reduced to"
         english = (
