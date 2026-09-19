@@ -1,3 +1,9 @@
+Version 0.2.36 - 2026-09-19
+- Data: Live 12.1.0; PTR None
+- Added or updated: 13 added; 0 updated
+- Removed: 7 stale records
+- Locales: Validated deDE, esES, frFR, koKR, ruRU, zhCN, zhTW; English fallbacks: itIT (localization unavailable), ptBR (localization unavailable); 812 preserved English terminology warnings (deDE: 116; esES: 116; frFR: 116; koKR: 116; ruRU: 116; zhCN: 116; zhTW: 116)
+
 Version 0.2.35 - 2026-09-16
 - Data: Live 12.1.0; PTR None
 - Added or updated: 13 added; 8 updated

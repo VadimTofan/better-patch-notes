@@ -1,7 +1,2191 @@
 {
   "schemaVersion": 5,
-  "updatedAt": "2026-09-16T13:41:57.679344+00:00",
+  "updatedAt": "2026-09-19T10:46:55.315268+00:00",
   "changes": [
+    {
+      "id": "change-4cab5a226db4f72a",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-09-18",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Death Knight",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "Developers’ notes: San’layn is dealing quite a bit more damage in AoE than our intended target for tanks. We will be reducing their overall damage to reduce the disparity. However, we will be increasing Death Strike’s damage and reducing its cleave effectiveness to buff Blood’s single target which is a little on the lower end of tanks. In addition, we are making some Deathbringer specific targeted buffs to counter the overall aura nerf and be a small net positive buff to both their AoE and single target damage.",
+            "All ability and minion damage reduced by 6%.",
+            "Death Strike damage increased by 25%.",
+            "Deadly Reach now causes Death Strike now to deal 60% of its damage to 2 nearby enemies (was 75%).",
+            "Deathbringer: Exterminate damage increased by 25%.",
+            "Deathbringer: Reaper’s Mark damage increased by 20%.",
+            "Deathbringer: Wave of Souls damage increased by 20%.",
+            "Deathbringer: Bind in Darkness now increases Blood Boil damage by 50% (was 30%).",
+            "Deathbringer: Deathly Blows now increases Death Strike damage by 20% (was 12%).",
+            "Deathbringer: Swift and Painful now increases Strength by 15% (was 10%).",
+            "Developers’ notes: Frost Death has been lacking in single target and two target cleave scenarios.",
+            "Frostreaper damage increased by 100%. Does not affect PvP combat.",
+            "Obliterate damage increased by 10%. Does not affect PvP combat.",
+            "Developers’ notes: We’re looking to increase Unholy Death Knight’s damage output in raid. In parallel, we’re aiming to bring Blightfall build back to where it was prior to the bug fixes that made it no longer viable.",
+            "Scourging now causes your plagues to erupt at 65%/100% (was 50%/70%). Does not affect PvP combat.",
+            "Blightfall deals 200% of the plague damage remaining (was 100%). Does not affect PvP combat",
+            "San’layn: Infliction of Sorrow causes Vampiric Strike to erupt plagues with 75% increased effectiveness (was 30%).",
+            "San’layn: Thrill of Blood increases Dread Plague damage by 20% (was 10%).",
+            "San’layn: Frenzied Bloodthirst now increases Death Coil and Death Strike damage by 5% per stack."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Death Knight",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Entwicklerkommentar: San’layn verursacht in AoE deutlich mehr Schaden als unser beabsichtigtes Ziel für Tanks. Wir werden ihren Gesamtschaden verringern, um die Diskrepanz zu verringern. Wir werden jedoch den Schaden von Death Strike’s erhöhen und seine Cleave-Effektivität verringern, um den Einzelzielschaden von Blood’s zu buffen, welcher bei den Tanks etwas im unteren Bereich liegt. Darüber hinaus nehmen wir einige gezielte Deathbringer-spezifische Buffs vor, um dem allgemeinen Aura-Nerf entgegenzuwirken und einen kleinen Netto-Positiv-Buff für sowohl ihren AoE- als auch ihren Einzelzielschaden zu bewirken.",
+            "Der Schaden aller Fähigkeiten und Diener wurde um 6% verringert.",
+            "Der Schaden von Death Strike wurde um 25% erhöht.",
+            "Deadly Reach bewirkt jetzt, dass Death Strike nun 60% seines Schadens an 2 Gegnern in der Nähe verursacht (vorher 75%).",
+            "Deathbringer: Der Schaden von Exterminate wurde um 25% erhöht.",
+            "Deathbringer: Schaden von Reaper’s Mark um 20% erhöht.",
+            "Deathbringer: Schaden von Wave of Souls um 20% erhöht.",
+            "Deathbringer: Bind in Darkness erhöht nun den Schaden von Blood Boil um 50% (vorher 30%).",
+            "Deathbringer: Deathly Blows erhöht nun den Schaden von Death Strike um 20% (vorher 12%).",
+            "Deathbringer: Swift and Painful erhöht nun Strength um 15% (vorher 10%).",
+            "Entwicklerkommentar: Frost Death hat in Szenarien mit Einzelzielen und Cleave für zwei Ziele geschwächelt.",
+            "Der Schaden von Frostreaper wurde um 100% erhöht. Beeinflusst nicht den PvP-Kampf.",
+            "Der Schaden von Obliterate wurde um 10% erhöht. Beeinflusst nicht den PvP-Kampf.",
+            "Entwicklerkommentar: Wir möchten den Schadensausstoß von Unholy Death Knight’s im Schlachtzug erhöhen. Parallel dazu wollen wir den Blightfall-Build wieder dorthin zurückbringen, wo er vor den Fehlerbehebungen war, durch die er nicht mehr spielbar wurde.",
+            "Scourging bewirkt jetzt, dass Eure Seuchen bei 65%/100% explodieren (vorher 50%/70%). Beeinflusst nicht den PvP-Kampf.",
+            "Blightfall verursacht 200% des verbleibenden Seuchenschadens (vorher 100%). Beeinflusst nicht den PvP-Kampf.",
+            "San’layn: Infliction of Sorrow bewirkt, dass Vampiric Strike Seuchen ausbrechen lässt mit einer um 75% erhöhten Effektivität (vorher 30%).",
+            "San’layn: Thrill of Blood erhöht den Schaden von Dread Plague um 20% (vorher 10%).",
+            "San’layn: Frenzied Bloodthirst erhöht nun den Schaden von Death Coil and Death Strike um 5% pro Stapel."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "esES": {
+          "name": "Death Knight",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Notas de los desarrolladores: San’layn está infligiendo bastante más daño en AoE de nuestro objetivo previsto para los tanques. Reduciremos su daño general para disminuir la disparidad. No obstante, aumentaremos el daño de Death Strike’s y reduciremos su eficacia de cuña (cleave) para mejorar el daño a un único objetivo de Blood’s, que está un poco en el extremo inferior para los tanques. Además, vamos a aplicar mejoras específicas para Deathbringer para contrarrestar la reducción de la JcJ general y que sea un pequeño beneficio neto positivo tanto para su AoE como para su daño a un único objetivo.",
+            "El daño de todas las facultades y esbirros se ha reducido un 6%.",
+            "El daño de Death Strike ha aumentado un 25%.",
+            "Deadly Reach ahora provoca que Death Strike inflija ahora un 60% de su daño a 2 enemigos cercanos (antes era un 75%).",
+            "Deathbringer: El daño de Exterminate ha aumentado un 25%.",
+            "Deathbringer: Daño de Reaper’s Mark aumentado un 20%.",
+            "Deathbringer: Daño de Wave of Souls aumentado un 20%.",
+            "Deathbringer: Bind en Darkness ahora aumenta el daño de Blood Boil un 50% (antes 30%).",
+            "Deathbringer: Deathly Blows ahora aumenta el daño de Death Strike un 20% (antes 12%).",
+            "Deathbringer: Swift and Painful ahora aumenta Strength un 15% (antes 10%).",
+            "Notas de los desarrolladores: Frost Death se ha quedado atrás en escenarios de daño a un objetivo y de daño en cuña (cleave) a dos objetivos.",
+            "El daño de Frostreaper ha aumentado un 100%. No afecta al combate contra PvP.",
+            "El daño de Obliterate ha aumentado un 10%. No afecta al combate contra PvP.",
+            "Notas de los desarrolladores: Queremos aumentar la producción de daño de Unholy Death Knight’s en banda. En paralelo, pretendemos devolver la configuración de Blightfall a donde estaba antes de las correcciones de errores que hicieron que dejara de ser viable.",
+            "Scourging ahora hace que tus pestes estallen en un 65%/100% (antes 50%/70%). No afecta al combate contra PvP.",
+            "Blightfall ahora inflige 200% del daño restante de peste (antes era 100%). No afecta al combate contra PvP.",
+            "San’layn: Infliction of Sorrow hace que Vampiric Strike expulse plagas con una eficacia aumentada un 75% (antes 30%).",
+            "San’layn: Thrill of Blood aumenta el daño de Dread Plague un 20% (antes 10%).",
+            "San’layn: Frenzied Bloodthirst ahora aumenta el daño de Death Coil and Death Strike un 5% por acumulación."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "frFR": {
+          "name": "Death Knight",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Notes des développeurs : San’layn inflige nettement plus de dégâts dans AoE que notre objectif visé pour les tanks. Nous allons réduire leurs dégâts globaux pour atténuer cet écart. Cependant, nous allons augmenter les dégâts de Death Strike’s et réduire son efficacité en dégâts de zone pour améliorer les dégâts sur cible unique de Blood’s, qui se situent dans la frange basse pour les tanks. De plus, nous apportons des améliorations ciblées spécifiques à Deathbringer pour contrer le nerf global de l'aura et constituer un léger gain net positif pour leurs dégâts en AoE et sur cible unique.",
+            "Tous les dégâts des techniques et des serviteurs réduits de 6%.",
+            "Dégâts de Death Strike augmentés de 25%.",
+            "Deadly Reach fait désormais en sorte que Death Strike inflige 60% de ses dégâts à 2 ennemis proches (au lieu de 75%).",
+            "Deathbringer : dégâts de Exterminate augmentés de 25%.",
+            "Deathbringer : Dégâts de Reaper’s Mark augmentés de 20%.",
+            "Deathbringer : Dégâts de Wave of Souls augmentés de 20%.",
+            "Deathbringer : Bind dans Darkness augmente désormais les dégâts de Blood Boil de 50% (au lieu de 30%).",
+            "Deathbringer : Deathly Blows augmente désormais les dégâts de Death Strike de 20% (au lieu de 12%).",
+            "Deathbringer : Swift and Painful augmente désormais Strength de 15% (au lieu de 10%).",
+            "Notes des développeurs : Frost Death est en retrait dans les scénarios de dégâts sur cible unique et de frappe en chaîne sur deux cibles.",
+            "Dégâts de Frostreaper augmentés de 100%. N'affecte pas le combat contre PvP.",
+            "Dégâts de Obliterate augmentés de 10%. N'affecte pas le combat contre PvP.",
+            "Notes des développeurs : Nous cherchons à augmenter les dégâts infligés par Unholy Death Knight’s en raid. En parallèle, nous voulons ramener la configuration de Blightfall au niveau où elle était avant la correction de bugs qui la rendait non viable.",
+            "Scourging fait désormais éclater vos pestes à 65%/100% (au lieu de 50%/70%). N'affecte pas le combat contre PvP.",
+            "Blightfall inflige 200% des dégâts de peste restants (au lieu de 100%). N'affecte pas le combat contre PvP",
+            "San’layn : Infliction of Sorrow fait éructer des fléaux à Vampiric Strike avec une efficacité augmentée de 75% (au lieu de 30%).",
+            "San’layn : Thrill of Blood augmente les dégâts de Dread Plague de 20% (au lieu de 10%).",
+            "San’layn : Frenzied Bloodthirst augmente désormais les dégâts de Death Coil and Death Strike de 5% par charge."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "koKR": {
+          "name": "Death Knight",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "개발자의 노트: San’layn이 AoE에서 탱커의 의도된 목표치보다 다소 많은 피해를 입히고 있습니다. 격차를 줄이기 위해 전체적인 피해량을 감소시킬 것입니다. 다만, 탱커 중에서는 약간 낮은 편인 Blood’s의 단일 대상 성능을 강화하기 위해 Death Strike’s의 피해량을 늘리고 광역(클리브) 효율은 낮추겠습니다. 아울러 전체적인 오라 너프를 상쇄하고 AoE 및 단일 대상 피해량 모두에 소폭의 긍정적인 상향이 되도록 Deathbringer 대상의 맞춤형 상향도 함께 진행합니다.",
+            "모든 능력 및 하수인 공격력이 6%만큼 감소했습니다.",
+            "Death Strike 피해량이 25%만큼 증가했습니다.",
+            "Deadly Reach로 인해 이제 Death Strike이 2명의 주위 적에게 피해의 60%를 입힙니다 (기존 75%).",
+            "Deathbringer: Exterminate 피해량이 25%만큼 증가했습니다.",
+            "Deathbringer: Reaper’s Mark 피해량이 20%만큼 증가했습니다.",
+            "Deathbringer: Wave of Souls 피해량이 20%만큼 증가했습니다.",
+            "Deathbringer: Darkness의 Bind 효과로 이제 Blood Boil 피해량이 50%만큼 증가합니다 (기존 30%).",
+            "Deathbringer: 이제 Deathly Blows가 Death Strike 피해량을 20%만큼 증가시킵니다 (기존 12%).",
+            "Deathbringer: 이제 Swift and Painful가 Strength(을)를 15%만큼 증가시킵니다 (기존 10%).",
+            "개발자의 한마디: Frost Death은(는) 단일 대상 및 두 대상 광역 공격 상황에서 다소 부족한 모습을 보였습니다.",
+            "Frostreaper 피해량이 100%만큼 증가했습니다. PvP 전투에는 영향을 주지 않습니다.",
+            "Obliterate 피해량이 10%만큼 증가했습니다. PvP 전투에는 영향을 주지 않습니다.",
+            "개발자의 노트: 공격대에서 Unholy Death Knight’s의 피해량을 높이고자 합니다. 이와 동시에, Blightfall 빌드를 더 이상 유효하지 않게 만들었던 버그 수정 이전의 상태로 되돌리는 것을 목표로 하고 있습니다.",
+            "Scourging으로 인해 이제 역병이 65%/100%에서 폭발합니다 (기존 50%/70%). PvP 전투에는 영향을 주지 않습니다.",
+            "Blightfall이 남은 역병 피해의 200%를 입힙니다(기존 100%). PvP 전투에는 영향을 주지 않습니다.",
+            "San’layn: 이제 Infliction of Sorrow는 Vampiric Strike가 75%만큼 증가한 효율로 역병을 분출하게 합니다 (기존 30%).",
+            "San’layn: Thrill of Blood가 Dread Plague 피해량을 20%만큼 증가시킵니다 (기존 10%).",
+            "San’layn: 이제 Frenzied Bloodthirst는 중첩당 Death Coil and Death Strike 피해량을 5%만큼 증가시킵니다."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "ruRU": {
+          "name": "Death Knight",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Заметки разработчиков: San’layn наносит значительно больше урона в AoE, чем наш целевой показатель для танков. Мы снизим его общий урон, чтобы уменьшить разрыв. Тем не менее, мы увеличим урон Death Strike’s и снизим его эффективность по площади, чтобы усилить урон Blood’s по одной цели, который находится на нижней границе для танков. Кроме того, мы вносим некоторые адресные усиления для Deathbringer, чтобы компенсировать общее ослабление ауры и сделать небольшое чистое положительное улучшение как для их урона в AoE, так и для урона по одной цели.",
+            "Урон всех способностей и прислужников уменьшен на 6%.",
+            "Урон способности «Death Strike» увеличен на 25%.",
+            "Теперь Deadly Reach заставляет Death Strike наносить 60% своего урона 2 ближайшим противникам (было — 75%).",
+            "Deathbringer: Урон Exterminate увеличен на 25%.",
+            "Deathbringer: урон Reaper’s Mark увеличен на 20%.",
+            "Deathbringer: урон Wave of Souls увеличен на 20%.",
+            "Deathbringer: Bind в Darkness теперь увеличивает урон Blood Boil на 50% (было — 30%).",
+            "Deathbringer: Deathly Blows теперь увеличивает урон Death Strike на 20% (было — 12%).",
+            "Deathbringer: Swift and Painful теперь увеличивает Strength на 15% (было — 10%).",
+            "Заметки разработчиков: Frost Death уступает в сценариях нанесения урона по одной и двум целям.",
+            "Урон способности «Frostreaper» увеличен на 100%. Не влияет на бой с PvP.",
+            "Урон способности «Obliterate» увеличен на 10%. Не влияет на бой с PvP.",
+            "Заметки разработчиков: Мы стремимся увеличить урон Unholy Death Knight’s в рейде. Параллельно мы хотим вернуть билд Blightfall на уровень, который был до исправления ошибок, лишивших его жизнеспособности.",
+            "Теперь Scourging заставляет ваши чумы взрываться со значением 65%/100% (было — 50%/70%). Не влияет на бой с PvP.",
+            "Blightfall наносит 200% от оставшегося урона чумы (было — 100%). Не влияет на бой с PvP",
+            "San’layn: Infliction of Sorrow заставляет Vampiric Strike вызывать извержение чумы с эффективностью, увеличенной на 75% (было — 30%).",
+            "San’layn: Thrill of Blood увеличивает урон Dread Plague на 20% (было — 10%).",
+            "San’layn: Frenzied Bloodthirst теперь увеличивает урон Death Coil and Death Strike на 5% за каждый эффект."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "zhCN": {
+          "name": "Death Knight",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "开发人员说明：San’layn 在 AoE 中造成的伤害远高于我们为坦克设定的预期目标。我们将降低其整体伤害以缩小差距。不过，我们将提高 Death Strike’s 的伤害并降低其横扫效果，以增强 Blood’s 的单目标伤害（目前在坦克中略微偏低）。此外，我们将针对 Deathbringer 进行一些有针对性的增益，以抵消整体光环削弱，并为其在 AoE 和单目标伤害上带来微小的净正面增益。",
+            "所有技能和随从造成的伤害降低了 6%。",
+            "Death Strike 伤害提高了 25%。",
+            "Deadly Reach 现在使 Death Strike 对 2 个附近敌人造成其伤害的 60%（原为 75%）。",
+            "Deathbringer：Exterminate 伤害提高了 25%。",
+            "Deathbringer：Reaper’s Mark伤害提高了20%。",
+            "Deathbringer：Wave of Souls伤害提高了20%。",
+            "Deathbringer：位于Darkness中的Bind现在使Blood Boil伤害提高50%（原为30%）。",
+            "Deathbringer：Deathly Blows现在使Death Strike伤害提高20%（原为12%）。",
+            "Deathbringer：Swift and Painful现在使Strength提高15%（原为10%）。",
+            "开发人员说明：Frost Death 在单目标和双目标分摊/顺劈场景中一直有所欠缺。",
+            "Frostreaper 伤害提高了 100%。不影响 PvP 战斗。",
+            "Obliterate 伤害提高了 10%。不影响 PvP 战斗。",
+            "开发人员说明：我们希望提高 Unholy Death Knight’s 在团队副本中的伤害输出。与此同时，我们旨在让 Blightfall 构筑恢复到使其不再可行的那些错误修复之前的水平。",
+            "Scourging 现在使你的瘟疫在 65%/100% 时爆发（原为 50%/70%）。不影响 PvP 战斗。",
+            "Blightfall 造成剩余瘟疫伤害的 200%（原为 100%）。不影响 PvP 战斗",
+            "San’layn：Infliction of Sorrow使Vampiric Strike爆发瘟疫，效果提高75%（原为30%）。",
+            "San’layn：Thrill of Blood使Dread Plague伤害提高20%（原为10%）。",
+            "San’layn：Frenzied Bloodthirst现在使每层Death Coil and Death Strike伤害提高5%。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "zhTW": {
+          "name": "Death Knight",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "開發者備註：在 AoE 中，San’layn 的傷害比我們對坦克的預期目標要高出不少。我們將降低其整體傷害以縮小差距。不過，我們將會提高 Death Strike’s 傷害並降低其分傷效率，藉此強化略顯偏低的坦克單體目標 Blood’s。此外，我們也針對 Deathbringer 進行了一些特定的針對性增益，以抵消整體的靈氣削弱，並對其 AoE 與單體目標傷害帶來微幅的淨正面增益。",
+            "所有能力與 minions 傷害降低 6%。",
+            "Death Strike 傷害提高 25%。",
+            "Deadly Reach 現在會使 Death Strike 對 2 個附近敵人造成其傷害的 60%（原為 75%）。",
+            "Deathbringer：Exterminate 傷害提高 25%。",
+            "Deathbringer：Reaper’s Mark 傷害提高 20%。",
+            "Deathbringer：Wave of Souls 傷害提高 20%。",
+            "Deathbringer：位於Darkness的Bind現在使Blood Boil傷害提高50%（原為30%）。",
+            "Deathbringer：Deathly Blows現在使Death Strike傷害提高20%（原為12%）。",
+            "Deathbringer：Swift and Painful現在使Strength提高15%（原為10%）。",
+            "開發者備註：Frost Death 在單體目標與雙目標分傷戰鬥中的表現一直不足。",
+            "Frostreaper 傷害提高 100%。不影響 PvP 戰鬥。",
+            "Obliterate 傷害提高 10%。不影響 PvP 戰鬥。",
+            "開發者備註：我們希望能提高 Unholy Death Knight’s 在團隊副本中的傷害輸出。同時，我們也旨在將 Blightfall 構築帶回其在導致其不再可行的錯誤修正之前的狀態。",
+            "Scourging 現在會使你的瘟疫在 65%/100% 時爆發（原為 50%/70%）。不影響 PvP 戰鬥。",
+            "Blightfall 造成剩餘瘟疫傷害的 200%（原為 100%）。不影響 PvP 戰鬥。",
+            "San’layn：Infliction of Sorrow會使Vampiric Strike爆發瘟疫，效果提高75%（原為30%）。",
+            "San’layn：Thrill of Blood 使 Dread Plague 傷害提高 20%（原為 10%）。",
+            "San’layn：Frenzied Bloodthirst現在使每個堆疊的Death Coil and Death Strike傷害提高5%。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        }
+      },
+      "retrievedAt": "2026-09-19T10:46:55.315268+00:00"
+    },
+    {
+      "id": "change-49ddf46956e4d8cd",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-09-18",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Demon Hunter",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "Developers’ notes: These changes are intended to primarily benefit the raid and single target performance of Annihilator hero talent builds and improve Annihilator’s viability in more content.",
+            "Collapsing Star damage to primary target increased by 25%. Does not affect PvP combat.",
+            "Consume/Devour damage increased by 8%. Does not affect PvP combat.",
+            "Aldrachi Reaver: Developers’ notes: Aldrachi Reaver has fallen well behind the alternative hero talent options for both specs it is available to. We are improving some of its core effects for both specs, and for Havoc specifically the soul fragment generation from Broken Spirit is increasing to give a small boost to Fury generation and hasten the cycle of Reaver’s Glaive and its bonuses.",
+            "Aldrachi Reaver: Art of the Glaive now increases the damage of enhanced strikes by 15% (was 10%) and 30% (was 20%).",
+            "Aldrachi Reaver: Reaver’s Glaive damage increased by 25%.",
+            "Aldrachi Reaver: Reaver’s Mark now increases your damage to the target by 7% (was 6%).",
+            "Aldrachi Reaver: Broken Spirit chance to shatter a Soul Fragment increased to 20% (was 15%).",
+            "Aldrachi Reaver: Developers’ notes: Aldrachi Reaver has fallen well behind the alternative hero talent options for both specs it is available to. We are improving some of its core effects for both specs.",
+            "Aldrachi Reaver: Art of the Glaive now increases the damage of enhanced strikes by 15% (was 10%) and 30% (was 20%).",
+            "Aldrachi Reaver: Reaver’s Glaive damage increased by 30%.",
+            "Aldrachi Reaver: Reaver’s Mark now increases your damage to the target by 8% (was 7%)."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Demon Hunter",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Entwicklerkommentar: Diese Änderungen sollen in erster Linie die Leistung von Annihilator-Heldentalentbäumen bei Schlachtzügen und Einzelzielen verbessern und die Lebensfähigkeit von Annihilator’s in mehr Inhalten erhöhen.",
+            "Der Schaden von Collapsing Star am Primärziel wurde um 25% erhöht. Beeinflusst nicht den PvP-Kampf.",
+            "Der Schaden von Consume/Devour wurde um 8% erhöht. Beeinflusst nicht den PvP-Kampf.",
+            "Aldrachi Reaver: Entwicklerkommentar: Aldrachi Reaver ist hinter die alternativen Heldenwahlen für beide Spezialisierungen, für die es verfügbar ist, deutlich zurückgefallen. Wir verbessern einige seiner Kerneffekte für beide Spezialisierungen, und speziell für Havoc wird die Seelenfragmenterzeugung von Broken Spirit erhöht, um der Erzeugung von Fury einen kleinen Schub zu geben und den Kreislauf von Reaver’s Glaive und seinen Boni zu beschleunigen.",
+            "Aldrachi Reaver: Art of the Glaive erhöht nun den Schaden von verstärkten Schlägen um 15% (vorher 10%) und 30% (vorher 20%).",
+            "Aldrachi Reaver: Der Schaden von Reaver’s Glaive wurde um 25% erhöht.",
+            "Aldrachi Reaver: Reaver’s Mark erhöht Euren Schaden gegen das Ziel nun um 7% (vorher 6%).",
+            "Aldrachi Reaver: Die Chance von Broken Spirit, ein Soul Fragment zu zertrümmern, wurde auf 20% erhöht (vorher 15%).",
+            "Aldrachi Reaver: Entwicklerkommentar: Aldrachi Reaver ist hinter die alternativen Heldenwahlen für beide Spezialisierungen, für die es verfügbar ist, deutlich zurückgefallen. Wir verbessern einige seiner Kerneffekte für beide Spezialisierungen.",
+            "Aldrachi Reaver: Art of the Glaive erhöht nun den Schaden von verstärkten Schlägen um 15% (vorher 10%) und 30% (vorher 20%).",
+            "Aldrachi Reaver: Der Schaden von Reaver’s Glaive wurde um 30% erhöht.",
+            "Aldrachi Reaver: Reaver’s Mark erhöht Euren Schaden gegen das Ziel nun um 8% (vorher 7%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "esES": {
+          "name": "Demon Hunter",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Notas de los desarrolladores: Estos cambios están pensados para beneficiar principalmente el rendimiento en banda y contra un único objetivo de las configuraciones de talentos de héroe de Annihilator y mejorar la viabilidad de Annihilator’s en más contenido.",
+            "El daño de Collapsing Star al objetivo principal ha aumentado un 25%. No afecta al combate contra PvP.",
+            "El daño de Consume/Devour ha aumentado un 8%. No afecta al combate contra PvP.",
+            "Aldrachi Reaver: Notas de los desarrolladores: Aldrachi Reaver se ha quedado bastante atrás respecto a las opciones de talentos de héroe alternativas para ambas especializaciones en las que está disponible. Vamos a mejorar algunos de sus efectos principales para ambas especializaciones y, en el caso específico de Havoc, la generación de fragmentos de alma de Broken Spirit va a aumentar para proporcionar un pequeño impulso a la generación de Fury y acelerar el ciclo de Reaver’s Glaive y sus bonificaciones.",
+            "Aldrachi Reaver: Art of the Glaive ahora aumenta el daño de los golpes mejorados un 15% (antes 10%) y un 30% (antes 20%).",
+            "Aldrachi Reaver: El daño de Reaver’s Glaive ha aumentado un 25%.",
+            "Aldrachi Reaver: Reaver’s Mark ahora aumenta tu daño al objetivo un 7% (antes 6%).",
+            "Aldrachi Reaver: La probabilidad de Broken Spirit de fracturar un Soul Fragment ha aumentado al 20% (antes era del 15%).",
+            "Aldrachi Reaver: Notas de los desarrolladores: Aldrachi Reaver se ha quedado bastante atrás respecto a las opciones de talentos de héroe alternativas para ambas especializaciones en las que está disponible. Estamos mejorando algunos de sus efectos principales para ambas especializaciones.",
+            "Aldrachi Reaver: Art of the Glaive ahora aumenta el daño de los golpes mejorados un 15% (antes 10%) y un 30% (antes 20%).",
+            "Aldrachi Reaver: El daño de Reaver’s Glaive ha aumentado un 30%.",
+            "Aldrachi Reaver: Reaver’s Mark ahora aumenta tu daño al objetivo un 8% (antes 7%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "frFR": {
+          "name": "Demon Hunter",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Notes des développeurs : Ces changements visent principalement à améliorer les performances en raid et sur cible unique des arbres de talents de héraut de Annihilator et à rendre Annihilator’s plus viable dans davantage de contenus.",
+            "Dégâts de Collapsing Star infligés à la cible principale augmentés de 25%. N'affecte pas le combat contre PvP.",
+            "Dégâts de Consume/Devour augmentés de 8%. N'affecte pas le combat contre PvP.",
+            "Aldrachi Reaver : Notes des développeurs : Aldrachi Reaver a pris beaucoup de retard par rapport aux autres options de talent de héraut pour les deux spécialisations auxquelles il est accessible. Nous améliorons certains de ses effets principaux pour ces deux spécialisations, et pour Havoc en particulier, la génération de fragments d'âme par Broken Spirit est augmentée afin d'offrir un léger coup de pouce à la génération de Fury et d'accélérer le cycle de Reaver’s Glaive ainsi que ses bonus.",
+            "Aldrachi Reaver : Art of the Glaive augmente désormais les dégâts des frappes améliorées de 15% (au lieu de 10%) et de 30% (au lieu de 20%).",
+            "Aldrachi Reaver : dégâts de Reaver’s Glaive augmentés de 25%.",
+            "Aldrachi Reaver : Reaver’s Mark augmente désormais vos dégâts infligés à la cible de 7% (au lieu de 6%).",
+            "Aldrachi Reaver : chances pour Broken Spirit de briser un Soul Fragment augmentées à 20% (au lieu de 15%).",
+            "Aldrachi Reaver : Notes des développeurs : Aldrachi Reaver est largement distancé par les autres options de talents de héraut pour les deux spécialisations auxquelles il est accessible. Nous améliorons certains de ses effets principaux pour ces deux spécialisations.",
+            "Aldrachi Reaver : Art of the Glaive augmente désormais les dégâts des frappes améliorées de 15% (au lieu de 10%) et de 30% (au lieu de 20%).",
+            "Aldrachi Reaver : dégâts de Reaver’s Glaive augmentés de 30%.",
+            "Aldrachi Reaver : Reaver’s Mark augmente désormais vos dégâts infligés à la cible de 8% (au lieu de 7%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "koKR": {
+          "name": "Demon Hunter",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "개발자의 노트: 이번 변경은 Annihilator 영웅 특성 빌드의 공격대 및 단일 대상 성능을 주로 강화하고, 더 다양한 콘텐츠에서 Annihilator’s의 활용도를 높이는 것을 목표로 합니다.",
+            "주 대상에게 입히는 Collapsing Star 피해량이 25%만큼 증가했습니다. PvP 전투에는 영향을 주지 않습니다.",
+            "Consume/Devour 피해량이 8%만큼 증가했습니다. PvP 전투에는 영향을 주지 않습니다.",
+            "Aldrachi Reaver: 개발자의 노트: Aldrachi Reaver은 사용 가능한 두 전문화 모두에서 대체 영웅 특성 선택지들에 비해 한참 뒤처져 있습니다. 양쪽 전문화 모두의 핵심 효과 일부를 개선하고 있으며, 특히 Havoc의 경우 Broken Spirit로 인한 영혼 조각 생성량이 증가하여 Fury 생성에 소폭의 도움을 주고 Reaver’s Glaive 및 그 보너스의 순환 주기를 앞당깁니다.",
+            "Aldrachi Reaver: 이제 Art of the Glaive는 강화된 일격의 피해량을 15%(기존 10%) 및 30%(기존 20%)만큼 증가시킵니다.",
+            "Aldrachi Reaver: Reaver’s Glaive 피해량이 25%만큼 증가했습니다.",
+            "Aldrachi Reaver: 이제 Reaver’s Mark 대상에게 주는 피해가 7%만큼 증가합니다 (기존 6%).",
+            "Aldrachi Reaver: Broken Spirit이 Soul Fragment를 산스러뜨릴 확률이 20%으로 증가했습니다 (기존 15%).",
+            "Aldrachi Reaver: 개발자의 노트: Aldrachi Reaver은 사용 가능한 두 전문화 모두에서 대체 영웅 특성 선택지들에 비해 한참 뒤처져 있습니다. 양쪽 전문화 모두의 핵심 효과 일부를 개선하고 있습니다.",
+            "Aldrachi Reaver: 이제 Art of the Glaive는 강화된 일격의 피해량을 15%(기존 10%) 및 30%(기존 20%)만큼 증가시킵니다.",
+            "Aldrachi Reaver: Reaver’s Glaive 피해량이 30%만큼 증가했습니다.",
+            "Aldrachi Reaver: 이제 Reaver’s Mark 대상에게 주는 피해가 8%만큼 증가합니다 (기존 7%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "ruRU": {
+          "name": "Demon Hunter",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Заметки разработчиков: Эти изменения призваны в первую очередь улучшить эффективность рейдовых билдов и билдов с одиночной целью для героических талантов Annihilator, а также повысить актуальность Annihilator’s в большем числе игровых аспектов.",
+            "Урон способности «Collapsing Star» по основной цели увеличен на 25%. Не влияет на бой с PvP.",
+            "Урон Consume/Devour увеличен на 8%. Не влияет на бой с PvP.",
+            "Aldrachi Reaver: Заметки разработчиков: Aldrachi Reaver значительно отстает от альтернативных вариантов героических талантов для обеих специализаций, для которых он доступен. Мы улучшаем некоторые из его базовых эффектов для обеих специализаций, а для Havoc в частности увеличивается генерация осколков души от Broken Spirit, чтобы дать небольшой прирост генерации Fury и ускорить цикл Reaver’s Glaive и его бонусов.",
+            "Aldrachi Reaver: Art of the Glaive теперь увеличивает урон усиленных ударов на 15% (было — 10%) и 30% (было — 20%).",
+            "Aldrachi Reaver: Урон Reaver’s Glaive увеличен на 25%.",
+            "Aldrachi Reaver: Reaver’s Mark теперь увеличивает ваш урон по цели на 7% (было — 6%).",
+            "Aldrachi Reaver: Вероятность расколоть Soul Fragment для Broken Spirit увеличена до 20% (было — 15%).",
+            "Aldrachi Reaver: Заметки разработчиков: Aldrachi Reaver значительно отстает от альтернативных вариантов героических талантов для обеих специализаций, для которых он доступен. Мы улучшаем некоторые из его базовых эффектов для обеих специализаций.",
+            "Aldrachi Reaver: Art of the Glaive теперь увеличивает урон усиленных ударов на 15% (было — 10%) и 30% (было — 20%).",
+            "Aldrachi Reaver: Урон Reaver’s Glaive увеличен на 30%.",
+            "Aldrachi Reaver: Reaver’s Mark теперь увеличивает ваш урон по цели на 8% (было — 7%)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "zhCN": {
+          "name": "Demon Hunter",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "开发人员说明：这些改动的首要目的是让 Annihilator 英雄天赋构筑在团队副本和单目标战斗中受益，并提升 Annihilator’s 在更多内容中的可行性。",
+            "Collapsing Star 对主要目标的伤害提高了 25%。不影响 PvP 战斗。",
+            "Consume/Devour 伤害提高了 8%。不影响 PvP 战斗。",
+            "Aldrachi Reaver：开发人员说明：Aldrachi Reaver 在其可用的两个专精中都大大落后于其他英雄天赋选项。我们正在改进这两个专精的一些核心效果，特别是对于 Havoc，从 Broken Spirit 产生的灵魂残片有所增加，从而为 Fury 的产生提供少量提升，并加速 Reaver’s Glaive 及其加成的循环。",
+            "Aldrachi Reaver：Art of the Glaive现在使强化打击的伤害提高15%（原为10%）以及30%（原为20%）。",
+            "Aldrachi Reaver：Reaver’s Glaive 伤害提高了 25%。",
+            "Aldrachi Reaver：Reaver’s Mark现在使你对目标的伤害提高7%（原为6%）。",
+            "Aldrachi Reaver：碎裂 Soul Fragment 的几率从 15% 提高至 20%（Broken Spirit 触发）。",
+            "Aldrachi Reaver：开发人员说明：Aldrachi Reaver 在其可用的两个专精中都大大落后于其他英雄天赋选项。我们正在改进这两个专精的一些核心效果。",
+            "Aldrachi Reaver：Art of the Glaive现在使强化打击的伤害提高15%（原为10%）以及30%（原为20%）。",
+            "Aldrachi Reaver：Reaver’s Glaive 伤害提高了 30%。",
+            "Aldrachi Reaver：Reaver’s Mark现在使你对目标的伤害提高8%（原为7%）。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "zhTW": {
+          "name": "Demon Hunter",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "開發者備註：這些變更旨在主要提升 Annihilator 英雄天賦構築的團隊副本與單體目標表現，並改善 Annihilator’s 在更多內容中的可行性。",
+            "Collapsing Star 對主要目標的傷害提高 25%。不影響 PvP 戰鬥。",
+            "Consume/Devour 傷害提高 8%。不影響 PvP 戰鬥。",
+            "Aldrachi Reaver：開發者備註：Aldrachi Reaver 在其可用的兩個專精中，皆落後於其他的英雄天賦選項。我們正在改善這兩個專精的某些核心效果，特別針對 Havoc 提升來自 Broken Spirit 的靈魂碎片生成量，以為 Fury 生成帶來微幅提升，並加速 Reaver’s Glaive 與其加成的循環。",
+            "Aldrachi Reaver：Art of the Glaive現在使強化擊擊的傷害提高15%（原為10%）以及30%（原為20%）。",
+            "Aldrachi Reaver：Reaver’s Glaive 傷害提高 25%。",
+            "Aldrachi Reaver：Reaver’s Mark現在使你對目標造成的傷害提高 7%（原為 6%）。",
+            "Aldrachi Reaver：Broken Spirit 碎裂 Soul Fragment 的機率提高至 20%（原為 15%）。",
+            "Aldrachi Reaver：開發者備註：Aldrachi Reaver 在其可用的兩個專精中，皆落後於其他的英雄天賦選項。我們正在改善這兩個專精的某些核心效果。",
+            "Aldrachi Reaver：Art of the Glaive現在使強化擊擊的傷害提高15%（原為10%）以及30%（原為20%）。",
+            "Aldrachi Reaver：Reaver’s Glaive 傷害提高 30%。",
+            "Aldrachi Reaver：Reaver’s Mark現在使你對目標造成的傷害提高 8%（原為 7%）。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        }
+      },
+      "retrievedAt": "2026-09-19T10:46:55.315268+00:00"
+    },
+    {
+      "id": "change-c553c6292c33be22",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-09-18",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Druid",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "Wildstalker: Bursting Growth damage increased by 15%. Not applied to PvP combat.",
+            "Wildstalker: Patient Custodian increases bleed damage by 10% (was 8%). Not applied to PvP combat.",
+            "All healing increased by 4%. Does not apply to PvP combat.",
+            "Fixed an issue where Photosynthesis could trigger from other players’ heal over time effects."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Druid",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Wildstalker: Schaden von Bursting Growth um 15% erhöht. Gilt nicht im PvP-Kampf.",
+            "Wildstalker: Patient Custodian erhöht den Blutungsschaden um 10% (vorher 8%). Gilt nicht im PvP-Kampf.",
+            "Alle Heilung wurde um 4% erhöht. Gilt nicht im PvP-Kampf.",
+            "Ein Fehler wurde behoben, bei dem Photosynthesis durch die Bluteffekte (Heilung über Zeit) anderer Spieler ausgelöst werden konnte."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "esES": {
+          "name": "Druid",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Wildstalker: Daño de Bursting Growth aumentado un 15%. No se aplica en combate contra PvP.",
+            "Wildstalker: Patient Custodian aumenta el daño de sangrado un 10% (antes 8%). No se aplica en combate contra PvP.",
+            "Toda la sanación ha aumentado un 4%. No se aplica al combate contra PvP.",
+            "Se ha corregido un error en el que Photosynthesis podía activarse con los efectos de sanación en el tiempo de otros jugadores."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "frFR": {
+          "name": "Druid",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Wildstalker : Dégâts de Bursting Growth augmentés de 15%. Ne s'applique pas aux combats de PvP.",
+            "Wildstalker : Patient Custodian augmente les dégâts de saignement de 10% (au lieu de 8%). Ne s'applique pas aux combats de PvP.",
+            "Tous les soins prodigués augmentés de 4%. Ne s'applique pas au combat contre PvP.",
+            "Correction d'un problème où Photosynthesis pouvait se déclencher à partir des effets de soins sur la durée d'autres joueurs."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "koKR": {
+          "name": "Druid",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Wildstalker: Bursting Growth 피해량이 15%만큼 증가했습니다. PvP 전투에는 적용되지 않습니다.",
+            "Wildstalker: Patient Custodian가 출혈 피해량을 10%만큼 증가시킵니다 (기존 8%). PvP 전투에는 적용되지 않습니다.",
+            "모든 치유량이 4%만큼 증가했습니다. PvP 전투에는 적용되지 않습니다.",
+            "Photosynthesis이 다른 플레이어의 지속 치유 효과로 인해 발동하던 문제를 수정했습니다."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "ruRU": {
+          "name": "Druid",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Wildstalker: урон Bursting Growth увеличен на 15%. Не применяется в бою с PvP.",
+            "Wildstalker: Patient Custodian увеличивает урон от кровотечений на 10% (было — 8%). Не применяется в бою с PvP.",
+            "Вся исцеляющая способность увеличена на 4%. Не применяется в бою с PvP.",
+            "Исправлена ошибка, из-за которой Photosynthesis мог срабатывать от эффектов периодического исцеления других игроков."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "zhCN": {
+          "name": "Druid",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Wildstalker：Bursting Growth伤害提高了15%。不适用于PvP战斗。",
+            "Wildstalker：Patient Custodian使流血伤害提高10%（原为8%）。不适用于PvP战斗。",
+            "所有治疗效果提高了 4%。不适用于 PvP 战斗。",
+            "修正了 Photosynthesis 会触发其他玩家的周期性治疗效果的问题。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "zhTW": {
+          "name": "Druid",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Wildstalker：Bursting Growth 傷害提高 15%。不適用於PvP戰鬥。",
+            "Wildstalker：Patient Custodian 使流血傷害提高 10%（原為 8%）。不適用於PvP戰鬥。",
+            "所有治療量提高 4%。不適用於 PvP 戰鬥。",
+            "修正了 Photosynthesis 可能會從其他玩家的持續治療（HoT）效果觸發的問題。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        }
+      },
+      "retrievedAt": "2026-09-19T10:46:55.315268+00:00"
+    },
+    {
+      "id": "change-36925349c80c5628",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-09-18",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Evoker",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "Developers’ notes: We’re making some targeted adjustments to parts of Augmentation’s kit that have lower representation in their breakdown than they should be relative to their intended strength or time spent performing them.",
+            "Eruption damage increased by 15%.",
+            "Fire Breath damage increased by 60%.",
+            "Upheaval damage increased by 40%.",
+            "Blistering Scales damage increased by 100%.",
+            "Developers’ notes: Devastation’s overall damage in M+ is slightly lower than we’d like, so we’re broadly targeting AoE abilities for buffs. We’re increasing Unbound Flame’s damage to maintain its appeal as the focus of the Apex talents. And finally, we’re increasing Shattering Star’s damage so that players talenting for their tier set can feel confident they are making a competitive character building decision. We anticipate this package giving a larger buff to Flameshaper than to Scalecommander, as we’re seeing Scalecommander outperform it in most content.",
+            "Pyre damage increased by 10%. Does not apply to PvP combat.",
+            "Unbound Flame damage increased by 25%. Does not apply to PvP combat.",
+            "Fire Breath damage increased by 5%. Does not apply to PvP combat.",
+            "Azure Strike damage increased by 50%. Does not apply to PvP combat.",
+            "Azure Sweep damage increased by 50%. Does not apply to PvP combat.",
+            "Shattering Star damage increased by 10%. Does not apply to PvP combat."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Evoker",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Entwicklerkommentar: Wir nehmen einige gezielte Anpassungen an Teilen des Arsenals von Augmentation’s vor, deren Anteil am Gesamtschaden geringer ist, als er im Verhältnis zu ihrer beabsichtigten Stärke oder der für sie aufgewendeten Zeit sein sollte.",
+            "Der Schaden von Eruption wurde um 15% erhöht.",
+            "Der Schaden von Fire Breath wurde um 60% erhöht.",
+            "Der Schaden von Upheaval wurde um 40% erhöht.",
+            "Der Schaden von Blistering Scales wurde um 100% erhöht.",
+            "Entwicklerkommentar: Der Gesamtschaden von Devastation’s in M+ ist etwas geringer, als uns lieb ist, daher zielen wir bei Buffs im Großen und Ganzen auf AoE-Fähigkeiten ab. Wir erhöhen den Schaden von Unbound Flame’s beizubehalten, um seine Attraktivität als Fokus der Apex-Talente zu wahren. And zu guter Letzt erhöhen wir den Schaden von Shattering Star’s, damit Spieler, die Talente für ihr Klassenset wählen, darauf vertrauen können, dass sie eine wettbewerbsfähige Charakterentwicklungsentscheidung treffen. Wir gehen davon aus, dass dieses Paket Flameshaper stärker buffen wird als Scalecommander, da wir sehen, dass Scalecommander es in den meisten Inhalten übertrifft.",
+            "Der Schaden von Pyre wurde um 10% erhöht. Gilt nicht im PvP-Kampf.",
+            "Der Schaden von Unbound Flame wurde um 25% erhöht. Gilt nicht im PvP-Kampf.",
+            "Der Schaden von Fire Breath wurde um 5% erhöht. Gilt nicht im PvP-Kampf.",
+            "Der Schaden von Azure Strike wurde um 50% erhöht. Gilt nicht im PvP-Kampf.",
+            "Der Schaden von Azure Sweep wurde um 50% erhöht. Gilt nicht im PvP-Kampf.",
+            "Der Schaden von Shattering Star wurde um 10% erhöht. Gilt nicht im PvP-Kampf."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "esES": {
+          "name": "Evoker",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Notas de los desarrolladores: Vamos a realizar algunos ajustes específicos en partes del repertorio de Augmentation’s que tienen menor representación en su desglose de la que deberían en relación con su potencia prevista o el tiempo dedicado a ejecutarlas.",
+            "El daño de Eruption ha aumentado un 15%.",
+            "El daño de Fire Breath ha aumentado un 60%.",
+            "El daño de Upheaval ha aumentado un 40%.",
+            "El daño de Blistering Scales ha aumentado un 100%.",
+            "Notas de los desarrolladores: El daño general de Devastation’s en M+ es ligeramente inferior al que nos gustaría, así que vamos a centrarnos en general en las facultades de AoE para aplicarles mejoras. Vamos a aumentar el daño de Unbound Flame’s para mantener su atractivo como el foco de los talentos de Apex. And por último, vamos a aumentar el daño de Shattering Star’s para que los jugadores que elijan talentos para su conjunto de armadura de clase puedan sentir la confianza de que están tomando una decisión competitiva de configuración de personaje. Prevemos que este conjunto proporcione una mejora mayor a Flameshaper que a Scalecommander, ya que estamos viendo que Scalecommander lo supera en la mayoría del contenido.",
+            "El daño de Pyre ha aumentado un 10%. No se aplica al combate contra PvP.",
+            "El daño de Unbound Flame ha aumentado un 25%. No se aplica al combate contra PvP.",
+            "El daño de Fire Breath ha aumentado un 5%. No se aplica al combate contra PvP.",
+            "El daño de Azure Strike ha aumentado un 50%. No se aplica al combate contra PvP.",
+            "El daño de Azure Sweep ha aumentado un 50%. No se aplica al combate contra PvP.",
+            "El daño de Shattering Star ha aumentado un 10%. No se aplica al combate contra PvP."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "frFR": {
+          "name": "Evoker",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Notes des développeurs : Nous apportons des ajustements ciblés à certaines parties de l'arsenal de Augmentation’s dont la représentation dans le détail des dégâts est inférieure à ce qu'elle devrait être par rapport à leur puissance voulue ou au temps passé à les utiliser.",
+            "Dégâts de Eruption augmentés de 15%.",
+            "Dégâts de Fire Breath augmentés de 60%.",
+            "Dégâts de Upheaval augmentés de 40%.",
+            "Dégâts de Blistering Scales augmentés de 100%.",
+            "Notes des développeurs : Les dégâts globaux de Devastation’s en M+ sont légèrement inférieurs à ce que nous souhaitons, c'est pourquoi nous visons largement les techniques de AoE pour leur octroyer des améliorations. Nous augmentons les dégâts de Unbound Flame’s afin de préserver son attrait en tant que cœur des talents de Apex. And enfin, nous augmentons les dégâts de Shattering Star’s pour que les joueurs choisissant leur ensemble d'armure de palier aient l'assurance de faire un choix de personnage compétitif. Nous prévoyons que cet ensemble apportera une plus grande amélioration en Flameshaper qu'en Scalecommander, constatant que Scalecommander surperforme dans la plupart des contenus.",
+            "Dégâts de Pyre augmentés de 10%. Ne s'applique pas au combat contre PvP.",
+            "Dégâts de Unbound Flame augmentés de 25%. Ne s'applique pas au combat contre PvP.",
+            "Dégâts de Fire Breath augmentés de 5%. Ne s'applique pas au combat contre PvP.",
+            "Dégâts de Azure Strike augmentés de 50%. Ne s'applique pas au combat contre PvP.",
+            "Dégâts de Azure Sweep augmentés de 50%. Ne s'applique pas au combat contre PvP.",
+            "Dégâts de Shattering Star augmentés de 10%. Ne s'applique pas au combat contre PvP."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "koKR": {
+          "name": "Evoker",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "개발자의 노트: 의도된 위력이나 소요 시간에 비해 비중이 낮았던 Augmentation’s 구성 요소 일부를 대상으로 조정을 진행합니다.",
+            "Eruption 피해량이 15%만큼 증가했습니다.",
+            "Fire Breath 피해량이 60%만큼 증가했습니다.",
+            "Upheaval 피해량이 40%만큼 증가했습니다.",
+            "Blistering Scales 피해량이 100%만큼 증가했습니다.",
+            "개발자의 노트: M+에서 Devastation’s의 전체적인 피해량이 원하는 수준보다 약간 낮으므로, 전반적으로 AoE 능력들을 대상으로 상향 조정을 진행합니다. Apex 특성의 핵심으로서 매력을 유지할 수 있도록 Unbound Flame’s 피해량을 증가시킵니다. And 마지막으로, 티어 세트에 특화된 플레이어들이 경쟁력 있는 캐릭터 빌드 선택을 하고 있다는 확신을 가질 수 있도록 Shattering Star’s의 피해량을 상향합니다. 이번 조정은 Scalecommander이 대부분의 콘텐츠에서 앞서고 있는 모습을 보이고 있으므로, Scalecommander보다는 Flameshaper에 더 큰 상향 효과를 줄 것으로 예상합니다.",
+            "Pyre 피해량이 10%만큼 증가했습니다. PvP 전투에는 적용되지 않습니다.",
+            "Unbound Flame 피해량이 25%만큼 증가했습니다. PvP 전투에는 적용되지 않습니다.",
+            "Fire Breath 피해량이 5%만큼 증가했습니다. PvP 전투에는 적용되지 않습니다.",
+            "Azure Strike 피해량이 50%만큼 증가했습니다. PvP 전투에는 적용되지 않습니다.",
+            "Azure Sweep 피해량이 50%만큼 증가했습니다. PvP 전투에는 적용되지 않습니다.",
+            "Shattering Star 피해량이 10%만큼 증가했습니다. PvP 전투에는 적용되지 않습니다."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "ruRU": {
+          "name": "Evoker",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Заметки разработчиков: Мы вносим целевые корректировки в те части арсенала Augmentation’s, которые занимают меньшую долю в общем уроне, чем должны, относительно их предполагаемой силы или затраченного на их применение времени.",
+            "Урон способности «Eruption» увеличен на 15%.",
+            "Урон способности «Fire Breath» увеличен на 60%.",
+            "Урон способности «Upheaval» увеличен на 40%.",
+            "Урон способности «Blistering Scales» увеличен на 100%.",
+            "Заметки разработчиков: Общий урон Devastation’s в M+ немного ниже, чем нам хотелось бы, поэтому мы целенаправленно усиливаем способности AoE. Мы увеличиваем урон Unbound Flame’s, чтобы сохранить его привлекательность как основы талантов Apex. И наконец, And, мы увеличиваем урон Shattering Star’s, чтобы игроки, выбирающие таланты под свой комплект экипировки, были уверены, что делают конкурентоспособный выбор при создании персонажа. Мы полагаем, что этот набор изменений сильнее усилит Flameshaper, чем Scalecommander, поскольку мы видим, что Scalecommander превосходит его в большинстве аспектов игры.",
+            "Урон способности «Pyre» увеличен на 10%. Не применяется в бою с PvP.",
+            "Урон способности «Unbound Flame» увеличен на 25%. Не применяется в бою с PvP.",
+            "Урон способности «Fire Breath» увеличен на 5%. Не применяется в бою с PvP.",
+            "Урон способности «Azure Strike» увеличен на 50%. Не применяется в бою с PvP.",
+            "Урон способности «Azure Sweep» увеличен на 50%. Не применяется в бою с PvP.",
+            "Урон способности «Shattering Star» увеличен на 10%. Не применяется в бою с PvP."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "zhCN": {
+          "name": "Evoker",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "开发人员说明：我们正在对 Augmentation’s 技能组合中占比低于其应有强度或执行时间的各部分进行针对性调整。",
+            "Eruption 伤害提高了 15%。",
+            "Fire Breath 伤害提高了 60%。",
+            "Upheaval 伤害提高了 40%。",
+            "Blistering Scales 伤害提高了 100%。",
+            "开发人员说明：Devastation’s 在 M+ 中的整体伤害略低于我们的预期，因此我们广泛地将 AoE 技能作为增益目标。我们正在提高 Unbound Flame’s 的伤害，以保持其作为 Apex 天赋核心的吸引力。And 最后，我们正在提高 Shattering Star’s 的伤害，以便选择其套装天赋的玩家能够有信心做出具有竞争力的角色构筑决定。我们预计这个改动包对 Flameshaper 的增益将大于对 Scalecommander 的增益，因为我们看到 Scalecommander 在大多数内容中的表现都优于它。",
+            "Pyre 伤害提高了 10%。不适用于 PvP 战斗。",
+            "Unbound Flame 伤害提高了 25%。不适用于 PvP 战斗。",
+            "Fire Breath 伤害提高了 5%。不适用于 PvP 战斗。",
+            "Azure Strike 伤害提高了 50%。不适用于 PvP 战斗。",
+            "Azure Sweep 伤害提高了 50%。不适用于 PvP 战斗。",
+            "Shattering Star 伤害提高了 10%。不适用于 PvP 战斗。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "zhTW": {
+          "name": "Evoker",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "開發者備註：我們正在對 Augmentation’s 技能組中某些相對於其預期強度或施展時間而言，其占比比應有水準還低的部份進行針對性調整。",
+            "Eruption 傷害提高 15%。",
+            "Fire Breath 傷害提高 60%。",
+            "Upheaval 傷害提高 40%。",
+            "Blistering Scales 傷害提高 100%。",
+            "開發者備註：Devastation’s 在 M+ 中的整體傷害略低於我們的預期，因此我們全面針對 AoE 的能力進行增益。我們正在提高 Unbound Flame’s 傷害，以維持其作為 Apex 天賦焦點的吸引力。And 最後，我們正在提高 Shattering Star’s 傷害，好讓選擇套裝天賦的玩家能充滿信心，確信自己做出了具有競爭力的角色構築決定。我們預期這套調整對 Flameshaper 的增益會大於 Scalecommander，因為我們看到 Scalecommander 在多數內容中的表現超越了它。",
+            "Pyre 傷害提高 10%。不適用於 PvP 戰鬥。",
+            "Unbound Flame 傷害提高 25%。不適用於 PvP 戰鬥。",
+            "Fire Breath 傷害提高 5%。不適用於 PvP 戰鬥。",
+            "Azure Strike 傷害提高 50%。不適用於 PvP 戰鬥。",
+            "Azure Sweep 傷害提高 50%。不適用於 PvP 戰鬥。",
+            "Shattering Star 傷害提高 10%。不適用於 PvP 戰鬥。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        }
+      },
+      "retrievedAt": "2026-09-19T10:46:55.315268+00:00"
+    },
+    {
+      "id": "change-129de3d841162eef",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-09-18",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Hunter",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "Developers’ notes: We’re looking to increase the area damage capabilities of Marksmanship Hunters with these changes.",
+            "Trick Shots now causes Aimed Shot or Rapid Fire ricochets to hit for 75% of damage (was 60%).",
+            "Volley damage increased by 10%.",
+            "Developers’ notes: We’re increasing the damage that Wildfire Bomb deals to all targets, but reducing the bonus damage to the primary target. This should be a neutral change against a single target, but an increase to area damage when fighting more than one enemy.",
+            "Wildfire Bomb damage increased by 20%.",
+            "Wildfire Bomb now only hits the primary target for 50% additional damage (was 80% additional)."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Hunter",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Entwicklerkommentar: Wir möchten mit diesen Änderungen die Möglichkeiten für Flächenschaden von Marksmanship Hunters erhöhen.",
+            "Trick Shots bewirkt jetzt, dass Aimed Shot oder Rapid Fire Abpraller 75% Schaden verursachen (vorher 60%).",
+            "Der Schaden von Volley wurde um 10% erhöht.",
+            "Entwicklerkommentar: Wir erhöhen den Schaden, den Wildfire Bomb allen Zielen zufügt, verringern aber den Bonusschaden gegen das Primärziel. Dies sollte eine neutrale Änderung gegen ein einzelnes Ziel sein, aber den Flächenschaden beim Kampf gegen mehr als einen Gegner erhöhen.",
+            "Der Schaden von Wildfire Bomb wurde um 20% erhöht.",
+            "Wildfire Bomb trifft das Primärziel jetzt nur noch für 50% zusätzlichen Schaden (vorher 80% zusätzlich)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "esES": {
+          "name": "Hunter",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Notas de los desarrolladores: Buscamos aumentar las capacidades de daño de área de Marksmanship Hunters con estos cambios.",
+            "Trick Shots ahora hace que Aimed Shot o Rapid Fire rebotes golpeen con un 75% de daño (antes era un 60%).",
+            "El daño de Volley ha aumentado un 10%.",
+            "Notas de los desarrolladores: Vamos a aumentar el daño que Wildfire Bomb inflige a todos los objetivos, pero reduciremos el daño bonus al objetivo principal. Esto debería ser un cambio neutro contra un único objetivo, pero un aumento del daño de área al combatir contra más de un enemigo.",
+            "El daño de Wildfire Bomb ha aumentado un 20%.",
+            "Wildfire Bomb ahora solo inflige 50% de daño adicional al objetivo principal (antes era un 80% adicional)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "frFR": {
+          "name": "Hunter",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Notes des développeurs : Nous cherchons à augmenter la capacité de dégâts de zone de Marksmanship Hunters avec ces changements.",
+            "Trick Shots fait désormais en sorte que Aimed Shot ou Rapid Fire rebonds infligent 75% de dégâts (au lieu de 60%).",
+            "Dégâts de Volley augmentés de 10%.",
+            "Notes des développeurs : Nous augmentons les dégâts infligés par Wildfire Bomb à toutes les cibles, tout en réduisant le bonus de dégâts sur la cible principale. Cela devrait constituer un changement neutre face à une seule cible, mais une augmentation des dégâts de zone lors des combats contre plus d'un ennemie.",
+            "Dégâts de Wildfire Bomb augmentés de 20%.",
+            "Wildfire Bomb n'inflige plus que 50% de dégâts supplémentaires à la cible principale (au lieu de 80% de plus)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "koKR": {
+          "name": "Hunter",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "개발자의 노트: 이번 변경을 통해 Marksmanship Hunters의 광역 피해 능력을 상향하고자 합니다.",
+            "Trick Shots으로 인해 이제 Aimed Shot 또는 Rapid Fire 도약이 75%의 피해를 입힙니다 (기존 60%).",
+            "Volley 피해량이 10%만큼 증가했습니다.",
+            "개발자의 노트: Wildfire Bomb이 모든 대상에게 입히는 피해를 증가시키되, 주 대상에 대한 추가 피해는 감소시킵니다. 단일 대상 상대 시에는 변화가 없어야 하지만, 둘 이상의 적과 싸울 때는 광역 피해가 증가할 것입니다.",
+            "Wildfire Bomb 피해량이 20%만큼 증가했습니다.",
+            "Wildfire Bomb이 이제 주 대상에게 50%의 추가 피해만 입힙니다 (기존 80% 추가)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "ruRU": {
+          "name": "Hunter",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Заметки разработчиков: С помощью этих изменений мы хотим повысить потенциал урона Marksmanship Hunters по площади.",
+            "Теперь Trick Shots заставляет Aimed Shot или Rapid Fire рикошетить и наносить 75% урона (было — 60%).",
+            "Урон способности «Volley» увеличен на 10%.",
+            "Заметки разработчиков: Мы увеличиваем урон, который Wildfire Bomb наносит всем целям, но уменьшаем бонус к урону по основной цели. Это изменение должно быть нейтральным при сражении с одной целью, но увеличивать урон по площади при борьбе с более чем одним противником.",
+            "Урон способности «Wildfire Bomb» увеличен на 20%.",
+            "Теперь Wildfire Bomb наносит основной цели только 50% дополнительного урона (было — 80% дополнительно)."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "zhCN": {
+          "name": "Hunter",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "开发人员说明：我们希望通过这些改动来提升 Marksmanship Hunters 的群体伤害能力。",
+            "Trick Shots 现在使 Aimed Shot 或 Rapid Fire 的弹跳造成 75% 的伤害（原为 60%）。",
+            "Volley 伤害提高了 10%。",
+            "开发人员说明：我们正在提高 Wildfire Bomb 对所有目标造成的伤害，但降低了对主要目标的额外伤害。这在对抗单个目标时应该是一个持平的改动，但在与一个以上敌人战斗时会提高群体伤害。",
+            "Wildfire Bomb 伤害提高了 20%。",
+            "Wildfire Bomb 现在仅对主要目标造成 50% 的额外伤害（原为 80% 额外伤害）。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "zhTW": {
+          "name": "Hunter",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "開發者備註：我們希望透過這些變更來提高 Marksmanship Hunters 的範圍傷害能力。",
+            "Trick Shots 現在會使 Aimed Shot 或 Rapid Fire 彈跳造成 75% 的傷害（原為 60%）。",
+            "Volley 傷害提高 10%。",
+            "開發者備註：我們正在提高 Wildfire Bomb 對所有目標造成的傷害，但降低對主要目標的額外傷害。這在對上單一目標時應該是個中立的變更，但在對戰一個以上的敵人時會提高範圍傷害。",
+            "Wildfire Bomb 傷害提高 20%。",
+            "Wildfire Bomb 現在僅對主要目標造成 50% 額外傷害（原為 80% 額外傷害）。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        }
+      },
+      "retrievedAt": "2026-09-19T10:46:55.315268+00:00"
+    },
+    {
+      "id": "change-457c05c8ec327db4",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-09-18",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Mage",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "Meteor’s damage over time increased by 100%. Does not apply to PvP combat.",
+            "Frostfire: Dualcasting Adept now increases Flamestrike damage by 15% (was 10%).",
+            "Sunfury: Burden of Power now increases Flamestrike damage by 6% (was 3%).",
+            "Frozen Orb damage increased by 15%.",
+            "Comet Storm damage increased by 50%. Does not apply to PvP combat.",
+            "Frostbite’s Shatter damage to nearby enemies increased by 10%.",
+            "Glacial Assault icy comet damage increased by 50%."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Mage",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Der Schaden über Zeit von Meteor’s wurde um 100% erhöht. Gilt nicht im PvP-Kampf.",
+            "Frostfire: Dualcasting Adept erhöht nun den Schaden von Flamestrike um 15% (vorher 10%).",
+            "Sunfury: Burden of Power erhöht nun den Schaden von Flamestrike um 6% (vorher 3%).",
+            "Der Schaden von Frozen Orb wurde um 15% erhöht.",
+            "Der Schaden von Comet Storm wurde um 50% erhöht. Gilt nicht im PvP-Kampf.",
+            "Der Schaden von Frostbite’s Shatter an Gegnern in der Nähe wurde um 10% erhöht.",
+            "Der Schaden des eisigen Kometen von Glacial Assault wurde um 50% erhöht."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "esES": {
+          "name": "Mage",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "El daño en el tiempo de Meteor’s ha aumentado un 100%. No se aplica al combate contra PvP.",
+            "Frostfire: Dualcasting Adept ahora aumenta el daño de Flamestrike un 15% (antes 10%).",
+            "Sunfury: Burden of Power ahora aumenta el daño de Flamestrike un 6% (antes 3%).",
+            "El daño de Frozen Orb ha aumentado un 15%.",
+            "El daño de Comet Storm ha aumentado un 50%. No se aplica al combate contra PvP.",
+            "El daño de Frostbite’s Shatter a los enemigos cercanos ha aumentado un 10%.",
+            "El daño del cometa gélido de Glacial Assault ha aumentado un 50%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "frFR": {
+          "name": "Mage",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Dégâts sur la durée de Meteor’s augmentés de 100%. Ne s'applique pas au combat contre PvP.",
+            "Frostfire : Dualcasting Adept augmente désormais les dégâts de Flamestrike de 15% (au lieu de 10%).",
+            "Sunfury : Burden of Power augmente désormais les dégâts de Flamestrike de 6% (au lieu de 3%).",
+            "Dégâts de Frozen Orb augmentés de 15%.",
+            "Dégâts de Comet Storm augmentés de 50%. Ne s'applique pas au combat contre PvP.",
+            "Dégâts de Frostbite’s Shatter infligés aux ennemis proches augmentés de 10%.",
+            "Dégâts de la comète glacée de Glacial Assault augmentés de 50%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "koKR": {
+          "name": "Mage",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Meteor’s의 지속 피해량이 100%만큼 증가했습니다. PvP 전투에는 적용되지 않습니다.",
+            "Frostfire: 이제 Dualcasting Adept가 Flamestrike 피해량을 15%만큼 증가시킵니다 (기존 10%).",
+            "Sunfury: 이제 Burden of Power가 Flamestrike 피해량을 6%만큼 증가시킵니다 (기존 3%).",
+            "Frozen Orb 피해량이 15%만큼 증가했습니다.",
+            "Comet Storm 피해량이 50%만큼 증가했습니다. PvP 전투에는 적용되지 않습니다.",
+            "근처 적에게 입히는 Frostbite’s Shatter 피해량이 10%만큼 증가했습니다.",
+            "Glacial Assault의 얼음 혜성 피해량이 50%만큼 증가했습니다."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "ruRU": {
+          "name": "Mage",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Урон от периодического эффекта «Meteor’s» увеличен на 100%. Не применяется в бою с PvP.",
+            "Frostfire: Dualcasting Adept теперь увеличивает урон Flamestrike на 15% (было — 10%).",
+            "Sunfury: Burden of Power теперь увеличивает урон Flamestrike на 6% (было — 3%).",
+            "Урон способности «Frozen Orb» увеличен на 15%.",
+            "Урон способности «Comet Storm» увеличен на 50%. Не применяется в бою с PvP.",
+            "Урон способности «Frostbite’s Shatter» по находящимся рядом противникам увеличен на 10%.",
+            "Урон ледяной кометы способности «Glacial Assault» увеличен на 50%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "zhCN": {
+          "name": "Mage",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Meteor’s 周期性伤害提高了 100%。不适用于 PvP 战斗。",
+            "Frostfire：Dualcasting Adept现在使Flamestrike伤害提高15%（原为10%）。",
+            "Sunfury：Burden of Power现在使Flamestrike伤害提高6%（原为3%）。",
+            "Frozen Orb 伤害提高了 15%。",
+            "Comet Storm 伤害提高了 50%。不适用于 PvP 战斗。",
+            "Frostbite’s Shatter 对附近敌人的伤害提高了 10%。",
+            "Glacial Assault 的冰冷彗星伤害提高了 50%。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "zhTW": {
+          "name": "Mage",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Meteor’s 週期性傷害提高 100%。不適用於 PvP 戰鬥。",
+            "Frostfire：Dualcasting Adept現在使Flamestrike傷害提高15%（原為10%）。",
+            "Sunfury：Burden of Power現在使Flamestrike傷害提高6%（原為3%）。",
+            "Frozen Orb 傷害提高 15%。",
+            "Comet Storm 傷害提高 50%。不適用於 PvP 戰鬥。",
+            "Frostbite’s Shatter 對附近敵人的傷害提高 10%。",
+            "Glacial Assault 冰霜彗星傷害提高 50%。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        }
+      },
+      "retrievedAt": "2026-09-19T10:46:55.315268+00:00"
+    },
+    {
+      "id": "change-bd3c69a1d63a7859",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-09-18",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Monk",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "All healing increased by 5%. Does not apply to PvP combat.",
+            "Vivify healing increased by 15%. Does not apply to PvP combat.",
+            "Sheilun’s Gift healing increased by 15%. Does not apply to PvP combat.",
+            "Melee auto-attack damage increased by 25%. Does not apply to PvP combat.",
+            "Dual Threat damage increased by 20%. Does not apply to PvP combat.",
+            "Rising Sun Kick damage increased by 8%. Does not apply to PvP combat."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Monk",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Alle Heilung wurde um 5% erhöht. Gilt nicht im PvP-Kampf.",
+            "Die Heilung von Vivify wurde um 15% erhöht. Gilt nicht im PvP-Kampf.",
+            "Die Heilung von Sheilun’s Gift wurde um 15% erhöht. Gilt nicht im PvP-Kampf.",
+            "Der Schaden von automatischen Nahkampfangriffen wurde um 25% erhöht. Gilt nicht im PvP-Kampf.",
+            "Der Schaden von Dual Threat wurde um 20% erhöht. Gilt nicht im PvP-Kampf.",
+            "Der Schaden von Rising Sun Kick wurde um 8% erhöht. Gilt nicht im PvP-Kampf."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "esES": {
+          "name": "Monk",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Toda la sanación ha aumentado un 5%. No se aplica al combate contra PvP.",
+            "La sanación de Vivify ha aumentado un 15%. No se aplica al combate contra PvP.",
+            "La sanación de Sheilun’s Gift ha aumentado un 15%. No se aplica al combate contra PvP.",
+            "El daño de ataques automáticos cuerpo a cuerpo ha aumentado un 25%. No se aplica al combate contra PvP.",
+            "El daño de Dual Threat ha aumentado un 20%. No se aplica al combate contra PvP.",
+            "El daño de Rising Sun Kick ha aumentado un 8%. No se aplica al combate contra PvP."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "frFR": {
+          "name": "Monk",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Tous les soins prodigués augmentés de 5%. Ne s'applique pas au combat contre PvP.",
+            "Soins de Vivify augmentés de 15%. Ne s'applique pas au combat contre PvP.",
+            "Soins de Sheilun’s Gift augmentés de 15%. Ne s'applique pas au combat contre PvP.",
+            "Dégâts d'attaque automatique en mêlée augmentés de 25%. Ne s'applique pas au combat contre PvP.",
+            "Dégâts de Dual Threat augmentés de 20%. Ne s'applique pas au combat contre PvP.",
+            "Dégâts de Rising Sun Kick augmentés de 8%. Ne s'applique pas au combat contre PvP."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "koKR": {
+          "name": "Monk",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "모든 치유량이 5%만큼 증가했습니다. PvP 전투에는 적용되지 않습니다.",
+            "Vivify 치유량이 15%만큼 증가했습니다. PvP 전투에는 적용되지 않습니다.",
+            "Sheilun’s Gift 치유량이 15%만큼 증가했습니다. PvP 전투에는 적용되지 않습니다.",
+            "근접 자동 공격 피해량이 25%만큼 증가했습니다. PvP 전투에는 적용되지 않습니다.",
+            "Dual Threat 피해량이 20%만큼 증가했습니다. PvP 전투에는 적용되지 않습니다.",
+            "Rising Sun Kick 피해량이 8%만큼 증가했습니다. PvP 전투에는 적용되지 않습니다."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "ruRU": {
+          "name": "Monk",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Вся исцеляющая способность увеличена на 5%. Не применяется в бою с PvP.",
+            "Эффективность исцеления способности «Vivify» увеличена на 15%. Не применяется в бою с PvP.",
+            "Эффективность исцеления способности «Sheilun’s Gift» увеличена на 15%. Не применяется в бою с PvP.",
+            "Урон от автоматических атак ближнего боя увеличен на 25%. Не применяется в бою с PvP.",
+            "Урон способности «Dual Threat» увеличен на 20%. Не применяется в бою с PvP.",
+            "Урон способности «Rising Sun Kick» увеличен на 8%. Не применяется в бою с PvP."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "zhCN": {
+          "name": "Monk",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "所有治疗效果提高了 5%。不适用于 PvP 战斗。",
+            "Vivify 治疗效果提高了 15%。不适用于 PvP 战斗。",
+            "Sheilun’s Gift 治疗效果提高了 15%。不适用于 PvP 战斗。",
+            "近战自动攻击伤害提高了 25%。不适用于 PvP 战斗。",
+            "Dual Threat 伤害提高了 20%。不适用于 PvP 战斗。",
+            "Rising Sun Kick 伤害提高了 8%。不适用于 PvP 战斗。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "zhTW": {
+          "name": "Monk",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "所有治療量提高 5%。不適用於 PvP 戰鬥。",
+            "Vivify 治療量提高 15%。不適用於 PvP 戰鬥。",
+            "Sheilun’s Gift 治療量提高 15%。不適用於 PvP 戰鬥。",
+            "近戰自動攻擊傷害提高 25%。不適用於 PvP 戰鬥。",
+            "Dual Threat 傷害提高 20%。不適用於 PvP 戰鬥。",
+            "Rising Sun Kick 傷害提高 8%。不適用於 PvP 戰鬥。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        }
+      },
+      "retrievedAt": "2026-09-19T10:46:55.315268+00:00"
+    },
+    {
+      "id": "change-79a650a104ffe9c0",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-09-18",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Paladin",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "All ability damage increased by 6%. Does not apply to PvP combat.",
+            "Templar: Developers’ notes: Templar has been underperforming compared to Herald of the Sun this season. We’re increasing its throughput to make it a more viable option against Herald of the Sun, for those who enjoy Templar’s playstyle.",
+            "Templar: Hammer of Light damage increased by 50%. Does not apply to PvP combat.",
+            "Templar: Empyrean Hammer damage increased by 12%."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Paladin",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Der Schaden aller Fähigkeiten wurde um 6% erhöht. Gilt nicht im PvP-Kampf.",
+            "Templar: Entwicklerkommentar: Templar hat in dieser Saison im Vergleich zu Herald of the Sun eine zu schwache Leistung gezeigt. Wir erhöhen seine Effektivität, um es zu einer lebensfähigeren Option gegen Herald of the Sun zu machen, für diejenigen, die den Templar’s-Spielstil mögen.",
+            "Templar: Schaden von Hammer of Light um 50% erhöht. Gilt nicht im PvP-Kampf.",
+            "Templar: Schaden von Empyrean Hammer um 12% erhöht."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "esES": {
+          "name": "Paladin",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "El daño de todas las facultades ha aumentado un 6%. No se aplica al combate contra PvP.",
+            "Templar: Notas de los desarrolladores: Templar ha tenido un rendimiento inferior en comparación con Herald of the Sun esta temporada. Vamos a aumentar su rendimiento general para que sea una opción más viable frente a Herald of the Sun para aquellos que disfruten del estilo de juego de Templar’s.",
+            "Templar: Daño de Hammer of Light aumentado un 50%. No se aplica al combate contra PvP.",
+            "Templar: Daño de Empyrean Hammer aumentado un 12%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "frFR": {
+          "name": "Paladin",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Tous les dégâts des techniques augmentés de 6%. Ne s'applique pas au combat contre PvP.",
+            "Templar : Notes des développeurs : Templar a été moins performant que Herald of the Sun cette saison. Nous augmentons son rendement global pour en faire une option plus viable face à Herald of the Sun pour ceux qui apprécient le style de jeu de Templar’s.",
+            "Templar : Dégâts de Hammer of Light augmentés de 50%. Ne s'applique pas aux combats de PvP.",
+            "Templar : Dégâts de Empyrean Hammer augmentés de 12%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "koKR": {
+          "name": "Paladin",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "모든 능력 공격력이 6%만큼 증가했습니다. PvP 전투에는 적용되지 않습니다.",
+            "Templar: 개발자의 노트: 이번 시즌 Templar는 Herald of the Sun에 비해 성능이 다소 떨어지는 모습을 보였습니다. Templar’s 플레이스타일을 선호하는 플레이어들이 Herald of the Sun에 대항해 더 유용한 선택지로 활용할 수 있도록 전반적인 효율을 상향 조정했습니다.",
+            "Templar: Hammer of Light 피해량이 50%만큼 증가했습니다. PvP 전투에는 적용되지 않습니다.",
+            "Templar: Empyrean Hammer 피해량이 12%만큼 증가했습니다."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "ruRU": {
+          "name": "Paladin",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Урон всех способностей увеличен на 6%. Не применяется в бою с PvP.",
+            "Templar: Заметки разработчиков: в этом сезоне Templar отстает по эффективности от Herald of the Sun. Мы повышаем его показатели, чтобы сделать его более жизнеспособной альтернативой Herald of the Sun для тех, кому нравится стиль игры Templar’s.",
+            "Templar: урон Hammer of Light увеличен на 50%. Не применяется в бою с PvP.",
+            "Templar: урон Empyrean Hammer увеличен на 12%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "zhCN": {
+          "name": "Paladin",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "所有技能伤害提高了 6%。不适用于 PvP 战斗。",
+            "Templar：开发人员说明：在本赛季中，Templar的表现不及Herald of the Sun。我们正在提高其总体输出，以便对于喜欢Templar’s游戏风格的玩家来说，它能成为对抗Herald of the Sun时更可行的选择。",
+            "Templar：Hammer of Light伤害提高了50%。不适用于PvP战斗。",
+            "Templar：Empyrean Hammer伤害提高了12%。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "zhTW": {
+          "name": "Paladin",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "所有能力傷害提高 6%。不適用於 PvP 戰鬥。",
+            "Templar：開發者備註：本賽季中，Templar 的表現不如Herald of the Sun。我們正在提高其產出，使其對於喜歡Templar’s遊戲風格的玩家來說，成為對抗Herald of the Sun時更具可行性的選擇。",
+            "Templar：Hammer of Light 傷害提高 50%。不適用於PvP戰鬥。",
+            "Templar：Empyrean Hammer 傷害提高 12%。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        }
+      },
+      "retrievedAt": "2026-09-19T10:46:55.315268+00:00"
+    },
+    {
+      "id": "change-a47516066762782d",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-09-18",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Priest",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "Developers’ notes: Discipline isn’t able to dish out proper healing in dungeon environments due to how strong Atonement is in raids. We’re reintroducing an Atonement healing bonus outside of raid environments and significantly increasing Atonement healing outside raid to help Discipline shine in dungeons.",
+            "Atonement healing is increased by 40% when not in a raid or battleground instance.",
+            "Penance mana cost reduced by 20%.",
+            "Developers’ notes: We feel Shadow is lacking in single target damage, so these changes are intended to improve Shadow’s damage against singular targets while remaining neutral in multi-target situations.",
+            "Mind Blast damage increased by 15%.",
+            "Void Blast damage increased by 15%.",
+            "Shadow Word: Death damage increased by 15%.",
+            "Shadow Word: Madness damage increased by 15%. Not applied to PvP combat.",
+            "Mind Flay damage increased by 15%. Not applied to PvP combat.",
+            "Mind Flay: Insanity damage increased by 15%. Not applied to PvP combat.",
+            "Psychic Link now causes direct damage spells to inflict 20% of their damage to all other targets afflicted by Vampiric Touch (was 25%). Not applied to PvP combat.",
+            "Shadeburst damage reduced by 5%. Not applied to PvP combat."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Priest",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Entwicklerkommentar: Discipline kann in Dungeons aufgrund der Stärke von Atonement in Schlachtzügen keine angemessene Heilung erbringen. Wir führen wieder einen Heilungsbonus für Atonement außerhalb von Schlachtzugsumgebungen ein und erhöhen die Heilung von Atonement außerhalb von Schlachtzügen erheblich, damit Discipline in Dungeons glänzen kann.",
+            "Die Heilung von Atonement ist um 40% erhöht, wenn man sich nicht in einem Schlachtzug oder Schlachtfeld befindet.",
+            "Die Manakosten von Penance wurden um 20% verringert.",
+            "Kommentar der Entwickler: Wir sind der Meinung, dass Shadow im Bereich des Schaden gegen Einzelziele zu schwach ist. Daher sollen diese Änderungen den Schaden von Shadow’s gegen einzelne Ziele verbessern, während er in Situationen mit mehreren Zielen unverändert bleibt.",
+            "Der Schaden von Mind Blast wurde um 15% erhöht.",
+            "Der Schaden von Void Blast wurde um 15% erhöht.",
+            "Shadow Word: Der Schaden von Death wurde um 15% erhöht.",
+            "Shadow Word: Schaden von Madness um 15% erhöht. Gilt nicht im PvP-Kampf.",
+            "Der Schaden von Mind Flay wurde um 15% erhöht. Gilt nicht im PvP-Kampf.",
+            "Mind Flay: Schaden von Insanity um 15% erhöht. Gilt nicht im PvP-Kampf.",
+            "Psychic Link bewirkt nun, dass Direktschadenszauber 20% ihres Schadens auf alle anderen Ziele verursachen, die von Vampiric Touch betroffen sind (vorher 25%). Gilt nicht im PvP-Kampf.",
+            "Der Schaden von Shadeburst wurde um 5% verringert. Gilt nicht im PvP-Kampf."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "esES": {
+          "name": "Priest",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Notas de los desarrolladores: Discipline no es capaz de proporcionar una sanación adecuada en entornos de mazmorras debido a lo fuerte que es Atonement en bandas. Vamos a reintroducir un bonus de sanación de Atonement fuera de los entornos de banda y a aumentar significativamente la sanación de Atonement fuera de banda para ayudar a que Discipline destaque en mazmorras.",
+            "La sanación de Atonement aumenta un 40% cuando no se está en una instancia de banda o campo de batalla.",
+            "El coste de maná de Penance se ha reducido un 20%.",
+            "Notas de los desarrolladores: Creemos que a Shadow le falta daño contra un único objetivo, así que estos cambios pretenden mejorar el daño de Shadow’s contra objetivos individuales a la vez que se mantiene neutro en situaciones de multiobjetivo.",
+            "El daño de Mind Blast ha aumentado un 15%.",
+            "El daño de Void Blast ha aumentado un 15%.",
+            "Shadow Word: El daño de Death ha aumentado un 15%.",
+            "Shadow Word: Daño de Madness aumentado un 15%. No se aplica en combate contra PvP.",
+            "El daño de Mind Flay ha aumentado un 15%. No se aplica al combate contra PvP.",
+            "Mind Flay: Daño de Insanity aumentado un 15%. No se aplica en combate contra PvP.",
+            "Psychic Link ahora hace que los hechizos de daño directo inflinjan un 20% de su daño a todos los demás objetivos afectados por Vampiric Touch (antes 25%). No se aplica en combate contra PvP.",
+            "El daño de Shadeburst se ha reducido un 5%. No se aplica al combate contra PvP."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "frFR": {
+          "name": "Priest",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Notes des développeurs : Discipline ne parvient pas à prodiguer des soins adéquats en donjon en raison de la trop grande efficacité de Atonement en raid. Nous réintroduisons un bonus de soins pour Atonement en dehors des raids et augmentons considérablement les soins de Atonement hors raid afin d'aider Discipline à briller dans les donjons.",
+            "Les soins de Atonement sont augmentés de 40% en dehors des raids et des champs de bataille.",
+            "Coût en mana de Penance réduit de 20%.",
+            "Notes des développeurs : Nous estimons que Shadow manque de dégâts sur cible unique. Ces modifications visent donc à améliorer les dégâts de Shadow’s contre les cibles seules tout en restant neutres dans les situations impliquant plusieurs cibles.",
+            "Dégâts de Mind Blast augmentés de 15%.",
+            "Dégâts de Void Blast augmentés de 15%.",
+            "Shadow Word : dégâts de Death augmentés de 15%.",
+            "Shadow Word : Dégâts de Madness augmentés de 15%. Ne s'applique pas aux combats de PvP.",
+            "Dégâts de Mind Flay augmentés de 15%. Non appliqué au combat contre PvP.",
+            "Mind Flay : Dégâts de Insanity augmentés de 15%. Ne s'applique pas aux combats de PvP.",
+            "Psychic Link fait désormais en sorte que les sorts de dégâts directs infligent 20% de leurs dégâts à toutes les autres cibles affectées par Vampiric Touch (au lieu de 25%). Ne s'applique pas aux combats de PvP.",
+            "Dégâts de Shadeburst réduits de 5%. Non appliqué au combat contre PvP."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "koKR": {
+          "name": "Priest",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "개발자의 노트: Discipline은 공격대에서 Atonement이 너무 강력한 탓에 던전 환경에서 적절한 치유를 제공하지 못하고 있습니다. Discipline이 던전에서 활약할 수 있도록 공격대 외부 환경에서의 Atonement 치유 보너스를 다시 도입하고, 공격대 외부에서의 Atonement 치유량을 대폭 상향합니다.",
+            "공격대나 전장 인스턴스에 있지 않을 때 Atonement 치유량이 40%만큼 증가합니다.",
+            "Penance 마나 소모량이 20%만큼 감소했습니다.",
+            "개발자의 한마디: Shadow은(는) 단일 대상 피해가 부족하다고 판단되므로, 이번 변경 사항은 다중 대상 상황에서는 중립을 유지하면서 단일 대상에 대한 Shadow’s 피해를 개선하는 것을 목표로 합니다.",
+            "Mind Blast 피해량이 15%만큼 증가했습니다.",
+            "Void Blast 피해량이 15%만큼 증가했습니다.",
+            "Shadow Word: Death 피해량이 15%만큼 증가했습니다.",
+            "Shadow Word: Madness의 피해량이 15%만큼 증가했습니다. PvP 전투에는 적용되지 않습니다.",
+            "Mind Flay 피해량이 15%만큼 증가했습니다. PvP 전투에는 적용되지 않습니다.",
+            "Mind Flay: Insanity의 피해량이 15%만큼 증가했습니다. PvP 전투에는 적용되지 않습니다.",
+            "이제 Psychic Link는 직접 피해 주문이 Vampiric Touch(으)로 고통받는 다른 모든 대상에게 피해의 20%를 입히도록 합니다 (기존 25%). PvP 전투에는 적용되지 않습니다.",
+            "Shadeburst 피해량이 5%만큼 감소했습니다. PvP 전투에는 적용되지 않습니다."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "ruRU": {
+          "name": "Priest",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Заметки разработчиков: Discipline не может обеспечить должное исцеление в подземельях из-за того, насколько силен Atonement в рейдах. Мы возвращаем бонус к исцелению Atonement вне рейдовых подземелий и значительно увеличиваем исцеление Atonement вне рейдов, чтобы помочь Discipline проявить себя в подземельях.",
+            "Исцеление от способности «Atonement» увеличено на 40% вне подземелий рейдов или полей боя.",
+            "Затраты маны на заклинание Penance уменьшены на 20%.",
+            "Заметки разработчиков: Мы считаем, что Shadow наносит недостаточно урона по одной цели, поэтому эти изменения призваны улучшить урон Shadow’s по одиночным целям, оставаясь при этом нейтральными в ситуациях с несколькими целями.",
+            "Урон способности «Mind Blast» увеличен на 15%.",
+            "Урон способности «Void Blast» увеличен на 15%.",
+            "Shadow Word: Урон Death увеличен на 15%.",
+            "Shadow Word: урон Madness увеличен на 15%. Не применяется в бою с PvP.",
+            "Урон способности «Mind Flay» увеличен на 15%. Не применяется в бою с PvP.",
+            "Mind Flay: урон Insanity увеличен на 15%. Не применяется в бою с PvP.",
+            "Psychic Link теперь заставляет заклинания прямого урона наносить 20% своего урона всем остальным целям, находящимся под воздействием Vampiric Touch (было — 25%). Не применяется в бою с PvP.",
+            "Урон способности «Shadeburst» уменьшен на 5%. Не применяется в бою с PvP."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "zhCN": {
+          "name": "Priest",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "开发人员说明：由于 Atonement 在团队副本中过于强势，导致 Discipline 无法在地下城环境中提供合适的治疗量。我们将在团队副本环境之外重新引入 Atonement 的治疗加成，并大幅增加副本外 Atonement 的治疗量，以帮助 Discipline 在地下城中大放异彩。",
+            "当不在团队副本或战场实例中时，Atonement 的治疗效果提高 40%。",
+            "Penance 的法力值消耗降低了 20%。",
+            "开发团队说明：我们觉得Shadow的单目标伤害有所欠缺，因此这些改动旨在提高Shadow’s对单一目标的伤害，同时在多目标情况下保持不变。",
+            "Mind Blast 伤害提高了 15%。",
+            "Void Blast 伤害提高了 15%。",
+            "Shadow Word：Death 伤害提高了 15%。",
+            "Shadow Word：Madness 的伤害提高了 15%。不适用于PvP战斗。",
+            "Mind Flay 伤害提高了 15%。不应用于 PvP 战斗。",
+            "Mind Flay：Insanity 的伤害提高了 15%。不适用于PvP战斗。",
+            "Psychic Link现在使直接伤害法术对所有其他受到Vampiric Touch影响的目标造成其伤害的20%（原为25%）。不适用于PvP战斗。",
+            "Shadeburst 伤害降低了 5%。不应用于 PvP 战斗。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "zhTW": {
+          "name": "Priest",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "開發者備註：由於 Discipline 在團隊副本中非常強大，導致 Atonement 無法在地城環境中發揮適當的治療量。我們正在重新引入團隊副本環境之外的 Atonement 治療加成，並大幅提高團隊副本之外的 Atonement 治療量，以幫助 Discipline 在地城中大放異彩。",
+            "當不在團隊副本或戰場副本中時，Atonement 的治療量提高 40%。",
+            "Penance 法力消耗降低 20%。",
+            "開發者備註：我們認為 Shadow 缺乏單體目標傷害，因此這些變更旨在提升 Shadow’s 對單一目標的傷害，同時在多目標情況下保持不變。",
+            "Mind Blast 傷害提高 15%。",
+            "Void Blast 傷害提高 15%。",
+            "Shadow Word：Death 傷害提高 15%。",
+            "Shadow Word：Madness 傷害提高 15%。不適用於PvP戰鬥。",
+            "Mind Flay 傷害提高 15%。不適用於 PvP 戰鬥。",
+            "Mind Flay：Insanity 傷害提高 15%。不適用於PvP戰鬥。",
+            "Psychic Link現在會使直接傷害法術對所有受到Vampiric Touch影響的其他目標造成其傷害的20%（原為25%）。不適用於PvP戰鬥。",
+            "Shadeburst 傷害降低 5%。不適用於 PvP 戰鬥。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        }
+      },
+      "retrievedAt": "2026-09-19T10:46:55.315268+00:00"
+    },
+    {
+      "id": "change-3c44546213b494ab",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-09-18",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Rogue",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "Trickster: Developers’ notes: Trickster has performed well below Deathstalker for Subtlety this tier and is receiving damage boost to its core effects to make Trickster a more reasonable choice in a wider range of content.",
+            "Trickster: Unseen Blade damage increased by 50%. Does not affect PvP combat.",
+            "Trickster: Coup de Grace damage increased by 30%. Does not affect PvP combat."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Rogue",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Trickster: Entwicklerkommentar: Trickster hat in diesem Tier weit unter Deathstalker abgeschnitten für Subtlety und erhält eine Schadenserhöhung für seine Kerneffekte, um Trickster in einem größeren Inhaltsspektrum zu einer vernünftigeren Wahl zu machen.",
+            "Trickster: Schaden von Unseen Blade um 50% erhöht. Beeinflusst nicht den PvP-Kampf.",
+            "Trickster: Schaden von Coup von Grace um 30% erhöht. Beeinflusst nicht den PvP-Kampf."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "esES": {
+          "name": "Rogue",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Trickster: Notas de los desarrolladores: Trickster ha tenido un rendimiento muy inferior al de Deathstalker para Subtlety en esta banda y va a recibir un aumento de daño en sus efectos principales para que Trickster sea una opción más razonable en una mayor variedad de contenido.",
+            "Trickster: Daño de Unseen Blade aumentado un 50%. No afecta al combate contra PvP.",
+            "Trickster: Daño de Coup de Grace aumentado un 30%. No afecta al combate contra PvP."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "frFR": {
+          "name": "Rogue",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Trickster : Notes des développeurs : Trickster a des performances nettement inférieures à Deathstalker pour Subtlety ce palier et reçoit une augmentation de dégâts sur ses effets principaux pour faire de Trickster un choix plus raisonnable dans un plus grand éventail de contenus.",
+            "Trickster : Dégâts de Unseen Blade augmentés de 50%. N'affecte pas les combats de PvP.",
+            "Trickster : Dégâts de Coup de Grace augmentés de 30%. N'affecte pas les combats de PvP."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "koKR": {
+          "name": "Rogue",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Trickster: 개발자의 노트: 이번 티어에서 Trickster는 Deathstalker(와)과 비교해 Subtlety에서 현저히 저조한 성능을 보여주었습니다. 이에 따라 핵심 효과의 피해량을 상향하여 더 다양한 콘텐츠에서 Trickster를 합리적인 선택지로 만들고자 합니다.",
+            "Trickster: Unseen Blade 피해량이 50%만큼 증가했습니다. PvP 전투에는 영향을 주지 않습니다.",
+            "Trickster: Coup의 Grace 피해량이 30%만큼 증가했습니다. PvP 전투에는 영향을 주지 않습니다."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "ruRU": {
+          "name": "Rogue",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Trickster: Заметки разработчиков: в этом тире Trickster значительно уступает Deathstalker для Subtlety, поэтому мы увеличиваем урон его основных эффектов, чтобы сделать Trickster более разумным выбором в самом широком спектре контента.",
+            "Trickster: урон Unseen Blade увеличен на 50%. Не влияет на бой с PvP.",
+            "Trickster: урон Coup Grace увеличен на 30%. Не влияет на бой с PvP."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "zhCN": {
+          "name": "Rogue",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Trickster：开发团队说明：Trickster在本赛季Subtlety中的表现远低于Deathstalker，因此我们对其核心效果进行了伤害提高，以使Trickster在更广泛的内容中成为更合理的选择。",
+            "Trickster：Unseen Blade伤害提高了50%。不影响PvP战斗。",
+            "Trickster：Coup的Grace伤害提高了30%。不影响PvP战斗。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "zhTW": {
+          "name": "Rogue",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Trickster：開發者備註：Trickster 在本階層的表現遠低於Deathstalker對於Subtlety的表現，因此我們正在提高其核心效果的傷害，以使Trickster在更廣泛的內容中成為更合理的選擇。",
+            "Trickster：Unseen Blade 傷害提高 50%。不影響PvP戰鬥。",
+            "Trickster：Coup 的 Grace 傷害提高 30%。不影響PvP戰鬥。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        }
+      },
+      "retrievedAt": "2026-09-19T10:46:55.315268+00:00"
+    },
+    {
+      "id": "change-7ef88b7c18b5eda2",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-09-18",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Warrior",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "Mountain Thane: Lightning Strike damage increased by 50%.",
+            "Mountain Thane: Ground Current damage increased by 50%.",
+            "Mountain Thane: Lightning Strike damage increased by 50%.",
+            "Mountain Thane: Ground Current damage increased by 50%."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Warrior",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Mountain Thane: Schaden von Lightning Strike um 50% erhöht.",
+            "Mountain Thane: Der Schaden von Ground Current wurde um 50% erhöht.",
+            "Mountain Thane: Schaden von Lightning Strike um 50% erhöht.",
+            "Mountain Thane: Der Schaden von Ground Current wurde um 50% erhöht."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "esES": {
+          "name": "Warrior",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Mountain Thane: Daño de Lightning Strike aumentado un 50%.",
+            "Mountain Thane: El daño de Ground Current ha aumentado un 50%.",
+            "Mountain Thane: Daño de Lightning Strike aumentado un 50%.",
+            "Mountain Thane: El daño de Ground Current ha aumentado un 50%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "frFR": {
+          "name": "Warrior",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Mountain Thane : Dégâts de Lightning Strike augmentés de 50%.",
+            "Mountain Thane : dégâts de Ground Current augmentés de 50%.",
+            "Mountain Thane : Dégâts de Lightning Strike augmentés de 50%.",
+            "Mountain Thane : dégâts de Ground Current augmentés de 50%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "koKR": {
+          "name": "Warrior",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Mountain Thane: Lightning Strike 피해량이 50%만큼 증가했습니다.",
+            "Mountain Thane: Ground Current 피해량이 50%만큼 증가했습니다.",
+            "Mountain Thane: Lightning Strike 피해량이 50%만큼 증가했습니다.",
+            "Mountain Thane: Ground Current 피해량이 50%만큼 증가했습니다."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "ruRU": {
+          "name": "Warrior",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Mountain Thane: урон Lightning Strike увеличен на 50%.",
+            "Mountain Thane: Урон Ground Current увеличен на 50%.",
+            "Mountain Thane: урон Lightning Strike увеличен на 50%.",
+            "Mountain Thane: Урон Ground Current увеличен на 50%."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "zhCN": {
+          "name": "Warrior",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Mountain Thane：Lightning Strike伤害提高了50%。",
+            "Mountain Thane：Ground Current 伤害提高了 50%。",
+            "Mountain Thane：Lightning Strike伤害提高了50%。",
+            "Mountain Thane：Ground Current 伤害提高了 50%。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "zhTW": {
+          "name": "Warrior",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Mountain Thane：Lightning Strike 傷害提高 50%。",
+            "Mountain Thane：Ground Current 傷害提高 50%。",
+            "Mountain Thane：Lightning Strike 傷害提高 50%。",
+            "Mountain Thane：Ground Current 傷害提高 50%。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        }
+      },
+      "retrievedAt": "2026-09-19T10:46:55.315268+00:00"
+    },
+    {
+      "id": "change-fc6be4185f6bb859",
+      "channel": "live",
+      "category": "Dungeon",
+      "date": "2026-09-17",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Ruby Life Pools",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-17-2026",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "Addressed an issue where Blazebound Destroyers or Primalist Flamedancers could fail to contribute towards enemy forces if no player was on their threat table when they finished their death sequence.: Developers’ notes: A known side-effect of this change is that these creatures will no longer display their contribution towards enemy forces on their tooltip in the default UI."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Ruby Life Pools",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-17-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "A Es wurde ein Fehler behoben, bei dem Blazebound Destroyers oder Primalist Flamedancers möglicherweise nicht zum Punktestand der feindlichen Streitkräfte beitrugen, wenn sich kein Spieler auf ihrer Bedrohungsliste befand, als sie ihre Todessequenz beendeten.: Entwicklerkommentar: A bekannter Nebeneffekt dieser Änderung ist, dass diese Kreaturen ihren Beitrag zu den feindlichen Streitkräften nicht länger in ihrem Tooltip im Standard-UI anzeigen."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-17-2026"
+          ]
+        },
+        "esES": {
+          "name": "Ruby Life Pools",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-17-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "A Se ha solucionado un problema en el que Blazebound Destroyers o Primalist Flamedancers podían no contribuir a las fuerzas enemigas si ningún jugador estaba en su tabla de amenaza al terminar su secuencia de muerte.: Notas de los desarrolladores: A efecto secundario conocido de este cambio es que estas criaturas ya no mostrarán su contribución a las fuerzas enemigas en su descripción emergente en el UI por defecto."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-17-2026"
+          ]
+        },
+        "frFR": {
+          "name": "Ruby Life Pools",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-17-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "A Correction d'un problème où Blazebound Destroyers ou Primalist Flamedancers pouvaient ne pas compter pour les forces ennemies si aucun joueur ne se trouvait sur leur table de menaces lorsqu'ils terminaient leur séquence de mort. : Notes des développeurs : A effet secondaire connu de ce changement est que ces créatures n'afficheront plus leur contribution aux forces ennemies sur leur infobulle dans l'interface par défaut de UI."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-17-2026"
+          ]
+        },
+        "koKR": {
+          "name": "Ruby Life Pools",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-17-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "A 플레이어가 죽음 애니메이션 종료 시점에 위협 수준 목록에 없었던 경우 Blazebound Destroyers 또는 Primalist Flamedancers이(가) 적 병력 점수에 반영되지 않던 문제가 수정되었습니다.: 개발자의 노트: A 이 변경 사항의 알려진 부작용으로, 이제 기본 UI에서는 해당 크리처들의 툴팁에 적 병력 기여도가 표시되지 않습니다."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-17-2026"
+          ]
+        },
+        "ruRU": {
+          "name": "Ruby Life Pools",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-17-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "A Исправлена неполадка, в результате которой Blazebound Destroyers или Primalist Flamedancers могли не учитываться в шкале сил противника, если на момент окончания их анимации смерти в таблице угрозы не было ни одного игрока.: Заметки разработчиков: A известным побочным эффектом этого изменения является то, что эти существа больше не будут отображать свой вклад в силы противника во всплывающей подсказке в стандартном интерфейсе UI."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-17-2026"
+          ]
+        },
+        "zhCN": {
+          "name": "Ruby Life Pools",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-17-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "A修复了当Blazebound Destroyers或Primalist Flamedancers完成死亡动画时，如果其仇恨列表上没有玩家，则可能无法计入敌方部队进度的问题。开发人员说明：A此改动的一个已知副作用是，这些生物将不再在默认UI的鼠标提示中显示其对敌方部队的贡献。"
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-17-2026"
+          ]
+        },
+        "zhTW": {
+          "name": "Ruby Life Pools",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-17-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "A修正了當 Blazebound Destroyers 或 Primalist Flamedancers 完成死亡動作時，若沒有玩家在其仇恨列表上，會導致其無法計入敵方部隊進度供獻的問題。開發者說明：A 此變更的一個已知副作用是，這些生物將不再於預設的 UI 提示說明中顯示其對敵方部隊的貢獻。"
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-17-2026"
+          ]
+        }
+      },
+      "retrievedAt": "2026-09-19T10:46:55.315268+00:00"
+    },
+    {
+      "id": "change-c51d9b6523735ad8",
+      "channel": "live",
+      "category": "Raid",
+      "date": "2026-09-17",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "The Venomous Abyss",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-17-2026",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "The Coiled Altar: Fixed an issue where Unnerving Fixation was targeting tanks more often than intended."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "The Venomous Abyss",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-17-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Der Coiled Altar: Ein Fehler wurde behoben, bei dem Unnerving Fixation Tanks öfter als vorgesehen ins Visier nahm."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-17-2026"
+          ]
+        },
+        "esES": {
+          "name": "The Venomous Abyss",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-17-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Coiled Altar: Se ha corregido un error en el que Unnerving Fixation seleccionaba a los tanques con más frecuencia de la prevista."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-17-2026"
+          ]
+        },
+        "frFR": {
+          "name": "The Venomous Abyss",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-17-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Le Coiled Altar : correction d'un problème où Unnerving Fixation prenait pour cible les tanks plus souvent que prévu."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-17-2026"
+          ]
+        },
+        "koKR": {
+          "name": "The Venomous Abyss",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-17-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Coiled Altar: Unnerving Fixation이 의도한 것보다 탱커를 더 자주 대상으로 지정하던 문제를 수정했습니다."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-17-2026"
+          ]
+        },
+        "ruRU": {
+          "name": "The Venomous Abyss",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-17-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Coiled Altar: Исправлена ошибка, из-за которой Unnerving Fixation выбирал целью танков чаще, чем предполагалось."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-17-2026"
+          ]
+        },
+        "zhCN": {
+          "name": "The Venomous Abyss",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-17-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Coiled Altar：修正了 Unnerving Fixation 锁定坦克的频率高于预期的问题。"
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-17-2026"
+          ]
+        },
+        "zhTW": {
+          "name": "The Venomous Abyss",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-17-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Coiled Altar：修正了 Unnerving Fixation 比預期更常將坦克作為目標的問題。"
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-17-2026"
+          ]
+        }
+      },
+      "retrievedAt": "2026-09-19T10:46:55.315268+00:00"
+    },
     {
       "id": "change-8cab3f006529c765",
       "channel": "live",
@@ -2382,21 +4566,6 @@
           ],
           "terminologySourceUrls": []
         },
-        "deDE": {
-          "name": "Shaman",
-          "specialization": "Enhancement",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Ein Fehler wurde behoben, bei dem Schaden von Doom Winds kanalisiert Effekte wie das Schmuckstück Font of Venomous Rage unterbrechen konnte.",
-            "Totemic: Ein Fehler wurde behoben, bei dem Crash Lightning dazu führen konnte, dass unbeabsichtigte Ziele von Windfury Weapon getroffen wurden."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
-          ]
-        },
         "esES": {
           "name": "Shaman",
           "specialization": "Enhancement",
@@ -2470,21 +4639,6 @@
           ],
           "terminologySourceUrls": [
             "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026"
-          ]
-        },
-        "ruRU": {
-          "name": "Shaman",
-          "specialization": "Enhancement",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Исправлена неполадка, из-за которой урон от Doom Winds мог прерывать поддерживаемые эффекты, такие как аксессуар Font of Venomous Rage.",
-            "Totemic: исправлена неполадка, из-за которой Crash Lightning мог приводить к поражению непредназначенных целей способностью Windfury Weapon."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-9-2026"
           ]
         },
         "zhCN": {
@@ -3171,1062 +5325,6 @@
         }
       },
       "retrievedAt": "2026-09-10T07:15:54.019983+00:00"
-    },
-    {
-      "id": "change-7d9c7246d11c26e7",
-      "channel": "live",
-      "category": "Class",
-      "date": "2026-09-04",
-      "patch": "12.1.0",
-      "localizations": {
-        "en": {
-          "name": "Druid",
-          "specialization": "Balance",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
-          "translationType": "official",
-          "translatedFrom": "",
-          "change": [
-            "Stellar Amplification can now be tracked in the Cooldown Manager.",
-            "Twin Moons' range is now increased by target combat reach, meaning it can spread to farther targets when attacking large enemies."
-          ],
-          "terminologySourceUrls": []
-        },
-        "deDE": {
-          "name": "Druid",
-          "specialization": "Balance",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Stellar Amplification kann jetzt in der Abklingzeit-Manager verfolgt werden.",
-            "Die Reichweite von Twin Moons' wird nun um die Kampfreichweite des Ziels erhöht, was bedeutet, dass es sich beim Angreifen großer Gegner auf weiter entfernte Ziele ausbreiten kann."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026"
-          ]
-        },
-        "esES": {
-          "name": "Druid",
-          "specialization": "Balance",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Ahora se puede realizar un seguimiento de Stellar Amplification en el Manager de tiempo de reutilización.",
-            "El alcance de Twin Moons' ahora aumenta según el alcance de combate del objetivo, lo que significa que puede propagarse a objetivos más lejanos al atacar a enemigos grandes."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026"
-          ]
-        },
-        "frFR": {
-          "name": "Druid",
-          "specialization": "Balance",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Stellar Amplification peut désormais être suivi dans le Manager de temps de recharge.",
-            "La portée de Twin Moons' est désormais augmentée par l'allonge en combat de la cible, ce qui lui permet de se propager à des cibles plus éloignées lors d'attaques contre de grands ennemis."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026"
-          ]
-        },
-        "itIT": {
-          "name": "Druid",
-          "specialization": "Balance",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Ora Stellar Amplification può essere monitorato nel Manager dei tempi di recupero.",
-            "La gittata di Twin Moons' è ora aumentata dalla portata di combattimento del bersaglio, il che significa che può diffondersi a bersagli più lontani quando si attaccano nemici di grandi dimensioni."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026"
-          ]
-        },
-        "koKR": {
-          "name": "Druid",
-          "specialization": "Balance",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Stellar Amplification을(를) 이제 재사용 대기시간 Manager에서 추적할 수 있습니다.",
-            "Twin Moons'의 사거리가 이제 대상의 전투 도달 거리에 따라 증가하므로, 큰 적을 공격할 때 더 먼 대상에게 확산될 수 있습니다."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026"
-          ]
-        },
-        "ptBR": {
-          "name": "Druid",
-          "specialization": "Balance",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Stellar Amplification agora pode ser rastreado no Manager de Tempo de Recarga.",
-            "O alcance de Twin Moons' agora é aumentado pelo alcance de combate do alvo, o que significa que ele pode se espalhar para alvos mais distantes ao atacar inimigos grandes."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026"
-          ]
-        },
-        "ruRU": {
-          "name": "Druid",
-          "specialization": "Balance",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Теперь время восстановления Stellar Amplification можно отслеживать в Manager.",
-            "Дальность действия Twin Moons' теперь увеличивается в зависимости от радиуса боя цели, что позволяет способности распространяться на более отдаленные цели при атаке крупных противников."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026"
-          ]
-        },
-        "zhCN": {
-          "name": "Druid",
-          "specialization": "Balance",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "现在可以在冷却Manager中追踪Stellar Amplification。",
-            "Twin Moons'的距离现在会根据目标的战斗触及距离增加，这意味着在攻击大型敌人时，它可以蔓延到更远的目标。"
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026"
-          ]
-        },
-        "zhTW": {
-          "name": "Druid",
-          "specialization": "Balance",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "現在可以在冷卻時間 Manager 中追蹤 Stellar Amplification。",
-            "Twin Moons' 的距離現在會根據目標的戰鬥觸及範圍而增加，這意味著在攻擊大型敵人時，它能擴散到更遠的目標。"
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026"
-          ]
-        }
-      },
-      "retrievedAt": "2026-09-05T06:54:11.641447+00:00"
-    },
-    {
-      "id": "change-a240ce402bbbd7ea",
-      "channel": "live",
-      "category": "Class",
-      "date": "2026-09-04",
-      "patch": "12.1.0",
-      "localizations": {
-        "en": {
-          "name": "Shaman",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
-          "translationType": "official",
-          "translatedFrom": "",
-          "change": [
-            "The Venomous Abyss — Ula’tek: Fixed an issue where applications of Ingested Venom could apply on a target affected by Serpent's Bite."
-          ],
-          "terminologySourceUrls": []
-        },
-        "deDE": {
-          "name": "Shaman",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Das Venomous Abyss — Ula’tek: Es wurde ein Fehler behoben, bei dem Stapel von Ingested Venom auf einem Ziel angewendet werden konnten, das von Serpent's Bite betroffen war."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026"
-          ]
-        },
-        "esES": {
-          "name": "Shaman",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "El Venomous Abyss — Ula’tek: Se ha corregido un problema por el cual las aplicaciones de Ingested Venom podían aplicarse en un objetivo afectado por Serpent's Bite."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026"
-          ]
-        },
-        "frFR": {
-          "name": "Shaman",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Le Venomous Abyss — Ula’tek : correction d'un problème où les applications de Ingested Venom pouvaient s'appliquer sur une cible affectée par Serpent's Bite."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026"
-          ]
-        },
-        "itIT": {
-          "name": "Shaman",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Il Venomous Abyss — Ula’tek: Risolto un problema per cui le applicazioni di Ingested Venom potevano applicarsi a un bersaglio influenzato da Serpent's Bite."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026"
-          ]
-        },
-        "koKR": {
-          "name": "Shaman",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Venomous Abyss — Ula’tek: Ingested Venom 중첩이 Serpent's Bite의 영향을 받는 대상에게 적용되던 문제가 수정되었습니다."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026"
-          ]
-        },
-        "ptBR": {
-          "name": "Shaman",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "O Venomous Abyss — Ula’tek: Corrigido um problema em que aplicações de Ingested Venom podiam ser aplicadas em um alvo afetado por Serpent's Bite."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026"
-          ]
-        },
-        "ruRU": {
-          "name": "Shaman",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Venomous Abyss — Ula’tek: исправлена неполадка, из-за которой эффекты Ingested Venom могли накладываться на цель, находящуюся под действием Serpent's Bite."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026"
-          ]
-        },
-        "zhCN": {
-          "name": "Shaman",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Venomous Abyss — Ula’tek：修正了施加Ingested Venom时可能会作用于受到Serpent's Bite影响的目标的问题。"
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026"
-          ]
-        },
-        "zhTW": {
-          "name": "Shaman",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Venomous Abyss — Ula’tek：修正了 Ingested Venom 的疊加效果可能會套用在受到 Serpent's Bite 影響之目標身上的問題。"
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026"
-          ]
-        }
-      },
-      "retrievedAt": "2026-09-05T06:54:11.641447+00:00"
-    },
-    {
-      "id": "change-37216bdad6c493cf",
-      "channel": "live",
-      "category": "Class",
-      "date": "2026-09-04",
-      "patch": "12.1.0",
-      "localizations": {
-        "en": {
-          "name": "Shaman",
-          "specialization": "Enhancement",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
-          "translationType": "official",
-          "translatedFrom": "",
-          "change": [
-            "Corrected an issue where the Venomous Abyss 4-set bonus was not properly increasing the upfront damage of Crash Lightning."
-          ],
-          "terminologySourceUrls": []
-        },
-        "deDE": {
-          "name": "Shaman",
-          "specialization": "Enhancement",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Es wurde ein Fehler behoben, bei dem der Venomous Abyss 4-Setbonus den direkten Schaden von Crash Lightning nicht ordnungsgemäß erhöhte."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026"
-          ]
-        },
-        "esES": {
-          "name": "Shaman",
-          "specialization": "Enhancement",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Se ha corregido un problema por el cual la bonificación de conjunto de Venomous Abyss 4 no aumentaba correctamente el daño inicial de Crash Lightning."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026"
-          ]
-        },
-        "frFR": {
-          "name": "Shaman",
-          "specialization": "Enhancement",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Correction d'un problème où le bonus de set Venomous Abyss 4 n'augmentait pas correctement les dégâts initiaux de Crash Lightning."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026"
-          ]
-        },
-        "itIT": {
-          "name": "Shaman",
-          "specialization": "Enhancement",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Risolto un problema per cui il bonus da set Venomous Abyss 4 non aumentava correttamente i danni iniziali di Crash Lightning."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026"
-          ]
-        },
-        "koKR": {
-          "name": "Shaman",
-          "specialization": "Enhancement",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Venomous Abyss 4 세트 효과가 Crash Lightning의 즉시 피해량을 정상적으로 증가시키지 않던 문제가 수정되었습니다."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026"
-          ]
-        },
-        "ptBR": {
-          "name": "Shaman",
-          "specialization": "Enhancement",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Corrigido um problema em que o bônus de conjunto Venomous Abyss 4 não estava aumentando corretamente o dano inicial de Crash Lightning."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026"
-          ]
-        },
-        "ruRU": {
-          "name": "Shaman",
-          "specialization": "Enhancement",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Исправлена неполадка, из-за которой бонус комплекта Venomous Abyss 4 некорректно увеличивал мгновенный урон способности Crash Lightning."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026"
-          ]
-        },
-        "zhCN": {
-          "name": "Shaman",
-          "specialization": "Enhancement",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "修正了Venomous Abyss 4套装奖励未能正确提高Crash Lightning初始伤害的问题。"
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026"
-          ]
-        },
-        "zhTW": {
-          "name": "Shaman",
-          "specialization": "Enhancement",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "修正了 Venomous Abyss 4 套裝加成無法正確提高 Crash Lightning 初始傷害的問題。"
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-4-2026"
-          ]
-        }
-      },
-      "retrievedAt": "2026-09-05T06:54:11.641447+00:00"
-    },
-    {
-      "id": "change-f0f07c9dbe0590bd",
-      "channel": "live",
-      "category": "Class",
-      "date": "2026-09-03",
-      "patch": "12.1.0",
-      "localizations": {
-        "en": {
-          "name": "Priest",
-          "specialization": "Holy",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026",
-          "translationType": "official",
-          "translatedFrom": "",
-          "change": [
-            "Fixed an issue with the Venomous Abyss 2-set bonus that caused Renew to not reliably grant Renewed Vigor."
-          ],
-          "terminologySourceUrls": []
-        },
-        "deDE": {
-          "name": "Priest",
-          "specialization": "Holy",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Es wurde ein Problem mit dem 2-Setbonus von Venomous Abyss behoben, das dazu führte, dass Renew nicht zuverlässig Renewed Vigor gewährte."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026"
-          ]
-        },
-        "esES": {
-          "name": "Priest",
-          "specialization": "Holy",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Se ha solucionado un problema con la bonificación de conjunto de 2 piezas de Venomous Abyss que provocaba que Renew no otorgara de forma fiable Renewed Vigor."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026"
-          ]
-        },
-        "frFR": {
-          "name": "Priest",
-          "specialization": "Holy",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Correction d'un problème avec le bonus de set 2 de Venomous Abyss qui faisait en sorte que Renew n'accordait pas de manière fiable Renewed Vigor."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026"
-          ]
-        },
-        "itIT": {
-          "name": "Priest",
-          "specialization": "Holy",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Risolto un problema con il bonus da 2 pezzi dell'insieme Venomous Abyss che impediva a Renew di conferire in modo affidabile Renewed Vigor."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026"
-          ]
-        },
-        "koKR": {
-          "name": "Priest",
-          "specialization": "Holy",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Venomous Abyss 2세트 효과로 인해 Renew이(가) 안정적으로 Renewed Vigor을(를) 부여하지 않던 문제가 해결되었습니다."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026"
-          ]
-        },
-        "ptBR": {
-          "name": "Priest",
-          "specialization": "Holy",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Correção de um problema com o bônus de conjunto de 2 de Venomous Abyss que fazia com que Renew não concedesse Renewed Vigor de forma confiável."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026"
-          ]
-        },
-        "ruRU": {
-          "name": "Priest",
-          "specialization": "Holy",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Исправлена неполадка с бонусом от комплекта (2 предмет(-а/-ов)) Venomous Abyss, из-за которой Renew не всегда надежно давал Renewed Vigor."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026"
-          ]
-        },
-        "zhCN": {
-          "name": "Priest",
-          "specialization": "Holy",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "修复了 Venomous Abyss 2 件套装奖励导致 Renew 无法稳定提供 Renewed Vigor 的问题。"
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026"
-          ]
-        },
-        "zhTW": {
-          "name": "Priest",
-          "specialization": "Holy",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "修正了 Venomous Abyss 2 件套裝加成導致 Renew 無法可靠地賦予 Renewed Vigor 的問題。"
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026"
-          ]
-        }
-      },
-      "retrievedAt": "2026-09-04T11:57:18.878471+00:00"
-    },
-    {
-      "id": "change-4cb8035bac851c23",
-      "channel": "live",
-      "category": "Class",
-      "date": "2026-09-03",
-      "patch": "12.1.0",
-      "localizations": {
-        "en": {
-          "name": "Shaman",
-          "specialization": "Restoration",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026",
-          "translationType": "official",
-          "translatedFrom": "",
-          "change": [
-            "Totemic: Corrected an issue where Oversurge did not properly increase the healing done by Surging Totem or Overflowing Shores."
-          ],
-          "terminologySourceUrls": []
-        },
-        "deDE": {
-          "name": "Shaman",
-          "specialization": "Restoration",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Totemic: Es wurde ein Fehler behoben, bei dem Oversurge die durch Surging Totem oder Overflowing Shores verursachte Heilung nicht ordnungsgemäß erhöhte."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026"
-          ]
-        },
-        "esES": {
-          "name": "Shaman",
-          "specialization": "Restoration",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Totemic: Se ha corregido un problema en el que Oversurge no aumentaba correctamente la sanación realizada por Surging Totem o Overflowing Shores."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026"
-          ]
-        },
-        "frFR": {
-          "name": "Shaman",
-          "specialization": "Restoration",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Totemic : Correction d'un problème où Oversurge n'augmentait pas correctement les soins prodigués par Surging Totem ou Overflowing Shores."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026"
-          ]
-        },
-        "itIT": {
-          "name": "Shaman",
-          "specialization": "Restoration",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Totemic: Corretto un problema per cui Oversurge non aumentava correttamente la cura effettuata da Surging Totem o Overflowing Shores."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026"
-          ]
-        },
-        "koKR": {
-          "name": "Shaman",
-          "specialization": "Restoration",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Totemic: Oversurge이(가) Surging Totem 또는 Overflowing Shores의 치유량을 정상적으로 증가시키지 않던 문제가 수정되었습니다."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026"
-          ]
-        },
-        "ptBR": {
-          "name": "Shaman",
-          "specialization": "Restoration",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Totemic: Corrigido um problema em que Oversurge não aumentava adequadamente a cura realizada por Surging Totem ou Overflowing Shores."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026"
-          ]
-        },
-        "ruRU": {
-          "name": "Shaman",
-          "specialization": "Restoration",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Totemic: исправлена неполадка, из-за которой Oversurge некорректно увеличивал исцеление, производимое Surging Totem или Overflowing Shores."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026"
-          ]
-        },
-        "zhCN": {
-          "name": "Shaman",
-          "specialization": "Restoration",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Totemic：修正了Oversurge无法正确提高Surging Totem或Overflowing Shores造成的治疗量的问题。"
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026"
-          ]
-        },
-        "zhTW": {
-          "name": "Shaman",
-          "specialization": "Restoration",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Totemic：修正了 Oversurge 未能正確提高 Surging Totem 或 Overflowing Shores 治療量的問題。"
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026"
-          ]
-        }
-      },
-      "retrievedAt": "2026-09-04T11:57:18.878471+00:00"
-    },
-    {
-      "id": "change-93f03a40b5e5b13f",
-      "channel": "live",
-      "category": "Dungeon",
-      "date": "2026-09-03",
-      "patch": "12.1.0",
-      "localizations": {
-        "en": {
-          "name": "Ruby Life Pools",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026",
-          "translationType": "official",
-          "translatedFrom": "",
-          "change": [
-            "Fixed an issue where the Radiant Drake entrance-return NPC did not appear in Mythic+ after defeating the final boss."
-          ],
-          "terminologySourceUrls": []
-        },
-        "deDE": {
-          "name": "Ruby Life Pools",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Es wurde ein Problem behoben, bei dem das Rückkehr-NPC des Radiant Drake-Eingangs nach dem Besiegen des Endbosses in Mythic+ nicht erschien."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026"
-          ]
-        },
-        "esES": {
-          "name": "Ruby Life Pools",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Se ha solucionado un problema por el cual el NPC de regreso a la entrada de Radiant Drake no aparecía en Mythic+ tras derrotar al jefe final."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026"
-          ]
-        },
-        "frFR": {
-          "name": "Ruby Life Pools",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Correction d'un problème où le NPC de retour à l'entrée de Radiant Drake n'apparaissait pas en Mythic+ après avoir vaincu le boss final."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026"
-          ]
-        },
-        "itIT": {
-          "name": "Ruby Life Pools",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Risolto un problema per cui il NPC di ritorno dall'ingresso di Radiant Drake non appariva in Mythic+ dopo aver sconfitto il boss finale."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026"
-          ]
-        },
-        "koKR": {
-          "name": "Ruby Life Pools",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Radiant Drake 입장/복귀 NPC이(가) 마지막 우두머리를 처치한 후 Mythic+에 나타나지 않던 문제가 해결되었습니다."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026"
-          ]
-        },
-        "ptBR": {
-          "name": "Ruby Life Pools",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Correção de um problema em que o NPC de retorno à entrada de Radiant Drake não aparecia em Mythic+ após derrotar o chefe final."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026"
-          ]
-        },
-        "ruRU": {
-          "name": "Ruby Life Pools",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Исправлена неполадка, в результате которой Radiant Drake для возврата ко входу в виде NPC не появлялся в Mythic+ после победы над финальным боссом."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026"
-          ]
-        },
-        "zhCN": {
-          "name": "Ruby Life Pools",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "修复了在击败最终首领后，Radiant Drake 的入口返回 NPC 未在 Mythic+ 中显示的问题。"
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026"
-          ]
-        },
-        "zhTW": {
-          "name": "Ruby Life Pools",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "修正了在擊敗最終首領後，Radiant Drake 入口返回 NPC 未在 Mythic+ 中顯示的問題。"
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026"
-          ]
-        }
-      },
-      "retrievedAt": "2026-09-04T11:57:18.878471+00:00"
-    },
-    {
-      "id": "change-8623db21be431b85",
-      "channel": "live",
-      "category": "Raid",
-      "date": "2026-09-03",
-      "patch": "12.1.0",
-      "localizations": {
-        "en": {
-          "name": "The Venomous Abyss",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026",
-          "translationType": "official",
-          "translatedFrom": "",
-          "change": [
-            "Ula’tek: Caustic Waves have been adjusted so they cannot be avoided by swimming under them.",
-            "Ula’tek: Corrected an error in the Blight Vein spell description that was pointing to the wrong damage value."
-          ],
-          "terminologySourceUrls": []
-        },
-        "deDE": {
-          "name": "The Venomous Abyss",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Ula’tek: Caustic Waves wurden angepasst, sodass sie nicht mehr umgangen werden können, indem man unter ihnen hindurchschwimmt.",
-            "Ula’tek: Ein Fehler in der Zauberbeschreibung von Blight Vein wurde behoben, bei dem auf den falschen Schaden Wert verwiesen wurde."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026"
-          ]
-        },
-        "esES": {
-          "name": "The Venomous Abyss",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Ula’tek: Se han ajustado los Caustic Waves para que no se puedan evitar nadando por debajo de ellos.",
-            "Ula’tek: Se ha corregido un error en la descripción del hechizo Blight Vein que hacía referencia al valor de daño incorrecto."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026"
-          ]
-        },
-        "frFR": {
-          "name": "The Venomous Abyss",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Ula’tek : Caustic Waves ont été ajustés afin qu'ils ne puissent pas être évités en nageant en dessous.",
-            "Ula’tek : Correction d'une erreur dans la description du sort Blight Vein qui faisait référence à une mauvaise valeur de dégâts."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026"
-          ]
-        },
-        "itIT": {
-          "name": "The Venomous Abyss",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Ula’tek: Caustic Waves sono stati modificati in modo da non poter essere evitati nuotando al di sotto di essi.",
-            "Ula’tek: Corretto un errore nella descrizione dell'incantesimo Blight Vein che puntava al valore di danno errato."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026"
-          ]
-        },
-        "koKR": {
-          "name": "The Venomous Abyss",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Ula’tek: Caustic Waves 아래로 수영하여 회피할 수 없도록 조정되었습니다.",
-            "Ula’tek: 잘못된 피해 값을 가리키고 있던 Blight Vein 주문 설명의 오류가 수정되었습니다."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026"
-          ]
-        },
-        "ptBR": {
-          "name": "The Venomous Abyss",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Ula’tek: Caustic Waves foram ajustados para que não possam ser evitados nadando por baixo deles.",
-            "Ula’tek: Corrigido um erro na descrição da feitiço Blight Vein que apontava para o valor de dano incorreto."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026"
-          ]
-        },
-        "ruRU": {
-          "name": "The Venomous Abyss",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Ula’tek: Caustic Waves были скорректированы, чтобы их нельзя было избежать, проплывая под ними.",
-            "Ula’tek: исправлена ошибка в описании заклинания Blight Vein, ссылавшаяся на неверное значение урона."
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026"
-          ]
-        },
-        "zhCN": {
-          "name": "The Venomous Abyss",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Ula’tek：已调整Caustic Waves，使其无法通过在下方游泳来规避。",
-            "Ula’tek：修正了Blight Vein法术描述中指向错误伤害数值的错误。"
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026"
-          ]
-        },
-        "zhTW": {
-          "name": "The Venomous Abyss",
-          "specialization": "",
-          "source": "Blizzard",
-          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026",
-          "translationType": "agent",
-          "translatedFrom": "en",
-          "change": [
-            "Ula’tek：已調整 Caustic Waves，使其無法透過在下方游泳來避開。",
-            "Ula’tek：修正了 Blight Vein 法術說明中指向錯誤傷害數值的錯誤。"
-          ],
-          "terminologySourceUrls": [
-            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-3-2026"
-          ]
-        }
-      },
-      "retrievedAt": "2026-09-04T11:57:18.878471+00:00"
     }
   ]
 }
