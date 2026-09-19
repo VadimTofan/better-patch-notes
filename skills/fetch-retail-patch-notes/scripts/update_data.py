@@ -475,6 +475,42 @@ def _validate_batch(value: object) -> tuple[str, list[dict[str, object]]]:
     ]
 
 
+def _discard_stale_agent_localizations(
+    value: object,
+) -> tuple[dict[str, object], bool]:
+    change = _require_object_dict(value, "each stored change")
+    localizations = _require_object_dict(
+        change.get("localizations"),
+        "localizations",
+    )
+    english = _require_object_dict(
+        localizations.get("en"),
+        "en localization",
+    )
+    english_source_url = _require_string(english, "sourceUrl")
+    retained_localizations: dict[str, object] = {}
+    repaired = False
+
+    for locale, raw_localization in localizations.items():
+        localization = _require_object_dict(
+            raw_localization,
+            f"localization {locale}",
+        )
+        if (
+            localization.get("translationType") == "agent"
+            and localization.get("sourceUrl") != english_source_url
+        ):
+            repaired = True
+            continue
+
+        retained_localizations[locale] = localization
+
+    repaired_change = dict(change)
+    repaired_change["localizations"] = retained_localizations
+
+    return repaired_change, repaired
+
+
 def _load_data(data_path: Path) -> tuple[list[dict[str, object]], bool]:
     if not data_path.exists():
         return [], False
@@ -502,7 +538,13 @@ def _load_data(data_path: Path) -> tuple[list[dict[str, object]], bool]:
         SCHEMA_VERSION: _validate_stored_change,
     }
     validator = validators[schema_version]
-    validated_changes = [validator(change) for change in changes]
+    validated_changes: list[dict[str, object]] = []
+    for change in changes:
+        candidate = change
+        if schema_version == SCHEMA_VERSION:
+            candidate, repaired = _discard_stale_agent_localizations(change)
+            migrated = migrated or repaired
+        validated_changes.append(validator(candidate))
     identifiers = [str(change["id"]) for change in validated_changes]
     if len(identifiers) != len(set(identifiers)):
         raise ValueError("canonical data contains duplicate change ids")
@@ -931,13 +973,17 @@ def update_data(
         )
         if equivalent_index is not None:
             existing = stored_changes[equivalent_index]
+            is_blizzard_news_revision = _is_blizzard_news_revision(
+                existing,
+                incoming,
+            )
+            if is_blizzard_news_revision:
+                existing["localizations"] = {}
+
             added_locales, promoted_locales = _merge_localizations(
                 existing,
                 incoming,
-                replace_equal_rank=_is_blizzard_news_revision(
-                    existing,
-                    incoming,
-                ),
+                replace_equal_rank=is_blizzard_news_revision,
             )
             localized += added_locales
             promoted += promoted_locales

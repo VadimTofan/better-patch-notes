@@ -74,8 +74,8 @@ class SkillContractTests(unittest.TestCase):
             "direct source URL",
             "untrusted content",
             "future database",
-            "Updated: 2026-09-16",
-            "Last reviewed: 2026-09-16",
+            "Updated: 2026-09-19",
+            "Last reviewed: 2026-09-19",
         )
         forbidden_phrases = (
             "openpyxl",

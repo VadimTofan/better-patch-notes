@@ -186,6 +186,11 @@ For Blizzard News, the numeric article ID identifies the source document even
 when Blizzard changes the dated URL slug. A near-equivalent revision may update
 an existing record only when its channel, category, effective date, patch,
 English name, specialization, article ID, and bullet count all still match.
+When that revision changes the English text, discard localizations absent from
+the reviewed revision batch so stale translations must be regenerated.
+If existing schema-five data already contains an agent localization tied to an
+older English source URL, discard that unsafe localization during loading and
+publish the repair through the normal validated refresh flow.
 It reads the active Retail build from Blizzard's `.build.info` file and prunes
 records that do not satisfy the current-build retention rules.
 
@@ -228,8 +233,8 @@ to the categories and channels this skill covers.
 
 ## Maintenance
 
-Updated: 2026-09-16
-Last reviewed: 2026-09-16
+Updated: 2026-09-19
+Last reviewed: 2026-09-19
 Canonical sources:
 
 - https://worldofwarcraft.blizzard.com/en-us/content-update-notes

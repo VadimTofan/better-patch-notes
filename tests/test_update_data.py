@@ -947,7 +947,27 @@ class JsonDataMergeTests(unittest.TestCase):
             )
             first_result = _run_updater(first_path, data_path)
             self.assertEqual(0, first_result.returncode, first_result.stderr)
-            original_id = _read_data(data_path)["changes"][0]["id"]
+            original_document = _read_data(data_path)
+            original_change = original_document["changes"][0]
+            original_id = original_change["id"]
+            stale_localization = {
+                "name": "Shaman",
+                "specialization": "Enhancement",
+                "source": "Blizzard",
+                "sourceUrl": old_url,
+                "translationType": "agent",
+                "translatedFrom": "en",
+                "change": [
+                    "Eine alte Doom-Winds-Übersetzung.",
+                    "Totemic: Eine alte Crash-Lightning-Übersetzung.",
+                ],
+                "terminologySourceUrls": [old_url],
+            }
+            original_change["localizations"]["deDE"] = stale_localization
+            data_path.write_text(
+                json.dumps(original_document, ensure_ascii=False),
+                encoding="utf-8",
+            )
 
             # When the corrected article revision is processed
             result = _run_updater(revised_path, data_path)
@@ -968,6 +988,52 @@ class JsonDataMergeTests(unittest.TestCase):
                 new_url,
                 stored["localizations"]["en"]["sourceUrl"],
             )
+            self.assertEqual(["en"], list(stored["localizations"]))
+
+    def test_repairs_stale_agent_provenance_in_existing_data(self) -> None:
+        with TemporaryDirectory() as temporary_directory:
+            # Given a prior revision left one agent localization on the old URL
+            temporary_path = Path(temporary_directory)
+            first_path = temporary_path / "first.json"
+            empty_path = temporary_path / "empty.json"
+            data_path = temporary_path / "retail-patch-notes.json"
+            old_url = (
+                "https://news.blizzard.com/en-us/article/24296142/"
+                "hotfixes-september-9-2026"
+            )
+            new_url = (
+                "https://news.blizzard.com/en-us/article/24296142/"
+                "hotfixes-september-15-2026"
+            )
+            _write_batch(first_path, [_change(sourceUrl=old_url)])
+            _write_batch(empty_path, [])
+            first_result = _run_updater(first_path, data_path)
+            self.assertEqual(0, first_result.returncode, first_result.stderr)
+            document = _read_data(data_path)
+            stored = document["changes"][0]
+            stored["localizations"]["deDE"] = {
+                "name": "Magier",
+                "specialization": "Frost",
+                "source": "Blizzard",
+                "sourceUrl": old_url,
+                "translationType": "agent",
+                "translatedFrom": "en",
+                "change": ["Eine veraltete Übersetzung."],
+                "terminologySourceUrls": [old_url],
+            }
+            stored["localizations"]["en"]["sourceUrl"] = new_url
+            data_path.write_text(
+                json.dumps(document, ensure_ascii=False),
+                encoding="utf-8",
+            )
+
+            # When the updater loads the existing data
+            result = _run_updater(empty_path, data_path)
+
+            # Then it removes only the unsafe agent localization and succeeds
+            self.assertEqual(0, result.returncode, result.stderr)
+            repaired = _read_data(data_path)["changes"][0]
+            self.assertEqual(["en"], list(repaired["localizations"]))
 
     def test_sorts_newest_changes_first_with_stable_tie_breakers(self) -> None:
         with TemporaryDirectory() as temporary_directory:
