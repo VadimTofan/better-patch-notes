@@ -360,6 +360,7 @@ def extract_changes(
         ancestors = _list_ancestors(blocks, index)
         path = [ancestor.text for ancestor in ancestors]
         specialization = ""
+        shared_instance_names: tuple[str, ...] = ()
         if section == "Class":
             class_positions = [
                 (position, CLASS_NAMES[_structural_key(value)])
@@ -412,9 +413,11 @@ def extract_changes(
                         for value in path
                         if _structural_key(value) in ENCOUNTER_INSTANCES
                     }
-                if len(embedded_names) != 1:
+                if len(embedded_names) == 2 and embedded_names <= DUNGEONS:
+                    shared_instance_names = tuple(sorted(embedded_names))
+                elif len(embedded_names) != 1:
                     raise AmbiguousPatchNote("instance bullet has no name")
-                context_name = embedded_names.pop()
+                context_name = sorted(embedded_names)[0]
                 context_anchor = section_anchor
             elif not context_name:
                 raise AmbiguousPatchNote("instance bullet has no name")
@@ -440,14 +443,15 @@ def extract_changes(
             document.url,
             context_anchor or section_anchor,
         )
-        key = (
-            category,
-            context_name,
-            specialization,
-            source_url,
-            current_date,
-        )
-        grouped.setdefault(key, []).append(rendered_change)
+        for record_name in shared_instance_names or (context_name,):
+            key = (
+                category,
+                record_name,
+                specialization,
+                source_url,
+                current_date,
+            )
+            grouped.setdefault(key, []).append(rendered_change)
 
     changes = [
         ExtractedChange(

@@ -338,6 +338,35 @@ class PatchNoteExtractionTests(unittest.TestCase):
             changes[0].change,
         )
 
+    def test_assigns_shared_dungeon_hotfix_to_both_named_dungeons(self) -> None:
+        # Given an official hotfix names two dungeons in one bullet
+        document = _document(
+            "live-hotfix-september-21-2026.html",
+            channel="live",
+        )
+
+        # When the reviewed article shape is extracted
+        changes = extract_changes(document)
+
+        # Then each dungeon receives the complete shared change
+        shared_change = (
+            "Fixed an issue where following Lindormi's Guidance in "
+            "Den of Nalorakk and Altar of Fangs would lead to ending "
+            "the dungeon short of the enemy forces requirement."
+        )
+        dungeons = {
+            change.name: change
+            for change in changes
+            if change.category == "Dungeon"
+        }
+        self.assertEqual(
+            {"Den of Nalorakk", "Altar of Fangs"},
+            set(dungeons),
+        )
+        for dungeon in dungeons.values():
+            self.assertEqual((shared_change,), dungeon.change)
+            self.assertEqual(date(2026, 9, 21), dungeon.effective_date)
+
     def test_extracts_the_tidebound_grotto_from_august_hotfixes(self) -> None:
         # Given Blizzard publishes the new dungeon in the combined section
         document = _document(
