@@ -96,7 +96,7 @@ new CurseForge addon release.
 
 ## Current status
 
-- **Addon version:** 0.2.36
+- **Addon version:** 0.2.37
 - **Game:** World of Warcraft Retail
 - **Interface version:** 120100
 - **Bundled data:** Live 12.1; PTR unavailable

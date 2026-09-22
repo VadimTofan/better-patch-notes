@@ -1,7 +1,659 @@
 {
   "schemaVersion": 5,
-  "updatedAt": "2026-09-19T10:46:55.315268+00:00",
+  "updatedAt": "2026-09-22T22:14:13.636507+00:00",
   "changes": [
+    {
+      "id": "change-37dfa0a0728d9106",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-09-21",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Evoker",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "Fixed an issue preventing Unravel from activating when Fire Breath was cast with Tip the Scales.",
+            "Fixed an issue where Unravel may not hit all targets struck by Fire Breath."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Evoker",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Es wurde ein Fehler behoben, der verhinderte, dass Unravel aktiviert wurde, wenn Fire Breath mit Tip the Scales gewirkt wurde.",
+            "Es wurde ein Fehler behoben, bei dem Unravel möglicherweise nicht alle von Fire Breath getroffenen Ziele trifft."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026"
+          ]
+        },
+        "esES": {
+          "name": "Evoker",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Se ha corregido un error que impedía que Unravel se activara cuando se lanzaba Fire Breath con Tip the Scales.",
+            "Se ha corregido un error que provocaba que Unravel no alcanzara a todos los objetivos golpeados por Fire Breath."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026"
+          ]
+        },
+        "frFR": {
+          "name": "Evoker",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Correction d'un problème qui empêchait Unravel de s'activer lorsque Fire Breath était lancé avec Tip the Scales.",
+            "Correction d'un problème où Unravel pouvait ne pas toucher toutes les cibles frappées par Fire Breath."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026"
+          ]
+        },
+        "itIT": {
+          "name": "Evoker",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Risolto un problema che impediva a Unravel di attivarsi quando Fire Breath veniva lanciato con Tip the Scales.",
+            "Risolto un problema per cui Unravel poteva non colpire tutti i bersagli colpiti da Fire Breath."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026"
+          ]
+        },
+        "koKR": {
+          "name": "Evoker",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Tip the Scales(으)로 Fire Breath 시전 시 Unravel이(가) 활성화되지 않던 문제가 수정되었습니다.",
+            "Fire Breath(으)로 적중한 모든 대상에게 Unravel이(가) 적중하지 않을 수 있던 문제가 수정되었습니다."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026"
+          ]
+        },
+        "ptBR": {
+          "name": "Evoker",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Corrigido um problema que impedia Unravel de ativar quando Fire Breath era lançado com Tip the Scales.",
+            "Corrigido um problema em que Unravel podia não atingir todos os alvos atingidos por Fire Breath."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026"
+          ]
+        },
+        "ruRU": {
+          "name": "Evoker",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Исправлена неполадка, мешавшая срабатыванию Unravel, когда Fire Breath применялся вместе с Tip the Scales.",
+            "Исправлена неполадка, из-за которой Unravel мог поразить не все цели, задетые Fire Breath."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026"
+          ]
+        },
+        "zhCN": {
+          "name": "Evoker",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "修正了当施放带有 Tip the Scales 的 Fire Breath 时，阻止 Unravel 激活的问题。",
+            "修正了 Unravel 可能无法击中所有受到 Fire Breath 影响的目标的问题。"
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026"
+          ]
+        },
+        "zhTW": {
+          "name": "Evoker",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "修正了當使用 Tip the Scales 施放 Fire Breath 時，會阻止 Unravel 發動的問題。",
+            "修正了 Unravel 可能無法擊中所有受 Fire Breath 影響之目標的問題。"
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026"
+          ]
+        }
+      },
+      "retrievedAt": "2026-09-22T22:14:13.636507+00:00"
+    },
+    {
+      "id": "change-08e21a3d43cd4570",
+      "channel": "live",
+      "category": "Dungeon",
+      "date": "2026-09-21",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Altar of Fangs",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "Fixed an issue where following Lindormi's Guidance in Den of Nalorakk and Altar of Fangs would lead to ending the dungeon short of the enemy forces requirement."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Altar of Fangs",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Es wurde ein Fehler behoben, bei dem das Verfolgen von Lindormi's Guidance in Den of Nalorakk and Altar of Fangs dazu führte, dass der Dungeon kurz vor Erreichen der geforderten Feindesanzahl endete."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026"
+          ]
+        },
+        "esES": {
+          "name": "Altar of Fangs",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Se ha corregido un error que provocaba que, al continuar Lindormi's Guidance en Den of Nalorakk and Altar of Fangs, la mazmorra terminara sin cumplir el requisito de fuerzas enemigas."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026"
+          ]
+        },
+        "frFR": {
+          "name": "Altar of Fangs",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Correction d'un problème où le fait de suivre Lindormi's Guidance dans Den of Nalorakk and Altar of Fangs pouvait empêcher de valider le nombre requis de forces ennemies du donjon."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026"
+          ]
+        },
+        "itIT": {
+          "name": "Altar of Fangs",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Risolto un problema per cui seguire Lindormi's Guidance in Den of Nalorakk and Altar of Fangs portava a completare il sotterraneo prima del requisito delle forze nemiche."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026"
+          ]
+        },
+        "koKR": {
+          "name": "Altar of Fangs",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Den of Nalorakk and Altar of Fangs 내에서 Lindormi's Guidance을(를) 따라간 후 적 병력 요구 조건을 채우지 못하고 던전이 종료되던 문제가 수정되었습니다."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026"
+          ]
+        },
+        "ptBR": {
+          "name": "Altar of Fangs",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Corrigido um problema em que seguir Lindormi's Guidance em Den of Nalorakk and Altar of Fangs fazia a masmorra terminar antes de atingir o requisito de forças inimigas."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026"
+          ]
+        },
+        "ruRU": {
+          "name": "Altar of Fangs",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Исправлена неполадка, из-за которой убийство Lindormi's Guidance в Den of Nalorakk and Altar of Fangs могло привести к завершению подземелья до выполнения требования по силам противника."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026"
+          ]
+        },
+        "zhCN": {
+          "name": "Altar of Fangs",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "修正了在 Den of Nalorakk and Altar of Fangs 中跟随 Lindormi's Guidance 会导致地下城在敌方兵力要求达成前结束的问题。"
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026"
+          ]
+        },
+        "zhTW": {
+          "name": "Altar of Fangs",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "修正了在 Den of Nalorakk and Altar of Fangs 中跟隨 Lindormi's Guidance 會導致地城在達成敵方部隊要求前結束的問題。"
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026"
+          ]
+        }
+      },
+      "retrievedAt": "2026-09-22T22:14:13.636507+00:00"
+    },
+    {
+      "id": "change-052b855701d4feba",
+      "channel": "live",
+      "category": "Dungeon",
+      "date": "2026-09-21",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Den of Nalorakk",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "Fixed an issue where following Lindormi's Guidance in Den of Nalorakk and Altar of Fangs would lead to ending the dungeon short of the enemy forces requirement."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Den of Nalorakk",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Es wurde ein Fehler behoben, bei dem das Verfolgen von Lindormi's Guidance in Den of Nalorakk and Altar of Fangs dazu führte, dass der Dungeon kurz vor Erreichen der geforderten Feindesanzahl endete."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026"
+          ]
+        },
+        "esES": {
+          "name": "Den of Nalorakk",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Se ha corregido un error que provocaba que, al continuar Lindormi's Guidance en Den of Nalorakk and Altar of Fangs, la mazmorra terminara sin cumplir el requisito de fuerzas enemigas."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026"
+          ]
+        },
+        "frFR": {
+          "name": "Den of Nalorakk",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Correction d'un problème où le fait de suivre Lindormi's Guidance dans Den of Nalorakk and Altar of Fangs pouvait empêcher de valider le nombre requis de forces ennemies du donjon."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026"
+          ]
+        },
+        "itIT": {
+          "name": "Den of Nalorakk",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Risolto un problema per cui seguire Lindormi's Guidance in Den of Nalorakk and Altar of Fangs portava a completare il sotterraneo prima del requisito delle forze nemiche."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026"
+          ]
+        },
+        "koKR": {
+          "name": "Den of Nalorakk",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Den of Nalorakk and Altar of Fangs 내에서 Lindormi's Guidance을(를) 따라간 후 적 병력 요구 조건을 채우지 못하고 던전이 종료되던 문제가 수정되었습니다."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026"
+          ]
+        },
+        "ptBR": {
+          "name": "Den of Nalorakk",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Corrigido um problema em que seguir Lindormi's Guidance em Den of Nalorakk and Altar of Fangs fazia a masmorra terminar antes de atingir o requisito de forças inimigas."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026"
+          ]
+        },
+        "ruRU": {
+          "name": "Den of Nalorakk",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Исправлена неполадка, из-за которой убийство Lindormi's Guidance в Den of Nalorakk and Altar of Fangs могло привести к завершению подземелья до выполнения требования по силам противника."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026"
+          ]
+        },
+        "zhCN": {
+          "name": "Den of Nalorakk",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "修正了在 Den of Nalorakk and Altar of Fangs 中跟随 Lindormi's Guidance 会导致地下城在敌方兵力要求达成前结束的问题。"
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026"
+          ]
+        },
+        "zhTW": {
+          "name": "Den of Nalorakk",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "修正了在 Den of Nalorakk and Altar of Fangs 中跟隨 Lindormi's Guidance 會導致地城在達成敵方部隊要求前結束的問題。"
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026"
+          ]
+        }
+      },
+      "retrievedAt": "2026-09-22T22:14:13.636507+00:00"
+    },
+    {
+      "id": "change-39816e0f286e266e",
+      "channel": "live",
+      "category": "Raid",
+      "date": "2026-09-21",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "The Venomous Abyss",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "The Coiled Altar: Fixed a rare issue where Toxic Deluge would fail to create Coalesced Venoms and Virulent Mutations.",
+            "The Coiled Altar: Fixed a rare issue where Fangs of the Crucible and Defilement of the Crucible would not create area denial on both halves of the platform.",
+            "The Coiled Altar: Resolved an issue where pets could engage Zul'jan during the roleplay.",
+            "Ula’tek: [With weekly restarts] Ula'tek's Stone Venom damage reduced by 40% on all difficulties.",
+            "Ula’tek: [With weekly restarts] Boiling Venom on Mythic difficulty is now an Important Aura.",
+            "Ula’tek: Fixed an issue where Stone Venom could fail to inflict damage to players far from Ula'tek."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "The Venomous Abyss",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Coiled Altar: Es wurde ein seltenes Problem behoben, bei dem Toxic Deluge es versäumte, Coalesced Venoms and Virulent Mutations zu erzeugen.",
+            "Coiled Altar: Es wurde ein seltenes Problem behoben, bei dem Fangs of the Crucible and Defilement of the Crucible auf beiden Hälften der Plattform keine Raumkontrolle (Area Denial) erzeugte.",
+            "Coiled Altar: Es wurde ein Fehler behoben, bei dem Begleiter während des Rollenspiels Zul'jan angreifen konnten.",
+            "Ula’tek: [Mit wöchentlichen Neustarts] Schaden von Ula'tek's Stone Venom auf allen Schwierigkeitsgraden um 40% verringert.",
+            "Ula’tek: [Mit wöchentlichen Neustarts] Boiling Venom ist auf dem Schwierigkeitsgrad Mythic nun ein Important Aura.",
+            "Ula’tek: Es wurde ein Fehler behoben, bei dem Stone Venom Spielern, die sich weit entfernt von Ula'tek befanden, möglicherweise keinen Schaden zufügen konnte."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026"
+          ]
+        },
+        "esES": {
+          "name": "The Venomous Abyss",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Coiled Altar: Se ha corregido un error poco común que provocaba que Toxic Deluge no creara Coalesced Venoms and Virulent Mutations.",
+            "Coiled Altar: Se ha corregido un error poco común que provocaba que Fangs of the Crucible and Defilement of the Crucible no creara zonas denegadas en ambas mitad de la plataforma.",
+            "Coiled Altar: Se ha resuelto un error que provocaba que las mascotas pudieran entrar en combate con Zul'jan durante la secuencia de rol.",
+            "Ula’tek: [Con los reinicios semanales] El daño de Ula'tek's Stone Venom se ha reducido un 40% en todas las dificultades.",
+            "Ula’tek: [Con los reinicios semanales] Boiling Venom en la dificultad Mythic pasa a ser Important Aura.",
+            "Ula’tek: Se ha corregido un error que podía provocar que Stone Venom no infligiera daño a los jugadores alejados de Ula'tek."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026"
+          ]
+        },
+        "frFR": {
+          "name": "The Venomous Abyss",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Coiled Altar : correction d'un problème rare où Toxic Deluge ne parvenait pas à créer Coalesced Venoms and Virulent Mutations.",
+            "Coiled Altar : correction d'un problème rare où Fangs of the Crucible and Defilement of the Crucible ne créait pas de zone d'interdiction sur les deux moitiés de la plateforme.",
+            "Coiled Altar : résolution d'un problème où les familiers pouvaient engager le combat contre Zul'jan pendant le jeu de rôle.",
+            "Ula’tek : [Lors des redémarrages hebdomadaires] Dégâts de Ula'tek's Stone Venom réduits de 40% dans toutes les difficultés.",
+            "Ula’tek : [Lors des redémarrages hebdomadaires] Boiling Venom en difficulté Mythic est désormais un Important Aura.",
+            "Ula’tek : correction d'un problème où Stone Venom pouvait ne pas infliger de dégâts aux joueurs se trouvant loin de Ula'tek."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026"
+          ]
+        },
+        "itIT": {
+          "name": "The Venomous Abyss",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Il Coiled Altar: Risolto un problema raro per cui Toxic Deluge non riusciva a creare Coalesced Venoms and Virulent Mutations.",
+            "Il Coiled Altar: Risolto un problema raro per cui Fangs of the Crucible and Defilement of the Crucible non creava interdizione d'area su entrambe le metà della piattaforma.",
+            "Il Coiled Altar: Risolto un problema per cui gli elementi di affezione potevano ingaggiare Zul'jan durante la fase di gioco di ruolo.",
+            "Ula’tek: [Con i riavvii settimanali] Danni di Ula'tek's Stone Venom ridotti di 40% a tutte le difficoltà.",
+            "Ula’tek: [Con i riavvii settimanali] Boiling Venom alla difficoltà Mythic è ora un Important Aura.",
+            "Ula’tek: Risolto un problema per cui Stone Venom poteva non infliggere danni ai giocatori lontani da Ula'tek."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026"
+          ]
+        },
+        "koKR": {
+          "name": "The Venomous Abyss",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Coiled Altar: Toxic Deluge이(가) Coalesced Venoms and Virulent Mutations을(를) 생성하지 못하던 드문 문제가 수정되었습니다.",
+            "Coiled Altar: Fangs of the Crucible and Defilement of the Crucible이(가) 단상 양쪽 모두에 지역 장악 효과를 생성하지 않던 드문 문제가 수정되었습니다.",
+            "Coiled Altar: 역할 수행 중 소환수가 Zul'jan과(와) 전투를 시작할 수 있던 문제가 해결되었습니다.",
+            "Ula’tek: [주간 재시작과 함께] 모든 난이도에서 Ula'tek's Stone Venom 피해가 40%만큼 감소합니다.",
+            "Ula’tek: [주간 재시작과 함께] Mythic 난이도의 Boiling Venom이(가) 이제 Important Aura이(가) 됩니다.",
+            "Ula’tek: Stone Venom이(가) Ula'tek에서 멀리 있는 플레이어에게 피해를 입히지 못하던 문제가 수정되었습니다."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026"
+          ]
+        },
+        "ptBR": {
+          "name": "The Venomous Abyss",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Coiled Altar: Corrigido um problema raro em que Toxic Deluge falhava ao criar Coalesced Venoms and Virulent Mutations.",
+            "Coiled Altar: Corrigido um problema raro em que Fangs of the Crucible and Defilement of the Crucible não criava negação de área em ambas as metades da plataforma.",
+            "Coiled Altar: Resolvido um problema em que os ajudantes podiam entrar em combate com Zul'jan durante a interpretação de papel.",
+            "Ula’tek: [Com os reinícios semanais] Dano de Ula'tek's Stone Venom reduzido em 40% em todas as dificuldades.",
+            "Ula’tek: [Com os reinícios semanais] Boiling Venom na dificuldade Mythic agora é um Important Aura.",
+            "Ula’tek: Corrigido um problema em que Stone Venom podia falhar ao infligir dano a jogadores distantes de Ula'tek."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026"
+          ]
+        },
+        "ruRU": {
+          "name": "The Venomous Abyss",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Coiled Altar: исправлена редкая неполадка, из-за которой Toxic Deluge не создавал Coalesced Venoms and Virulent Mutations.",
+            "Coiled Altar: исправлена редкая неполадка, из-за которой Fangs of the Crucible and Defilement of the Crucible не создавал зону ограничения пространства на обеих половинах платформы.",
+            "Coiled Altar: исправлена неполадка, из-за которой питомцы могли вступить в бой с Zul'jan во время сюжетной сцены.",
+            "Ula’tek: [После еженедельной перезагрузки игрового мира] Урон Ula'tek's Stone Venom уменьшен на 40% на всех сложностях.",
+            "Ula’tek: [После еженедельной перезагрузки игрового мира] Boiling Venom на сложности Mythic теперь является Important Aura.",
+            "Ula’tek: исправлена неполадка, из-за которой Stone Venom мог не нанести урон игрокам, находящимся далеко от Ula'tek."
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026"
+          ]
+        },
+        "zhCN": {
+          "name": "The Venomous Abyss",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Coiled Altar：修正了一个罕见问题，即 Toxic Deluge 无法创造 Coalesced Venoms and Virulent Mutations。",
+            "Coiled Altar：修正了一个罕见问题，即 Fangs of the Crucible and Defilement of the Crucible 无法在平台两侧都创造区域封锁。",
+            "Coiled Altar：修正了宠物在角色扮演过程中会与 Zul'jan 进入战斗的问题。",
+            "Ula’tek：[随着每周例行维护] 所有难度下的 Ula'tek's Stone Venom 伤害降低了 40%。",
+            "Ula’tek：[随着每周例行维护] Mythic 难度下的 Boiling Venom 现在是一个 Important Aura。",
+            "Ula’tek：修正了 Stone Venom 无法对远离 Ula'tek 的玩家造成伤害的问题。"
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026"
+          ]
+        },
+        "zhTW": {
+          "name": "The Venomous Abyss",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Coiled Altar：修正了 Toxic Deluge 無法建立 Coalesced Venoms and Virulent Mutations 的罕見問題。",
+            "Coiled Altar：修正了 Fangs of the Crucible and Defilement of the Crucible 有時不會在平台兩側建立區域否定的罕見問題。",
+            "Coiled Altar：修正了寵物可能會在角色扮演期間與 Zul'jan 進入戰鬥的問題。",
+            "Ula’tek：[配合每週例行維護] 所有難度下的 Ula'tek's Stone Venom 傷害降低 40%。",
+            "Ula’tek：[配合每週例行維護] Mythic 難度下的 Boiling Venom 現在為 Important Aura。",
+            "Ula’tek：修正了 Stone Venom 可能無法對距離 Ula'tek 較遠的玩家造成傷害的問題。"
+          ],
+          "terminologySourceUrls": [
+            "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-21-2026"
+          ]
+        }
+      },
+      "retrievedAt": "2026-09-22T22:14:13.636507+00:00"
+    },
     {
       "id": "change-4cab5a226db4f72a",
       "channel": "live",
@@ -262,9 +914,73 @@
           "terminologySourceUrls": [
             "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
           ]
+        },
+        "itIT": {
+          "name": "Death Knight",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Note degli sviluppatori: San’layn sta infliggendo molti più danni in AoE rispetto al nostro obiettivo previsto per i tank. Ridurremo i loro danni complessivi per diminuire la disparità. Tuttavia, aumenteremo i danni di Death Strike’s e ridurremo la sua efficacia ad area per potenziare il bersaglio singolo di Blood’s, che si trova nella fascia più bassa tra i tank. Inoltre, apporteremo alcuni potenziamenti mirati specifici per Deathbringer per contrastare il nerf complessivo dell'aura ed essere un piccolo potenziamento netto positivo sia per i loro danni in AoE che per quelli a bersaglio singolo.",
+            "Tutti i danni di abilità e servitori ridotti di 6%.",
+            "Danni di Death Strike aumentati di 15%.",
+            "Deadly Reach ora fa sì che Death Strike infligga 60% dei suoi danni a 2 nemici vicini (era 75%).",
+            "Deathbringer: Danni di Exterminate aumentati di 25%.",
+            "Deathbringer: Danni di Reaper’s Mark aumentati di 20%.",
+            "Deathbringer: Danni di Wave of Souls aumentati di 20%.",
+            "Deathbringer: Bind in Darkness ora aumenta i danni di Blood Boil di 50% (era 30%).",
+            "Deathbringer: Deathly Blows ora aumenta i danni di Death Strike di 20% (era 12%).",
+            "Deathbringer: Swift and Painful ora aumenta Strength di 15% (era 10%).",
+            "Note degli sviluppatori: Frost Death è carente negli scenari di scontro contro bersaglio singolo e due bersagli.",
+            "Danni di Frostreaper aumentati di 100%. Non ha effetto sul combattimento in PvP.",
+            "Danni di Obliterate aumentati di 10%. Non ha effetto sul combattimento in PvP.",
+            "Note degli sviluppatori: Vogliamo aumentare la produzione di danni di Unholy Death Knight’s nei raid. In parallelo, puntiamo a riportare la build di Blightfall a com'era prima delle correzioni di bug che l'hanno resa non più vitale.",
+            "Scourging ora fa sì che le tue piaghe eruttino a 65%/100% (era 50%/70%). Non ha effetto sul combattimento in PvP.",
+            "Blightfall infligge 200% dei danni da piaga rimanenti (era 100%). Non ha effetto sul combattimento in PvP",
+            "San’layn: Infliction of Sorrow fa sì che Vampiric Strike erutti piaghe con un'efficacia aumentata del 75% (era 30%).",
+            "San’layn: Thrill of Blood aumenta i danni di Dread Plague di 20% (era 10%).",
+            "San’layn: Frenzied Bloodthirst ora aumenta i danni di Death Coil and Death Strike di 5% per accumulo."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "ptBR": {
+          "name": "Death Knight",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Notas dos desenvolvedores: San’layn está causando um dano consideravelmente maior em AoE do que o nosso alvo pretendido para tanques. Reduziremos o dano geral deles para diminuir essa disparidade. No entanto, aumentaremos o dano de Death Strike’s e reduziremos sua eficácia em dano em área para melhorar o alvo único de Blood’s, que está um pouco abaixo do ideal para tanques. Além disso, estamos fazendo algumas melhorias direcionadas específicas para Deathbringer para compensar a redução geral da aura e proporcionar um pequeno bônus líquido positivo tanto em AoE quanto no dano de alvo único.",
+            "Todo o dano de habilidades e lacaios foi reduzido em 6%.",
+            "Dano de Death Strike aumentado em 15%.",
+            "Deadly Reach agora faz com que Death Strike passe a causar 60% do seu dano a 2 inimigos próximos (era 75%).",
+            "Deathbringer: Dano de Exterminate aumentado em 25%.",
+            "Deathbringer: Dano de Reaper’s Mark aumentado em 20%.",
+            "Deathbringer: Dano de Wave of Souls aumentado em 20%.",
+            "Deathbringer: Bind em Darkness agora aumenta o dano de Blood Boil em 50% (era 30%).",
+            "Deathbringer: Deathly Blows agora aumenta o dano de Death Strike em 20% (era 12%).",
+            "Deathbringer: Swift and Painful agora aumenta Strength em 15% (era 10%).",
+            "Notas dos desenvolvedores: Frost Death tem deixado a desejar em cenários de alvo único e em áreas de impacto duplo.",
+            "Dano de Frostreaper aumentado em 100%. Não afeta o combate de PvP.",
+            "Dano de Obliterate aumentado em 10%. Não afeta o combate de PvP.",
+            "Notas dos desenvolvedores: Estamos buscando aumentar a saída de dano de Unholy Death Knight’s em raides. Em paralelo, pretendemos trazer a build de Blightfall de volta ao patamar em que estava antes das correções de bugs que a tornaram inviável.",
+            "Scourging agora faz com que suas pestes eruponem com 65%/100% (era 50%/70%). Não afeta o combate de PvP.",
+            "Blightfall causa 200% do dano de peste restante (era 100%). Não afeta o combate de PvP.",
+            "San’layn: Infliction of Sorrow faz com que Vampiric Strike faça as pestes erupcionarem com 75% de eficácia aumentada (era 30%).",
+            "San’layn: Thrill of Blood aumenta o dano de Dread Plague em 20% (era 10%).",
+            "San’layn: Frenzied Bloodthirst agora aumenta o dano de Death Coil and Death Strike em 5% por acúmulo."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
         }
       },
-      "retrievedAt": "2026-09-19T10:46:55.315268+00:00"
+      "retrievedAt": "2026-09-22T22:14:13.636507+00:00"
     },
     {
       "id": "change-49ddf46956e4d8cd",
@@ -1945,6 +2661,184 @@
         }
       },
       "retrievedAt": "2026-09-19T10:46:55.315268+00:00"
+    },
+    {
+      "id": "change-65e73fb641fd39aa",
+      "channel": "live",
+      "category": "Class",
+      "date": "2026-09-18",
+      "patch": "12.1.0",
+      "localizations": {
+        "en": {
+          "name": "Warrior",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "official",
+          "translatedFrom": "",
+          "change": [
+            "Mountain Thane: Lightning Strike damage increased by 50%. Does not apply to PvP combat.",
+            "Mountain Thane: Ground Current damage increased by 50%. Does not apply to PvP combat.",
+            "Mountain Thane: Lightning Strike damage increased by 50%. Does not apply to PvP combat.",
+            "Mountain Thane: Ground Current damage increased by 50%. Does not apply to PvP combat."
+          ],
+          "terminologySourceUrls": []
+        },
+        "deDE": {
+          "name": "Warrior",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Mountain Thane: Schaden von Lightning Strike um 50% erhöht. Gilt nicht für den PvP-Kampf.",
+            "Mountain Thane: Schaden von Ground Current um 50% erhöht. Gilt nicht für den PvP-Kampf.",
+            "Mountain Thane: Schaden von Lightning Strike um 50% erhöht. Gilt nicht für den PvP-Kampf.",
+            "Mountain Thane: Schaden von Ground Current um 50% erhöht. Gilt nicht für den PvP-Kampf."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "esES": {
+          "name": "Warrior",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Mountain Thane: El daño de Lightning Strike ha aumentado un 50%. No se aplica al combate contra PvP.",
+            "Mountain Thane: El daño de Ground Current ha aumentado un 50%. No se aplica al combate contra PvP.",
+            "Mountain Thane: El daño de Lightning Strike ha aumentado un 50%. No se aplica al combate contra PvP.",
+            "Mountain Thane: El daño de Ground Current ha aumentado un 50%. No se aplica al combate contra PvP."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "frFR": {
+          "name": "Warrior",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Mountain Thane : dégâts de Lightning Strike augmentés de 50%. Ne s'applique pas au combat en PvP.",
+            "Mountain Thane : dégâts de Ground Current augmentés de 50%. Ne s'applique pas au combat en PvP.",
+            "Mountain Thane : dégâts de Lightning Strike augmentés de 50%. Ne s'applique pas au combat en PvP.",
+            "Mountain Thane : dégâts de Ground Current augmentés de 50%. Ne s'applique pas au combat en PvP."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "itIT": {
+          "name": "Warrior",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Mountain Thane: Danni di Lightning Strike aumentati di 50%. Non si applica al combattimento in PvP.",
+            "Mountain Thane: Danni di Ground Current aumentati di 50%. Non si applica al combattimento in PvP.",
+            "Mountain Thane: Danni di Lightning Strike aumentati di 50%. Non si applica al combattimento in PvP.",
+            "Mountain Thane: Danni di Ground Current aumentati di 50%. Non si applica al combattimento in PvP."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "koKR": {
+          "name": "Warrior",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Mountain Thane: Lightning Strike 피해가 50%만큼 증가합니다. PvP 전투에는 적용되지 않습니다.",
+            "Mountain Thane: Ground Current 피해가 50%만큼 증가합니다. PvP 전투에는 적용되지 않습니다.",
+            "Mountain Thane: Lightning Strike 피해가 50%만큼 증가합니다. PvP 전투에는 적용되지 않습니다.",
+            "Mountain Thane: Ground Current 피해가 50%만큼 증가합니다. PvP 전투에는 적용되지 않습니다."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "ptBR": {
+          "name": "Warrior",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Mountain Thane: Dano de Lightning Strike aumentado em 50%. Não se aplica ao combate de PvP.",
+            "Mountain Thane: Dano de Ground Current aumentado em 50%. Não se aplica ao combate de PvP.",
+            "Mountain Thane: Dano de Lightning Strike aumentado em 50%. Não se aplica ao combate de PvP.",
+            "Mountain Thane: Dano de Ground Current aumentado em 50%. Não se aplica ao combate de PvP."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "ruRU": {
+          "name": "Warrior",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Mountain Thane: урон Lightning Strike увеличен на 50%. Не применяется в бою с PvP.",
+            "Mountain Thane: урон Ground Current увеличен на 50%. Не применяется в бою с PvP.",
+            "Mountain Thane: урон Lightning Strike увеличен на 50%. Не применяется в бою с PvP.",
+            "Mountain Thane: урон Ground Current увеличен на 50%. Не применяется в бою с PvP."
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "zhCN": {
+          "name": "Warrior",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Mountain Thane：Lightning Strike 伤害提高 50%。不适用于 PvP 战斗。",
+            "Mountain Thane：Ground Current 伤害提高 50%。不适用于 PvP 战斗。",
+            "Mountain Thane：Lightning Strike 伤害提高 50%。不适用于 PvP 战斗。",
+            "Mountain Thane：Ground Current 伤害提高 50%。不适用于 PvP 战斗。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        },
+        "zhTW": {
+          "name": "Warrior",
+          "specialization": "",
+          "source": "Blizzard",
+          "sourceUrl": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1",
+          "translationType": "agent",
+          "translatedFrom": "en",
+          "change": [
+            "Mountain Thane：Lightning Strike 傷害提高 50%。不適用於 PvP 戰鬥。",
+            "Mountain Thane：Ground Current 傷害提高 50%。不適用於 PvP 戰鬥。",
+            "Mountain Thane：Lightning Strike 傷害提高 50%。不適用於 PvP 戰鬥。",
+            "Mountain Thane：Ground Current 傷害提高 50%。不適用於 PvP 戰鬥。"
+          ],
+          "terminologySourceUrls": [
+            "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-september-22/2354340/1"
+          ]
+        }
+      },
+      "retrievedAt": "2026-09-22T22:14:13.636507+00:00"
     },
     {
       "id": "change-fc6be4185f6bb859",
