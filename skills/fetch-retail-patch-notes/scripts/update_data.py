@@ -818,6 +818,60 @@ def _has_ambiguous_match(
     return False
 
 
+# Blizzard revised this bullet in article 24296142; the two claims conflict.
+REVIEWED_SOULCOILER_OLD = (
+    "The Coiled Altar: 1 Spiteful Soulcoiler will always spawn nearby "
+    "Malacrass on Mythic difficulty."
+)
+REVIEWED_SOULCOILER_NEW = (
+    "The Coiled Altar: Increased the likelihood a Spiteful Soulcoiler "
+    "will spawn near Malacrass on Mythic difficulty."
+)
+
+
+def _remove_reviewed_soulcoiler_claim(
+    stored_changes: list[dict[str, object]],
+    incoming: dict[str, object],
+    retrieved_at: str,
+) -> bool:
+    incoming_english = _english(incoming)
+    if incoming_english["change"] != [REVIEWED_SOULCOILER_NEW]:
+        return False
+    if incoming_english["source"] != "Blizzard":
+        return False
+
+    for existing in stored_changes:
+        if _context(existing) != _context(incoming):
+            continue
+        if existing["patch"] != incoming["patch"]:
+            continue
+        if not _same_source_document(existing, incoming):
+            continue
+
+        previous_items = _english(existing)["change"]
+        if REVIEWED_SOULCOILER_OLD not in previous_items:
+            continue
+
+        old_index = previous_items.index(REVIEWED_SOULCOILER_OLD)
+        localizations = existing["localizations"]
+        if any(
+            len(localization["change"]) != len(previous_items)
+            for localization in localizations.values()
+        ):
+            raise ValueError("reviewed Soulcoiler localization alignment failed")
+
+        if len(previous_items) == 1:
+            stored_changes.remove(existing)
+            return True
+
+        for localization in localizations.values():
+            del localization["change"][old_index]
+        existing["retrievedAt"] = retrieved_at
+        return True
+
+    return False
+
+
 def _sort_key(change: dict[str, object]) -> tuple[object, ...]:
     english = _english(change)
 
@@ -935,8 +989,15 @@ def update_data(
     promoted = 0
     localized = 0
     ambiguous = 0
+    reviewed_correction = False
 
     for incoming in incoming_changes:
+        reviewed_correction = (
+            _remove_reviewed_soulcoiler_claim(
+                stored_changes, incoming, retrieved_at
+            )
+            or reviewed_correction
+        )
         incoming_identity = _identity(incoming)
         exact_index = next(
             (
@@ -1046,6 +1107,7 @@ def update_data(
         or localized
         or migrated
         or consolidated_existing
+        or reviewed_correction
         or not data_path.exists()
     ):
         _save_atomically(data_path, stored_changes, retrieved_at)

@@ -84,6 +84,86 @@ def _read_data(data_path: Path) -> dict[str, object]:
 
 # Describe: canonical JSON creation and validation
 class JsonDataCreationTests(unittest.TestCase):
+    def test_reviewed_soulcoiler_correction_replaces_stale_bullet(self) -> None:
+        with TemporaryDirectory() as temporary_directory:
+            # Given Blizzard's earlier wording and an aligned translation
+            root = Path(temporary_directory)
+            data_path = root / "retail-patch-notes.json"
+            batch_path = root / "batch.json"
+            old_url = (
+                "https://news.blizzard.com/en-us/article/24296142/"
+                "hotfixes-september-15-2026"
+            )
+            new_url = (
+                "https://news.blizzard.com/en-us/article/24296142/"
+                "hotfixes-september-23-2026"
+            )
+            old_bullet = (
+                "The Coiled Altar: 1 Spiteful Soulcoiler will always "
+                "spawn nearby Malacrass on Mythic difficulty."
+            )
+            new_bullet = (
+                "The Coiled Altar: Increased the likelihood a Spiteful "
+                "Soulcoiler will spawn near Malacrass on Mythic difficulty."
+            )
+            previous = _change(
+                category="Raid",
+                date="2026-09-15",
+                patch="12.1.0",
+                name="The Venomous Abyss",
+                specialization="",
+                sourceUrl=old_url,
+                change=["Other raid change.", old_bullet],
+            )
+            previous["localizations"]["esES"] = {
+                "name": "The Venomous Abyss",
+                "specialization": "",
+                "change": ["Otro cambio.", "Texto anterior."],
+                "source": "Blizzard",
+                "sourceUrl": old_url,
+                "translationType": "agent",
+                "translatedFrom": "en",
+                "terminologySourceUrls": [old_url],
+            }
+            _write_batch(batch_path, [previous])
+            first_result = _run_updater(batch_path, data_path)
+            self.assertEqual(0, first_result.returncode, first_result.stderr)
+            current = _change(
+                category="Raid",
+                date="2026-09-15",
+                patch="12.1.0",
+                name="The Venomous Abyss",
+                specialization="",
+                sourceUrl=new_url,
+                change=[new_bullet],
+            )
+            _write_batch(batch_path, [current])
+
+            # When the revised official bullet is processed
+            result = _run_updater(batch_path, data_path)
+
+            # Then stale claims and translations are removed without ambiguity
+            self.assertEqual(0, result.returncode, result.stderr)
+            self.assertEqual(0, json.loads(result.stdout)["ambiguous"])
+            changes = _read_data(data_path)["changes"]
+            self.assertEqual(2, len(changes))
+            self.assertTrue(
+                any(new_bullet in row["localizations"]["en"]["change"]
+                    for row in changes)
+            )
+            previous_row = next(
+                row for row in changes
+                if "Other raid change." in row["localizations"]["en"]["change"]
+            )
+            self.assertEqual(
+                ["Other raid change."],
+                previous_row["localizations"]["en"]["change"],
+            )
+            self.assertEqual(
+                ["Otro cambio."],
+                previous_row["localizations"]["esES"]["change"],
+            )
+
     def test_creates_versioned_json_with_a_stable_change_id(self) -> None:
         with TemporaryDirectory() as temporary_directory:
             # Given one valid Retail class change
