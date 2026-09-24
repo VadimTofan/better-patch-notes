@@ -7,6 +7,306 @@ addon.PatchNotesData = {
             category = "Class",
             channel = "live",
             classToken = "DEATHKNIGHT",
+            date = "2026-09-23",
+            id = "change-04868b6487ece566",
+            localizations = {
+                deDE = {
+                    change = {
+                        "Es wurde ein Fehler behoben, bei dem Blightfall weniger Schaden verursachte, je mehr Zeit seit dem Anbringen der Seuche verging.",
+                    },
+                    name = "Death Knight",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
+                    specialization = "Unholy",
+                    terminologySourceUrls = {
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
+                    },
+                    translatedFrom = "en",
+                    translationType = "agent",
+                },
+                en = {
+                    change = {
+                        "Resolved an issue with Blightfall doing less damage as more time passes since the plague was applied.",
+                    },
+                    name = "Death Knight",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
+                    specialization = "Unholy",
+                    terminologySourceUrls = {},
+                    translatedFrom = "",
+                    translationType = "official",
+                },
+                esES = {
+                    change = {
+                        "Se ha resuelto un problema por el cual Blightfall infligía menos daño a medida que pasaba más tiempo desde que se aplicó la plaga.",
+                    },
+                    name = "Death Knight",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
+                    specialization = "Unholy",
+                    terminologySourceUrls = {
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
+                    },
+                    translatedFrom = "en",
+                    translationType = "agent",
+                },
+                frFR = {
+                    change = {
+                        "Correction d'un problème où Blightfall infligeait moins de dégâts à mesure que le temps passait depuis l'application de la peste.",
+                    },
+                    name = "Death Knight",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
+                    specialization = "Unholy",
+                    terminologySourceUrls = {
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
+                    },
+                    translatedFrom = "en",
+                    translationType = "agent",
+                },
+                itIT = {
+                    change = {
+                        "Risolto un problema per cui Blightfall infliggeva meno danni con il passare del tempo dall'applicazione della piaga.",
+                    },
+                    name = "Death Knight",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
+                    specialization = "Unholy",
+                    terminologySourceUrls = {
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
+                    },
+                    translatedFrom = "en",
+                    translationType = "agent",
+                },
+                koKR = {
+                    change = {
+                        "역병이 걸린 후 시간이 지날수록 Blightfall의 피해량이 감소하던 문제가 해결되었습니다.",
+                    },
+                    name = "Death Knight",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
+                    specialization = "Unholy",
+                    terminologySourceUrls = {
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
+                    },
+                    translatedFrom = "en",
+                    translationType = "agent",
+                },
+                ptBR = {
+                    change = {
+                        "Resolvido um problema em que Blightfall causava menos dano conforme mais tempo passava desde que a peste foi aplicada.",
+                    },
+                    name = "Death Knight",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
+                    specialization = "Unholy",
+                    terminologySourceUrls = {
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
+                    },
+                    translatedFrom = "en",
+                    translationType = "agent",
+                },
+                ruRU = {
+                    change = {
+                        "Устранена неполадка, из-за которой Blightfall наносил меньше урона по мере прохождения времени с момента наложения чумы.",
+                    },
+                    name = "Death Knight",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
+                    specialization = "Unholy",
+                    terminologySourceUrls = {
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
+                    },
+                    translatedFrom = "en",
+                    translationType = "agent",
+                },
+                zhCN = {
+                    change = {
+                        "修正了 Blightfall 随着瘟疫施加的时间越长伤害越低的问题。",
+                    },
+                    name = "Death Knight",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
+                    specialization = "Unholy",
+                    terminologySourceUrls = {
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
+                    },
+                    translatedFrom = "en",
+                    translationType = "agent",
+                },
+                zhTW = {
+                    change = {
+                        "修正了 Blightfall 隨時間經過（自施加瘟疫起）而造成傷害降低的問題。",
+                    },
+                    name = "Death Knight",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
+                    specialization = "Unholy",
+                    terminologySourceUrls = {
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
+                    },
+                    translatedFrom = "en",
+                    translationType = "agent",
+                },
+            },
+            patch = "12.1.0",
+            retrievedAt = "2026-09-24T09:52:01.693701+00:00",
+            specializationId = 252,
+        },
+        {
+            category = "Class",
+            channel = "live",
+            classToken = "MONK",
+            date = "2026-09-23",
+            id = "change-e91d9a97e158bedf",
+            localizations = {
+                deDE = {
+                    change = {
+                        "Es wurde ein Fehler behoben, durch den PvP-Anpassungen an Windwalker's Celestial Conduit and Flurry Strikes auch in PvE angewendet wurden.",
+                    },
+                    name = "Monk",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
+                    specialization = "Windwalker",
+                    terminologySourceUrls = {
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
+                    },
+                    translatedFrom = "en",
+                    translationType = "agent",
+                },
+                en = {
+                    change = {
+                        "Fixed an issue that caused PvP adjustments to Windwalker's Celestial Conduit and Flurry Strikes to apply in PvE as well.",
+                    },
+                    name = "Monk",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
+                    specialization = "Windwalker",
+                    terminologySourceUrls = {},
+                    translatedFrom = "",
+                    translationType = "official",
+                },
+                esES = {
+                    change = {
+                        "Se ha corregido un error que provocaba que los ajustes de PvP a Windwalker's Celestial Conduit and Flurry Strikes se aplicaran también en PvE.",
+                    },
+                    name = "Monk",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
+                    specialization = "Windwalker",
+                    terminologySourceUrls = {
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
+                    },
+                    translatedFrom = "en",
+                    translationType = "agent",
+                },
+                frFR = {
+                    change = {
+                        "Correction d'un problème qui faisait que les ajustements de PvP sur Windwalker's Celestial Conduit and Flurry Strikes s'appliquaient également dans PvE.",
+                    },
+                    name = "Monk",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
+                    specialization = "Windwalker",
+                    terminologySourceUrls = {
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
+                    },
+                    translatedFrom = "en",
+                    translationType = "agent",
+                },
+                itIT = {
+                    change = {
+                        "Risolto un problema che causava l'applicazione delle regolazioni di PvP a Windwalker's Celestial Conduit and Flurry Strikes anche in PvE.",
+                    },
+                    name = "Monk",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
+                    specialization = "Windwalker",
+                    terminologySourceUrls = {
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
+                    },
+                    translatedFrom = "en",
+                    translationType = "agent",
+                },
+                koKR = {
+                    change = {
+                        "Windwalker's Celestial Conduit and Flurry Strikes에 대한 PvP 조정이 PvE에도 적용되던 문제가 수정되었습니다.",
+                    },
+                    name = "Monk",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
+                    specialization = "Windwalker",
+                    terminologySourceUrls = {
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
+                    },
+                    translatedFrom = "en",
+                    translationType = "agent",
+                },
+                ptBR = {
+                    change = {
+                        "Corrigido um problema que fazia com que os ajustes de PvP em Windwalker's Celestial Conduit and Flurry Strikes fossem aplicados em PvE também.",
+                    },
+                    name = "Monk",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
+                    specialization = "Windwalker",
+                    terminologySourceUrls = {
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
+                    },
+                    translatedFrom = "en",
+                    translationType = "agent",
+                },
+                ruRU = {
+                    change = {
+                        "Исправлена неполадка, из-за которой корректировки PvP для Windwalker's Celestial Conduit and Flurry Strikes также применялись в PvE.",
+                    },
+                    name = "Monk",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
+                    specialization = "Windwalker",
+                    terminologySourceUrls = {
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
+                    },
+                    translatedFrom = "en",
+                    translationType = "agent",
+                },
+                zhCN = {
+                    change = {
+                        "修复了一个导致对 Windwalker's Celestial Conduit and Flurry Strikes 的 PvP 调整也会应用到 PvE 中的问题。",
+                    },
+                    name = "Monk",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
+                    specialization = "Windwalker",
+                    terminologySourceUrls = {
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
+                    },
+                    translatedFrom = "en",
+                    translationType = "agent",
+                },
+                zhTW = {
+                    change = {
+                        "修正了導致 PvP 對 Windwalker's Celestial Conduit and Flurry Strikes 的調整也會套用到 PvE 的問題。",
+                    },
+                    name = "Monk",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
+                    specialization = "Windwalker",
+                    terminologySourceUrls = {
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
+                    },
+                    translatedFrom = "en",
+                    translationType = "agent",
+                },
+            },
+            patch = "12.1.0",
+            retrievedAt = "2026-09-24T09:52:01.693701+00:00",
+            specializationId = 269,
+        },
+        {
+            category = "Class",
+            channel = "live",
+            classToken = "DEATHKNIGHT",
             date = "2026-09-22",
             id = "change-695b0d5dbf34c72b",
             localizations = {
@@ -6067,7 +6367,6 @@ addon.PatchNotesData = {
                         "The Coiled Altar: Wail of Terror cast time increased to 12 seconds on Heroic difficulty.",
                         "The Coiled Altar: Wail of Terror cast time increased to 10 seconds on Mythic difficulty.",
                         "The Coiled Altar: Spiteful Soulcoiler's spawning and relocation when interrupted are now more predictable.",
-                        "The Coiled Altar: 1 Spiteful Soulcoiler will always spawn nearby Malacrass on Mythic difficulty.",
                         "The Coiled Altar: The number of players targeted by Dreadmarch no longer increases throughout the phase on all difficulties.",
                         "The Coiled Altar: Manifestations of Dread now deprioritize fixating on players that currently have Unnerving Fixation.",
                         "The Coiled Altar: Manifestations of Dread revealed by interrupting Wail of Terror now remain visible for an additional 3 seconds.",
@@ -6104,7 +6403,6 @@ addon.PatchNotesData = {
                         "Coiled Altar: El tiempo de lanzamiento de Wail of Terror ha aumentado a 12 segundos en la dificultad Heroic.",
                         "Coiled Altar: El tiempo de lanzamiento de Wail of Terror ha aumentado a 10 segundos en la dificultad Mythic.",
                         "Coiled Altar: La aparición y reubicación de Spiteful Soulcoiler's al ser interrumpido son ahora más predecibles.",
-                        "Coiled Altar: 1 Spiteful Soulcoiler aparecerán siempre cerca de Malacrass en la dificultad Mythic.",
                         "Coiled Altar: El número de jugadores seleccionados como objetivo por Dreadmarch ya no aumenta durante toda la fase en ninguna dificultad.",
                         "Coiled Altar: Manifestations of Dread ahora da menos prioridad a fijarse en jugadores que tengan actualmente Unnerving Fixation.",
                         "Coiled Altar: Los Manifestations of Dread revelados al interrumpir Wail of Terror ahora permanecen visibles durante 3 segundos adicionales.",
@@ -6143,7 +6441,6 @@ addon.PatchNotesData = {
                         "Coiled Altar : Le temps d'incantation de Wail of Terror est augmenté à 12 secondes en difficulté Heroic.",
                         "Coiled Altar : Le temps d'incantation de Wail of Terror est augmenté à 10 secondes en difficulté Mythic.",
                         "Coiled Altar : L'apparition et le repositionnement de Spiteful Soulcoiler's lorsqu'il est interrompu sont désormais plus prévisibles.",
-                        "Coiled Altar : 1 Spiteful Soulcoiler apparaîtront toujours à proximité de Malacrass en difficulté Mythic.",
                         "Coiled Altar : Le nombre de joueurs ciblés par Dreadmarch n'augmente plus tout au long de la phase dans toutes les difficultés.",
                         "Coiled Altar : Manifestations of Dread dépriorise désormais la fixation sur les joueurs qui ont actuellement Unnerving Fixation.",
                         "Coiled Altar : Les Manifestations of Dread révélés en interrompant Wail of Terror restent désormais visibles pendant 3 secondes supplémentaires.",
@@ -6182,7 +6479,6 @@ addon.PatchNotesData = {
                         "Coiled Altar: Il tempo di lancio di Wail of Terror è stato aumentato a 12 secondi alla difficoltà Heroic.",
                         "Coiled Altar: Il tempo di lancio di Wail of Terror è stato aumentato a 10 secondi alla difficoltà Mythic.",
                         "Coiled Altar: La comparsa e il riconsideramento della posizione di Spiteful Soulcoiler's quando viene interrotto sono ora più prevedibili.",
-                        "Coiled Altar: 1 Spiteful Soulcoiler apparirà sempre vicino a Malacrass alla difficoltà Mythic.",
                         "Coiled Altar: Il numero di giocatori bersagliati da Dreadmarch non aumenta più nel corso della fase a tutte le difficoltà.",
                         "Coiled Altar: Manifestations of Dread ora deprioritizza l'attenzione sui giocatori che hanno attualmente Unnerving Fixation.",
                         "Coiled Altar: I Manifestations of Dread rivelati interrompendo Wail of Terror rimangono ora visibili per ulteriori 3 secondi.",
@@ -6221,7 +6517,6 @@ addon.PatchNotesData = {
                         "Coiled Altar: Heroic 난이도에서 Wail of Terror의 시전 시간이 12초로 증가했습니다.",
                         "Coiled Altar: Mythic 난이도에서 Wail of Terror의 시전 시간이 10초로 증가했습니다.",
                         "Coiled Altar: 차단되었을 때 Spiteful Soulcoiler's의 생성 및 재배치가 이제 더 예측 가능해졌습니다.",
-                        "Coiled Altar: Mythic 난이도에서 1 Spiteful Soulcoiler이(가) 항상 Malacrass 근처에 생성됩니다.",
                         "Coiled Altar: 모든 난이도에서 단계가 진행되는 동안 Dreadmarch의 대상이 되는 플레이어 수가 더 이상 증가하지 않습니다.",
                         "Coiled Altar: Manifestations of Dread은(는) 이제 현재 Unnerving Fixation을(를) 보유한 플레이어를 주시 대상에서 우선순위로 낮춥니다.",
                         "Coiled Altar: Wail of Terror을(를) 차단하여 드러난 Manifestations of Dread이(가) 이제 추가로 3초 동안 계속 보이는 상태로 유지됩니다.",
@@ -6260,7 +6555,6 @@ addon.PatchNotesData = {
                         "O Coiled Altar: O tempo de lançamento de Wail of Terror foi aumentado para 12 segundos na dificuldade Heroic.",
                         "O Coiled Altar: O tempo de lançamento de Wail of Terror foi aumentado para 10 segundos na dificuldade Mythic.",
                         "O Coiled Altar: O surgimento e a realocação de Spiteful Soulcoiler's quando interrompido agora são mais previsíveis.",
-                        "O Coiled Altar: 1 Spiteful Soulcoiler sempre surgirá próximo a Malacrass na dificuldade Mythic.",
                         "O Coiled Altar: O número de jogadores visados por Dreadmarch não aumenta mais ao longo da fase em todas as dificuldades.",
                         "O Coiled Altar: Manifestations of Dread agora dá menos prioridade a fixar em jogadores que possuem atualmente Unnerving Fixation.",
                         "O Coiled Altar: Manifestations of Dread revelados ao interromper Wail of Terror agora permanecem visíveis por mais 3 segundos.",
@@ -6299,7 +6593,6 @@ addon.PatchNotesData = {
                         "Coiled Altar：在 Heroic 难度下，Wail of Terror 的施法时间增加至 12 秒。",
                         "Coiled Altar：在 Mythic 难度下，Wail of Terror 的施法时间增加至 10 秒。",
                         "Coiled Altar：Spiteful Soulcoiler's 的生成以及被打断时的重新定位现在将更具规律性。",
-                        "Coiled Altar：在 Mythic 难度下，1 Spiteful Soulcoiler 将始终在 Malacrass 附近生成。",
                         "Coiled Altar：在所有难度下，阶段中受 Dreadmarch 影响的玩家数量不再增加。",
                         "Coiled Altar：Manifestations of Dread 现在会降低当前带有 Unnerving Fixation 的玩家被锁定的优先度。",
                         "Coiled Altar：通过打断 Wail of Terror 显形的 Manifestations of Dread 现在会额外保持可见 3 秒。",
@@ -6338,7 +6631,6 @@ addon.PatchNotesData = {
                         "Coiled Altar：在 Heroic 難度下，Wail of Terror 的施法時間增加至 12 秒。",
                         "Coiled Altar：在 Mythic 難度下，Wail of Terror 的施法時間增加至 10 秒。",
                         "Coiled Altar：Spiteful Soulcoiler's 在被中斷時的生成與重新定位現在變得更具預測性。",
-                        "Coiled Altar：在 Mythic 難度下，1 Spiteful Soulcoiler 將永遠在 Malacrass 附近生成。",
                         "Coiled Altar：在所有難度下，受 Dreadmarch 成為目標的玩家數量不再於整個階段中持續增加。",
                         "Coiled Altar：Manifestations of Dread 現在會降低目前帶有 Unnerving Fixation 的玩家之鎖定優先權。",
                         "Coiled Altar：因中斷 Wail of Terror 而顯形的 Manifestations of Dread 現在會保持可見額外 3 秒。",
@@ -6367,1007 +6659,37 @@ addon.PatchNotesData = {
                 },
             },
             patch = "12.1.0",
-            retrievedAt = "2026-09-16T13:41:57.679344+00:00",
-            specializationId = 0,
-        },
-        {
-            category = "Class",
-            channel = "live",
-            classToken = "DEATHKNIGHT",
-            date = "2026-09-10",
-            id = "change-53f7e61b702ff7f5",
-            localizations = {
-                en = {
-                    change = {
-                        "Resolved an issue causing Magus of the Dead to occasionally spawn at extreme vertical differences.",
-                    },
-                    name = "Death Knight",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "Unholy",
-                    terminologySourceUrls = {},
-                    translatedFrom = "",
-                    translationType = "official",
-                },
-                esES = {
-                    change = {
-                        "Se ha resuelto un problema que provocaba que Magus of the Dead apareciera ocasionalmente con diferencias verticales extremas.",
-                    },
-                    name = "Death Knight",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "Unholy",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                frFR = {
-                    change = {
-                        "Résolution d'un problème provoquant l'apparition occasionnelle de Magus of the Dead à des différences verticales extrêmes.",
-                    },
-                    name = "Death Knight",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "Unholy",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                itIT = {
-                    change = {
-                        "Risolto un problema che causava la generazione occasionale di Magus of the Dead a differenze di altezza estreme.",
-                    },
-                    name = "Death Knight",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "Unholy",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                koKR = {
-                    change = {
-                        "Magus of the Dead이(가) 가끔 극단적인 높이 차이에서 생성되던 문제가 해결되었습니다.",
-                    },
-                    name = "Death Knight",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "Unholy",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                ptBR = {
-                    change = {
-                        "Foi resolvido um problema que fazia com que Magus of the Dead ocasionalmente surgisse em diferenças verticais extremas.",
-                    },
-                    name = "Death Knight",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "Unholy",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                zhCN = {
-                    change = {
-                        "解决了导致 Magus of the Dead 有时会在极端的垂直高度差处生成的问题。",
-                    },
-                    name = "Death Knight",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "Unholy",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                zhTW = {
-                    change = {
-                        "解決了導致 Magus of the Dead 有時會在極端垂直高度差處出現的問題。",
-                    },
-                    name = "Death Knight",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "Unholy",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-            },
-            patch = "12.1.0",
-            retrievedAt = "2026-09-16T13:41:57.679344+00:00",
-            specializationId = 252,
-        },
-        {
-            category = "Class",
-            channel = "live",
-            classToken = "HUNTER",
-            date = "2026-09-10",
-            id = "change-8f6678e3cb960f5a",
-            localizations = {
-                en = {
-                    change = {
-                        "Corrected an issue where the initial damage of Wildfire Bomb would not happen if the Hunter was affected by crowd control effects while the bomb hit the target.",
-                        "Corrected an issue where Strike As One would not deal damage with a Raptor Swipe that benefit from Tip of the Spear if Aspect of the Eagle is active.",
-                    },
-                    name = "Hunter",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "Survival",
-                    terminologySourceUrls = {},
-                    translatedFrom = "",
-                    translationType = "official",
-                },
-                esES = {
-                    change = {
-                        "Se ha corregido un problema por el cual el daño inicial de Wildfire Bomb no se producía si Hunter se encontraba bajo los efectos de pérdida de control mientras la bomba golpeaba al objetivo.",
-                        "Se ha corregido un problema por el cual Strike As One no infligía daño con un Raptor Swipe que se beneficiase de Tip of the Spear si Aspect of the Eagle estaba activo.",
-                    },
-                    name = "Hunter",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "Survival",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                frFR = {
-                    change = {
-                        "Correction d'un problème où les dégâts initiaux de Wildfire Bomb ne se produisaient pas si Hunter était soumis à des effets de contrôle de foule lorsque la bombe touchait la cible.",
-                        "Correction d'un problème où Strike As One ne infligeait pas de dégâts avec un Raptor Swipe bénéficiant de Tip of the Spear si Aspect of the Eagle est actif.",
-                    },
-                    name = "Hunter",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "Survival",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                itIT = {
-                    change = {
-                        "Corretto un problema per cui il danno iniziale di Wildfire Bomb non si verificava se il Hunter era influenzato da effetti di controllo delle creature mentre la bomba colpiva il bersaglio.",
-                        "Corretto un problema per cui Strike As One non infliggeva danni con un Raptor Swipe che beneficia di Tip of the Spear se Aspect of the Eagle è attivo.",
-                    },
-                    name = "Hunter",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "Survival",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                koKR = {
-                    change = {
-                        "폭탄이 대상에게 적중하는 동안 Hunter이(가) 군중 제어 효과에 걸렸을 때 Wildfire Bomb의 초기 피해가 발생하지 않던 문제가 수정되었습니다.",
-                        "Aspect of the Eagle이(가) 활성화되어 있을 때, Tip of the Spear의 효과를 받는 Raptor Swipe로 인해 Strike As One가 피해를 주지 않던 문제가 수정되었습니다.",
-                    },
-                    name = "Hunter",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "Survival",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                ptBR = {
-                    change = {
-                        "Foi corrigido um problema em que o dano inicial de Wildfire Bomb não ocorria se o Hunter fosse afetado por efeitos de controle de grupo enquanto a bomba atingia o alvo.",
-                        "Foi corrigido um problema em que Strike As One não causava dano com um Raptor Swipe que se beneficiasse de Tip of the Spear se Aspect of the Eagle estivesse ativo.",
-                    },
-                    name = "Hunter",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "Survival",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                zhCN = {
-                    change = {
-                        "修复了如果炸弹命中目标时 Hunter 受到控制效果影响，Wildfire Bomb 的初始伤害将不会发生的问题。",
-                        "修复了如果 Aspect of the Eagle 处于激活状态，Strike As One 无法使用受 Tip of the Spear 收益的 Raptor Swipe 造成伤害的问题。",
-                    },
-                    name = "Hunter",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "Survival",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                zhTW = {
-                    change = {
-                        "修正了炸彈擊中目標時，若 Hunter 受到控場效果影響，則 Wildfire Bomb 的初始傷害不會發生的問題。",
-                        "修正了當 Aspect of the Eagle 啟動時，若 Raptor Swipe 受惠於 Tip of the Spear，則 Strike As One 會無法造成傷害的問題。",
-                    },
-                    name = "Hunter",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "Survival",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-            },
-            patch = "12.1.0",
-            retrievedAt = "2026-09-16T13:41:57.679344+00:00",
-            specializationId = 255,
-        },
-        {
-            category = "Class",
-            channel = "live",
-            classToken = "MAGE",
-            date = "2026-09-10",
-            id = "change-74921872500e3681",
-            localizations = {
-                en = {
-                    change = {
-                        "Hero Talents — Spellslinger: Fixed an issue causing Splinters from Augury Abounds to sometimes strike crowd-controlled targets when other non-crowd controlled targets are available.",
-                    },
-                    name = "Mage",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "",
-                    terminologySourceUrls = {},
-                    translatedFrom = "",
-                    translationType = "official",
-                },
-                esES = {
-                    change = {
-                        "Hero Talents — Spellslinger: Se ha solucionado un problema que provocaba que Splinters de Augury Abounds golpeara a veces a objetivos bajo efectos de pérdida de control cuando había otros objetivos disponibles que no los sufrían.",
-                    },
-                    name = "Mage",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                frFR = {
-                    change = {
-                        "Hero Talents — Spellslinger : Correction d'un problème provoquant parfois la frappe de cibles sous contrôle de foule par Splinters de Augury Abounds alors que d'autres cibles sans contrôle de foule sont disponibles.",
-                    },
-                    name = "Mage",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                itIT = {
-                    change = {
-                        "Hero Talents — Spellslinger: Risolto un problema che causava a Splinters da Augury Abounds di colpire a volte bersagli sotto controllo delle creature quando erano disponibili altri bersagli non controllati.",
-                    },
-                    name = "Mage",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                koKR = {
-                    change = {
-                        "Hero Talents — Spellslinger: 다른 군중 제어 상태가 아닌 대상이 있음에도 Augury Abounds의 Splinters이(가) 가끔 군중 제어 상태인 대상을 공격하던 문제가 수정되었습니다.",
-                    },
-                    name = "Mage",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                ptBR = {
-                    change = {
-                        "Hero Talents — Spellslinger: Foi corrigido um problema que fazia com que Splinters de Augury Abounds às vezes atingisse alvos sob controle de grupo quando outros alvos sem controle de grupo estivessem disponíveis.",
-                    },
-                    name = "Mage",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                zhCN = {
-                    change = {
-                        "Hero Talents — Spellslinger：修复了当存在其他未受控目标时，来自 Augury Abounds 的 Splinters 有时会攻击受到控制的目标的问题。",
-                    },
-                    name = "Mage",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                zhTW = {
-                    change = {
-                        "Hero Talents — Spellslinger：修正了當其他未受控場目標存在時，來自 Augury Abounds 的 Splinters 有時仍會擊中受控場目標的問題。",
-                    },
-                    name = "Mage",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-            },
-            patch = "12.1.0",
-            retrievedAt = "2026-09-16T13:41:57.679344+00:00",
-            specializationId = 0,
-        },
-        {
-            category = "Class",
-            channel = "live",
-            classToken = "PALADIN",
-            date = "2026-09-10",
-            id = "change-784d3f24f3353c9d",
-            localizations = {
-                en = {
-                    change = {
-                        "Fixed an issue that caused Ringing of the Heavens to not function if cast as Lightsmith while targeting an enemy.",
-                    },
-                    name = "Paladin",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "Holy",
-                    terminologySourceUrls = {},
-                    translatedFrom = "",
-                    translationType = "official",
-                },
-                esES = {
-                    change = {
-                        "Se ha solucionado un problema que provocaba que Ringing of the Heavens no funcionara si se lanzaba como Lightsmith mientras se seleccionaba a un enemigo como objetivo.",
-                    },
-                    name = "Paladin",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "Holy",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                frFR = {
-                    change = {
-                        "Correction d'un problème qui empêchait Ringing of the Heavens de fonctionner s'il était lancé sous le nom de Lightsmith tout en ciblant un ennemi.",
-                    },
-                    name = "Paladin",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "Holy",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                itIT = {
-                    change = {
-                        "Risolto un problema che impediva a Ringing of the Heavens di funzionare se lanciato come Lightsmith mentre si mirava a un nemico.",
-                    },
-                    name = "Paladin",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "Holy",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                koKR = {
-                    change = {
-                        "적을 대상으로 지정한 상태에서 Lightsmith(으)로 시전할 때 Ringing of the Heavens이(가) 작동하지 않던 문제가 수정되었습니다.",
-                    },
-                    name = "Paladin",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "Holy",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                ptBR = {
-                    change = {
-                        "Foi corrigido um problema que fazia com que Ringing of the Heavens não funcionasse se lançado como Lightsmith ao ter um inimigo como alvo.",
-                    },
-                    name = "Paladin",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "Holy",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                zhCN = {
-                    change = {
-                        "修复了导致 Ringing of the Heavens 在以敌人为目标施放为 Lightsmith 时无法正常运作的问题。",
-                    },
-                    name = "Paladin",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "Holy",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                zhTW = {
-                    change = {
-                        "修正了將 Ringing of the Heavens 以 Lightsmith 施放且以敵人為目標時，會導致其無法運作的問題。",
-                    },
-                    name = "Paladin",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "Holy",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-            },
-            patch = "12.1.0",
-            retrievedAt = "2026-09-16T13:41:57.679344+00:00",
-            specializationId = 65,
-        },
-        {
-            category = "Class",
-            channel = "live",
-            classToken = "PALADIN",
-            date = "2026-09-10",
-            id = "change-9b57e0d37de84d78",
-            localizations = {
-                en = {
-                    change = {
-                        "Fixed an issue where Glory of the Vanguard was not dealing full damage to its primary target.",
-                    },
-                    name = "Paladin",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "Protection",
-                    terminologySourceUrls = {},
-                    translatedFrom = "",
-                    translationType = "official",
-                },
-                esES = {
-                    change = {
-                        "Se ha solucionado un problema por el cual Glory of the Vanguard no infligía todo el daño a su objetivo principal.",
-                    },
-                    name = "Paladin",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "Protection",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                frFR = {
-                    change = {
-                        "Correction d'un problème où Glory of the Vanguard n'infligeait pas tous ses dégâts à sa cible principale.",
-                    },
-                    name = "Paladin",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "Protection",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                itIT = {
-                    change = {
-                        "Risolto un problema per cui Glory of the Vanguard non infliggeva i danni completi al suo bersaglio principale.",
-                    },
-                    name = "Paladin",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "Protection",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                koKR = {
-                    change = {
-                        "Glory of the Vanguard이(가) 주 대상에게 온전한 피해를 주지 않던 문제가 수정되었습니다.",
-                    },
-                    name = "Paladin",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "Protection",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                ptBR = {
-                    change = {
-                        "Foi corrigido um problema em que Glory of the Vanguard não estava causando o dano total ao seu alvo principal.",
-                    },
-                    name = "Paladin",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "Protection",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                zhCN = {
-                    change = {
-                        "修复了 Glory of the Vanguard 未对主要目标造成全部伤害的问题。",
-                    },
-                    name = "Paladin",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "Protection",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                zhTW = {
-                    change = {
-                        "修正了 Glory of the Vanguard 未對其主要目標造成完整傷害的問題。",
-                    },
-                    name = "Paladin",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "Protection",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-            },
-            patch = "12.1.0",
-            retrievedAt = "2026-09-16T13:41:57.679344+00:00",
-            specializationId = 66,
-        },
-        {
-            category = "Class",
-            channel = "live",
-            classToken = "ROGUE",
-            date = "2026-09-10",
-            id = "change-19e69efd97d742dd",
-            localizations = {
-                en = {
-                    change = {
-                        "Both versions of Thistle Tea can now be tracked in the Cooldown Manager.",
-                    },
-                    name = "Rogue",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "",
-                    terminologySourceUrls = {},
-                    translatedFrom = "",
-                    translationType = "official",
-                },
-                esES = {
-                    change = {
-                        "Las versiones de Both de Thistle Tea ahora se pueden rastrear en el Manager de tiempos de reutilización.",
-                    },
-                    name = "Rogue",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                frFR = {
-                    change = {
-                        "Les versions Both de Thistle Tea peuvent désormais être suivies dans le suivi de recharge Manager.",
-                    },
-                    name = "Rogue",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                itIT = {
-                    change = {
-                        "Le versioni Both di Thistle Tea possono ora essere tracciate nel gestore dei tempi di recupero Manager.",
-                    },
-                    name = "Rogue",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                koKR = {
-                    change = {
-                        "Thistle Tea의 Both 버전을 이제 재사용 대기시간 Manager에서 추적할 수 있습니다.",
-                    },
-                    name = "Rogue",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                ptBR = {
-                    change = {
-                        "As versões de Both de Thistle Tea agora podem ser rastreadas na Manager de Tempo de Recarga.",
-                    },
-                    name = "Rogue",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                zhCN = {
-                    change = {
-                        "现在可以在冷却时间 Manager 中追踪 Thistle Tea 的 Both 版本。",
-                    },
-                    name = "Rogue",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                zhTW = {
-                    change = {
-                        "Thistle Tea 的 Both 版本現在可以在冷卻時間 Manager 中追蹤。",
-                    },
-                    name = "Rogue",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-            },
-            patch = "12.1.0",
-            retrievedAt = "2026-09-16T13:41:57.679344+00:00",
-            specializationId = 0,
-        },
-        {
-            category = "Class",
-            channel = "live",
-            classToken = "SHAMAN",
-            date = "2026-09-10",
-            id = "change-5cdd171506016c21",
-            localizations = {
-                en = {
-                    change = {
-                        "Fixed an issue where Soothing Rain did not properly reduce the cast time of Healing Rain by 0.5 seconds.",
-                    },
-                    name = "Shaman",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "Restoration",
-                    terminologySourceUrls = {},
-                    translatedFrom = "",
-                    translationType = "official",
-                },
-                esES = {
-                    change = {
-                        "Se ha solucionado un problema por el cual Soothing Rain no reducía correctamente el tiempo de lanzamiento de Sanación Rain en 0.5 segundos.",
-                    },
-                    name = "Shaman",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "Restoration",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                frFR = {
-                    change = {
-                        "Correction d'un problème où Soothing Rain ne réduisait pas correctement le temps d'incantation de Soin Rain de 0.5 secondes.",
-                    },
-                    name = "Shaman",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "Restoration",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                itIT = {
-                    change = {
-                        "Risolto un problema per cui Soothing Rain non riduceva correttamente il tempo di lancio di Cura Rain di 0.5 secondi.",
-                    },
-                    name = "Shaman",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "Restoration",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                koKR = {
-                    change = {
-                        "Soothing Rain이(가) 치유 Rain의 시전 시간을 0.5초만큼 정상적으로 감소시키지 않던 문제가 수정되었습니다.",
-                    },
-                    name = "Shaman",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "Restoration",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                ptBR = {
-                    change = {
-                        "Foi corrigido um problema em que Soothing Rain não reduzia corretamente o tempo de lançamento de Cura Rain em 0.5 segundos.",
-                    },
-                    name = "Shaman",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "Restoration",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                zhCN = {
-                    change = {
-                        "修复了 Soothing Rain 未能正确将治疗 Rain 的施法时间减少 0.5 秒的问题。",
-                    },
-                    name = "Shaman",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "Restoration",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                zhTW = {
-                    change = {
-                        "修正了 Soothing Rain 未能正確將治療 Rain 的施法時間縮短 0.5 秒的問題。",
-                    },
-                    name = "Shaman",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "Restoration",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-            },
-            patch = "12.1.0",
-            retrievedAt = "2026-09-16T13:41:57.679344+00:00",
-            specializationId = 264,
-        },
-        {
-            category = "Dungeon",
-            channel = "live",
-            classToken = "",
-            date = "2026-09-10",
-            id = "change-95381173fc457ab1",
-            localizations = {
-                en = {
-                    change = {
-                        "Addressed an issue where Nalorakk's Echoing Maul can sometimes trigger unintentionally.",
-                    },
-                    name = "Den of Nalorakk",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "",
-                    terminologySourceUrls = {},
-                    translatedFrom = "",
-                    translationType = "official",
-                },
-                esES = {
-                    change = {
-                        "Se ha solucionado un problema por el cual Nalorakk's Echoing Maul a veces se podía activar de forma involuntaria.",
-                    },
-                    name = "Den of Nalorakk",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                frFR = {
-                    change = {
-                        "Correction d'un problème où Nalorakk's Echoing Maul pouvait parfois se déclencher involontairement.",
-                    },
-                    name = "Den of Nalorakk",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                itIT = {
-                    change = {
-                        "Risolto un problema per cui Nalorakk's Echoing Maul a volte poteva attivarsi involontariamente.",
-                    },
-                    name = "Den of Nalorakk",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                koKR = {
-                    change = {
-                        "Nalorakk's Echoing Maul이(가) 가끔 의도치 않게 발동하던 문제가 수정되었습니다.",
-                    },
-                    name = "Den of Nalorakk",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                ptBR = {
-                    change = {
-                        "Foi corrigido um problema em que Nalorakk's Echoing Maul às vezes podia ser acionado involuntariamente.",
-                    },
-                    name = "Den of Nalorakk",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                zhCN = {
-                    change = {
-                        "修复了 Nalorakk's Echoing Maul 有时会无意中触发的问题。",
-                    },
-                    name = "Den of Nalorakk",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-                zhTW = {
-                    change = {
-                        "修正了 Nalorakk's Echoing Maul 有時會非自願觸發的問題。",
-                    },
-                    name = "Den of Nalorakk",
-                    source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    specialization = "",
-                    terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
-                    },
-                    translatedFrom = "en",
-                    translationType = "agent",
-                },
-            },
-            patch = "12.1.0",
-            retrievedAt = "2026-09-16T13:41:57.679344+00:00",
+            retrievedAt = "2026-09-24T09:52:01.693701+00:00",
             specializationId = 0,
         },
         {
             category = "Raid",
             channel = "live",
             classToken = "",
-            date = "2026-09-10",
-            id = "change-4540eb7036be7199",
+            date = "2026-09-15",
+            id = "change-cd27dc76268a94f4",
             localizations = {
-                en = {
+                deDE = {
                     change = {
-                        "The Lost Explorers: Mor'zahi's damage escalation during Final Ascension will now reset if his cast is interrupted.",
+                        "Der Coiled Altar: Die Wahrscheinlichkeit, dass ein Spiteful Soulcoiler in der Nähe von Malacrass auf dem Schwierigkeitsgrad Mythic erscheint, wurde erhöht.",
                     },
                     name = "The Venomous Abyss",
                     source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
+                    specialization = "",
+                    terminologySourceUrls = {
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
+                    },
+                    translatedFrom = "en",
+                    translationType = "agent",
+                },
+                en = {
+                    change = {
+                        "The Coiled Altar: Increased the likelihood a Spiteful Soulcoiler will spawn near Malacrass on Mythic difficulty.",
+                    },
+                    name = "The Venomous Abyss",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
                     specialization = "",
                     terminologySourceUrls = {},
                     translatedFrom = "",
@@ -7375,115 +6697,129 @@ addon.PatchNotesData = {
                 },
                 esES = {
                     change = {
-                        "Lost Explorers: La escalada de daño de Mor'zahi's durante Final Ascension ahora se reiniciará si se interrumpe su lanzamiento.",
+                        "El Coiled Altar: Se ha aumentado la probabilidad de que aparezca un Spiteful Soulcoiler cerca de Malacrass en la dificultad Mythic.",
                     },
                     name = "The Venomous Abyss",
                     source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
                     specialization = "",
                     terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
                     },
                     translatedFrom = "en",
                     translationType = "agent",
                 },
                 frFR = {
                     change = {
-                        "Lost Explorers : L'escalade des dégâts de Mor'zahi's pendant Final Ascension sera désormais réinitialisée si son incantation est interrompue.",
+                        "Le Coiled Altar : Augmentation de la probabilité qu'un Spiteful Soulcoiler apparaisse près de Malacrass en difficulté Mythic.",
                     },
                     name = "The Venomous Abyss",
                     source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
                     specialization = "",
                     terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
                     },
                     translatedFrom = "en",
                     translationType = "agent",
                 },
                 itIT = {
                     change = {
-                        "Lost Explorers: L'aumento del danno di Mor'zahi's durante Final Ascension ora si azzererà se il suo lancio viene interrotto.",
+                        "Coiled Altar: Aumentata la probabilità che un Spiteful Soulcoiler compaia vicino a Malacrass alla difficoltà Mythic.",
                     },
                     name = "The Venomous Abyss",
                     source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
                     specialization = "",
                     terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
                     },
                     translatedFrom = "en",
                     translationType = "agent",
                 },
                 koKR = {
                     change = {
-                        "Lost Explorers: Final Ascension 동안의 Mor'zahi's 피해 상승 효과는 그의 시전이 차단되면 이제 초기화됩니다.",
+                        "Coiled Altar: Mythic 난이도에서 Malacrass 근처에 Spiteful Soulcoiler(이)가 생성될 확률이 증가했습니다.",
                     },
                     name = "The Venomous Abyss",
                     source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
                     specialization = "",
                     terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
                     },
                     translatedFrom = "en",
                     translationType = "agent",
                 },
                 ptBR = {
                     change = {
-                        "O Lost Explorers: A escalada de dano de Mor'zahi's durante Final Ascension agora será redefinida se o lançamento dele for interrompido.",
+                        "O Coiled Altar: Aumentada a probabilidade de um Spiteful Soulcoiler surgir perto de Malacrass na dificuldade Mythic.",
                     },
                     name = "The Venomous Abyss",
                     source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
                     specialization = "",
                     terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
+                    },
+                    translatedFrom = "en",
+                    translationType = "agent",
+                },
+                ruRU = {
+                    change = {
+                        "Coiled Altar: увеличена вероятность появления Spiteful Soulcoiler рядом с Malacrass на сложности Mythic.",
+                    },
+                    name = "The Venomous Abyss",
+                    source = "Blizzard",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
+                    specialization = "",
+                    terminologySourceUrls = {
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
                     },
                     translatedFrom = "en",
                     translationType = "agent",
                 },
                 zhCN = {
                     change = {
-                        "Lost Explorers：如果在施法被打断时，Final Ascension 期间的 Mor'zahi's 伤害升级现在将会重置。",
+                        "Coiled Altar：提高了在 Mythic 难度下，Spiteful Soulcoiler 在 Malacrass 附近生成的几率。",
                     },
                     name = "The Venomous Abyss",
                     source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
                     specialization = "",
                     terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
                     },
                     translatedFrom = "en",
                     translationType = "agent",
                 },
                 zhTW = {
                     change = {
-                        "Lost Explorers：如果在施法遭到中斷，Final Ascension 期間的 Mor'zahi's 傷害遞增現在將會重置。",
+                        "Coiled Altar：提高了 Spiteful Soulcoiler 在 Mythic 難度下於 Malacrass 附近生成的機率。",
                     },
                     name = "The Venomous Abyss",
                     source = "Blizzard",
-                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
+                    sourceUrl = "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
                     specialization = "",
                     terminologySourceUrls = {
-                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-15-2026",
+                        "https://news.blizzard.com/en-us/article/24296142/hotfixes-september-23-2026",
                     },
                     translatedFrom = "en",
                     translationType = "agent",
                 },
             },
             patch = "12.1.0",
-            retrievedAt = "2026-09-16T13:41:57.679344+00:00",
+            retrievedAt = "2026-09-24T09:52:01.693701+00:00",
             specializationId = 0,
         },
     },
     channelVersions = {
-        live = "22d5f8ea35491fd6",
+        live = "f8bffb2d09802ee4",
         ptr = "4f53cda18c2baa0c",
     },
     classChannelVersions = {
         DEATHKNIGHT = {
-            live = "24a4d4d4608d8e2d",
+            live = "f6b7644ad8ee78df",
             ptr = "",
         },
         DEMONHUNTER = {
@@ -7499,19 +6835,19 @@ addon.PatchNotesData = {
             ptr = "",
         },
         HUNTER = {
-            live = "dfcabbcae86b7acc",
+            live = "66d47c517515094d",
             ptr = "",
         },
         MAGE = {
-            live = "80800ca00648e795",
+            live = "51faec5c99ac8a88",
             ptr = "",
         },
         MONK = {
-            live = "a934732084103e8f",
+            live = "a02997c313f3c633",
             ptr = "",
         },
         PALADIN = {
-            live = "132cbe510fc87bc2",
+            live = "e0a88a63e4c87518",
             ptr = "",
         },
         PRIEST = {
@@ -7519,11 +6855,11 @@ addon.PatchNotesData = {
             ptr = "",
         },
         ROGUE = {
-            live = "a6a446da193bacd9",
+            live = "180676488e75adb7",
             ptr = "",
         },
         SHAMAN = {
-            live = "0fbafd0767e63c5a",
+            live = "",
             ptr = "",
         },
         WARLOCK = {
@@ -7537,7 +6873,7 @@ addon.PatchNotesData = {
     },
     classLatestDates = {
         DEATHKNIGHT = {
-            live = "2026-09-22",
+            live = "2026-09-23",
             ptr = "",
         },
         DEMONHUNTER = {
@@ -7561,7 +6897,7 @@ addon.PatchNotesData = {
             ptr = "",
         },
         MONK = {
-            live = "2026-09-22",
+            live = "2026-09-23",
             ptr = "",
         },
         PALADIN = {
@@ -7577,7 +6913,7 @@ addon.PatchNotesData = {
             ptr = "",
         },
         SHAMAN = {
-            live = "2026-09-10",
+            live = "",
             ptr = "",
         },
         WARLOCK = {
@@ -7590,21 +6926,21 @@ addon.PatchNotesData = {
         },
     },
     latestDates = {
-        live = "2026-09-22",
+        live = "2026-09-23",
         ptr = "",
     },
     recordCounts = {
-        live = 59,
+        live = 53,
         ptr = 0,
     },
     schemaVersion = 5,
     sharedChannelVersions = {
-        live = "3305058d26736bc5",
+        live = "48abd56420f484ce",
         ptr = "",
     },
     sharedLatestDates = {
         live = "2026-09-22",
         ptr = "",
     },
-    updatedAt = "2026-09-23T07:41:15.675437+00:00",
+    updatedAt = "2026-09-24T09:52:01.693701+00:00",
 }
